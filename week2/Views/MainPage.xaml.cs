@@ -32,7 +32,17 @@ namespace week2.Views
                     case (int)MenuItemType.Home:
                         MenuPages.Add(id, new NavigationPage(new TitlePage()));
                         break;
-                    
+                    case (int)MenuItemType.Characters:
+                        MenuPages.Add(id, new NavigationPage(new CharacterPage()));
+                        break;
+                    case (int)MenuItemType.Items:
+                        MenuPages.Add(id, new NavigationPage(new ItemsListPage()));
+                        break;
+                    case (int)MenuItemType.History:
+                        MenuPages.Add(id, new NavigationPage(new HistoryPage()));
+                        break;
+
+
                 }
             }
 

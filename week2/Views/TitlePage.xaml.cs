@@ -15,17 +15,17 @@ namespace week2.Views
 
         async void OnHistoryClicked(object sender, EventArgs args)
         {
-
+            await Navigation.PushAsync(new HistoryPage());
         }
 
         async void OnCharacterClicked(object sender, EventArgs args)
         {
-
+            await Navigation.PushAsync(new CharacterPage());
         }
 
         async void OnItemsClicked(object sender, EventArgs args)
         {
-
+            await Navigation.PushAsync(new ItemsListPage());
         }
     }
 }
