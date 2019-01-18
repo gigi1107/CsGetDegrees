@@ -16,10 +16,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                    <Image Source="rabbit.png" VerticalOptions="Center" HeightRequest="100" />
                 </ContentView>
             </StackLayout>
         </StackLayout>
@@ -42,10 +42,28 @@
                             <FormattedString.Spans>
                                 <Span Text="Gigi Davidson" />
                                 <Span Text=" 1/17/19 " />
+                               
                              
                             </FormattedString.Spans>
                         </FormattedString>
+                        
+                        
                     </Label.FormattedText>
+                    
+                </Label>
+                 <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="About Page" />
+                               
+                           
+                            </FormattedString.Spans>
+                        </FormattedString>
+                        
+                        
+                    </Label.FormattedText>
+                    
                 </Label>
              
             </StackLayout>

@@ -6,8 +6,8 @@ namespace week2.Models
 {
     public enum MenuItemType
     {
-        Browse,
-        About
+        About,
+        Home
     }
     public class HomeMenuItem
     {
