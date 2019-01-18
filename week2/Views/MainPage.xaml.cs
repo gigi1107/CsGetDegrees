@@ -17,7 +17,7 @@ namespace week2.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Home, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.About, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
