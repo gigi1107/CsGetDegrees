@@ -8,13 +8,11 @@
         </Grid.RowDefinitions>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                <ContentView Padding="0,20,0,20" VerticalOptions="FillAndExpand">
                     <Image Source="rabbit.png" VerticalOptions="Center" HeightRequest="100" />
                 </ContentView>
             </StackLayout>
-        </StackLayout>
-        <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+            <StackLayout>
                 <Label FontSize="22">
                     <Label.FormattedText>
                         <FormattedString>
@@ -26,10 +24,20 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                
-        
-             
-            </StackLayout>
+             </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <ListView x:Name="ItemsList" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text= "{Binding Id}" VerticalTextAlignment=
+                                "Center"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                                
         </ScrollView>
     </Grid>
 </ContentPage>
