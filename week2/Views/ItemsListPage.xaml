@@ -27,17 +27,18 @@
              </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
-            <ListView x:Name="ItemsList" HasUnevenRows="True">
+            <ListView x:Name="ItemsList" 
+                      HasUnevenRows="True"
+                      ItemSelected="OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text= "{Binding Id}" VerticalTextAlignment=
+                            <Label Text= "{Binding Name}" VerticalTextAlignment=
                                 "Center"/>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>
-                                
+                </ListView>                              
         </ScrollView>
     </Grid>
 </ContentPage>

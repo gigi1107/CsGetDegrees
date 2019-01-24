@@ -15,18 +15,28 @@ namespace week2.Views
             InitializeComponent();
             items = new List<Item>()
             {
-                new Item{Id = "Fresh Carrot", Description= "+ health"},
-                new Item{Id = "Wet Grass", Description="+ 20% health"},
-                new Item{Id = "Magical Dew", Description="+3% XP"},
-                new Item{Id = "Tree Bark of Agility", Description = "+10% defense"},
-                new Item{Id = "Rope of Vengeance", Description = "+3 strength"},
-                new Item{Id = "Collar of Transcendence", Description = "+3 speed"},
-                new Item{Id = "Necklace of Alacrity", Description = "+2 speed"},
-                new Item{Id = "Jewel of Gibberish", Description="-3 on all stats"}
+                new Item{Name = "Fresh Carrot", Description= "+ health"},
+                new Item{Name = "Wet Grass", Description="+ 20% health"},
+                new Item{Name = "Magical Dew", Description="+3% XP"},
+                new Item{Name = "Tree Bark of Agility", Description = "+10% defense"},
+                new Item{Name = "Rope of Vengeance", Description = "+3 strength"}
+
              };
 
             ItemsList.ItemsSource = items;
         }
+
+        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            var data = args.SelectedItem as Item;
+            if (data == null)
+                return;
+
+            await Navigation.PushAsync(new ItemsListDetail(new ViewModels.ItemDetailViewModel(data)));
+
+            ItemsList.SelectedItem = null;
+        }
     }
 }
+
 
