@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="week2.Views.CharacterPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="week2.Views.CharacterPage">
   <!-- <Label Text="Character Page"/>-->
   
     
@@ -7,51 +9,61 @@
         <ToolbarItem Text="Add" Clicked="AddCharacter_Clicked" />
     </ContentPage.ToolbarItems>
     
-  <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,20,0,20" VerticalOptions="FillAndExpand">
-                    <Image Source="rabbit.png" VerticalOptions="Center" HeightRequest="100" />
-                </ContentView>
-            </StackLayout>
-            <StackLayout>
-                <Label FontSize="22">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Character Page" FontAttributes="Bold" FontSize="22" />
-                                <Span Text=" " />
-                           
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-             </StackLayout>
-        </StackLayout>
-        <ScrollView Grid.Row="1">
+  <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Character List Page" FontSize="Small" />
+
             <ListView x:Name="CharacterList" 
-                      HasUnevenRows="True"
-                      ItemsSource="{Binding Dataset}"
-                      RefreshCommand="{Binding LoadItemsCommand}"
-                      IsPullToRefreshEnabled="true"
-                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                      CachingStrategy="RecycleElement"
-                      ItemSelected="OnCharacterSelected">
+                ItemsSource="{Binding Dataset}"
+                VerticalOptions="FillAndExpand"
+                 HasUnevenRows="true"
+                 RefreshCommand="{Binding LoadItemsCommand}"
+                 IsPullToRefreshEnabled="true"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 CachingStrategy="RecycleElement"
+                 ItemSelected="OnCharacterSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text= "{Binding Name}, Age {Binding Age} " VerticalTextAlignment=
-                                "Center"/>
-    
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>                              
-        </ScrollView>
-    </Grid>
+
+                            <StackLayout Padding="10"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Start"
+                                         HorizontalOptions="Start">
+
+                                <Image Source="{Binding ImageURI}"
+                                       WidthRequest="50"
+                                       HeightRequest="50" 
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+
+
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Name}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                         <Label Text=", Age: " 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />  
+                                        <Label Text="{Binding Age}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                       
+                                    </StackLayout>
+                                    
+                                </StackLayout>
+                                
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
 

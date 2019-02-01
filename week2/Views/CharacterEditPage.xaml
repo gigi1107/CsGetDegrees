@@ -87,7 +87,7 @@
                         <Stepper 
                             Value="{Binding Data.Age, Mode=TwoWay}"
                             Minimum="0"
-                            Maximum="20"
+                            Maximum="100"
                             Increment="1"
                             ValueChanged="Range_OnStepperValueChanged"
                             HorizontalOptions="Start"
