@@ -13,15 +13,6 @@ namespace week2.Views
         public ItemsListPage()
         {
             InitializeComponent();
-            items = new List<Item>()
-            {
-                new Item{Name = "Fresh Carrot", Description= "+ health"},
-                new Item{Name = "Wet Grass", Description="+ 20% health"},
-                new Item{Name = "Magical Dew", Description="+3% XP"},
-                new Item{Name = "Tree Bark of Agility", Description = "+10% defense"},
-                new Item{Name = "Rope of Vengeance", Description = "+3 strength"}
-
-             };
 
             ItemsList.ItemsSource = items;
         }

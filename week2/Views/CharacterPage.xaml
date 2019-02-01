@@ -3,20 +3,22 @@
   <!-- <Label Text="Character Page"/>-->
   
     
-    <Grid>
+     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddCharacter_Clicked" />
+    </ContentPage.ToolbarItems>
+    
+  <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                <ContentView Padding="0,20,0,20" VerticalOptions="FillAndExpand">
                     <Image Source="rabbit.png" VerticalOptions="Center" HeightRequest="100" />
                 </ContentView>
             </StackLayout>
-        </StackLayout>
-        <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+            <StackLayout>
                 <Label FontSize="22">
                     <Label.FormattedText>
                         <FormattedString>
@@ -28,12 +30,28 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                
-        
-             
-            </StackLayout>
+             </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <ListView x:Name="CharacterList" 
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding Dataset}"
+                      RefreshCommand="{Binding LoadItemsCommand}"
+                      IsPullToRefreshEnabled="true"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      CachingStrategy="RecycleElement"
+                      ItemSelected="OnCharacterSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text= "{Binding Name}, Age {Binding Age} " VerticalTextAlignment=
+                                "Center"/>
+    
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>                              
         </ScrollView>
     </Grid>
 </ContentPage>
-
 

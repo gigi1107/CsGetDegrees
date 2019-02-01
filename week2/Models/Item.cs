@@ -17,17 +17,17 @@ namespace week2.Models
             Update(data);
         }
 
-        public Item(string name, string description, string imageuri, int range, int damage)
+        public Item(string name, string description)
         {
             // Create default, and then override...
             CreateDefaultItem();
 
             Name = name;
             Description = description;
-            ImageURI = imageuri;
+            //ImageURI = imageuri;
 
-            Range = range;
-            Damage = damage;
+            //Range = range;
+            //Damage = damage;
 
         
         }
