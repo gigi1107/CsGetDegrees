@@ -127,6 +127,7 @@
     <ImageAsset Include="Assets.xcassets\fiver.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\fiver.imageset\fiver.png" />
     <BundleResource Include="Resources\rabbit.png" />
+    <BundleResource Include="Resources\star.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
