@@ -18,7 +18,7 @@
             <Image 
                 Source="rabbit.png"
                 VerticalOptions="Center"
-                HeightRequest="150"
+                HeightRequest="350"
                 HorizontalOptions="Fill"
                 BackgroundColor="Transparent"
               /> 
