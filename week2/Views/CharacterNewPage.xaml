@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="week2.Views.CharacterNewPage"
+             Title="Add New Character"
+             xmlns:local="using:week2.Models">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
+    </ContentPage.ToolbarItems>
+
+   <!-- <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StringEnumConverter x:Key="StringEnum"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+
+                <Label Text="Character Create Page" FontSize="Small" />
+
+                <Grid
+                    RowSpacing="1"
+                    ColumnSpacing="2"
+                    VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Row="0" Grid.Column="0">
+                        <Label 
+                            Text="Name" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1">
+                        <Entry 
+                            Text="{Binding Data.Name}" 
+                            FontSize="Small" 
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1" Grid.Column="0">
+                        <Label 
+                            Text="Description" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Grid.Column="1">
+                        <Entry 
+                            Text="{Binding Data.Description}" 
+                            FontSize="Small" 
+                            Margin="0" 
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" Grid.Column="0">
+                        <Label 
+                            Text="Age" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.Age}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name="AgeValue"
+                            VerticalOptions="Center"/>
+
+                        <Stepper 
+                            Value="{Binding Data.Age, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="100"
+                            Increment="1"
+                            ValueChanged="Age_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+                   
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+
+</ContentPage>
