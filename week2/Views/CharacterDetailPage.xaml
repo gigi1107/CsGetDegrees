@@ -1,9 +1,9 @@
-
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="week2.Views.CharacterDetailPage"
-             Title ="{Binding Data.Name}">
-    
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="week2.Views.CharacterDetailPage"
+            Title ="{Binding Title}">
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit" Clicked="Edit_Clicked"/>
    
@@ -52,16 +52,56 @@
             <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
-                <Label Text="Age : " 
+                <Label Text="Attack : " 
                    FontSize="Medium" 
                    HorizontalOptions="Start"/>
-                <Label Text="{Binding Data.Age}" 
+                <Label Text="{Binding Data.Attack}" 
                     FontSize="Medium" 
                     HorizontalOptions="Center"/>
             </StackLayout>
 
-            
-           
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                <Label Text="Speed: " 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.Speed}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                <Label Text="Defense: " 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.Defense}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="Center"/>
+            </StackLayout>
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                <Label Text="Wisdom: " 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.Wisdom}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                <Label Text="Max Health: " 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.MaxHealth}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="Center"/>
+            </StackLayout>
 
         </StackLayout>
     </ScrollView>
