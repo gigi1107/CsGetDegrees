@@ -16,6 +16,8 @@ namespace week2.Models
 
         public Character LoveInterest { get; set; }
 
+        public int Wisdom { get; set; }
+
 
 
         // Current experience gained, or to give

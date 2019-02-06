@@ -8,60 +8,49 @@
         <ToolbarItem Text="Edit" Clicked="Edit_Clicked"/>
    
         <ToolbarItem Text="Delete" Clicked="Delete_Clicked"/>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked"/>
+   
         </ContentPage.ToolbarItems>
     
     <ScrollView>
         <StackLayout
             x:Name="DetailsRoot"
             Orientation="Vertical"
-            Spacing="20"
-            Padding="15">
+            Spacing="10"
+            Padding="5">
             
-            <Label Text="Character Detail Page" FontSize="Medium" />
+            <Label Text="Character Details" 
+                   HorizontalOptions = "Center"
+                   FontSize="Small" 
+                   />
             
-           
+            <Label Text="{Binding Data.Name}" 
+                    FontSize="Small" 
+                    HorizontalOptions="Center"/>
+            
             <Image Source="{Binding Data.ImageURI}"
                 WidthRequest="150"
                 HeightRequest="150" 
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
 
-            <StackLayout
+               <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
-                <Label Text="Name : " 
-                   FontSize="Medium" 
+                <Label Text="Description " 
+                   FontSize="Small" 
                    HorizontalOptions="Start"/>
-                <Label Text="{Binding Data.Name}" 
-                    FontSize="Medium" 
-                    HorizontalOptions="Center"/>
+              
             </StackLayout>
-
-            <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Start">
-                <Label Text="Description : " 
-                   FontSize="Medium" 
-                   HorizontalOptions="Start"/>
-                <Label Text="{Binding Data.Description}" 
-                    FontSize="Medium" 
-                    HorizontalOptions="Center"/>
-            </StackLayout>
-
-            <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Start">
-                <Label Text="Age : " 
-                   FontSize="Medium" 
-                   HorizontalOptions="Start"/>
-                <Label Text="{Binding Data.Age}" 
-                    FontSize="Medium" 
-                    HorizontalOptions="Center"/>
-            </StackLayout>
-
             
-           
+               <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+               
+                <Label Text="{Binding Data.Description}" 
+                    FontSize="Small" 
+                    />
+            </StackLayout>
+  
 
         </StackLayout>
     </ScrollView>

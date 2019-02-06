@@ -59,9 +59,9 @@ namespace week2.Services
                 "powerful, he is loyal, brave, and a quick thinker.",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "Hazel.jpg"
-           
-        });
+                ImageURI = "Hazel.jpg",
+                Wisdom = 2
+            });
 
             _characterDataset.Add(new Character
             { 
@@ -108,6 +108,8 @@ namespace week2.Services
                 Level = 1,
                 ExperienceTotal = 0,
                 ImageURI = "bigwig.jpg"
+
+
             });
            
 

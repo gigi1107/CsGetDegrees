@@ -17,6 +17,7 @@ namespace week2.Models
         public int CurrentHealth { get; set; }
 
         public int MaxHealth { get; set; }
+        
 
         public string FormatOutput()
         {
@@ -53,6 +54,8 @@ namespace week2.Models
         public int getAttack() { return Attack; }
         public int getCurrentHealth() { return CurrentHealth; }
         public int getMaxHealth() { return MaxHealth; }
+
+      
     }
 }
 
