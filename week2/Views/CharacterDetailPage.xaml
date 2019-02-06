@@ -1,91 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="week2.Views.CharacterDetailPage" Title="{Binding Data.Name}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="week2.Views.CharacterDetailPage" Title="{Binding Data.Name}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit" Clicked="Edit_Clicked" />
         <ToolbarItem Text="Delete" Clicked="Delete_Clicked" />
     </ContentPage.ToolbarItems>
     <ScrollView>
-        <StackLayout x:Name="DetailsRoot" Orientation="Vertical" Spacing="5" Padding="5">
+        <StackLayout x:Name="DetailsRoot" Orientation="Vertical" Spacing="1" Padding="0.5">
             <Label Text="Character Details"
                    HorizontalOptions="Center" 
                    FontSize="Small" />
             <Label Text="{Binding Data.Name}"
-                   FontSize="Small" 
+                   FontSize="Medium" 
                    HorizontalOptions="Center" />
             <Image Source="{Binding Data.ImageURI}" 
                    WidthRequest="150" 
                    HeightRequest="150"
                    HorizontalOptions="Center" 
                    VerticalOptions="Center" />
-            
-             <StackLayout Orientation="Horizontal" 
-                         HorizontalOptions="Start">
+       
+                
+             <StackLayout 
+                Orientation = "Horizontal">
                 <Label Text="Attack " 
                        FontSize="Small" 
-                       HorizontalOptions="Center" />
+                       HorizontalOptions="Start" />
+               
                 <Label Text= "{Binding Data.CharacterAttribute.Attack}"
+                       HorizontalOptions = "Center"
                        FontSize = "Small"
-                       HorizontalOptions = "End"/>
+                       />
             </StackLayout>
             
-            
-             <StackLayout Orientation="Horizontal" 
-                         HorizontalOptions="Start">
+           
+             <StackLayout  Orientation = "Horizontal">
                 <Label Text="Wisdom " 
                        FontSize="Small" 
-                       HorizontalOptions="Center" />
+                       HorizontalOptions="Start" />
+                 
+              
                 <Label Text= "{Binding Data.Wisdom}"
                        FontSize = "Small"
-                       HorizontalOptions = "End"/>
+                       HorizontalOptions = "Center"/>
             </StackLayout>
             
             
-             <StackLayout Orientation="Horizontal" 
-                         HorizontalOptions="Start">
+              <StackLayout  Orientation = "Horizontal">
                 <Label Text="Speed " 
                        FontSize="Small" 
-                       HorizontalOptions="Center" />
+                       HorizontalOptions="Start" />
+                    
                 <Label Text= "{Binding Data.CharacterAttribute.Speed}"
                        FontSize = "Small"
-                       HorizontalOptions = "End"/>
+                       HorizontalOptions = "Center"/>
             </StackLayout>
             
             
-             <StackLayout Orientation="Horizontal" 
-                         HorizontalOptions="Start">
+            <StackLayout  Orientation = "Horizontal">
                 <Label Text="Defense " 
                        FontSize="Small" 
-                       HorizontalOptions="Center" />
+                       HorizontalOptions="Start" />
+                    
                 <Label Text= "{Binding Data.CharacterAttribute.Defense}"
                        FontSize = "Small"
-                       HorizontalOptions = "End"/>
+                       HorizontalOptions = "Center"/>
             </StackLayout>
             
             
-             <StackLayout Orientation="Horizontal" 
-                         HorizontalOptions="Start">
+             <StackLayout Orientation = "Horizontal">
                 <Label Text="Max Health " 
                        FontSize="Small" 
-                       HorizontalOptions="Center" />
+                       HorizontalOptions="Start" />
+                   
                 <Label Text= "{Binding Data.CharacterAttribute.MaxHealth}"
                        FontSize = "Small"
-                       HorizontalOptions = "End"/>
+                       HorizontalOptions = "Center"/>
             </StackLayout>
             
-            <StackLayout Orientation="Horizontal" 
-                         HorizontalOptions="Start">
+            <StackLayout >
                 <Label Text="Description " 
                        FontSize="Small" 
                        HorizontalOptions="Start" />
             </StackLayout>
             
-            <StackLayout Orientation="Horizontal" 
-                         HorizontalOptions="Start">
+            <StackLayout  >
                 <Frame OutlineColor="Black">
                     <Label Text="{Binding Data.Description}" 
-                           FontSize="Small" />
+                           FontSize="Small"
+                           HorizontalOptions = "Center"/>
                 </Frame>
             </StackLayout>
+               
             
         </StackLayout>
     </ScrollView>

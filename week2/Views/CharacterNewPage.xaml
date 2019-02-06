@@ -27,7 +27,7 @@
 
                 <Grid
                     RowSpacing="1"
-                    ColumnSpacing="2"
+                    ColumnSpacing="1"
                     VerticalOptions="Center">
 
                     <Grid.RowDefinitions>
