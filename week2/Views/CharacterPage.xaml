@@ -5,37 +5,59 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="10">
-            <Label Text="Characters" 
-                   FontSize="Small"
-                   HorizontalTextAlignment="Center" />
-            <ListView x:Name="CharacterList" 
+            <Label Text="Characters" FontSize="Small" HorizontalTextAlignment="Center" />
+           
+            <StackLayout
+                HorizontalOptions = "Center"
+                Orientation = "Horizontal">
+    
+                        <Image Source = "plus.png"
+                            WidthRequest = "50"
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center"
+                                />
+                        <Label Text = "Add New Character ..."
+                            FontSize = "16" 
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center"/>
+                   <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped = "AddCharacter_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    
+             </StackLayout>
+        
+            
+                       
+                         
+            <ListView x:Name="CharacterList"
                       ItemsSource="{Binding Dataset}" 
                       VerticalOptions="FillAndExpand" 
                       HasUnevenRows="true" 
                       RefreshCommand="{Binding LoadItemsCommand}" 
                       IsPullToRefreshEnabled="true" 
-                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                      CachingStrategy="RecycleElement"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                      CachingStrategy="RecycleElement" 
                       ItemSelected="OnCharacterSelected">
+                
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10" 
                                          Orientation="Horizontal" 
-                                         VerticalOptions="Start"
+                                         VerticalOptions="Start" 
                                          HorizontalOptions="Start">
                                 <Image Source="{Binding ImageURI}" 
-                                       WidthRequest="50"
-                                       HeightRequest="50"
+                                       WidthRequest="50" 
+                                       HeightRequest="50" 
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center" />
                                 <Label Text="{Binding Name}" 
                                        LineBreakMode="NoWrap" 
                                        Style="{DynamicResource ListItemTextStyle}"
-                                       FontSize="16" 
+                                       FontSize="16"
                                        HorizontalOptions="Center" 
                                        VerticalOptions="Center" />
-                              
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
