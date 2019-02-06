@@ -6,13 +6,15 @@
   
     
      <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddCharacter_Clicked" />
+        <ToolbarItem Text="Manage"/>
     </ContentPage.ToolbarItems>
     
   <ContentPage.Content>
         <StackLayout>
 
-            <Label Text="Character List Page" FontSize="Small" />
+            <Label Text="Characters" FontSize="Small" 
+                   HorizontalTextAlignment="Center"
+                   />
 
             <ListView x:Name="CharacterList" 
                 ItemsSource="{Binding Dataset}"
@@ -44,10 +46,20 @@
                                         <Label Text="{Binding Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
-                                           FontSize="16" />
+                                           FontSize="16"
+                                               HorizontalOptions = "Center"
+                                               VerticalOptions = "Center"/>
                                   
                                        
-                                    </StackLayout>
+                                 </StackLayout>
+                                    
+                                 <Image Source="ellipses.png"
+                                        WidthRequest = "50"
+                                        HeightRequest = "50"
+                                        HorizontalOptions = "End"
+                                        VerticalOptions = "Center" />
+                                    
+                                   
                                     
                                 </StackLayout>
                                 

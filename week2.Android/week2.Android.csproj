@@ -91,6 +91,7 @@
     <AndroidResource Include="Resources\drawable\clover.jpg" />
     <AndroidResource Include="Resources\drawable\fiver_wire.png" />
     <AndroidResource Include="Resources\drawable\Hyzenthlay.gif" />
+    <AndroidResource Include="Resources\drawable\ellipses.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
