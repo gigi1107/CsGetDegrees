@@ -52,9 +52,9 @@ namespace week2.Views
         }
 
         // The stepper function for Range
-        void Range_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            RangeValue.Text = String.Format("{0}", e.NewValue);
+            AgeValue.Text = String.Format("{0}", e.NewValue);
         }
 
 

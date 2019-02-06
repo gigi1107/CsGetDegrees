@@ -20,7 +20,9 @@ namespace week2.Views
             Data = new Character
             {
                 Name = "Character name",
-                Age = 1,
+                Wisdom = 1,
+                CharacterAttribute = new AttributeBase(1,1,1,1,1),
+
                 Description = "This is an item description.",
                 Id = Guid.NewGuid().ToString(),
                 ImageURI = "rabbit.png"
@@ -53,12 +55,32 @@ namespace week2.Views
         }
 
         // The stepper function for Range
-        void Age_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        void Speed_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            AgeValue.Text = String.Format("{0}", e.NewValue);
+            SpeedValue.Text = String.Format("{0}", e.NewValue);
         }
 
-      
+        void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            AttackValue.Text = String.Format("{0}", e.NewValue);
+        }
+        void Wisdom_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            WisdomValue.Text = String.Format("{0}", e.NewValue);
+        }
+        void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DefenseValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+        void Health_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            HealthValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+
+
+
 
     }
 }

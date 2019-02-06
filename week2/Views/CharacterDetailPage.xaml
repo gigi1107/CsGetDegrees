@@ -45,10 +45,12 @@
                <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
-               
+               <Frame OutlineColor = "Black">
+                    
                 <Label Text="{Binding Data.Description}" 
                     FontSize="Small" 
                     />
+                </Frame>
             </StackLayout>
   
 
