@@ -84,14 +84,14 @@
 
                     <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
-                            Text="{Binding Data.Attack}" 
+                            Text="{Binding Data.CharacterAttribute.Attack}" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             x:Name="AttackValue"
                             VerticalOptions="Center"/>
 
                         <Stepper 
-                            Value="{Binding Data.Attack, Mode=TwoWay}"
+                            Value="{Binding Data.CharacterAttribute.Attack, Mode=TwoWay}"
                             Minimum="0"
                             Maximum="20"
                             Increment="1"
@@ -118,7 +118,7 @@
                             VerticalOptions="Center"/>
 
                         <Stepper 
-                            Value="{Binding Data.Speed, Mode=TwoWay}"
+                            Value="{Binding Data.CharacterAttribute.Speed, Mode=TwoWay}"
                             Minimum="0"
                             Maximum="20"
                             Increment="1"
@@ -139,14 +139,14 @@
 
                     <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
-                            Text="{Binding Data.Defense}" 
+                            Text="{Binding Data.CharacterAttribute.Defense}" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             x:Name="DefenseValue"
                             VerticalOptions="Center"/>
 
                         <Stepper 
-                            Value="{Binding Data.Defense, Mode=TwoWay}"
+                            Value="{Binding Data.CharacterAttribute.Defense, Mode=TwoWay}"
                             Minimum="0"
                             Maximum="20"
                             Increment="1"
@@ -166,14 +166,14 @@
 
                     <StackLayout Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
-                            Text="{Binding Data.Wisdom}" 
+                            Text="{Binding Data.CharacterAttribute.Wisdom}" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             x:Name="WisdomValue"
                             VerticalOptions="Center"/>
 
                         <Stepper 
-                            Value="{Binding Data.Widsom, Mode=TwoWay}"
+                            Value="{Binding Data.CharacterAttribute.Widsom, Mode=TwoWay}"
                             Minimum="0"
                             Maximum="20"
                             Increment="1"
@@ -193,14 +193,14 @@
 
                     <StackLayout Grid.Row="6" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
-                            Text="{Binding Data.MaxHealth}" 
+                            Text="{Binding Data.CharacterAttribute.MaxHealth}" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             x:Name="MaxHealthValue"
                             VerticalOptions="Center"/>
 
                         <Stepper 
-                            Value="{Binding Data.MaxHealth, Mode=TwoWay}"
+                            Value="{Binding Data.CharacterAttribute.MaxHealth, Mode=TwoWay}"
                             Minimum="0"
                             Maximum="20"
                             Increment="1"
