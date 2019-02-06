@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local1="clr-namespace:Newtonsoft.Json.Converters;assembly=Newtonsoft.Json"
+             xmlns:local="using week2.Models"
+             
              x:Class="week2.Views.CharacterEditPage" 
              Title ="{Binding Title}">
 
@@ -211,12 +212,27 @@
 
                     <StackLayout Grid.Row="7" Grid.Column="0">
                         <Label 
+                            Text="Love Interest" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <!--This part doesnt work for some reason-->
+                    <!--<StackLayout Grid.Row="7" Grid.Column="1">
+                        <Picker 
+                            ItemsSource="{x:Static local:LoveInterestList.GetListItem}" 
+                            SelectedItem="{Binding Data.CharacterLove, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                            x:Name="LoverPicker"
+                            VerticalOptions="Center"/>
+                    </StackLayout>-->
+                    <StackLayout Grid.Row="8" Grid.Column="0">
+                        <Label 
                             Text="Image" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <StackLayout Grid.Row="8" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <Image Source="{Binding Data.ImageURI}"
                             WidthRequest="25"
                             HeightRequest="25" 
@@ -228,9 +244,6 @@
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center"/>
                     </StackLayout>
-
-
-
 
                 </Grid>
 
