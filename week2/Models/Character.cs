@@ -6,12 +6,12 @@ namespace week2.Models
 {
     public class Character : BaseCharacter
     {
-        public AttributeBase Attribute { get; set;  }
+        public AttributeBase CharacterAttribute { get; set;  }
 
 
         public Character()
         {
-            Attribute = new AttributeBase();
+            CharacterAttribute = new AttributeBase();
             Alive = true;
          }
 
@@ -20,6 +20,9 @@ namespace week2.Models
 
             Name = newData.Name;
             Description = newData.Description;
+            Wisdom = newData.Wisdom;
+            ImageURI = newData.ImageURI;
+            
         }
     }
 }

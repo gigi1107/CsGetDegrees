@@ -17,7 +17,8 @@ namespace week2.Models
         public int CurrentHealth { get; set; }
 
         public int MaxHealth { get; set; }
-        public int CurrentLevel { get; set; }
+        
+
         public string FormatOutput()
         {
             var myReturn = "Implement";
@@ -53,6 +54,8 @@ namespace week2.Models
         public int getAttack() { return Attack; }
         public int getCurrentHealth() { return CurrentHealth; }
         public int getMaxHealth() { return MaxHealth; }
+
+      
     }
 }
 

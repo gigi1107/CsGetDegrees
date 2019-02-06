@@ -59,20 +59,24 @@ namespace week2.Services
                 "powerful, he is loyal, brave, and a quick thinker.",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "Hazel.jpg"
-           
-        });
+                ImageURI = "Hazel.jpg",
+                Wisdom = 2,
+                CharacterAttribute = new AttributeBase(1,2,2,7,7)
+            });
 
             _characterDataset.Add(new Character
-            { 
-                Name = "Fiver", 
+            {
+                Name = "Fiver",
                 Age = 1,
                 Description = "A small rabbit, the runt of the litter. He" +
-            	"has the ability to foresee the future in the form of vivid yet confusing visions." +
-            	"Fiver is extremely wise and intelligent, but quiet. " ,
+                "has the ability to foresee the future in the form of vivid yet confusing visions." +
+                "Fiver is extremely wise and intelligent, but quiet. ",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "fiver_wire.png"} );
+                ImageURI = "fiver_wire.png",
+                Wisdom = 2,
+                CharacterAttribute = new AttributeBase(1,1,2,6,6)
+            });
 
             _characterDataset.Add(new Character
             {
@@ -83,7 +87,9 @@ namespace week2.Services
                     "but well- intentioned.",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "clover.jpg"
+                ImageURI = "clover.jpg",
+                Wisdom = 1,
+                CharacterAttribute = new AttributeBase(2,3,2,7,7)
 
             });
 
@@ -96,7 +102,9 @@ namespace week2.Services
                     "look up to her. ",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "Hyzenthlay.gif"
+                ImageURI = "Hyzenthlay.gif",
+                Wisdom = 2,
+                CharacterAttribute = new AttributeBase(1,1,2,7,7)
             });
 
             _characterDataset.Add(new Character
@@ -107,7 +115,11 @@ namespace week2.Services
                     "He has a large tuft of hair on top of his head.",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "bigwig.jpg"
+                ImageURI = "bigwig.jpg",
+                Wisdom = 1,
+                CharacterAttribute = new AttributeBase(3,1,4,8,8)
+
+
             });
            
 
