@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local1="clr-namespace:Newtonsoft.Json.Converters;assembly=Newtonsoft.Json"
              x:Class="week2.Views.CharacterEditPage" 
-             
              Title ="{Binding Title}">
 
     <ContentPage.ToolbarItems>
@@ -72,48 +71,152 @@
                             VerticalOptions="Center"/>
                     </StackLayout>
 
+
+
+
                     <StackLayout Grid.Row="2" Grid.Column="0">
                         <Label 
-                            Text="Level" 
+                            Text="Attack"
                             FontSize="Medium" 
-                            HorizontalOptions="Start"/>
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
                     </StackLayout>
 
+                    <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.CharacterAttribute.Attack}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name="AttackValue"
+                            VerticalOptions="Center"/>
 
+                        <Stepper 
+                            Value="{Binding Data.CharacterAttribute.Attack, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="20"
+                            Increment="1"
+                            ValueChanged="Attack_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                   
                     <StackLayout Grid.Row="3" Grid.Column="0">
                         <Label 
-                            Text="Age"
+                            Text="Speed"
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
+
+
                     <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
-                            Text="{Binding Data.Age}" 
+                            Text="{Binding Data.Speed}" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
-                            x:Name= "AgeValue"
+                            x:Name="SpeedValue"
                             VerticalOptions="Center"/>
 
-                        <Stepper Value="{Binding Data.Age, Mode=TwoWay}"
+                        <Stepper 
+                            Value="{Binding Data.CharacterAttribute.Speed, Mode=TwoWay}"
                             Minimum="0"
-                            Maximum="100"
+                            Maximum="20"
                             Increment="1"
-                            ValueChanged="Value_OnStepperValueChanged"
+                            ValueChanged="Speed_OnStepperValueChanged"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
 
 
+                    <StackLayout Grid.Row="4" Grid.Column="0">
+                        <Label 
+                            Text="Defense"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+
+                    <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.CharacterAttribute.Defense}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name="DefenseValue"
+                            VerticalOptions="Center"/>
+
+                        <Stepper 
+                            Value="{Binding Data.CharacterAttribute.Defense, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="20"
+                            Increment="1"
+                            ValueChanged="Defense_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" Grid.Column="0">
+                        <Label 
+                            Text="Wisdom"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+
+                    <StackLayout Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.CharacterAttribute.Wisdom}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name="WisdomValue"
+                            VerticalOptions="Center"/>
+
+                        <Stepper 
+                            Value="{Binding Data.CharacterAttribute.Widsom, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="20"
+                            Increment="1"
+                            ValueChanged="Wisdom_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
 
                     <StackLayout Grid.Row="6" Grid.Column="0">
+                        <Label 
+                            Text="Max Health:"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+
+                    <StackLayout Grid.Row="6" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.CharacterAttribute.MaxHealth}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name="MaxHealthValue"
+                            VerticalOptions="Center"/>
+
+                        <Stepper 
+                            Value="{Binding Data.CharacterAttribute.MaxHealth, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="20"
+                            Increment="1"
+                            ValueChanged="MaxHealth_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="7" Grid.Column="0">
                         <Label 
                             Text="Image" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    <StackLayout Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <Image Source="{Binding Data.ImageURI}"
                             WidthRequest="25"
                             HeightRequest="25" 
