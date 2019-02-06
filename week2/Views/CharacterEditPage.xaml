@@ -1,25 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="week2.Views.CharacterEditPage"
-             xmlns:local="using:week2.Models"
-             Title="{Binding Title}">
-    
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:Newtonsoft.Json.Converters;assembly=Newtonsoft.Json"
+             x:Class="week2.Views.CharacterEditPage" 
+             
+             Title ="{Binding Title}">
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save" Clicked="Save_Clicked" />
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
-    
-   <!-- <ContentPage.Resources>
+
+    <!--<ContentPage.Resources>
         <ResourceDictionary>
-            <local:StringEnumConverter x:Key="StringEnum"/>
-          </ResourceDictionary>
-        </ContentPage.Resources>-->
-    
+            <StringEnumConverter x:Key="StringEnum"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
     <ContentPage.Content>
+
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
-               <Label Text="Character Edit Page" FontSize="Small" />
+
+                <Label Text="Character Edit Page" FontSize="Small" />
 
                 <Image Source="{Binding Data.ImageURI}"
                 WidthRequest="75"
@@ -71,30 +74,61 @@
 
                     <StackLayout Grid.Row="2" Grid.Column="0">
                         <Label 
-                            Text="Age" 
+                            Text="Level" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"/>
                     </StackLayout>
-                    
-                    <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+
+
+                    <StackLayout Grid.Row="3" Grid.Column="0">
+                        <Label 
+                            Text="Age"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.Age}" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
-                            x:Name="RangeValue"
+                            x:Name= "AgeValue"
                             VerticalOptions="Center"/>
 
-                        <Stepper 
-                            Value="{Binding Data.Age, Mode=TwoWay}"
+                        <Stepper Value="{Binding Data.Age, Mode=TwoWay}"
                             Minimum="0"
                             Maximum="100"
                             Increment="1"
-                            ValueChanged="Range_OnStepperValueChanged"
+                            ValueChanged="Value_OnStepperValueChanged"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
 
-                                  
+
+
+                    <StackLayout Grid.Row="6" Grid.Column="0">
+                        <Label 
+                            Text="Image" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Image Source="{Binding Data.ImageURI}"
+                            WidthRequest="25"
+                            HeightRequest="25" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                        <Entry 
+                            Text="{Binding Data.ImageURI}" 
+                            FontSize="Small" 
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+
+
+
                 </Grid>
 
             </StackLayout>

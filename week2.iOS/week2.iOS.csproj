@@ -124,8 +124,12 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <ImageAsset Include="Assets.xcassets\fiver.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\fiver.imageset\fiver.png" />
+    <ImageAsset Include="Assets.xcassets\fiver.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\fiver.imageset\fiver.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <BundleResource Include="Resources\rabbit.png" />
     <BundleResource Include="Resources\star.png" />
     <BundleResource Include="Resources\plus.png" />
