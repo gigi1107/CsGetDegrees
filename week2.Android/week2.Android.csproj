@@ -86,6 +86,11 @@
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
     <AndroidResource Include="Resources\drawable\rabbit.png" />
     <AndroidResource Include="Resources\drawable\star.png" />
+    <AndroidResource Include="Resources\drawable\Hazel.jpg" />
+    <AndroidResource Include="Resources\drawable\bigwig.jpg" />
+    <AndroidResource Include="Resources\drawable\clover.jpg" />
+    <AndroidResource Include="Resources\drawable\fiver_wire.png" />
+    <AndroidResource Include="Resources\drawable\Hyzenthlay.gif" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />

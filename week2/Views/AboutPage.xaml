@@ -29,7 +29,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Week 3 Project" FontAttributes="Bold" FontSize="22" />
+                                <Span Text="Cs Get Degrees Project" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
                            
                             </FormattedString.Spans>
@@ -41,7 +41,7 @@
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="Gigi Davidson" />
-                                <Span Text=" 1/22/19 " />
+                                <Span Text=" Linh Nguyen " />
                                
                              
                             </FormattedString.Spans>
