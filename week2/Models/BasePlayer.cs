@@ -14,6 +14,10 @@ namespace week2.Models
 
         public int Age { get; set; }
 
+        public Character LoveInterest { get; set; }
+
+
+
         // Current experience gained, or to give
         public int ExperienceTotal { get; set; }
 

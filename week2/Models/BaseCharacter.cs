@@ -22,6 +22,7 @@ namespace week2.Models
             ExperienceTotal = newData.ExperienceTotal;
             ImageURI = newData.ImageURI;
             Alive = newData.Alive;
+            LoveInterest = newData.LoveInterest;
 
             // Database information
             Guid = newData.Guid;
