@@ -1,38 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
-using week2.ViewModels;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using week2.Models;
-using Xamarin.Forms;
+using week2.ViewModels;
 using week2.Controllers;
+using week2.Views;
+using week2.Services;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+
 
 namespace week2.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CharacterEditPage : ContentPage
     {
+        // ReSharper disable once NotAccessedField.Local
         private CharacterDetailViewModel _viewModel;
 
-        public Character Data { get; set; }
+        public week2.Models.Character Data { get; set; }
 
         public CharacterEditPage(CharacterDetailViewModel viewModel)
-
         {
+            // Save off the item
             Data = viewModel.Data;
-
             viewModel.Title = "Edit " + viewModel.Title;
 
             InitializeComponent();
 
+
+            // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
         }
 
-        private async void Save_Clicked(object sender, EventArgs e)
+        public async void Save_Clicked(object sender, EventArgs e)
         {
-            // If the image in teh data box is empty, use the default one..
-            if (string.IsNullOrEmpty(Data.ImageURI))
-            {
-                Data.ImageURI = CharacterController.DefaultImageURI;
-            }
-
             MessagingCenter.Send(this, "EditData", Data);
 
             // removing the old ItemDetails page, 2 up counting this page
@@ -45,18 +50,35 @@ namespace week2.Views
             Navigation.RemovePage(this);
         }
 
-        // Cancel and go back a page in the navigation stack
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
-
-        // The stepper function for Range
-        void Range_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        
+        private void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            RangeValue.Text = String.Format("{0}", e.NewValue);
+            AttackValue.Text = String.Format("{0}", e.NewValue);
         }
 
+        private void Speed_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SpeedValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+        private void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DefenseValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+        private void Wisdom_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            WisdomValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+        private void MaxHealth_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            MaxHealthValue.Text = String.Format("{0}", e.NewValue);
+        }
 
     }
 }
