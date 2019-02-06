@@ -8,7 +8,7 @@ namespace week2.Models
     {
         About,
         Home,
-        Characters,
+        Manage,
         Items,
         History
     }
