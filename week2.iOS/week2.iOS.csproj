@@ -132,6 +132,7 @@
     </ImageAsset>
     <BundleResource Include="Resources\rabbit.png" />
     <BundleResource Include="Resources\star.png" />
+    <BundleResource Include="Resources\plus.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
