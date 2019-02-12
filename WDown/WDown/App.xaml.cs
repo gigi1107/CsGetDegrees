@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WDown.Views;
+using SQLite;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace WDown
@@ -30,6 +31,20 @@ namespace WDown
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        static SQLiteAsyncConnection _database;
+
+        public static SQLiteAsyncConnection Database
+        {
+            get
+            {
+                if (_database == null)
+                {
+                    _database = new SQLiteAsyncConnection(DependencyService.Get<IFileHelper>().GetLocalFilePath("WDownDatabaseKoenig1.db3"));
+                }
+                return _database;
+            }
         }
     }
 }

@@ -26,40 +26,46 @@ namespace WDown.Services
 
         private SQLDataStore()
         {
-            // Implement
-            // CreateTables();
+            CreateTables();
+            //            InitilizeSeedData();
         }
-
-        // Create the Database Tables
-        private void CreateTables()
+        public void InitializeDatabaseNewTables()
         {
-            // Implement
+            DeleteTables();
+            CreateTables();
+
+            // Populate them
+            InitilizeSeedData();
+
+            // Tell View Models they need to refresh
+            NotifyViewModelsOfDataChange();
         }
 
         // Delete the Datbase Tables by dropping them
         private void DeleteTables()
         {
-            // Implement
+            App.Database.DropTableAsync<Item>().Wait();
+            App.Database.DropTableAsync<Character>().Wait();
+            App.Database.DropTableAsync<Monster>().Wait();
+            App.Database.DropTableAsync<Score>().Wait();
         }
 
-            // Tells the View Models to update themselves.
-            private void NotifyViewModelsOfDataChange()
+        // Tells the View Models to update themselves.
+        private void NotifyViewModelsOfDataChange()
         {
-            // Implement
+            ItemsViewModel.Instance.SetNeedsRefresh(true);
+            MonstersViewModel.Instance.SetNeedsRefresh(true);
+            CharactersViewModel.Instance.SetNeedsRefresh(true);
+            //ScoresViewModel.Instance.SetNeedsRefresh(true);
         }
 
-            public void InitializeDatabaseNewTables()
+        // Create the Database Tables
+        private void CreateTables()
         {
-            // Implement
-            
-            // Delete the tables
-
-            // make them again
-
-            // Populate them
-
-            // Tell View Models they need to refresh
-
+            App.Database.CreateTableAsync<Item>().Wait();
+            App.Database.CreateTableAsync<Character>().Wait();
+            App.Database.CreateTableAsync<Monster>().Wait();
+            App.Database.CreateTableAsync<Score>().Wait();
         }
 
         private async void InitilizeSeedData()
@@ -133,14 +139,33 @@ namespace WDown.Services
         // Conver to BaseCharacter and then add it
         public async Task<bool> AddAsync_Character(Character data)
         {
-            // Implement
+            var result = await App.Database.InsertAsync(data);
+            if (result == 1)
+            {
+                return true;
+            }
 
             return false;
         }
 
         public async Task<bool> InsertUpdateAsync_Character(Character data)
         {
-            // Implement
+
+            // Check to see if the item exist
+            var oldData = await GetAsync_Character(data.Id);
+            if (oldData == null)
+            {
+                AddAsync_Character(data);
+                return true;
+            }
+
+            // Compare it, if different update in the DB
+            var UpdateResult = await UpdateAsync_Character(data);
+            if (UpdateResult)
+            {
+                await AddAsync_Character(data);
+                return true;
+            }
 
             return false;
         }
@@ -148,21 +173,31 @@ namespace WDown.Services
         // Convert to BaseCharacter and then update it
         public async Task<bool> UpdateAsync_Character(Character data)
         {
-            // Implement
+            var result = await App.Database.UpdateAsync(data);
+            if (result == 1)
+            {
+                return true;
+            }
+
             return false;
         }
 
         // Pass in the character and convert to Character to then delete it
         public async Task<bool> DeleteAsync_Character(Character data)
         {
-            // Implement
+            var result = await App.Database.DeleteAsync(data);
+            if (result == 1)
+            {
+                return true;
+            }
+
             return false;
         }
 
         // Get the Character Base, and Load it back as Character
         public async Task<Character> GetAsync_Character(string id)
         {
-            // Implement
+            var result = await App.Database.GetAsync<Character>(id);
             return null;
         }
 
@@ -170,7 +205,7 @@ namespace WDown.Services
         // Then then convert the list to characters to push up to the view model
         public async Task<IEnumerable<Character>> GetAllAsync_Character(bool forceRefresh = false)
         {
-            // Implement
+            var result = await App.Database.Table<Character>().ToListAsync();
             return null;
         }
 

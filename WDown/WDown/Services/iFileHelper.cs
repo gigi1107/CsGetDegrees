@@ -1,4 +1,4 @@
-﻿namespace Crawl
+﻿namespace WDown
 {
     public interface IFileHelper
     {
