@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="WDown.Views.Items.ItemsListPage">
+<!--    <Label Text="Items Page"/>-->
+ <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,20,0,20" VerticalOptions="FillAndExpand">
+                    <Image Source="rabbit.png" VerticalOptions="Center" HeightRequest="100" />
+                </ContentView>
+            </StackLayout>
+            <StackLayout>
+                <Label FontSize="22">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Items Page" FontAttributes="Bold" FontSize="22" />
+                                <Span Text=" " />
+                           
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+             </StackLayout>-->
+        </StackLayout>
+        <!--<ScrollView Grid.Row="1">
+            <ListView x:Name="ItemsList" 
+                      HasUnevenRows="True"
+                      ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text= "{Binding Name}" VerticalTextAlignment=
+                                "Center"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>                              
+        </ScrollView>-->
+    </Grid>
+</ContentPage>

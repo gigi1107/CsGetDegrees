@@ -4,10 +4,14 @@ using System.Text;
 
 namespace WDown.Models
 {
+
     public enum MenuItemType
     {
-        Browse,
-        About
+        About,
+        Home,
+        Manage,
+        Items,
+        History
     }
     public class HomeMenuItem
     {

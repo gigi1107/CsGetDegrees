@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using WDown.Views.Items;
 
 namespace WDown.Views
 {
@@ -17,7 +18,7 @@ namespace WDown.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.About, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -26,12 +27,23 @@ namespace WDown.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
-                        break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
+                    case (int)MenuItemType.Home:
+                        MenuPages.Add(id, new NavigationPage(new TitlePage()));
+                        break;
+                    case (int)MenuItemType.Manage:
+                        MenuPages.Add(id, new NavigationPage(new ManagePage()));
+                        break;
+                    case (int)MenuItemType.Items:
+                        MenuPages.Add(id, new NavigationPage(new ItemsListPage()));
+                        break;
+                    case (int)MenuItemType.History:
+                        MenuPages.Add(id, new NavigationPage(new HistoryPage()));
+                        break;
+
+
                 }
             }
 

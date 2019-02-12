@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WDown.Views.Character.CharacterDetailPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="Edit_Clicked" />
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <StackLayout x:Name="DetailsRoot" Orientation="Vertical" Spacing="1" Padding="0.5">
+            <Label Text="Character Details"
+                   HorizontalOptions="Center" 
+                   FontSize="Small" />
+            <Label Text="{Binding Data.Name}"
+                   FontSize="Medium" 
+                   HorizontalOptions="Center" />
+            <Image Source="{Binding Data.ImageURI}" 
+                   WidthRequest="150" 
+                   HeightRequest="150"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
+
+
+            <StackLayout 
+                Orientation = "Horizontal">
+                <Label Text="Attack " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+                <Label Text= "{Binding Data.CharacterAttribute.Attack}"
+                       HorizontalOptions = "Center"
+                       FontSize = "Small"
+                       />
+            </StackLayout>
+
+
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Wisdom " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+
+                <Label Text= "{Binding Data.Wisdom}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+
+
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Speed " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+                <Label Text= "{Binding Data.CharacterAttribute.Speed}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+
+
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Defense " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+                <Label Text= "{Binding Data.CharacterAttribute.Defense}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+
+
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Love Interest " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+                <Label Text= "{Binding Data.LoveInterest}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+
+            <StackLayout Orientation = "Horizontal">
+                <Label Text="Max Health " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+                <Label Text= "{Binding Data.CharacterAttribute.MaxHealth}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+
+            <StackLayout >
+                <Label Text="Description " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+            </StackLayout>
+
+            <StackLayout  >
+                <Frame OutlineColor="Black">
+                    <Label Text="{Binding Data.Description}" 
+                           FontSize="Small"
+                           HorizontalOptions = "Center"/>
+                </Frame>
+            </StackLayout>
+
+
+
+
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WDown.Views.Monster.MonsterDetailPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="Edit_Clicked" />
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" />
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout 
+            x:Name="DetailsRoot"
+            Orientation="Vertical"
+            Spacing="20"
+            Padding="15">
+
+            <Label Text="View Detail" FontSize="Medium" TextColor="Coral" />
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+
+                <Label Text="{Binding Data.Name}" 
+                    FontSize="Large" 
+                    BackgroundColor="Coral"
+                    TextColor="White"
+                    WidthRequest ="1000"
+                    HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+            <Image Source="{Binding Data.ImageURI}"
+                WidthRequest="150"
+                HeightRequest="150" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+            <StackLayout 
+                Orientation="Horizontal" 
+                HorizontalOptions="Start">
+                <Label Text="Age : " 
+                   FontSize="Medium"
+                   
+                   TextColor="Coral"
+                   WidthRequest="150"
+                   HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.Age}" 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start"/>
+            </StackLayout>
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                <Label Text="Level : " 
+                   TextColor="Coral"
+
+                   WidthRequest="150"
+                   FontSize="Medium" 
+                   HorizontalOptions="Center"/>
+                <Label Text="{Binding Data.Level}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="Start"/>
+            </StackLayout>
+
+
+
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                <Label Text="Description : " 
+                   FontSize="Medium"
+                  
+                   TextColor="Coral"
+                   WidthRequest="255"
+                       
+                   HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.Description}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="Center"/>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

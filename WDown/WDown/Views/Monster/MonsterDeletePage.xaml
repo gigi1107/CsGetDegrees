@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WDown.Views.Monster.MonsterDeletePage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" />
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
+    </ContentPage.ToolbarItems>
+
+
+    <ScrollView>
+        <StackLayout 
+            x:Name="DetailsRoot"
+            Orientation="Vertical"
+            Spacing="20"
+            Padding="15">
+
+            <Label Text="Monster Delete Page" FontSize="Medium" />
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                <Label Text="{Binding Data.Name}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <Image Source="{Binding Data.ImageURI}"
+                WidthRequest="150"
+                HeightRequest="150" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+
+
+
+
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                <Label Text="Do you wish to delete " 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.Name}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="Center"/>
+                <Label Text="?" 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start"/>
+            </StackLayout>
+
+            <Button Text="Delete"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Clicked="Delete_Clicked" />
+            <Button Text="Cancel"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Clicked="Cancel_Clicked" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

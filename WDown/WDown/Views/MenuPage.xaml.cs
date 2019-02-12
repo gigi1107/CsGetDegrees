@@ -18,8 +18,14 @@ namespace WDown.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" }
+                new HomeMenuItem {Id = MenuItemType.About, Title="About" },
+
+                new HomeMenuItem {Id = MenuItemType.Home, Title="Home"},
+
+                new HomeMenuItem {Id = MenuItemType.Manage, Title="Manage"},
+
+                new HomeMenuItem {Id = MenuItemType.History, Title = "History"}
+
             };
 
             ListViewMenu.ItemsSource = menuItems;
