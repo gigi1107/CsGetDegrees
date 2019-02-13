@@ -53,7 +53,6 @@ namespace WDown.Services
             _characterDataset.Add(new Character
             {
                 Name = "Hazel",
-                Age = 3,
                 Description = "Hazel leads the group of rabbits" +
                 "from Sandleford and becomes Chief Rabbit. Though not particularly large or" +
                 "powerful, he is loyal, brave, and a quick thinker.",
@@ -68,7 +67,6 @@ namespace WDown.Services
             _characterDataset.Add(new Character
             {
                 Name = "Fiver",
-                Age = 1,
                 Description = "A small rabbit, the runt of the litter. He" +
                 "has the ability to foresee the future in the form of vivid yet confusing visions." +
                 "Fiver is extremely wise and intelligent, but quiet. ",
@@ -83,7 +81,6 @@ namespace WDown.Services
             _characterDataset.Add(new Character
             {
                 Name = "Clover",
-                Age = 2,
                 Description = "Clover used to live on a farm in a hutch, until " +
                     "she was rescued by Hazel, BigWig, and Fiver. She is naive " +
                     "but well- intentioned.",
@@ -99,7 +96,6 @@ namespace WDown.Services
             _characterDataset.Add(new Character
             {
                 Name = "Hyzenthlay",
-                Age = 3,
                 Description = "Hyzenthlay is one of the does from Efrafra, the evil rabbit" +
                     "warren. She is strong of spirit and will, and the other does in the warren " +
                     "look up to her. ",
@@ -114,7 +110,6 @@ namespace WDown.Services
             _characterDataset.Add(new Character
             {
                 Name = "BigWig",
-                Age = 2,
                 Description = "Used to be an Owsla officer. BigWig is the largest and toughest rabbit of the group." +
                     "He has a large tuft of hair on top of his head.",
                 Level = 1,
