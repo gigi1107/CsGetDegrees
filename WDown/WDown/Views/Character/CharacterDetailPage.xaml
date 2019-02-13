@@ -101,11 +101,6 @@
                            HorizontalOptions = "Center"/>
                 </Frame>
             </StackLayout>
-
-
-
-
-
         </StackLayout>
     </ScrollView>
 </ContentPage>

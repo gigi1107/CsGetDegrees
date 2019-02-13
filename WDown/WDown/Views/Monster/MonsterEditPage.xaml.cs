@@ -49,9 +49,32 @@ namespace WDown.Views.Monster
         {
             await Navigation.PopAsync();
         }
-        //private void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
-        //{
-        //    AttackValue.Text = String.Format("{0}", e.NewValue);
-        //}
+
+        // This function handles stepper value changed for Attack
+        private void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            AttackValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+
+        // This function handles stepper value changed for Speed
+        private void Speed_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SpeedValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+
+        // This function handles stepper value changed for Defense
+        private void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DefenseValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+
+        // This function handles stepper value changed for DropRate
+        private void DropRate_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DropRateValue.Text = String.Format("{0}", e.NewValue);
+        }
     }
 }

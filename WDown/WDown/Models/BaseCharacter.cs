@@ -9,6 +9,14 @@ namespace WDown.Models
 {
     public class BaseCharacter : BasePlayer<BaseCharacter>
     {
+
+
+        public string LoveInterest { get; set; }
+
+        public int Wisdom { get; set; }
+
+        public int CurrentWisdom { get; set; }
+
         public BaseCharacter()
         {
 

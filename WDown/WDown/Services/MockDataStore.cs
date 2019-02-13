@@ -53,13 +53,12 @@ namespace WDown.Services
             _characterDataset.Add(new Character
             {
                 Name = "Hazel",
-                Age = 3,
                 Description = "Hazel leads the group of rabbits" +
                 "from Sandleford and becomes Chief Rabbit. Though not particularly large or" +
                 "powerful, he is loyal, brave, and a quick thinker.",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "Hazel.jpg",
+                ImageURI = "https://i.imgur.com/pNTXqMH.png",
                 Wisdom = 2,
                 CharacterAttribute = new AttributeBase(1, 2, 2, 7, 7),
                 LoveInterest = "Clover"
@@ -68,13 +67,12 @@ namespace WDown.Services
             _characterDataset.Add(new Character
             {
                 Name = "Fiver",
-                Age = 1,
                 Description = "A small rabbit, the runt of the litter. He" +
                 "has the ability to foresee the future in the form of vivid yet confusing visions." +
                 "Fiver is extremely wise and intelligent, but quiet. ",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "fiver_wire.png",
+                ImageURI = "https://i.imgur.com/lcTjFJ1.png",
                 Wisdom = 2,
                 CharacterAttribute = new AttributeBase(1, 1, 2, 6, 6),
                 LoveInterest = "Vilthuril"
@@ -83,13 +81,12 @@ namespace WDown.Services
             _characterDataset.Add(new Character
             {
                 Name = "Clover",
-                Age = 2,
                 Description = "Clover used to live on a farm in a hutch, until " +
                     "she was rescued by Hazel, BigWig, and Fiver. She is naive " +
                     "but well- intentioned.",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "clover.jpg",
+                ImageURI = "https://i.imgur.com/rB0yLge.png",
                 Wisdom = 1,
                 CharacterAttribute = new AttributeBase(2, 3, 2, 7, 7),
                 LoveInterest = "Hazel"
@@ -99,27 +96,25 @@ namespace WDown.Services
             _characterDataset.Add(new Character
             {
                 Name = "Hyzenthlay",
-                Age = 3,
                 Description = "Hyzenthlay is one of the does from Efrafra, the evil rabbit" +
                     "warren. She is strong of spirit and will, and the other does in the warren " +
                     "look up to her. ",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "Hyzenthlay.gif",
+                ImageURI = "https://i.imgur.com/kIH4UtV.jpg",
                 Wisdom = 2,
                 CharacterAttribute = new AttributeBase(1, 1, 2, 7, 7),
-                LoveInterest = "Holly"
+                LoveInterest = "None"
             });
 
             _characterDataset.Add(new Character
             {
                 Name = "BigWig",
-                Age = 2,
                 Description = "Used to be an Owsla officer. BigWig is the largest and toughest rabbit of the group." +
                     "He has a large tuft of hair on top of his head.",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "bigwig.jpg",
+                ImageURI = "https://i.imgur.com/0uaVKml.jpg",
                 Wisdom = 1,
                 CharacterAttribute = new AttributeBase(3, 1, 4, 8, 8),
                 LoveInterest = "Strawberry"
@@ -136,7 +131,53 @@ namespace WDown.Services
                 Description = "The house cat is one of the most ferocious hunters of rabbits. Its deadly" +
                 "claws and extreme agility makes it second most dangerous enemy, after the house dog.",
                 Level = 1,
+                MonsterAttribute = new AttributeBase(3,1,2,5,5),
                 ImageURI = "https://i.imgur.com/EamWXas.png"
+
+            });
+
+            _monsterDataset.Add(new Monster
+            {
+                Name = "Dog",
+                Description = "Trained to hunt, the Rottweiler is an extremely hostile enemy of the rabbits.",
+                Level = 2,
+                MonsterAttribute = new AttributeBase(4, 2, 2, 6, 6),
+                ImageURI = "https://i.imgur.com/OnGOYw9.png"
+
+            });
+
+            _monsterDataset.Add(new Monster
+            {
+                Name = "Bird",
+                Description = "Fast and unpredictable creatures with wings that pose great harm to the warren.",
+                Level = 3,
+                MonsterAttribute = new AttributeBase(3, 1, 2, 10, 10),
+                ImageURI = "https://i.imgur.com/PirEPrm.png"
+
+            });
+
+            _monsterDataset.Add(new Monster
+            {
+                Name = "Fox",
+                Description = "Also known as Elil by the rabbits. A fox is notable for killing" +
+                " Mallow after Bigwig leads the carnivore away from Hazel and his group," +
+                " unintentionally leading it to an Efrafa Wide Patrol. ",
+                Level = 2,
+                MonsterAttribute = new AttributeBase(3,4,3,8,8),
+                ImageURI = "https://i.imgur.com/K8M7L7E.png"
+
+            });
+
+            _monsterDataset.Add(new Monster
+            {
+                Name = "General Woundwort",
+                Description = "General Woundwort is depicted as an exceptionally large rabbit with ragged, " +
+                "dark grey fur, torn ears and numerous scars, most notably one over his blind left eye. " +
+                "He is an arrogant, cruel, bloodthirsty and viciously ruthless Chief rabbit, and will " + 
+                "execute anyone who gets in his way, or disobey him at Efrafa.",
+                Level = 20,
+                MonsterAttribute = new AttributeBase(3, 4, 3, 8, 8),
+                ImageURI = "https://i.imgur.com/QTJzhFI.png"
 
             });
 

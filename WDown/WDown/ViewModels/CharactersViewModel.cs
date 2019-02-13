@@ -96,7 +96,6 @@ namespace WDown.ViewModels
                 //Sort the list
                 dataset = dataset
                     .OrderBy(a => a.Name)
-                    .ThenBy(a => a.Age)
                     .ThenBy(a => a.Description)
                     .ToList();
 

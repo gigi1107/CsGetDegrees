@@ -63,22 +63,15 @@
                             VerticalOptions="Center"/>
                     </StackLayout>
 
+
                     <StackLayout Grid.Row="2" Grid.Column="0">
-                        <Label 
-                            Text="Level" 
-                            FontSize="Medium" 
-                            HorizontalOptions="Start"/>
-                    </StackLayout>
-
-
-                    <!--<StackLayout Grid.Row="3" Grid.Column="0">
                         <Label 
                             Text="Attack"
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                    <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.Attack}" 
                             FontSize="Medium" 
@@ -93,8 +86,79 @@
                             ValueChanged="Attack_OnStepperValueChanged"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>-->
+                    </StackLayout>
 
+                    <StackLayout Grid.Row="3" Grid.Column="0">
+                        <Label 
+                            Text="Speed"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.Speed}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "SpeedValue"
+                            VerticalOptions="Center"/>
+
+                        <Stepper Value="{Binding Data.Speed, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="100"
+                            Increment="1"
+                            ValueChanged="Speed_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" Grid.Column="0">
+                        <Label 
+                            Text="Defense"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.Defense}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "DefenseValue"
+                            VerticalOptions="Center"/>
+
+                        <Stepper Value="{Binding Data.Defense, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="100"
+                            Increment="1"
+                            ValueChanged="Defense_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" Grid.Column="0">
+                        <Label 
+                            Text="Drop Rate"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.Defense}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "DropRateValue"
+                            VerticalOptions="Center"/>
+
+                        <Stepper Value="{Binding Data.UniqueDropRate, Mode=TwoWay}"
+                            Minimum="0.0"
+                            Maximum="1"
+                            Increment="0.1"
+                            ValueChanged="DropRate_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
 
 
                     <StackLayout Grid.Row="6" Grid.Column="0">

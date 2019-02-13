@@ -2,16 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WDown.Views.Monster.MonsterPage">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddMonster_Clicked" />
-    </ContentPage.ToolbarItems>
-    
+    <!--This page populates the List View for available Monsters. You can see from the list the monsters' photos,
+    name, and its level.-->
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Your Available Monster" FontSize="Large" />
+        <StackLayout Padding="10">
+            <Label Text="Monsters" FontSize="Small" HorizontalTextAlignment="Center" />
 
-            <ListView x:Name="MonsterListView" 
+            <StackLayout
+                HorizontalOptions = "Center"
+                Orientation = "Horizontal">
+
+                <Image Source = "plus.png"
+                            WidthRequest = "50"
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center"
+                                />
+                <Label Text = "Add New Monster ..."
+                            FontSize = "16" 
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped = "AddMonster_Clicked"/>
+                </StackLayout.GestureRecognizers>
+
+            </StackLayout>
+
+            <StackLayout>
+
+                <ListView x:Name="MonsterListView" 
                 ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"
                  HasUnevenRows="true"
@@ -20,52 +39,53 @@
                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                  CachingStrategy="RecycleElement"
                  ItemSelected="OnMonsterSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
 
-                            <StackLayout Padding="10"
+                                <StackLayout Padding="10"
                                          Orientation="Horizontal"
                                          VerticalOptions="Start"
                                          HorizontalOptions="Start">
 
-                                <Image Source="{Binding ImageURI}"
+                                    <Image Source="{Binding ImageURI}"
                                        WidthRequest="50"
                                        HeightRequest="50" 
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center"/>
 
 
-                                <StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" 
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="16" />
 
-                                        <Label Text="{Binding Attribute}" 
+                                            <Label Text="{Binding Attribute}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="16" />
 
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Age: " 
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Level: " 
                                            LineBreakMode="WordWrap" 
                                            Style="{DynamicResource ListItemDetailTextStyle}" 
                                            FontSize="12" />
-                                        <Label Text="{Binding Age}" 
+                                            <Label Text="{Binding Level}" 
                                        LineBreakMode="WordWrap"
                                        Style="{DynamicResource ListItemDetailTextStyle}"
                                        FontSize="12" />
+                                        </StackLayout>
                                     </StackLayout>
-                                </StackLayout>
 
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

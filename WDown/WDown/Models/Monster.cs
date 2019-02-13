@@ -11,16 +11,17 @@ namespace WDown.Models
     public class Monster : BaseMonster
     {
         // Remaining Experience Points to give
-        public int ExperienceRemaining { get; set; }
+        public int ExperienceGiven { get; set; }
+        
 
         // Add in the actual attribute class
-        public AttributeBase Attribute { get; set; }
+        public AttributeBase MonsterAttribute { get; set; }
 
         // Make sure Attribute is instantiated in the constructor
         public Monster()
         {
             Name = "Monster";
-            Attribute = new AttributeBase();
+            MonsterAttribute = new AttributeBase();
 
             Alive = true;
             Level = 1;
@@ -92,7 +93,7 @@ namespace WDown.Models
         public int GetAttack()
         {
             // Base Attack
-            var myReturn = Attribute.Attack;
+            var myReturn = MonsterAttribute.Attack;
 
             return myReturn;
         }
@@ -101,7 +102,7 @@ namespace WDown.Models
         public int GetSpeed()
         {
             // Base value
-            var myReturn = Attribute.Speed;
+            var myReturn = MonsterAttribute.Speed;
 
             return myReturn;
         }
@@ -110,7 +111,7 @@ namespace WDown.Models
         public int GetDefense()
         {
             // Base value
-            var myReturn = Attribute.Defense;
+            var myReturn = MonsterAttribute.Defense;
 
             return myReturn;
         }
@@ -119,7 +120,7 @@ namespace WDown.Models
         public int GetHealthMax()
         {
             // Base value
-            var myReturn = Attribute.MaxHealth;
+            var myReturn = MonsterAttribute.MaxHealth;
 
             return myReturn;
         }
@@ -128,12 +129,12 @@ namespace WDown.Models
         public int GetHealthCurrent()
         {
             // Base value
-            var myReturn = Attribute.CurrentHealth;
+            var myReturn = MonsterAttribute.CurrentHealth;
 
             return myReturn;
         }
 
-        #endregion GetAttributes
+        #endregion GetMonsterAttributes
 
         #region Items
         // Gets the unique item (if any) from this monster when it dies...
