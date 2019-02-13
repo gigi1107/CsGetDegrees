@@ -131,7 +131,53 @@ namespace WDown.Services
                 Description = "The house cat is one of the most ferocious hunters of rabbits. Its deadly" +
                 "claws and extreme agility makes it second most dangerous enemy, after the house dog.",
                 Level = 1,
+                MonsterAttribute = new AttributeBase(3,1,2,5,5),
                 ImageURI = "https://i.imgur.com/EamWXas.png"
+
+            });
+
+            _monsterDataset.Add(new Monster
+            {
+                Name = "Dog",
+                Description = "Trained to hunt, the Rottweiler is an extremely hostile enemy of the rabbits.",
+                Level = 2,
+                MonsterAttribute = new AttributeBase(4, 2, 2, 6, 6),
+                ImageURI = "https://i.imgur.com/OnGOYw9.png"
+
+            });
+
+            _monsterDataset.Add(new Monster
+            {
+                Name = "Bird",
+                Description = "Fast and unpredictable creatures with wings that pose great harm to the warren.",
+                Level = 3,
+                MonsterAttribute = new AttributeBase(3, 1, 2, 10, 10),
+                ImageURI = "https://i.imgur.com/PirEPrm.png"
+
+            });
+
+            _monsterDataset.Add(new Monster
+            {
+                Name = "Fox",
+                Description = "Also known as Elil by the rabbits. A fox is notable for killing" +
+                " Mallow after Bigwig leads the carnivore away from Hazel and his group," +
+                " unintentionally leading it to an Efrafa Wide Patrol. ",
+                Level = 2,
+                MonsterAttribute = new AttributeBase(3,4,3,8,8),
+                ImageURI = "https://i.imgur.com/K8M7L7E.png"
+
+            });
+
+            _monsterDataset.Add(new Monster
+            {
+                Name = "General Woundwort",
+                Description = "General Woundwort is depicted as an exceptionally large rabbit with ragged, " +
+                "dark grey fur, torn ears and numerous scars, most notably one over his blind left eye. " +
+                "He is an arrogant, cruel, bloodthirsty and viciously ruthless Chief rabbit, and will " + 
+                "execute anyone who gets in his way, or disobey him at Efrafa.",
+                Level = 20,
+                MonsterAttribute = new AttributeBase(3, 4, 3, 8, 8),
+                ImageURI = "https://i.imgur.com/QTJzhFI.png"
 
             });
 
