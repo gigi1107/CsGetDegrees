@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WDown.ViewModels;
+using WDown.Models;
+using WDown.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,10 +19,14 @@ namespace WDown.Views.Monster
 
         public WDown.Models.Monster Data { get; set; }
 
+
         public MonsterEditPage(MonsterDetailViewModel viewModel)
         {
             // Save off the item
             Data = viewModel.Data;
+           // Items = Services.MockDataStore.Instance.GetItemList();
+
+
             viewModel.Title = "Edit " + viewModel.Title;
 
             InitializeComponent();
@@ -28,6 +34,7 @@ namespace WDown.Views.Monster
 
             // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
+           
         }
 
 
@@ -75,6 +82,11 @@ namespace WDown.Views.Monster
         private void DropRate_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             DropRateValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+        private void ItemDrop_OnItemSelected(object sender, ValueChangedEventArgs e)
+        {
+            ItemDrop.SelectedItem = String.Format("{0}", e.NewValue);
         }
     }
 }

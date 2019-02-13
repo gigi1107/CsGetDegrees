@@ -132,7 +132,9 @@ namespace WDown.Services
                 "claws and extreme agility makes it second most dangerous enemy, after the house dog.",
                 Level = 1,
                 MonsterAttribute = new AttributeBase(3,1,2,5,5),
-                ImageURI = "https://i.imgur.com/EamWXas.png"
+                ImageURI = "https://i.imgur.com/EamWXas.png",
+                UniqueItem = "Tree Bark",
+                UniqueDropRate = 0.5
 
             });
 
@@ -142,7 +144,9 @@ namespace WDown.Services
                 Description = "Trained to hunt, the Rottweiler is an extremely hostile enemy of the rabbits.",
                 Level = 2,
                 MonsterAttribute = new AttributeBase(4, 2, 2, 6, 6),
-                ImageURI = "https://i.imgur.com/OnGOYw9.png"
+                ImageURI = "https://i.imgur.com/OnGOYw9.png",
+                UniqueItem = "Collar of Transcendence",
+                UniqueDropRate = 0.3
 
             });
 
@@ -152,7 +156,9 @@ namespace WDown.Services
                 Description = "Fast and unpredictable creatures with wings that pose great harm to the warren.",
                 Level = 3,
                 MonsterAttribute = new AttributeBase(3, 1, 2, 10, 10),
-                ImageURI = "https://i.imgur.com/PirEPrm.png"
+                ImageURI = "https://i.imgur.com/PirEPrm.png",
+                UniqueItem = "Rope",
+                UniqueDropRate = 0.4
 
             });
 
@@ -164,8 +170,10 @@ namespace WDown.Services
                 " unintentionally leading it to an Efrafa Wide Patrol. ",
                 Level = 2,
                 MonsterAttribute = new AttributeBase(3,4,3,8,8),
-                ImageURI = "https://i.imgur.com/K8M7L7E.png"
-
+                ImageURI = "https://i.imgur.com/K8M7L7E.png",
+                UniqueItem = "Collar of Transcendence",
+                UniqueDropRate = 0.3
+                
             });
 
             _monsterDataset.Add(new Monster
@@ -177,7 +185,9 @@ namespace WDown.Services
                 "execute anyone who gets in his way, or disobey him at Efrafa.",
                 Level = 20,
                 MonsterAttribute = new AttributeBase(3, 4, 3, 8, 8),
-                ImageURI = "https://i.imgur.com/QTJzhFI.png"
+                ImageURI = "https://i.imgur.com/QTJzhFI.png",
+                UniqueItem = "Champion Cup",
+                UniqueDropRate = 1.0
 
             });
 
@@ -282,6 +292,11 @@ namespace WDown.Services
         public async Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false)
         {
             return await Task.FromResult(_itemDataset);
+        }
+
+        public List<Item> GetItemList()
+        {
+            return _itemDataset;
         }
 
         #endregion Item

@@ -16,12 +16,12 @@ namespace WDown.Views.Monster
     {
         private MonsterDetailViewModel _viewModel;
 
-
         public MonsterDetailPage(MonsterDetailViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = _viewModel = viewModel;
+           
         }
 
         public MonsterDetailPage()

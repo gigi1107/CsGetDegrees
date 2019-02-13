@@ -13,7 +13,7 @@ namespace WDown.Models
         public string UniqueItem { get; set; }
 
         // Unique Item Drop Rate
-        public int UniqueDropRate { get; set; }
+        public double UniqueDropRate { get; set; }
 
 
 

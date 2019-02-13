@@ -232,6 +232,10 @@ namespace WDown.Services
             return await Task.FromResult(_itemDataset);
         }
 
+        public List<Item> GetItemList()
+        {
+            return _itemDataset;
+        }
         #endregion Item
 
 

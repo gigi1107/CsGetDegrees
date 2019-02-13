@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WDown.Views.Monster.MonsterEditPage">
@@ -36,7 +36,7 @@
                     <StackLayout Grid.Row="0" Grid.Column="0">
                         <Label 
                             Text="Name" 
-                            FontSize="Medium" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
@@ -51,7 +51,7 @@
                     <StackLayout Grid.Row="1" Grid.Column="0">
                         <Label 
                             Text="Description" 
-                            FontSize="Medium" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
@@ -67,19 +67,19 @@
                     <StackLayout Grid.Row="2" Grid.Column="0">
                         <Label 
                             Text="Attack"
-                            FontSize="Medium" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
                     <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
-                            Text="{Binding Data.Attack}" 
-                            FontSize="Medium" 
+                            Text="{Binding Data.MonsterAttribute.Attack}" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             x:Name= "AttackValue"
                             VerticalOptions="Center"/>
 
-                        <Stepper Value="{Binding Data.Attack, Mode=TwoWay}"
+                        <Stepper Value="{Binding Data.MonsterAttribute.Attack, Mode=TwoWay}"
                             Minimum="0"
                             Maximum="100"
                             Increment="1"
@@ -91,19 +91,19 @@
                     <StackLayout Grid.Row="3" Grid.Column="0">
                         <Label 
                             Text="Speed"
-                            FontSize="Medium" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
                     <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
-                            Text="{Binding Data.Speed}" 
-                            FontSize="Medium" 
+                            Text="{Binding Data.MonsterAttribute.Speed}" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             x:Name= "SpeedValue"
                             VerticalOptions="Center"/>
 
-                        <Stepper Value="{Binding Data.Speed, Mode=TwoWay}"
+                        <Stepper Value="{Binding Data.MonsterAttribute.Speed, Mode=TwoWay}"
                             Minimum="0"
                             Maximum="100"
                             Increment="1"
@@ -115,19 +115,19 @@
                     <StackLayout Grid.Row="4" Grid.Column="0">
                         <Label 
                             Text="Defense"
-                            FontSize="Medium" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
                     <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
-                            Text="{Binding Data.Defense}" 
-                            FontSize="Medium" 
+                            Text="{Binding Data.MonsterAttribute.Defense}" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             x:Name= "DefenseValue"
                             VerticalOptions="Center"/>
 
-                        <Stepper Value="{Binding Data.Defense, Mode=TwoWay}"
+                        <Stepper Value="{Binding Data.MonsterAttribute.Defense, Mode=TwoWay}"
                             Minimum="0"
                             Maximum="100"
                             Increment="1"
@@ -139,14 +139,14 @@
                     <StackLayout Grid.Row="5" Grid.Column="0">
                         <Label 
                             Text="Drop Rate"
-                            FontSize="Medium" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
                     <StackLayout Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
-                            Text="{Binding Data.Defense}" 
-                            FontSize="Medium" 
+                            Text="{Binding Data.UniqueDropRate}" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             x:Name= "DropRateValue"
                             VerticalOptions="Center"/>
@@ -159,16 +159,43 @@
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
-
-
-                    <StackLayout Grid.Row="6" Grid.Column="0">
+                    
+                     <StackLayout Grid.Row="6" Grid.Column="0">
                         <Label 
-                            Text="Image" 
-                            FontSize="Medium" 
+                            Text="Unique Item"
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    <StackLayout Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    
+                     <StackLayout Grid.Row="6" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                    
+                        <Picker x:Name="ItemDrop" Title="{Binding Data.UniqueItem}"
+                                SelectedItem="{Binding Data.UniqueItem}"
+                                WidthRequest = "300"
+                              
+                                >
+                           <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Collar of Transcendence</x:String>
+                                    <x:String>Jewel of Gibberish</x:String>
+                                    <x:String>Magical Dew</x:String>
+                                    <x:String>Tree Bark</x:String>
+                                    <x:String>Rope</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="7" Grid.Column="0">
+                        <Label 
+                            Text="Image" 
+                            FontSize="Small" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <Image Source="{Binding Data.ImageURI}"
                             WidthRequest="25"
                             HeightRequest="25" 
@@ -180,8 +207,6 @@
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center"/>
                     </StackLayout>
-
-
 
 
                 </Grid>
