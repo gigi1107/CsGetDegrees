@@ -31,12 +31,12 @@ namespace WDown.Services
 
                     break;
 
-                case DataStoreEnum.Sql:
+                case DataStoreEnum.SQL:
                 default:
-                    _dataStoreEnum = DataStoreEnum.Sql;
-                    ItemsViewModel.Instance.SetDataStore(DataStoreEnum.Sql);
-                    MonstersViewModel.Instance.SetDataStore(DataStoreEnum.Sql);
-                    CharactersViewModel.Instance.SetDataStore(DataStoreEnum.Sql);
+                    _dataStoreEnum = DataStoreEnum.SQL;
+                    ItemsViewModel.Instance.SetDataStore(DataStoreEnum.SQL);
+                    MonstersViewModel.Instance.SetDataStore(DataStoreEnum.SQL);
+                    CharactersViewModel.Instance.SetDataStore(DataStoreEnum.SQL);
                     // Implement Score
                     break;
             }

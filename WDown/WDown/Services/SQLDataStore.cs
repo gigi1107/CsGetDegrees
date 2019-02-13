@@ -45,8 +45,8 @@ namespace WDown.Services
         private void DeleteTables()
         {
             App.Database.DropTableAsync<Item>().Wait();
-            App.Database.DropTableAsync<Character>().Wait();
-            App.Database.DropTableAsync<Monster>().Wait();
+            App.Database.DropTableAsync<BaseCharacter>().Wait();
+            App.Database.DropTableAsync<BaseMonster>().Wait();
             App.Database.DropTableAsync<Score>().Wait();
         }
 
@@ -63,8 +63,8 @@ namespace WDown.Services
         private void CreateTables()
         {
             App.Database.CreateTableAsync<Item>().Wait();
-            App.Database.CreateTableAsync<Character>().Wait();
-            App.Database.CreateTableAsync<Monster>().Wait();
+            App.Database.CreateTableAsync<BaseCharacter>().Wait();
+            App.Database.CreateTableAsync<BaseMonster>().Wait();
             App.Database.CreateTableAsync<Score>().Wait();
         }
 
@@ -139,7 +139,10 @@ namespace WDown.Services
         // Conver to BaseCharacter and then add it
         public async Task<bool> AddAsync_Character(Character data)
         {
-            var result = await App.Database.InsertAsync(data);
+            // Convert Character to CharacterBase before saving to Database
+            var dataBase = new BaseCharacter(data);
+
+            var result = await App.Database.InsertAsync(dataBase);
             if (result == 1)
             {
                 return true;
@@ -173,7 +176,10 @@ namespace WDown.Services
         // Convert to BaseCharacter and then update it
         public async Task<bool> UpdateAsync_Character(Character data)
         {
-            var result = await App.Database.UpdateAsync(data);
+            // Convert Character to CharacterBase before saving to Database
+            var dataBase = new BaseCharacter(data);
+
+            var result = await App.Database.UpdateAsync(dataBase);
             if (result == 1)
             {
                 return true;
@@ -185,7 +191,10 @@ namespace WDown.Services
         // Pass in the character and convert to Character to then delete it
         public async Task<bool> DeleteAsync_Character(Character data)
         {
-            var result = await App.Database.DeleteAsync(data);
+            // Convert Character to CharacterBase before saving to Database
+            var dataBase = new BaseCharacter(data);
+
+            var result = await App.Database.DeleteAsync(dataBase);
             if (result == 1)
             {
                 return true;
@@ -197,16 +206,26 @@ namespace WDown.Services
         // Get the Character Base, and Load it back as Character
         public async Task<Character> GetAsync_Character(string id)
         {
-            var result = await App.Database.GetAsync<Character>(id);
-            return null;
+            var tempResult = await App.Database.GetAsync<BaseCharacter>(id);
+
+            var result = new Character(tempResult);
+            
+            return result;
         }
 
         // Load each character as the base character, 
         // Then then convert the list to characters to push up to the view model
         public async Task<IEnumerable<Character>> GetAllAsync_Character(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<Character>().ToListAsync();
-            return null;
+            var tempResult = await App.Database.Table<BaseCharacter>().ToListAsync();
+
+            var result = new List<Character>();
+            foreach (var item in tempResult)
+            {
+                result.Add(new Character(item));
+            }
+
+            return result;
         }
 
         #endregion Character

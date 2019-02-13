@@ -17,6 +17,7 @@
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <StackLayout>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -75,4 +76,49 @@
             </StackLayout>
         </ScrollView>
     </Grid>
+
+    <StackLayout 
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="StartAndExpand" 
+                Orientation="Vertical"
+                >
+
+        <StackLayout
+                HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+            <Label 
+                FontSize="Small"
+                Text="Use Mock DataStore"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                    x:Name="SettingDataSourceLabel"
+                />
+
+            <Switch 
+                x:Name="SettingDataSource"
+                HorizontalOptions="Center"
+                Toggled="Switch_OnToggled"/>
+        </StackLayout>
+
+        <StackLayout
+                HorizontalOptions="Start"
+                Orientation="Horizontal">
+
+            <Label 
+                FontSize="Small"
+                Text="Clear Database"
+                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Start"
+                />
+
+            <Button  
+                    Text="Clear" 
+                    Clicked="ClearDatabase_Command" 
+                    HorizontalOptions="Center"
+                    TextColor="Black" />
+        </StackLayout>
+
+    </StackLayout>
+    </StackLayout>
 </ContentPage>

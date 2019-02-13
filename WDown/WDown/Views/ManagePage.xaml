@@ -4,14 +4,13 @@
             xmlns:views="clr-namespace:WDown.Views.Character"
             xmlns:views1="clr-namespace:WDown.Views.Monster"
             x:Class="WDown.Views.ManagePage"  
-            NavigationPage.HasNavigationBar="false"
+            NavigationPage.HasNavigationBar="true"
             >
     <!--  This page is the page that shows up when you click the side nav "manage" 
     option. It's a tabbed page where you can click one of the children
     and it will take you to that page-->
     <TabbedPage.Children>
-        <NavigationPage Title="Characters"
-                        >
+        <NavigationPage Title="Characters">
             <x:Arguments>
                 <views:CharacterPage />
             </x:Arguments>

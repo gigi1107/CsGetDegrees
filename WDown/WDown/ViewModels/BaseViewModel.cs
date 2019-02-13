@@ -32,7 +32,7 @@ namespace WDown.ViewModels
                     DataStore = DataStoreMock;
                     break;
 
-                case DataStoreEnum.Sql:
+                case DataStoreEnum.SQL:
                 case DataStoreEnum.Unknown:
                 default:
                     DataStore = DataStoreSql;
