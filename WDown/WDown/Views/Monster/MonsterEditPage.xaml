@@ -170,7 +170,7 @@
                     
                      <StackLayout Grid.Row="6" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                     
-                        <Picker x:Name="ItemDrop" Title="{Binding Data.UniqueItem}"
+                        <Picker x:Name="ItemDrop" 
                                 SelectedItem="{Binding Data.UniqueItem}"
                                 WidthRequest = "300"
                               
