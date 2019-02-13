@@ -5,76 +5,99 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit" Clicked="Edit_Clicked" />
         <ToolbarItem Text="Delete" Clicked="Delete_Clicked" />
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-        <StackLayout 
-            x:Name="DetailsRoot"
-            Orientation="Vertical"
-            Spacing="20"
-            Padding="15">
+        <StackLayout x:Name="DetailsRoot" Orientation="Vertical" Spacing="1" Padding="0.5">
+            <Label Text="Character Details"
+                   HorizontalOptions="Center" 
+                   FontSize="Small" />
+            <Label Text="{Binding Data.Name}"
+                   FontSize="Medium" 
+                   HorizontalOptions="Center" />
+            <Image Source="{Binding Data.ImageURI}" 
+                   WidthRequest="150" 
+                   HeightRequest="150"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
 
-            <Label Text="View Detail" FontSize="Medium" TextColor="Coral" />
-            <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Start">
 
-                <Label Text="{Binding Data.Name}" 
-                    FontSize="Large" 
-                    BackgroundColor="Coral"
-                    TextColor="White"
-                    WidthRequest ="1000"
-                    HorizontalTextAlignment="Center"/>
-            </StackLayout>
-
-            <Image Source="{Binding Data.ImageURI}"
-                WidthRequest="150"
-                HeightRequest="150" 
-                HorizontalOptions="Center"
-                VerticalOptions="Center"/>
             <StackLayout 
-                Orientation="Horizontal" 
-                HorizontalOptions="Start">
-                <Label Text="Age : " 
-                   FontSize="Medium"
-                   
-                   TextColor="Coral"
-                   WidthRequest="150"
-                   HorizontalOptions="Start"/>
-                <Label Text="{Binding Data.Age}" 
-                   FontSize="Medium" 
-                   HorizontalOptions="Start"/>
-            </StackLayout>
-            <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Start">
-                <Label Text="Level : " 
-                   TextColor="Coral"
+                Orientation = "Horizontal">
+                <Label Text="Attack " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
 
-                   WidthRequest="150"
-                   FontSize="Medium" 
-                   HorizontalOptions="Center"/>
-                <Label Text="{Binding Data.Level}" 
-                    FontSize="Medium" 
-                    HorizontalOptions="Start"/>
+                <Label Text= "{Binding Data.MonsterAttribute.Attack}"
+                       HorizontalOptions = "Center"
+                       FontSize = "Small"
+                       />
             </StackLayout>
 
 
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Speed " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
 
-            <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Start">
-                <Label Text="Description : " 
-                   FontSize="Medium"
-                  
-                   TextColor="Coral"
-                   WidthRequest="255"
-                       
-                   HorizontalOptions="Start"/>
-                <Label Text="{Binding Data.Description}" 
-                    FontSize="Medium" 
-                    HorizontalOptions="Center"/>
+                <Label Text= "{Binding Data.MonsterAttribute.Speed}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+
+
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Defense " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+                <Label Text= "{Binding Data.MonsterAttribute.Defense}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+            <StackLayout Orientation = "Horizontal">
+                <Label Text="Max Health " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+                <Label Text= "{Binding Data.MonsterAttribute.MaxHealth}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Drop Rate: " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+
+                <Label Text= "{Binding Data.UniqueDropRate}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Unique Item: " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+
+                <Label Text= "{Binding Data.UniqueItem}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+            <StackLayout >
+                <Label Text="Description " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+            </StackLayout>
+
+            <StackLayout  >
+                <Frame OutlineColor="Black">
+                    <Label Text="{Binding Data.Description}" 
+                           FontSize="Small"
+                           HorizontalOptions = "Center"/>
+                </Frame>
             </StackLayout>
         </StackLayout>
     </ScrollView>
