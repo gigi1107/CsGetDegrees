@@ -58,7 +58,7 @@ namespace WDown.Services
                 "powerful, he is loyal, brave, and a quick thinker.",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "Hazel.jpg",
+                ImageURI = "https://i.imgur.com/pNTXqMH.png",
                 Wisdom = 2,
                 CharacterAttribute = new AttributeBase(1, 2, 2, 7, 7),
                 LoveInterest = "Clover"
@@ -72,7 +72,7 @@ namespace WDown.Services
                 "Fiver is extremely wise and intelligent, but quiet. ",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "fiver_wire.png",
+                ImageURI = "https://i.imgur.com/lcTjFJ1.png",
                 Wisdom = 2,
                 CharacterAttribute = new AttributeBase(1, 1, 2, 6, 6),
                 LoveInterest = "Vilthuril"
@@ -86,7 +86,7 @@ namespace WDown.Services
                     "but well- intentioned.",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "clover.jpg",
+                ImageURI = "https://i.imgur.com/rB0yLge.png",
                 Wisdom = 1,
                 CharacterAttribute = new AttributeBase(2, 3, 2, 7, 7),
                 LoveInterest = "Hazel"
@@ -101,10 +101,10 @@ namespace WDown.Services
                     "look up to her. ",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "Hyzenthlay.gif",
+                ImageURI = "https://i.imgur.com/kIH4UtV.jpg",
                 Wisdom = 2,
                 CharacterAttribute = new AttributeBase(1, 1, 2, 7, 7),
-                LoveInterest = "Holly"
+                LoveInterest = "None"
             });
 
             _characterDataset.Add(new Character
@@ -114,7 +114,7 @@ namespace WDown.Services
                     "He has a large tuft of hair on top of his head.",
                 Level = 1,
                 ExperienceTotal = 0,
-                ImageURI = "bigwig.jpg",
+                ImageURI = "https://i.imgur.com/0uaVKml.jpg",
                 Wisdom = 1,
                 CharacterAttribute = new AttributeBase(3, 1, 4, 8, 8),
                 LoveInterest = "Strawberry"
