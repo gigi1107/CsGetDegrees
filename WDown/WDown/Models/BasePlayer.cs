@@ -15,17 +15,11 @@ namespace WDown.Models
         // Level of the character, or difficulty level of the monster
         public int Level { get; set; }
 
-        public int Age { get; set; }
-
-        public string LoveInterest { get; set; }
-
-        public int Wisdom { get; set; }
-
-
 
         // Current experience gained, or to give
         public int ExperienceTotal { get; set; }
 
+        // Whether the player is alive or dead
         public bool Alive { get; set; }
 
         // The AttributeString will be unpacked and stored in the top level of Character as actual attributes, 

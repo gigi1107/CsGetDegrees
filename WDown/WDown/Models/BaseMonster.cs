@@ -9,11 +9,13 @@ namespace WDown.Models
 {
     public class BaseMonster : BasePlayer<BaseMonster>
     {
-        // Unique Item for Monster
+        // Unique Item dropped by Monster upon getting killed
         public string UniqueItem { get; set; }
 
-        // Just base from here down. 
-        // This is what will be saved to the Database
+        // Unique Item Drop Rate
+        public int UniqueDropRate { get; set; }
+
+
 
         public BaseMonster()
         {

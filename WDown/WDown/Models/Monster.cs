@@ -11,7 +11,8 @@ namespace WDown.Models
     public class Monster : BaseMonster
     {
         // Remaining Experience Points to give
-        public int ExperienceRemaining { get; set; }
+        public int ExperienceGiven { get; set; }
+        
 
         // Add in the actual attribute class
         public AttributeBase Attribute { get; set; }
