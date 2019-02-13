@@ -12,7 +12,7 @@
                 HorizontalOptions = "Center"
                 Orientation = "Horizontal">
 
-                <Image Source = "plus.png"
+                <Image Source = "https://i.imgur.com/QJtaZqu.png"
                             WidthRequest = "50"
                             HeightRequest = "50"
                             HorizontalOptions = "Center"
