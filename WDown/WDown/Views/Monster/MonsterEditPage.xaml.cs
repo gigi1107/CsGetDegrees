@@ -84,6 +84,7 @@ namespace WDown.Views.Monster
             DropRateValue.Text = String.Format("{0}", e.NewValue);
         }
 
+        // This function handles drop-down menu select value for Item Drop
         private void ItemDrop_OnItemSelected(object sender, ValueChangedEventArgs e)
         {
             ItemDrop.SelectedItem = String.Format("{0}", e.NewValue);
