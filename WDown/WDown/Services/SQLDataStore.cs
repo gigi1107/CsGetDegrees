@@ -96,21 +96,34 @@ namespace WDown.Services
             //    Description = "Increase Defense"
             //});
 
-            await AddAsync_Character(new Character
-            {
-                Id = Guid.NewGuid().ToString(),
-                Name = "Hazel",
-                Description = "Hazel-rah, the leader of Watership Down warren."
-            });
+            //await AddAsync_Character(new Character
+            //{
+            //    Id = Guid.NewGuid().ToString(),
+            //    Name = "Hazel",
+            //    Description = "Hazel-rah, the leader of Watership Down warren."
+            //});
 
-            await AddAsync_Character(new Character
-            {
-                Id = Guid.NewGuid().ToString(),
-                Name = "BigWit",
-                Description = "The strongest defended of the warren, with a passion of fire."
-            });
-            
+            //await AddAsync_Character(new Character
+            //{
+            //    Id = Guid.NewGuid().ToString(),
+            //    Name = "BigWit",
+            //    Description = "The strongest defended of the warren, with a passion of fire."
+            //});
 
+            //await AddAsync_Monster(new Monster
+            //{
+            //    Id = Guid.NewGuid().ToString(),
+            //    Name = "General Woundwort",
+            //    Description = "The tyranny leader of Efrafa Warren."
+            //});
+             
+            // Implement Characters
+            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL First Character", Description = "This is an Character description.", Level = 1 });
+            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Second Character", Description = "This is an Character description.", Level = 1 });
+            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Third Character", Description = "This is an Character description.", Level = 2 });
+            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Fourth Character", Description = "This is an Character description.", Level = 2 });
+            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Fifth Character", Description = "This is an Character description.", Level = 3 });
+            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Sixth Character", Description = "This is an Character description.", Level = 3 });
 
         }
 
@@ -190,151 +203,195 @@ namespace WDown.Services
 
         #endregion Item
 
-
+        #region Character
         // Character
+        // Conver to BaseCharacter and then add it
         public async Task<bool> AddAsync_Character(Character data)
         {
-            var result = await App.Database.InsertAsync(data);
+            // Convert Character to CharacterBase before saving to Database
+            var dataBase = new BaseCharacter(data);
+
+            var result = await App.Database.InsertAsync(dataBase);
             if (result == 1)
             {
                 return true;
             }
 
             return false;
-
         }
+
         public async Task<bool> InsertUpdateAsync_Character(Character data)
         {
 
-            //// Check to see if the item exist
-            //var oldData = await GetAsync_Character(data.Id);
-            //if (oldData == null)
-            //{
-            //    _characterDataset.Add(data);
-            //    return true;
-            //}
+            // Check to see if the item exist
+            var oldData = await GetAsync_Character(data.Id);
+            if (oldData == null)
+            {
+                await AddAsync_Character(data);
+                return true;
+            }
 
-            //// Compare it, if different update in the DB
-            //var UpdateResult = await UpdateAsync_Character(data);
-            //if (UpdateResult)
-            //{
-            //    await AddAsync_Character(data);
-            //    return true;
-            //}
+            // Compare it, if different update in the DB
+            var UpdateResult = await UpdateAsync_Character(data);
+            if (UpdateResult)
+            {
+                await AddAsync_Character(data);
+                return true;
+            }
 
             return false;
         }
+
+        // Convert to BaseCharacter and then update it
         public async Task<bool> UpdateAsync_Character(Character data)
         {
-            var result = await App.Database.UpdateAsync(data);
+            // Convert Character to CharacterBase before saving to Database
+            var dataBase = new BaseCharacter(data);
+
+            var result = await App.Database.UpdateAsync(dataBase);
             if (result == 1)
             {
                 return true;
             }
 
             return false;
-
         }
 
+        // Pass in the character and convert to Character to then delete it
         public async Task<bool> DeleteAsync_Character(Character data)
         {
-            var result = await App.Database.DeleteAsync(data);
+            // Convert Character to CharacterBase before saving to Database
+            var dataBase = new BaseCharacter(data);
+
+            var result = await App.Database.DeleteAsync(dataBase);
             if (result == 1)
             {
                 return true;
             }
 
-        return false;
+            return false;
+        }
 
-         }
-
+        // Get the Character Base, and Load it back as Character
         public async Task<Character> GetAsync_Character(string id)
         {
-            var result = await App.Database.GetAsync<Character>(id);
+            var tempResult = await App.Database.GetAsync<BaseCharacter>(id);
+
+            var result = new Character(tempResult);
+
             return result;
         }
 
+        // Load each character as the base character, 
+        // Then then convert the list to characters to push up to the view model
         public async Task<IEnumerable<Character>> GetAllAsync_Character(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<Character>().ToListAsync();
+            var tempResult = await App.Database.Table<BaseCharacter>().ToListAsync();
+
+            var result = new List<Character>();
+            foreach (var item in tempResult)
+            {
+                result.Add(new Character(item));
+            }
+
             return result;
-
         }
-        //#endregion Character
+
+        #endregion Character
 
 
-        //Monster
         #region Monster
+        //Monster
+        // Conver to BaseMonster and then add it
+        public async Task<bool> AddAsync_Monster(Monster data)
+        {
+            // Convert Monster to MonsterBase before saving to Database
+            var dataBase = new BaseMonster(data);
 
+            var result = await App.Database.InsertAsync(dataBase);
+            if (result == 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         public async Task<bool> InsertUpdateAsync_Monster(Monster data)
         {
 
-            //// Check to see if the item exist
-            //var oldData = await GetAsync_Monster(data.Id);
-            //if (oldData == null)
-            //{
-            //    _monsterDataset.Add(data);
-            //    return true;
-            //}
+            // Check to see if the item exist
+            var oldData = await GetAsync_Monster(data.Id);
+            if (oldData == null)
+            {
+                await AddAsync_Monster(data);
+                return true;
+            }
 
-            //// Compare it, if different update in the DB
-            //var UpdateResult = await UpdateAsync_Monster(data);
-            //if (UpdateResult)
-            //{
-            //    await AddAsync_Monster(data);
-            //    return true;
-            //}
+            // Compare it, if different update in the DB
+            var UpdateResult = await UpdateAsync_Monster(data);
+            if (UpdateResult)
+            {
+                await AddAsync_Monster(data);
+                return true;
+            }
 
             return false;
         }
-        public async Task<bool> AddAsync_Monster(Monster data)
-        {
-        var result = await App.Database.InsertAsync(data);
-        if (result == 1)
-        {
-            return true;
-        }
 
-        return false;
-
-    }
-
-    public async Task<bool> UpdateAsync_Monster(Monster data)
+        // Convert to BaseMonster and then update it
+        public async Task<bool> UpdateAsync_Monster(Monster data)
         {
-            var result = await App.Database.UpdateAsync(data);
+            // Convert Monster to MonsterBase before saving to Database
+            var dataBase = new BaseMonster(data);
+
+            var result = await App.Database.UpdateAsync(dataBase);
             if (result == 1)
             {
                 return true;
             }
 
             return false;
+        }
 
-    }
-
-    public async Task<bool> DeleteAsync_Monster(Monster data)
+        // Pass in the Monster and convert to Monster to then delete it
+        public async Task<bool> DeleteAsync_Monster(Monster data)
         {
-            var result = await App.Database.DeleteAsync(data);
+            // Convert Monster to MonsterBase before saving to Database
+            var dataBase = new BaseMonster(data);
+
+            var result = await App.Database.DeleteAsync(dataBase);
             if (result == 1)
             {
                 return true;
             }
 
             return false;
+        }
 
-         }
-
+        // Get the Monster Base, and Load it back as Monster
         public async Task<Monster> GetAsync_Monster(string id)
         {
-            var result = await App.Database.GetAsync<Monster>(id);
+            var tempResult = await App.Database.GetAsync<BaseMonster>(id);
+
+            var result = new Monster(tempResult);
+
             return result;
         }
 
+        // Load each Monster as the base Monster, 
+        // Then then convert the list to Monsters to push up to the view model
         public async Task<IEnumerable<Monster>> GetAllAsync_Monster(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<Monster>().ToListAsync();
-            return result;
+            var tempResult = await App.Database.Table<BaseMonster>().ToListAsync();
 
+            var result = new List<Monster>();
+            foreach (var item in tempResult)
+            {
+                result.Add(new Monster(item));
+            }
+
+            return result;
         }
 
         #endregion Monster

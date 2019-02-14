@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using SQLite;
 using Xamarin.Forms;
 using WDown.Models;
 using WDown.Views.Character;
