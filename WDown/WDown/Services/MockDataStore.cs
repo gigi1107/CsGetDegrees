@@ -7,6 +7,7 @@ using WDown.ViewModels;
 
 namespace WDown.Services
 {
+    //makes and stores mock data not stored in a real database
     public sealed class MockDataStore : IDataStore
     {
 

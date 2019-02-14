@@ -15,6 +15,7 @@ namespace WDown.Views.Monster
     {
         public WDown.Models.Monster Data { get; set; }
 
+        //creates a new monster
         public MonsterNewPage()
         {
             InitializeComponent();
@@ -28,7 +29,6 @@ namespace WDown.Views.Monster
             };
 
             BindingContext = this;
-            //AttributePicker.SelectedItem = Data.Attribute.ToString();
         }
         private async void Save_Clicked(object sender, EventArgs e)
         {
