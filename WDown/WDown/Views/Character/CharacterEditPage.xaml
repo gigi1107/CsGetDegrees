@@ -209,15 +209,30 @@
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
+                   
+                 
+                     <StackLayout Grid.Row="7" Grid.Column="1"
+                              Orientation="Horizontal" 
+                              VerticalOptions="Center">
+                        <Picker x:Name="LoveInterest" Title="{Binding Data.LoveInterest}"
+                                SelectedItem="{Binding Data.LoveInterest}"
+                                WidthRequest = "300"
 
-                    <StackLayout Grid.Row="7" Grid.Column="1">
-                        <Picker SelectedItem="{Binding Data.LoveInterest}"
-                                WidthRequest ="300"
-                                
-                                
-                            
-                            />
+                                >
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>None</x:String>
+                                    <x:String>BigWig</x:String>
+                                    <x:String>Fiver</x:String>
+                                    <x:String>Clover</x:String>
+                                    <x:String>Hyzenthlay</x:String>
+                                    <x:String>Hazel</x:String>
+                                    <x:String>Other</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
                     </StackLayout>
+                   
                     <StackLayout Grid.Row="8" Grid.Column="0">
                         <Label 
                             Text="Image" 

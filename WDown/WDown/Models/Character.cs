@@ -22,6 +22,7 @@ namespace WDown.Models
             Alive = true;
             Name = "Unknown";
             Description = "Unknown";
+            Level = 1;
             ImageURI = CharacterController.DefaultImageURI;
 
         }
