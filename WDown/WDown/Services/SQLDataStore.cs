@@ -29,7 +29,7 @@ namespace WDown.Services
         private SQLDataStore()
         {
             CreateTables();
-            //            InitilizeSeedData();
+          
         }
         public void InitializeDatabaseNewTables()
         {
@@ -72,16 +72,7 @@ namespace WDown.Services
 
         private async void InitilizeSeedData()
         {
-            var mockItems = new List<Item>
-            {
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Fresh Carrot",
-                    Description = "Recharge Current Health" },
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Wet Grass",
-                    Description = "Recharge Current Health, but much less effective than carrots."},
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Magical Dew",
-                    Description = "Recharge Current Wisdom"}
-
-            };
+           
 
             //await AddAsync_Item(new Item
             //{

@@ -214,7 +214,7 @@
                      <StackLayout Grid.Row="7" Grid.Column="1"
                               Orientation="Horizontal" 
                               VerticalOptions="Center">
-                        <Picker x:Name="LoveInterest" Title="{Binding Data.LoveInterest}"
+                        <Picker x:Name="LoveInterest"
                                 SelectedItem="{Binding Data.LoveInterest}"
                                 WidthRequest = "300"
 

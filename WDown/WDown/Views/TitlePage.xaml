@@ -14,7 +14,7 @@
                 HorizontalOptions="CenterAndExpand"/>
                 <Label
                 FontSize="Medium"
-                Text="the game"
+                Text="Watership Down game"
                 VerticalOptions="Center"
                 HorizontalOptions="CenterAndExpand"/>
                 <Image 

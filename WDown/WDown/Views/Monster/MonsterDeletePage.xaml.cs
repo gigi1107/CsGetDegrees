@@ -7,7 +7,7 @@ using WDown.ViewModels;
 using WDown.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+// This page asks user for delete confirmation 
 namespace WDown.Views.Monster
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -29,6 +29,7 @@ namespace WDown.Views.Monster
             BindingContext = _viewModel = viewModel;
         }
 
+        // Handles when user confirms deletion 
         private async void Delete_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "DeleteData", Data);
@@ -39,6 +40,7 @@ namespace WDown.Views.Monster
             await Navigation.PopAsync();
         }
 
+        // Handles when user cancels deletion
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

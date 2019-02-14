@@ -36,7 +36,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Cs Get Degrees Project" FontAttributes="Bold" FontSize="22" />
+                                <Span Text="Cs Get Degrees Team" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
 
                             </FormattedString.Spans>

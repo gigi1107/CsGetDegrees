@@ -33,7 +33,7 @@ namespace WDown.Views.Character
 
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            // If the image in teh data box is empty, use the default one..
+            // If the image in the data box is empty, use the default one..
             if (string.IsNullOrEmpty(Data.ImageURI))
             {
                 Data.ImageURI = CharacterController.DefaultImageURI;
@@ -57,23 +57,31 @@ namespace WDown.Views.Character
             await Navigation.PopAsync();
         }
 
-        // The stepper function for Range
+        // The stepper function for Attack change
         void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             AttackValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        // The stepper function for Speed change
         void Speed_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             SpeedValue.Text = String.Format("{0}", e.NewValue);
         }
+        
+        // The stepper function for Defense change
         void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             DefenseValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        // The stepper function for Max Wisdom change
         void Wisdom_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             WisdomValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        // The stepper for Max Health change
         void MaxHealth_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             MaxHealthValue.Text = String.Format("{0}", e.NewValue);

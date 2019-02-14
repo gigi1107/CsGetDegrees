@@ -8,7 +8,7 @@ using WDown.Models;
 using WDown.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+// This populates the Monster Index view
 namespace WDown.Views.Monster
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -30,6 +30,7 @@ namespace WDown.Views.Monster
 
             var data = new WDown.Models.Monster
             {
+                // Default values
                 Name = "Monster Unknown",
                 Description = "This is a monster description.",
                 Level = 1
@@ -39,12 +40,12 @@ namespace WDown.Views.Monster
             BindingContext = _viewModel;
         }
 
-
+        // Handles when user choose Edit button
         public async void Edit_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MonsterEditPage(_viewModel));
         }
-
+        // Handles when user choose Delete button
         private async void Delete_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new WDown.Views.Monster.MonsterDeletePage(_viewModel));
