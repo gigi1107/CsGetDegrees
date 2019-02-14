@@ -69,7 +69,7 @@ namespace WDown.Services
             App.Database.CreateTableAsync<BaseMonster>().Wait();
             App.Database.CreateTableAsync<Score>().Wait();
         }
-
+        //create a list of Items to initialize the data
         private async void InitilizeSeedData()
         {
             var mockItems = new List<Item>
