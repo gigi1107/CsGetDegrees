@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 
 namespace WDown.Models
@@ -58,7 +59,53 @@ namespace WDown.Models
         public int getAttack() { return Attack; }
         public int getCurrentHealth() { return CurrentHealth; }
         public int getMaxHealth() { return MaxHealth; }
+        // Return attributebase based on a string as the constructor.
+        public AttributeBase(string data)
+        {
+            if (string.IsNullOrEmpty(data))
+            {
+                SetDefaultValues();
+                return;
+            }
 
+            var myAttributes = JsonConvert.DeserializeObject<AttributeBase>(data);
 
+            Speed = myAttributes.Speed;
+            Defense = myAttributes.Defense;
+            Attack = myAttributes.Attack;
+            CurrentHealth = myAttributes.CurrentHealth;
+            MaxHealth = myAttributes.MaxHealth;
+        }
+
+        // Return a formated string of the datastruture
+        public static string GetAttributeString(AttributeBase data)
+        {
+            var myString = (JObject)JToken.FromObject(data);
+
+            return myString.ToString();
+        }
+
+        // Given a string of attributes, convert them to actual attributes
+        public static AttributeBase GetAttributeFromString(string data)
+        {
+            AttributeBase myResult;
+
+            // Convert the string to json object
+            // convert the json object to the class
+            // retun the class
+
+            // make sure the object is properly formated json for the object type
+            try
+            {
+                myResult = JsonConvert.DeserializeObject<AttributeBase>(data);
+                return myResult;
+            }
+
+            catch (Exception)
+            {
+                // Failed, so fall through to the return of new.
+                return new AttributeBase();
+            }
+        }
     }
 }
