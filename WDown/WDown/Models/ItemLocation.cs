@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using SQLite;
 namespace WDown.Models
 {
     // Enum to specify the different Inventory Locations.

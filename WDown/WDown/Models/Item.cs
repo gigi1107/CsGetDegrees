@@ -1,6 +1,6 @@
 ﻿using WDown.Controllers;
 using WDown.GameEngine;
-
+using SQLite;
 namespace WDown.Models
 {
     // The Items that a character can use, a Monster may drop, or may be randomly available.

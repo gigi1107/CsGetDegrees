@@ -41,7 +41,7 @@ namespace WDown
             {
                 if (_database == null)
                 {
-                    _database = new SQLiteAsyncConnection(DependencyService.Get<IFileHelper>().GetLocalFilePath("WDownDatabaseKoenig1.db3"));
+                    _database = new SQLiteAsyncConnection(DependencyService.Get<IFileHelper>().GetLocalFilePath("DatabaseKoenig1.db3"));
                 }
                 return _database;
             }
