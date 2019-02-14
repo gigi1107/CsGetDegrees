@@ -62,10 +62,7 @@
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="16" />
 
-                                            <Label Text="{Binding Attribute}" 
-                                           LineBreakMode="NoWrap" 
-                                           Style="{DynamicResource ListItemTextStyle}" 
-                                           FontSize="16" />
+                                          
 
                                         </StackLayout>
                                         

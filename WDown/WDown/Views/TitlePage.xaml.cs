@@ -25,7 +25,7 @@ namespace WDown.Views
 
         async void OnCharacterClicked(object sender, EventArgs args)
         {
-            await Navigation.PushAsync(new WDown.Views.Character.CharacterPage());
+            await Navigation.PushAsync(new Character.CharacterPage());
         }
 
         async void OnItemsClicked(object sender, EventArgs args)
