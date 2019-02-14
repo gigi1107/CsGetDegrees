@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WDown.Views.Monster.MonsterPage">
+             x:Class="WDown.Views.Monster.MonsterPage"
+             Title="Monsters">
     <!--This page populates the List View for available Monsters. You can see from the list the monsters' photos,
     name, and its level.-->
     <ContentPage.Content>
         <StackLayout Padding="10">
-            <Label Text="Monsters" FontSize="Small" HorizontalTextAlignment="Center" />
+           
 
             <StackLayout
                 HorizontalOptions = "Center"
