@@ -55,15 +55,6 @@
                        FontSize = "Small"
                        HorizontalOptions = "Center"/>
             </StackLayout>
-            <StackLayout Orientation = "Horizontal">
-                <Label Text="Max Health " 
-                       FontSize="Small" 
-                       HorizontalOptions="Start" />
-
-                <Label Text= "{Binding Data.MonsterAttribute.MaxHealth}"
-                       FontSize = "Small"
-                       HorizontalOptions = "Center"/>
-            </StackLayout>
 
             <StackLayout  Orientation = "Horizontal">
                 <Label Text="Drop Rate: " 

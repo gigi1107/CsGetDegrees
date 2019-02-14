@@ -72,41 +72,7 @@ namespace WDown.Services
         //create a list of Items to initialize the data
         private async void InitilizeSeedData()
         {
-           
-
-            //await AddAsync_Item(new Item
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    Name = "Jewels of Gibberish",
-            //    Description = "Nonsense Item"
-            //});
-            //await AddAsync_Item(new Item
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    Name = "Tree Bark",
-            //    Description = "Increase Defense"
-            //});
-
-            //await AddAsync_Character(new Character
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    Name = "Hazel",
-            //    Description = "Hazel-rah, the leader of Watership Down warren."
-            //});
-
-            //await AddAsync_Character(new Character
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    Name = "BigWit",
-            //    Description = "The strongest defended of the warren, with a passion of fire."
-            //});
-
-            //await AddAsync_Monster(new Monster
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    Name = "General Woundwort",
-            //    Description = "The tyranny leader of Efrafa Warren."
-            //});
+          
              
             // Implement Characters
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL First Character", Description = "This is an Character description.", Level = 1 });
@@ -116,6 +82,10 @@ namespace WDown.Services
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Fifth Character", Description = "This is an Character description.", Level = 3 });
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Sixth Character", Description = "This is an Character description.", Level = 3 });
 
+            // Implement Monsters
+            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "SQL First Monster", Description = "This is an Monster description." });
+            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "SQL Second Monster", Description = "This is an Monster description." });
+            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "SQL Third Monster", Description = "This is an Monster description." });
         }
 
         #region Item

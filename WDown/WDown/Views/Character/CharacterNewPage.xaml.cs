@@ -26,7 +26,7 @@ namespace WDown.Views.Character
                 Wisdom = 1,
                 CharacterAttribute = new AttributeBase(1, 1, 1, 1, 1),
 
-                Description = "This is an item description.",
+                Description = "This is a character description.",
                 Id = Guid.NewGuid().ToString(),
               
 
