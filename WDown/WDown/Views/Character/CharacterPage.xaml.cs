@@ -7,6 +7,7 @@ using WDown.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WDown.ViewModels;
+// This page shows the list view of current characters
 namespace WDown.Views.Character
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -34,6 +35,7 @@ namespace WDown.Views.Character
             CharacterList.SelectedItem = null;
         }
 
+        // Handles when user wants to add a new character
         private async void AddCharacter_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CharacterNewPage());

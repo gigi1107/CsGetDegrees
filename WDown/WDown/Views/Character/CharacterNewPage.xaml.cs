@@ -57,38 +57,33 @@ namespace WDown.Views.Character
             await Navigation.PopAsync();
         }
 
-        // The stepper function for Range
+        // The stepper function for Speed
         void Speed_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             SpeedValue.Text = String.Format("{0}", e.NewValue);
         }
-
+        // The stepper function for Attack
         void Attack_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             AttackValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        // The stepper function for Wisdom
         void Wisdom_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             WisdomValue.Text = String.Format("{0}", e.NewValue);
         }
-
+        // The stepper function for Defense
         void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             DefenseValue.Text = String.Format("{0}", e.NewValue);
         }
 
+        // The stepper function for Max health
         void Health_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             HealthValue.Text = String.Format("{0}", e.NewValue);
         }
-
-        //void Level_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
-        //{
-        //    LevelValue.Text = String.Format("{0}", e.NewValue);
-        //}
-
-
-
 
 
     }

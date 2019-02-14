@@ -30,16 +30,18 @@ namespace WDown.Views.Character
             BindingContext = _viewModel;
         }
 
+        // Handles when user chooses to delete character
         async void Delete_Clicked(object sender, EventArgs args)
         {
             await Navigation.PushAsync(new CharacterDeletePage(_viewModel));
         }
-
+        // Handles when user chooses to edit character
         async void Edit_Clicked(object sender, EventArgs args)
         {
             await Navigation.PushAsync(new CharacterEditPage(_viewModel));
         }
 
+        // Takes user back to the character index page
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
