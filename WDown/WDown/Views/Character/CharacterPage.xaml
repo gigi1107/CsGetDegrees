@@ -12,7 +12,7 @@
             <StackLayout
                 HorizontalOptions = "Center"
                 Orientation = "Horizontal">
-
+    
                 <Image Source = "https://i.imgur.com/QJtaZqu.png"
                             WidthRequest = "50"
                             HeightRequest = "50"

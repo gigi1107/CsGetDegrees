@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using WDown.ViewModels;
 using Xamarin.Forms;
-
+using SQLite;
 namespace WDown.Models
 {
     // The Monster is the higher level concept.  This is the Character with all attirbutes defined.

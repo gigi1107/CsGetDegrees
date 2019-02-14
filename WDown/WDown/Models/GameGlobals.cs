@@ -1,4 +1,4 @@
-﻿
+﻿using SQLite;
 // Global switches for the overall game to use...
 
 namespace WDown.Models

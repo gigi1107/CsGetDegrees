@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using WDown.Controllers;
 using Xamarin.Forms;
+using SQLite;
 
 namespace WDown.Models
 {

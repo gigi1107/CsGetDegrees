@@ -6,11 +6,11 @@ using Windows.Storage;
 [assembly: Dependency(typeof(FileHelper))]
 namespace WDown.UWP
 {
-public class FileHelper : IFileHelper
-{
-    public string GetLocalFilePath(string filename)
+    public class FileHelper : IFileHelper
     {
-        return Path.Combine(ApplicationData.Current.LocalFolder.Path, filename);
+        public string GetLocalFilePath(string filename)
+        {
+            return Path.Combine(ApplicationData.Current.LocalFolder.Path, filename);
+        }
     }
-}
 }

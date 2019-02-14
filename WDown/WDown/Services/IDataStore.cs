@@ -21,7 +21,6 @@ namespace WDown.Services
         Task<bool> DeleteAsync_Item(Item id);
         Task<Item> GetAsync_Item(string id);
         Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false);
-        List<Item> GetItemList();
 
         //Character
         Task<bool> AddAsync_Character(Character character);
