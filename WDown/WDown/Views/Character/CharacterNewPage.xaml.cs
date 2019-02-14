@@ -28,7 +28,7 @@ namespace WDown.Views.Character
 
                 Description = "This is an item description.",
                 Id = Guid.NewGuid().ToString(),
-                ImageURI = "rabbit.png"
+              
 
 
             };
@@ -71,6 +71,7 @@ namespace WDown.Views.Character
         {
             WisdomValue.Text = String.Format("{0}", e.NewValue);
         }
+
         void Defense_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             DefenseValue.Text = String.Format("{0}", e.NewValue);
@@ -80,6 +81,11 @@ namespace WDown.Views.Character
         {
             HealthValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        //void Level_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        //{
+        //    LevelValue.Text = String.Format("{0}", e.NewValue);
+        //}
 
 
 

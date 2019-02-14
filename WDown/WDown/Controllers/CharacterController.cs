@@ -25,7 +25,7 @@ namespace WDown.Controllers
             }
         }
 
-        public static string DefaultImageURI = "rabbit.png";
+        public static string DefaultImageURI = "https://i.imgur.com/lcTjFJ1.png";
     }
 }
 

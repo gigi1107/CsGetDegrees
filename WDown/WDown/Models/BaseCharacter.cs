@@ -29,6 +29,7 @@ namespace WDown.Models
             Name = newData.Name;
             Description = newData.Description;
             Level = newData.Level;
+          
             ExperienceTotal = newData.ExperienceTotal;
             ImageURI = newData.ImageURI;
             Alive = newData.Alive;

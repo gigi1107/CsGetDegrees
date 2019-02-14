@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="WDown.Views.Character.CharacterPage">
@@ -71,16 +71,7 @@
                                            FontSize="16" />
 
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Level: " 
-                                           LineBreakMode="WordWrap" 
-                                           Style="{DynamicResource ListItemDetailTextStyle}" 
-                                           FontSize="12" />
-                                        <Label Text="{Binding Level}" 
-                                       LineBreakMode="WordWrap"
-                                       Style="{DynamicResource ListItemDetailTextStyle}"
-                                       FontSize="12" />
-                                    </StackLayout>
+                                    
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

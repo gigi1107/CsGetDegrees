@@ -40,6 +40,7 @@ namespace WDown.Models
             Attack = 1;
             CurrentHealth = 1;
             MaxHealth = 1;
+
         }
 
         public AttributeBase(int speed, int defense, int attack,
