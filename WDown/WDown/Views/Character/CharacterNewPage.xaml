@@ -222,6 +222,25 @@
                             Text="Love Interest" 
                             FontSize="Small" 
                             HorizontalOptions="Start"/>
+                        </StackLayout>
+                     <StackLayout Grid.Row="7" Grid.Column="1"
+                              Orientation="Horizontal" 
+                              VerticalOptions="Center">
+                        <Picker x:Name="ItemDrop" Title="{Binding Data.UniqueItem}"
+                                SelectedItem="{Binding Data.UniqueItem}"
+                                WidthRequest = "300"
+                              
+                                >
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Collar of Transcendence</x:String>
+                                    <x:String>Jewel of Gibberish</x:String>
+                                    <x:String>Magical Dew</x:String>
+                                    <x:String>Tree Bark</x:String>
+                                    <x:String>Rope</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
                     </StackLayout>
 
 
