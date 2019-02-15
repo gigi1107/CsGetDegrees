@@ -30,7 +30,7 @@ namespace WDown.Views
 
         async void OnItemsClicked(object sender, EventArgs args)
         {
-            await Navigation.PushAsync(new ItemsListPage());
+            await Navigation.PushAsync(new ItemPage());
         }
     }
 }

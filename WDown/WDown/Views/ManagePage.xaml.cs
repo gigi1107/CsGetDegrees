@@ -20,14 +20,22 @@ namespace WDown.Views
 
 		}
 
+        // Take user to Character Page
         async void CharacterPageClicked(object sender, EventArgs args)
         {
             await Navigation.PushAsync(new Character.CharacterPage());
         }
 
+        // Take user to Monster Page
         async void MonsterPageClicked(object sender, EventArgs args)
         {
             await Navigation.PushAsync(new Monster.MonsterPage());
+        }
+
+        // Take user to Item Page
+        async void ItemPageClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new Items.ItemPage());
         }
 
 

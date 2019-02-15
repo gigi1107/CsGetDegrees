@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-
+using WDown.ViewModels;
 using WDown.Models;
 using WDown.Views;
 using System.Linq;

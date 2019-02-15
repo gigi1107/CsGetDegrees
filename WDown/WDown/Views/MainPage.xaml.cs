@@ -37,7 +37,7 @@ namespace WDown.Views
                         MenuPages.Add(id, new NavigationPage(new ManagePage()));
                         break;
                     case (int)MenuItemType.Items:
-                        MenuPages.Add(id, new NavigationPage(new ItemsListPage()));
+                        MenuPages.Add(id, new NavigationPage(new ItemPage()));
                         break;
                     case (int)MenuItemType.History:
                         MenuPages.Add(id, new NavigationPage(new HistoryPage()));

@@ -7,5 +7,6 @@
     <StackLayout Orientation="Vertical">
         <Button Text="Character" Clicked="CharacterPageClicked" />
         <Button Text="Monster" Clicked="MonsterPageClicked" />
+        <Button Text="Item" Clicked="ItemPageClicked" />
     </StackLayout>
 </ContentPage>

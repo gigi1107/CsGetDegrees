@@ -51,7 +51,7 @@ namespace WDown.Views.Items
             Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
 
             // Add a new items details page, with the new Item data on it
-            await Navigation.PushAsync(new ItemsListDetail(new ItemDetailViewModel(Data)));
+            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(Data)));
 
             // Last, remove this page
             Navigation.RemovePage(this);

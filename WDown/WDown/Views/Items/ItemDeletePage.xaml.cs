@@ -26,7 +26,7 @@ namespace WDown.Views.Items
             // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
         }
-
+        // Handles when user clicks delete button
 	    private async void Delete_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "DeleteData", Data);
@@ -37,6 +37,7 @@ namespace WDown.Views.Items
             await Navigation.PopAsync();
         }
 
+        // Handles when user clicks cancel button
 	    private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
