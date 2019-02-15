@@ -72,7 +72,45 @@ namespace WDown.Services
         //create a list of Items to initialize the data
         private async void InitilizeSeedData()
         {
+<<<<<<< HEAD
+           
+
+            //await AddAsync_Item(new Item
+            //{
+            //    Id = Guid.NewGuid().ToString(),
+            //    Name = "Jewels of Gibberish",
+            //    Description = "Nonsense Item"
+            //});
+            //await AddAsync_Item(new Item
+            //{
+            //    Id = Guid.NewGuid().ToString(),
+            //    Name = "Tree Bark",
+            //    Description = "Increase Defense"
+            //});
+
+            //await AddAsync_Character(new Character
+            //{
+            //    Id = Guid.NewGuid().ToString(),
+            //    Name = "Hazel",
+            //    Description = "Hazel-rah, the leader of Watership Down warren."
+            //});
+
+            //await AddAsync_Character(new Character
+            //{
+            //    Id = Guid.NewGuid().ToString(),
+            //    Name = "BigWig",
+            //    Description = "The strongest defended of the warren, with a passion of fire."
+            //});
+
+            //await AddAsync_Monster(new Monster
+            //{
+            //    Id = Guid.NewGuid().ToString(),
+            //    Name = "General Woundwort",
+            //    Description = "The tyranny leader of Efrafa Warren."
+            //});
+=======
           
+>>>>>>> f688148345ce2628dd083705cc2a91f3471277f7
              
             // Implement Characters
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL First Character", Description = "This is an Character description.", Level = 1 });
