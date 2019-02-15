@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-<<<<<<< HEAD
-
-
-=======
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
->>>>>>> f688148345ce2628dd083705cc2a91f3471277f7
 using Xamarin.Forms;
 
 namespace WDown.Models

@@ -72,7 +72,6 @@ namespace WDown.Services
         //create a list of Items to initialize the data
         private async void InitilizeSeedData()
         {
-<<<<<<< HEAD
            
 
             //await AddAsync_Item(new Item
@@ -108,9 +107,7 @@ namespace WDown.Services
             //    Name = "General Woundwort",
             //    Description = "The tyranny leader of Efrafa Warren."
             //});
-=======
-          
->>>>>>> f688148345ce2628dd083705cc2a91f3471277f7
+
              
             // Implement Characters
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL First Character", Description = "This is an Character description.", Level = 1 });
