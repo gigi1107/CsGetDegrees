@@ -29,7 +29,7 @@ namespace WDown.Services
         private List<Item> _itemDataset = new List<Item>();
         private List<Character> _characterDataset = new List<Character>();
         private List<Monster> _monsterDataset = new List<Monster>();
-        //private List<Score> _scoreDataset = new List<Score>();
+        private List<Score> _scoreDataset = new List<Score>();
 
         private MockDataStore()
         {
@@ -43,11 +43,97 @@ namespace WDown.Services
             // Implement
 
             // Load Items.
-            _itemDataset.Add(new Item("Fresh Carrot", "+health"));
+            _itemDataset.Add(new Item
+            {
+                Name = "Fresh Carrot",
+                Location = ItemLocationEnum.Unknown,
+                Description = "Regenerates health to full when consumed. ",
+                Value = 200,
+                Range = 0,
+                Damage = 0,
+                Wearable = false,
+                Attribute = AttributeEnum.CurrentHealth,
+                ImageURI = "https://i.imgur.com/DeFwZPA.png"
+            });
 
-            _itemDataset.Add(new Item("Wet Grass", "+ 20% health"));
+            _itemDataset.Add(new Item
+            {
+                Name = "Wet Grass",
+                Location = ItemLocationEnum.Unknown,
+                Description = "Regenerates some health when consumed. ",
+                Value = 10,
+                Range = 0,
+                Damage = 0,
+                Wearable = false,
+                Attribute = AttributeEnum.CurrentHealth,
+                ImageURI = "https://i.imgur.com/6jxvNb7.png"
+            });
 
-            _itemDataset.Add(new Item("Magical Dew", "+2 pts wisdom"));
+            _itemDataset.Add(new Item
+            {
+                Name = "Magical Dew",
+                Location = ItemLocationEnum.Unknown,
+                Description = "Regenerates Wisdom points. ",
+                Value = 1,
+                Range = 0,
+                Damage = 0,
+                Wearable = false,
+                Attribute = AttributeEnum.Unknown,
+                ImageURI = "https://i.imgur.com/YTAxFyn.png"
+            });
+
+            _itemDataset.Add(new Item
+            {
+                Name = "Tree Bark of Agility",
+                Location = ItemLocationEnum.PrimaryHand,
+                Description = "Increases defense. ",
+                Value = 1,
+                Range = 0,
+                Damage = 0,
+                Wearable = true,
+                Attribute = AttributeEnum.Defense,
+                ImageURI = "https://i.imgur.com/YRhd2kP.png"
+            });
+
+            _itemDataset.Add(new Item
+            {
+                Name = "Rope of Vengeance",
+                Location = ItemLocationEnum.Head,
+                Description = "Increases Attack ",
+                Value = 1,
+                Range = 0,
+                Damage = 0,
+                Wearable = true,
+                Attribute = AttributeEnum.Attack,
+                ImageURI = "https://i.imgur.com/ZpEuNvv.png"
+            });
+
+            _itemDataset.Add(new Item
+            {
+                Name = "Collar of Transcendence",
+                Location = ItemLocationEnum.Necklass,
+                Description = "Increases speed. ",
+                Value = 1,
+                Range = 0,
+                Damage = 0,
+                Wearable = true,
+                Attribute = AttributeEnum.Speed,
+                ImageURI = "https://i.imgur.com/JPbyaEF.png"
+            });
+
+            _itemDataset.Add(new Item
+            {
+                Name = "Jewel of Gibberish",
+                Location = ItemLocationEnum.LeftFinger,
+                Description = "Decreases Attack. ",
+                Value = -1,
+                Range = 0,
+                Damage = 0,
+                Wearable = true,
+                Attribute = AttributeEnum.Attack,
+                ImageURI = "https://i.imgur.com/ikREFHq.png"
+            });
+
 
             // Implement Characters
 
@@ -441,6 +527,39 @@ namespace WDown.Services
         }
 
         #endregion Monster
+
+        #region Score
+        // Score
+        public async Task<bool> AddAsync_Score(Score data)
+        {
+            // Implement
+            return false;
+        }
+
+        public async Task<bool> UpdateAsync_Score(Score data)
+        {
+            // Implement
+            return false;
+        }
+
+        public async Task<bool> DeleteAsync_Score(Score data)
+        {
+            // Implement
+            return false;
+        }
+
+        public async Task<Score> GetAsync_Score(string id)
+        {
+            // Implement
+            return null;
+        }
+
+        public async Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false)
+        {
+            // Implement
+            return null;
+        }
+        #endregion Score
 
 
 
