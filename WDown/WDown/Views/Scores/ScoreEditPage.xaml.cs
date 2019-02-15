@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace WDown.Views.Scores
 {
-    public partial class ScoresPage : ContentPage
+    public partial class ScoreEditPage : ContentPage
     {
-        public ScoresPage()
+        public ScoreEditPage()
         {
             InitializeComponent();
         }
