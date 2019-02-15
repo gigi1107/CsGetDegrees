@@ -29,6 +29,9 @@ namespace WDown.Models
         // The Value item modifies.  So a ring of Health +3, has a Value of 3
         public int Value { get; set; }
 
+        //true if the item can be equipped, false if the item is consumed
+        public bool Wearable { get; set; }
+
         // Inheritated properties
         // Id comes from BaseEntity class
         // Name comes from the Entity class... 
