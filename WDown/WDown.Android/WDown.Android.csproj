@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.1</Version>
+    </PackageReference>
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.5.231</Version>
     </PackageReference>
@@ -96,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WDown\WDown.csproj">
-      <Project>{38C13D7F-FD33-4BB3-B80E-61F8DF17A5A4}</Project>
+      <Project>{A25D47F2-0795-41F4-BA34-BE90BB62F4D9}</Project>
       <Name>WDown</Name>
     </ProjectReference>
   </ItemGroup>

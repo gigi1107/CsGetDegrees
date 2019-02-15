@@ -72,6 +72,7 @@ namespace WDown.Services
         //create a list of Items to initialize the data
         private async void InitilizeSeedData()
         {
+<<<<<<< HEAD
            
 
             //await AddAsync_Item(new Item
@@ -107,6 +108,9 @@ namespace WDown.Services
             //    Name = "General Woundwort",
             //    Description = "The tyranny leader of Efrafa Warren."
             //});
+=======
+          
+>>>>>>> f688148345ce2628dd083705cc2a91f3471277f7
              
             // Implement Characters
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL First Character", Description = "This is an Character description.", Level = 1 });
@@ -116,28 +120,16 @@ namespace WDown.Services
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Fifth Character", Description = "This is an Character description.", Level = 3 });
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Sixth Character", Description = "This is an Character description.", Level = 3 });
 
+            // Implement Monsters
+            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "SQL First Monster", Description = "This is an Monster description." });
+            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "SQL Second Monster", Description = "This is an Monster description." });
+            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "SQL Third Monster", Description = "This is an Monster description." });
         }
 
         #region Item
         // Item
         public async Task<bool> InsertUpdateAsync_Item(Item data)
-        {
-
-            //// Check to see if the item exist
-            //var oldData = await GetAsync_Item(data.Id);
-            //if (oldData == null)
-            //{
-            //    _itemDataset.Add(data);
-            //    return true;
-            //}
-
-            //// Compare it, if different update in the DB
-            //var UpdateResult = await UpdateAsync_Item(data);
-            //if (UpdateResult)
-            //{
-            //    await AddAsync_Item(data);
-            //    return true;
-            //}
+        { 
 
             return false;
         }
