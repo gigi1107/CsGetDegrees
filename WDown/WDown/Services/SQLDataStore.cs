@@ -97,7 +97,7 @@ namespace WDown.Services
             //await AddAsync_Character(new Character
             //{
             //    Id = Guid.NewGuid().ToString(),
-            //    Name = "BigWit",
+            //    Name = "BigWig",
             //    Description = "The strongest defended of the warren, with a passion of fire."
             //});
 
