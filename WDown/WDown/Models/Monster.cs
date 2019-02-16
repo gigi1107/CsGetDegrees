@@ -5,6 +5,7 @@ using System.Text;
 using WDown.ViewModels;
 using Xamarin.Forms;
 using SQLite;
+using WDown.GameEngine;
 namespace WDown.Models
 {
     // The Monster is the higher level concept.  This is the Character with all attirbutes defined.
@@ -51,13 +52,31 @@ namespace WDown.Models
         // Upgrades a monster to a set level
         public void ScaleLevel(int level)
         {
-            // Implement
+            //we are using the dictionary in HelperEngine to level up
+            //key: level
+            //value: (speed, defense, attack, wisdom-opt)
+            Random r = new Random();
+            MonsterAttribute.Speed = HelperEngine.levelDictionary[level][0];
+            MonsterAttribute.Defense = HelperEngine.levelDictionary[level][1];
+            MonsterAttribute.Attack = HelperEngine.levelDictionary[level][2];
+
+            int oldCurrHealth = MonsterAttribute.CurrentHealth;
+            int healthDiff = MonsterAttribute.MaxHealth - oldCurrHealth;
+            MonsterAttribute.MaxHealth = HelperEngine.RollDice(level, 10);
+            MonsterAttribute.CurrentHealth = MonsterAttribute.CurrentHealth - healthDiff;
+
+          
         }
 
         // Update the values passed in
         public new void Update(Monster newData)
         {
-            // Implement
+            MonsterAttribute.Speed = newData.MonsterAttribute.Speed;
+            MonsterAttribute.Attack = newData.MonsterAttribute.Attack;
+            MonsterAttribute.Defense = newData.MonsterAttribute.Defense;
+            MonsterAttribute.CurrentHealth = newData.MonsterAttribute.CurrentHealth;
+            MonsterAttribute.MaxHealth = newData.MonsterAttribute.MaxHealth;
+
 
             return;
         }

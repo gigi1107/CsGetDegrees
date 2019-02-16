@@ -43,16 +43,26 @@ namespace WDown.Models
         // Instantiate new Score
         public Score()
         {
-            // Implement
+
 
         }
 
         // Update the score based on the passed in values.
         public void Update(Score newData)
         {
-            // Implement
+            BattleNumber = newData.BattleNumber;
+            ScoreTotal = newData.ScoreTotal;
+            GameDate = newData.GameDate;
+            AutoBattle = newData.AutoBattle;
+            TurnCount = newData.TurnCount;
+            RoundCount = newData.RoundCount;
+            MonsterSlainNumber = newData.MonsterSlainNumber;
+            ExperienceGainedTotal = newData.ExperienceGainedTotal;
+            CharacterAtDeathList = newData.CharacterAtDeathList;
+            MonstersKilledList = newData.MonstersKilledList;
+            ItemsDroppedList = newData.ItemsDroppedList;
 
-                return;
+            return;
             
         }
 
@@ -61,22 +71,22 @@ namespace WDown.Models
         // Adding a character to the score output as a text string
         public bool AddCharacterToList( Character data)
         {
-            // Implement
-            return false;
+            CharacterAtDeathList += data.ToString();
+            return true;
         }
 
         // All a monster to the list of monsters and their stats
         public bool AddMonsterToList( Monster data)
         {
-            // Implement
-            return false;
+            MonstersKilledList += data.ToString();
+            return true;
            
         }
 
-        // All an item to the list of items for score and their stats
+        // Add an item to the list of items for score and their stats
         public bool AddItemToList( Item data)
         {
-            // Implement
+            ItemsDroppedList += data.ToString();
             return false;
 
         }
