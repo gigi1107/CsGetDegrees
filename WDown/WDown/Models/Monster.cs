@@ -64,6 +64,7 @@ namespace WDown.Models
             int healthDiff = MonsterAttribute.MaxHealth - oldCurrHealth;
             MonsterAttribute.MaxHealth = HelperEngine.RollDice(level, 10);
             MonsterAttribute.CurrentHealth = MonsterAttribute.CurrentHealth - healthDiff;
+            Level = level;
 
           
         }
@@ -76,6 +77,12 @@ namespace WDown.Models
             MonsterAttribute.Defense = newData.MonsterAttribute.Defense;
             MonsterAttribute.CurrentHealth = newData.MonsterAttribute.CurrentHealth;
             MonsterAttribute.MaxHealth = newData.MonsterAttribute.MaxHealth;
+
+            ExperienceTotal = newData.ExperienceTotal;
+            Level = newData.Level;
+            Name = newData.Name;
+            Description = newData.Description;
+
 
 
             return;
@@ -100,8 +107,8 @@ namespace WDown.Models
         // Needs to be called before applying damage
         public int CalculateExperienceEarned(int damage)
         {
-            // Implement
-            return 0;
+            int xp = (damage / MonsterAttribute.MaxHealth) * ExperienceTotal;
+            return xp;
 
         }
 
@@ -173,7 +180,7 @@ namespace WDown.Models
         // monsters give experience to characters.  Characters don't accept expereince from monsters
         public void TakeDamage(int damage)
         {
-            // Implement
+            //implement
             return;
 
             // Implement   CauseDeath();
