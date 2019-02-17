@@ -567,33 +567,64 @@ namespace WDown.Services
         // Score
         public async Task<bool> AddAsync_Score(Score data)
         {
-            // Implement
-            return false;
+            _scoreDataset.Add(data);
+            return await Task.FromResult(true);
         }
 
         public async Task<bool> UpdateAsync_Score(Score data)
         {
-            // Implement
-            return false;
+            var myData = _scoreDataset.FirstOrDefault(arg => arg.Id == data.Id);
+            if (myData == null)
+            {
+                return false;
+            }
+
+            myData.Update(data);
+
+            return await Task.FromResult(true);
         }
 
         public async Task<bool> DeleteAsync_Score(Score data)
         {
-            // Implement
-            return false;
+            var myData = _scoreDataset.FirstOrDefault(arg => arg.Id == data.Id);
+            _scoreDataset.Remove(myData);
+
+            return await Task.FromResult(true);
         }
 
         public async Task<Score> GetAsync_Score(string id)
         {
-            // Implement
-            return null;
+            return await Task.FromResult(_scoreDataset.FirstOrDefault(s => s.Id == id));
+
         }
 
         public async Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false)
         {
-            // Implement
-            return null;
+            return await Task.FromResult(_scoreDataset);
         }
+
+        public async Task<bool> InsertUpdateAsync_Score(Score data)
+        {
+
+            // Check to see if the item exist
+            var oldData = await GetAsync_Score(data.Id);
+            if (oldData == null)
+            {
+                _scoreDataset.Add(data);
+                return true;
+            }
+
+            // Compare it, if different update in the DB
+            var UpdateResult = await UpdateAsync_Score(data);
+            if (UpdateResult)
+            {
+                await AddAsync_Score(data);
+                return true;
+            }
+
+            return false;
+        }
+
         #endregion Score
 
 

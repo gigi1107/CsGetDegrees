@@ -126,10 +126,27 @@ namespace WDown.Services
         #region Item
         // Item
         public async Task<bool> InsertUpdateAsync_Item(Item data)
-        { 
+        {
+
+            // Check to see if the item exist
+            var oldData = await GetAsync_Item(data.Id);
+            if (oldData == null)
+            {
+                await AddAsync_Item(data);
+                return true;
+            }
+
+            // Compare it, if different update in the DB
+            var UpdateResult = await UpdateAsync_Item(data);
+            if (UpdateResult)
+            {
+                await AddAsync_Item(data);
+                return true;
+            }
 
             return false;
         }
+   
 
         public async Task<bool> AddAsync_Item(Item data)
         {
@@ -375,6 +392,79 @@ namespace WDown.Services
         }
 
         #endregion Monster
+
+        #region Score
+        // Score
+        public async Task<bool> AddAsync_Score(Score data)
+        {
+            var result = await App.Database.InsertAsync(data);
+            if (result == 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> UpdateAsync_Score(Score data)
+        {
+            var result = await App.Database.UpdateAsync(data);
+            if (result == 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> DeleteAsync_Score(Score data)
+        {
+           
+                var result = await App.Database.DeleteAsync(data);
+                if (result == 1)
+                {
+                    return true;
+                }
+
+                return false;
+
+         }
+
+            public async Task<Score> GetAsync_Score(string id)
+        {
+            var result = await App.Database.GetAsync<Score>(id);
+            return result;
+
+        }
+
+        public async Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false)
+        {
+            var result = await App.Database.Table<Score>().ToListAsync();
+            return result;
+        }
+
+        public async Task<bool> InsertUpdateAsync_Score(Score data)
+        {
+
+            // Check to see if the item exist
+            var oldData = await GetAsync_Score(data.Id);
+            if (oldData == null)
+            {
+                await AddAsync_Score(data);
+                return true;
+            }
+
+            // Compare it, if different update in the DB
+            var UpdateResult = await UpdateAsync_Score(data);
+            if (UpdateResult)
+            {
+                await AddAsync_Score(data);
+                return true;
+            }
+
+            return false;
+        }
+        #endregion Score
 
 
 

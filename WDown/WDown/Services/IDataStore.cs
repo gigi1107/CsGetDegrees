@@ -39,12 +39,12 @@ namespace WDown.Services
         Task<IEnumerable<Monster>> GetAllAsync_Monster(bool forceRefresh = false);
 
         //Score
-        //Task<bool> AddAsync_Score(Score monster);
-        //Task<bool> InsertUpdateAsync_Score(Score item);
-        //Task<bool> UpdateAsync_Score(Score monster);
-        //Task<bool> DeleteAsync_Score(Score id);
-        //Task<Monster> GetAsync_Score(string id);
-        //Task<IEnumerable<Monster>> GetAllAsync_Score(bool forceRefresh = false);
+        Task<bool> AddAsync_Score(Score score);
+        Task<bool> InsertUpdateAsync_Score(Score score);
+        Task<bool> UpdateAsync_Score(Score score);
+        Task<bool> DeleteAsync_Score(Score id);
+        Task<Score> GetAsync_Score(string id);
+        Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false);
 
     }
 }

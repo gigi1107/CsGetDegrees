@@ -8,8 +8,7 @@
 
     <ContentPage.Content>
         <StackLayout Padding="10">
-            
-
+  
             <StackLayout
                 HorizontalOptions = "Center"
                 Orientation = "Horizontal">

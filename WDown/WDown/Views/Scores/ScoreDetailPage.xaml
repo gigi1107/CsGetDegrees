@@ -1,7 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="WDown.Views.Scores.ScoreDetailPage">
-    <ContentPage.Content>
-    </ContentPage.Content>
+             x:Class="WDown.Views.Scores.ScoreDetailPage"
+             Title="Scores Detail">
+     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="Edit_Clicked" />
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout x:Name="DetailsRoot" Orientation="Vertical" Spacing="1" Padding="0.5">
+            <Label Text="Score Details"
+                   HorizontalOptions="Center" 
+                   FontSize="Small" />
+            <Label Text="{Binding Data.Name}"
+                   FontSize="Medium" 
+                   HorizontalOptions="Center" />
+            <Image Source="{Binding Data.ImageURI}" 
+                   WidthRequest="150" 
+                   HeightRequest="150"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
+
+
+            <StackLayout 
+                Orientation = "Horizontal">
+                <Label Text="Date " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+                <Label Text= "{Binding Data.GameDate}"
+                       HorizontalOptions = "Center"
+                       FontSize = "Small"
+                       />
+            </StackLayout>
+
+
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Battle Number " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+                <Label Text= "{Binding Data.BattleNumber}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+
+
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Score Total " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+                <Label Text= "{Binding Data.ScoreTotal}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Turn Count " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+
+                <Label Text= "{Binding Data.TurnCount}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+
+            <StackLayout  Orientation = "Horizontal">
+                <Label Text="Round Count " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+
+
+                <Label Text= "{Binding Data.RoundCount}"
+                       FontSize = "Small"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
+            <StackLayout >
+                <Label Text="Experience Gained, total  " 
+                       FontSize="Small" 
+                       HorizontalOptions="Start" />
+            </StackLayout>
+
+            <StackLayout  >
+                <Frame OutlineColor="Black">
+                    <Label Text="{Binding Data.ExperienceGainedTotal}" 
+                           FontSize="Small"
+                           HorizontalOptions = "Center"/>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

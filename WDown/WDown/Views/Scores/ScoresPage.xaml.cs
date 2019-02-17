@@ -17,6 +17,7 @@ namespace WDown.Views.Scores
         public ScoresPage()
         {
             InitializeComponent();
+
             BindingContext = _viewModel = ScoresViewModel.Instance;
 
         }

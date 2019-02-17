@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using WDown.ViewModels;
 using WDown.Models;
-using WDown.Views;
 using System.Linq;
 using WDown.Controllers;
 
@@ -40,45 +39,44 @@ namespace WDown.ViewModels
             Dataset = new ObservableCollection<Score>();
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
-            // Implement 
+            MessagingCenter.Subscribe<WDown.Views.Scores.ScoreDeletePage, Score>(this, "DeleteData", async (obj, data) =>
+            {
+                Dataset.Remove(data);
+                await DataStore.DeleteAsync_Score(data);
+            });
+
+            MessagingCenter.Subscribe<WDown.Views.Scores.ScoresNewPage, Score>(this, "AddData", async (obj, data) =>
+            {
+                Dataset.Add(data);
+                await DataStore.AddAsync_Score(data);
+            });
+
+            MessagingCenter.Subscribe<WDown.Views.Scores.ScoreEditPage, Score>(this, "EditData", async (obj, data) =>
+            {
+
+                // Find the Item, then update it
+                var myData = Dataset.FirstOrDefault(arg => arg.Id == data.Id);
+                if (myData == null)
+                {
+                    return;
+                }
+
+                myData.Update(data);
+                await DataStore.UpdateAsync_Score(data);
+
+                _needsRefresh = true;
+
+            });
         }
 
-        // Call to database operation for delete
-        public async Task<bool> DeleteAsync(Score data)
-        {
-            Dataset.Remove(data);
-            return true;
-        }
-
-        // Call to database operation for add
-        public async Task<bool> AddAsync(Score data)
-        {
-            Dataset.Add(data); 
-            return true;
-        }
-
-        // Call to database operation for update
-        public async Task<bool> UpdateAsync(Score data)
-        {
-            //implement
-             
-            return false;
-        }
-
-        // Call to database to ensure most recent
-        public async Task<Score> GetAsync(string id)
-        {
-            // Implement 
-            return null;
-        }
-
-        // Return True if a refresh is needed
-        // It sets the refresh flag to false
         public bool NeedsRefresh()
         {
-            // Implement 
+            if (_needsRefresh)
+            {
+                _needsRefresh = false;
+                return true;
+            }
             return false;
-
         }
 
         // Sets the need to refresh
@@ -89,14 +87,32 @@ namespace WDown.ViewModels
 
         private async Task ExecuteLoadDataCommand()
         {
-            // Implement 
-            return;
+            if (IsBusy)
+                return;
 
-        }
+            IsBusy = true;
 
-        public void ForceDataRefresh()
-        {
-            // Implement 
+            try
+            {
+                Dataset.Clear();
+                var dataset = await DataStore.GetAllAsync_Score(true);
+                foreach (var data in dataset)
+                {
+                    Dataset.Add(data);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
     }
+
+
+
+
 }

@@ -43,6 +43,12 @@ namespace WDown.Models
         // Instantiate new Score
         public Score()
         {
+            CreateDefaultScore();
+
+        }
+
+        private void CreateDefaultScore()
+        {
             Name = "Score";
 
             Description = "This is a Score.";
@@ -60,11 +66,12 @@ namespace WDown.Models
             CharacterAtDeathList = "";
             MonstersKilledList = "";
             ItemsDroppedList = "";
-
         }
 
         public Score(Score newData)
         {
+            CreateDefaultScore();
+
             Name = newData.Name;
             Description = newData.Description;
             ImageURI = newData.ImageURI;
@@ -85,6 +92,10 @@ namespace WDown.Models
         // Update the score based on the passed in values.
         public void Update(Score newData)
         {
+            if (newData == null)
+            {
+                return;
+            }
             BattleNumber = newData.BattleNumber;
             ScoreTotal = newData.ScoreTotal;
             GameDate = newData.GameDate;
