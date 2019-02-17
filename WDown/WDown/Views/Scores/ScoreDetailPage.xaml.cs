@@ -6,7 +6,7 @@ using Xamarin.Forms.Xaml;
 using WDown.Models;
 using WDown.ViewModels;
 
-namespace Crawl.Views
+namespace WDown.Views.Scores
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScoreDetailPage : ContentPage

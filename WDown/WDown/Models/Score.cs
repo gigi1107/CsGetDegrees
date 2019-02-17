@@ -43,8 +43,43 @@ namespace WDown.Models
         // Instantiate new Score
         public Score()
         {
+            Name = "Score";
 
+            Description = "This is a Score.";
 
+            ImageURI = "https://i.imgur.com/DeFwZPA.png";
+
+            BattleNumber = 0;
+            ScoreTotal = 0;
+            GameDate = DateTime.MinValue;
+            AutoBattle = false;
+            TurnCount = 0;
+            RoundCount = 0;
+            MonsterSlainNumber = 0;
+            ExperienceGainedTotal = 0;
+            CharacterAtDeathList = "";
+            MonstersKilledList = "";
+            ItemsDroppedList = "";
+
+        }
+
+        public Score(Score newData)
+        {
+            Name = newData.Name;
+            Description = newData.Description;
+            ImageURI = newData.ImageURI;
+
+            BattleNumber = newData.BattleNumber;
+            ScoreTotal = newData.ScoreTotal;
+            GameDate = newData.GameDate;
+            AutoBattle = newData.AutoBattle;
+            TurnCount = newData.TurnCount;
+            RoundCount = newData.RoundCount;
+            MonsterSlainNumber = newData.MonsterSlainNumber;
+            ExperienceGainedTotal = newData.ExperienceGainedTotal;
+            CharacterAtDeathList = newData.CharacterAtDeathList;
+            MonstersKilledList = newData.MonstersKilledList;
+            ItemsDroppedList = newData.ItemsDroppedList;
         }
 
         // Update the score based on the passed in values.
@@ -61,6 +96,10 @@ namespace WDown.Models
             CharacterAtDeathList = newData.CharacterAtDeathList;
             MonstersKilledList = newData.MonstersKilledList;
             ItemsDroppedList = newData.ItemsDroppedList;
+
+            Name = newData.Name;
+            Description = newData.Description;
+            ImageURI = newData.ImageURI;
 
             return;
             

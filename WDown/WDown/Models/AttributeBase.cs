@@ -4,11 +4,13 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
+using System.Collections;
 
 namespace WDown.Models
 {
     public class AttributeBase
     {
+       
 
         //the speed of the character
         public int Speed { get; set; }
@@ -30,6 +32,7 @@ namespace WDown.Models
         public AttributeBase()
         {
             SetDefaultValues();
+
         }
 
       

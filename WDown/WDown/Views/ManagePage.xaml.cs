@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WDown.Views.Items;
+using WDown.Views.Scores;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -35,7 +36,13 @@ namespace WDown.Views
         // Take user to Item Page
         async void ItemPageClicked(object sender, EventArgs args)
         {
-            await Navigation.PushAsync(new Items.ItemPage());
+            await Navigation.PushAsync(new ItemPage());
+        }
+
+        //take user to Score page
+        async void ScorePageClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new ScoresPage());
         }
 
 

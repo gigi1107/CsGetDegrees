@@ -10,7 +10,7 @@ using WDown.Views;
 using System.Linq;
 using WDown.Controllers;
 
-namespace Crawl.ViewModels
+namespace WDown.ViewModels
 {
     public class ScoresViewModel : BaseViewModel
     {
@@ -46,21 +46,22 @@ namespace Crawl.ViewModels
         // Call to database operation for delete
         public async Task<bool> DeleteAsync(Score data)
         {
-            // Implement 
-            return false;
+            Dataset.Remove(data);
+            return true;
         }
 
         // Call to database operation for add
         public async Task<bool> AddAsync(Score data)
         {
-            // Implement 
-            return false;
+            Dataset.Add(data); 
+            return true;
         }
 
         // Call to database operation for update
         public async Task<bool> UpdateAsync(Score data)
         {
-            // Implement 
+            //implement
+             
             return false;
         }
 

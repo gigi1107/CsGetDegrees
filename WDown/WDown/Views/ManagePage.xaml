@@ -8,5 +8,6 @@
         <Button Text="Character" Clicked="CharacterPageClicked" />
         <Button Text="Monster" Clicked="MonsterPageClicked" />
         <Button Text="Item" Clicked="ItemPageClicked" />
+        <Button Text="Score" Clicked = "ScorePageClicked" />
     </StackLayout>
 </ContentPage>

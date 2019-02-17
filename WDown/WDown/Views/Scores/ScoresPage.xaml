@@ -1,5 +1,74 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WDown.Views.Scores.ScoresPage">
-    <ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="WDown.Views.Scores.ScoresPage"
+             Title = "Scores">
+   <ContentPage.Content>
+        <StackLayout Padding="10">
+
+            <StackLayout
+                HorizontalOptions = "Center"
+                Orientation = "Horizontal">
+
+                <Image Source = "https://i.imgur.com/QJtaZqu.png"
+                            WidthRequest = "50"
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center"
+                                />
+                <Label Text = "Add New Score ..."
+                            FontSize = "16" 
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped = "AddScore_Clicked"/>
+                </StackLayout.GestureRecognizers>
+
+            </StackLayout>
+
+            <StackLayout>
+
+                <ListView x:Name="ScoreListView" 
+                ItemsSource="{Binding Dataset}"
+                VerticalOptions="FillAndExpand"
+                 HasUnevenRows="true"
+                 RefreshCommand="{Binding LoadItemsCommand}"
+                 IsPullToRefreshEnabled="true"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 CachingStrategy="RecycleElement"
+                 ItemSelected="OnScoreSelected">
+                    <ListView.ItemTemplate>
+                              <DataTemplate>
+                            <ViewCell>
+
+                                <StackLayout Padding="10"
+                                         Orientation="Horizontal"
+                                         VerticalOptions="Start"
+                                         HorizontalOptions="Start">
+
+                                    <Label Text="{Binding Name}"
+                                       />
+
+
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Data.GameDate}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="12" />
+
+                                          
+
+                                        </StackLayout>
+                                        
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -30,20 +30,11 @@ namespace WDown.Views
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
-                    case (int)MenuItemType.Home:
-                        MenuPages.Add(id, new NavigationPage(new TitlePage()));
-                        break;
+                  
                     case (int)MenuItemType.Manage:
                         MenuPages.Add(id, new NavigationPage(new ManagePage()));
                         break;
-                    case (int)MenuItemType.Items:
-                        MenuPages.Add(id, new NavigationPage(new ItemPage()));
-                        break;
-                    case (int)MenuItemType.History:
-                        MenuPages.Add(id, new NavigationPage(new HistoryPage()));
-                        break;
-
-
+                   
                 }
             }
 

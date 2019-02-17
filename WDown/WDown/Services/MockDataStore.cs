@@ -40,8 +40,7 @@ namespace WDown.Services
         {
 
 
-            // Implement
-
+           
             // Load Items.
             _itemDataset.Add(new Item
             {
@@ -279,6 +278,42 @@ namespace WDown.Services
             });
 
             // Implement Scores
+            _scoreDataset.Add(new Score
+            {
+                Name = "Score 1",
+                BattleNumber = 1,
+                ScoreTotal = 15,
+                GameDate = DateTime.Now,
+                AutoBattle = false,
+                TurnCount = 20,
+                RoundCount = 3,
+                MonsterSlainNumber = 18,
+                ExperienceGainedTotal = 10000,
+                CharacterAtDeathList = "Hazel, BigWig",
+                MonstersKilledList = "Dog, Cat, Fox, Bird, Cult Rabbit, Dog",
+                ItemsDroppedList = "Tree Bark, Collar of Transcendence, Magical Dew",
+                Description = "First score"
+
+            });
+
+            _scoreDataset.Add(new Score
+            {
+                Name = "Score 2",
+                BattleNumber = 2,
+                ScoreTotal = 200,
+                GameDate = DateTime.Now,
+                AutoBattle = false,
+                TurnCount = 30,
+                RoundCount = 4,
+                MonsterSlainNumber = 24,
+                ExperienceGainedTotal = 20000,
+                CharacterAtDeathList = "Hyzenthlay, Clover",
+                MonstersKilledList = "Cat, Cat, Dog, Bird, Cult Rabbit, Dog",
+                ItemsDroppedList = "Grass, Collar of Transcendence, Magical Dew",
+                Description = "Second Score"
+
+            });
+
         }
 
         private void CreateTables()

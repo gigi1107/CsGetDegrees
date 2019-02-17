@@ -8,10 +8,9 @@ namespace WDown.Models
     public enum MenuItemType
     {
         About,
-        Home,
-        Manage,
-        Items,
-        History
+  
+        Manage
+
     }
     public class HomeMenuItem
     {

@@ -5,7 +5,8 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace WDown.Views
+namespace WDown.Views.Scores
+
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScoreDeletePage : ContentPage
