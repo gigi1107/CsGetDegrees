@@ -11,13 +11,14 @@
     <ScrollView>
         <StackLayout x:Name="DetailsRoot" Orientation="Vertical"
                      Spacing="1"
-                     Padding="0.5">
+                     Margin="20"
+                     Padding="20">
             
             <Label Text="Score Details"
                    HorizontalOptions="Center" 
                    FontSize="Small" />
             <StackLayout Orientation="Horizontal">
-                <Image Source="{Binding ImageURI}"
+                <Image Source="{Binding Data.ImageURI}"
                        HeightRequest="50"
                        WidthRequest="50"/>
                  <Label Text="{Binding Data.Name}"
@@ -28,87 +29,87 @@
             <StackLayout 
                 Orientation = "Horizontal">
                 <Label Text="Date " 
-                       FontSize="Small" 
+                       FontSize="Medium" 
                        HorizontalOptions="Start" />
 
                 <Label Text= "{Binding Data.GameDate}"
                        HorizontalOptions = "Center"
-                       FontSize = "Small"
+                       FontSize = "Medium"
                        />
             </StackLayout>
 
 
             <StackLayout  Orientation = "Horizontal">
                 <Label Text="Battle Number " 
-                       FontSize="Small" 
+                       FontSize="Medium" 
                        HorizontalOptions="Start" />
 
                 <Label Text= "{Binding Data.BattleNumber}"
-                       FontSize = "Small"
+                       FontSize = "Medium"
                        HorizontalOptions = "Center"/>
             </StackLayout>
 
 
             <StackLayout  Orientation = "Horizontal">
                 <Label Text="Score Total " 
-                       FontSize="Small" 
+                       FontSize="Medium" 
                        HorizontalOptions="Start" />
 
                 <Label Text= "{Binding Data.ScoreTotal}"
-                       FontSize = "Small"
+                       FontSize = "Medium"
                        HorizontalOptions = "Center"/>
             </StackLayout>
 
             <StackLayout  Orientation = "Horizontal">
                 <Label Text="Turn Count " 
-                       FontSize="Small" 
+                       FontSize="Medium" 
                        HorizontalOptions="Start" />
 
 
                 <Label Text= "{Binding Data.TurnCount}"
-                       FontSize = "Small"
+                       FontSize = "Medium"
                        HorizontalOptions = "Center"/>
             </StackLayout>
 
             <StackLayout  Orientation = "Horizontal">
                 <Label Text="Round Count " 
-                       FontSize="Small" 
+                       FontSize="Medium" 
                        HorizontalOptions="Start" />
 
 
                 <Label Text= "{Binding Data.RoundCount}"
-                       FontSize = "Small"
+                       FontSize = "Medium"
                        HorizontalOptions = "Center"/>
             </StackLayout>
                <StackLayout Orientation="Horizontal">
                 <Label Text="Monsters Slain"
-                       FontSize="Small"
+                       FontSize="Medium"
                        HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.MonsterSlainNumber}"/>
                 </StackLayout>
             <StackLayout Orientation="Horizontal" >
                 <Label Text="Experience Gained, total  " 
-                       FontSize="Small" 
+                       FontSize="Medium" 
                        HorizontalOptions="Start" />
                 <Label Text="{Binding Data.ExperienceGainedTotal}" 
-                           FontSize="Small"
+                           FontSize="Medium"
                            HorizontalOptions = "Center"/>
             </StackLayout>
                <StackLayout Orientation="Horizontal">
                 <Label Text="Characters at Death List"
-                       FontSize="Small"
+                       FontSize="Medium"
                        HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.CharacterAtDeathList}"/>
                 </StackLayout>
                <StackLayout Orientation="Horizontal">
                 <Label Text="Monsters Killed List"
-                       FontSize="Small"
+                       FontSize="Medium"
                        HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.MonstersKilledList}"/>
                 </StackLayout>
                <StackLayout Orientation="Horizontal">
                 <Label Text="Items Dropped List"
-                       FontSize="Small"
+                       FontSize="Medium"
                        HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.ItemsDroppedList}"/>
                 </StackLayout>

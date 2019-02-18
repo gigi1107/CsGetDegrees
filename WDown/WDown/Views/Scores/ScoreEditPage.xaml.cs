@@ -45,5 +45,40 @@ namespace WDown.Views.Scores
         {
             await Navigation.PopAsync();
         }
+
+        // This function handles stepper value changed for Attack
+        private void Score_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            ScoreValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+
+        // This function handles stepper value changed for Speed
+        private void Turn_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            TurnCountValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+
+        // This function handles stepper value changed for Defense
+        private void RoundCount_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            RoundValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+        private void MonstersSlainNumber_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            MonstersKilledNumber.Text = String.Format("{0}", e.NewValue);
+        }
+
+        private void XP_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            XPGained.Text = String.Format("{0}", e.NewValue);
+        }
+
+        private void BattleNumber_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            BattleNum.Text = String.Format("{0}", e.NewValue);
+        }
     }
 }

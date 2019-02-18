@@ -1,5 +1,302 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WDown.Views.Scores.ScoreEditPage">
-    <ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WDown.Views.Scores.ScoreEditPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
+    </ContentPage.ToolbarItems>
+    
+    
+   <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="20">
+
+                <Label Text="edit score" FontSize="Medium" />
+
+                <Image Source="{Binding Data.ImageURI}"
+                WidthRequest="75"
+                HeightRequest="75" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+                <Grid
+                    RowSpacing="10"
+                    ColumnSpacing="10"
+                    VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                      <StackLayout Grid.Row="0" Grid.Column="0">
+                        <Label 
+                            Text="Name" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1">
+                        <Entry 
+                            Text="{Binding Data.Name}" 
+                            WidthRequest="150"
+                            />
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Grid.Column="0">
+                        <Label 
+                            Text="Date" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Grid.Column="1">
+                        <DatePicker 
+                            WidthRequest="150"
+                            Date="{Binding Data.GameDate}" 
+                            />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2" Grid.Column="0">
+                        <Label
+                            Text="Battle Number" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                       />
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Grid.Column="1">
+                       <Label 
+                            Text="{Binding Data.BattleNumber}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "BattleNum"
+                            VerticalOptions="Center"/>
+                       
+                        
+                        <Stepper Value="{Binding Data.BattleNumber, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="500"
+                            Increment="1"
+                            ValueChanged="BattleNumber_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+
+                    <StackLayout Grid.Row="3" Grid.Column="0">
+                        <Label 
+                            Text="ScoreTotal"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.ScoreTotal}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "ScoreValue"
+                            VerticalOptions="Center"/>
+
+                        <Stepper Value="{Binding ScoreTotal, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="1000000000000"
+                            Increment="10"
+                            ValueChanged="Score_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                           
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" Grid.Column="0">
+                        <Label 
+                            Text="Turn Count"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.TurnCount}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "TurnCountValue"
+                            VerticalOptions="Center"/>
+
+                        <Stepper Value="{Binding Data.TurnCount, Mode=TwoWay}"
+                            Minimum="1"
+                            Maximum="300"
+                            Increment="1"
+                            ValueChanged="Turn_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5" Grid.Column="0">
+                        <Label 
+                            Text="Round Count"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.RoundCount}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "RoundValue"
+                            VerticalOptions="Center"/>
+
+                        <Stepper Value="{Binding Data.RoundCount, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="300"
+                            Increment="1"
+                            ValueChanged="RoundCount_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                     <StackLayout Grid.Row="6" Grid.Column="0">
+                        <Label 
+                            Text="AutoBattle? "
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="6" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Switch
+                            IsToggled="{Binding Data.AutoBattle}"/>
+                            
+                    </StackLayout>
+                    
+                    <StackLayout Grid.Row="7" Grid.Column="0">
+                        <Label 
+                            Text="Number of Monsters Slain"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.MonstersSlainNumber}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "MonstersKilledNumber"
+                            VerticalOptions="Center"/>
+
+                        <Stepper Value="{Binding Data.MonstersSlainNumber, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="100"
+                            Increment="1"
+                            ValueChanged="MonstersSlainNumber_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    
+                      <StackLayout Grid.Row="8" Grid.Column="0">
+                        <Label 
+                            Text="List of Monsters Slain"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="8" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.MonstersKilledList}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "MonstersKilledList"
+                            VerticalOptions="Center"/>
+
+                       
+                    </StackLayout>
+                    
+                      <StackLayout Grid.Row="9" Grid.Column="0">
+                        <Label 
+                            Text="Total Experience Gained"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="9" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.ExperienceGainedTotal}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "XPGained"
+                            VerticalOptions="Center"/>
+
+                        <Stepper Value="{Binding ExperienceGainedTotal, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="100000000"
+                            Increment="10"
+                            ValueChanged="XP_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    
+                      <StackLayout Grid.Row="10" Grid.Column="0">
+                        <Label 
+                            Text="Characters Remaining"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="10" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.CharactersAtDeathList}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "CharactersLeft"
+                            VerticalOptions="Center"/>
+
+                       
+                    </StackLayout>
+                    
+                      <StackLayout Grid.Row="11" Grid.Column="0">
+                        <Label 
+                            Text="Items Dropped"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="11" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.ItemsDroppedList}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name= "ItemsDropped"
+                            VerticalOptions="Center"/>
+                            
+                         
+                    </StackLayout>
+                    
+                    
+                      <StackLayout Grid.Row="12" Grid.Column="0">
+                        <Label 
+                            Text="Image URI"
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="12" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Entry 
+                            Text="{Binding Data.ImageURI}" 
+                            FontSize="Small" 
+                            HorizontalOptions="Start"
+                           />
+                            
+                         
+                    </StackLayout>
+          
+                   
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
+
     </ContentPage.Content>
+
 </ContentPage>
