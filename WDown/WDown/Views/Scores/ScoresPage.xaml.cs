@@ -30,6 +30,7 @@ namespace WDown.Views.Scores
 
             await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(data)));
 
+            ScoreListView.SelectedItem = null;
         }
 
         private async void AddScore_Clicked(object sender, EventArgs e)

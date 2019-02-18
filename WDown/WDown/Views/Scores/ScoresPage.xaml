@@ -3,14 +3,8 @@
     <ContentPage.Content>
         <StackLayout Padding="10">
             <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
-                <Image Source="https://i.imgur.com/QJtaZqu.png" 
-                       WidthRequest="50" HeightRequest="50"
-                       HorizontalOptions="Center" 
-                       VerticalOptions="Center" />
-                <Label Text="Add New Score ..."
-                       FontSize="16" 
-                       HorizontalOptions="Center" 
-                       VerticalOptions="Center" />
+                <Image Source="https://i.imgur.com/QJtaZqu.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Label Text="Add New Score ..." FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="AddScore_Clicked" />
                 </StackLayout.GestureRecognizers>
@@ -18,43 +12,32 @@
             <ListView x:Name="ScoreListView"
                       ItemsSource="{Binding Dataset}" 
                       VerticalOptions="FillAndExpand" 
-                      HasUnevenRows="true" 
-                      RefreshCommand="{Binding LoadItemsCommand}"
+                      HasUnevenRows="true"
+                      RefreshCommand="{Binding LoadItemsCommand}" 
                       IsPullToRefreshEnabled="true"
                       IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
-                      CachingStrategy="RecycleElement"
+                      CachingStrategy="RecycleElement" 
                       ItemSelected="OnScoreSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-
-                                <StackLayout Padding="10"
-                                         Orientation="Horizontal"
-                                         VerticalOptions="Start"
-                                         HorizontalOptions="Start">
-
+                            <StackLayout Margin="15">
+                                <StackLayout Orientation="Horizontal">
                                     <Image Source="{Binding ImageURI}"
-                                       WidthRequest="50"
-                                       HeightRequest="50" 
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="Center"/>
-
-
-                                    <StackLayout>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding Name}" 
-                                           LineBreakMode="NoWrap" 
-                                           Style="{DynamicResource ListItemTextStyle}" 
-                                           FontSize="16" />
-
-                                          
-
-                                        </StackLayout>
-                                        
-                                    </StackLayout>
-
+                                           HeightRequest="50" WidthRequest="50" />
+                                    <Label Text="Battle Number" HorizontalOptions="Center" 
+                                           FontSize="14" />
+                                    <Label Text="{Binding BattleNumber}" 
+                                           FontSize="14"/>
                                 </StackLayout>
-                            </ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Date: " 
+                                           FontSize="14"/>
+                                    <Label Text="{Binding GameDate}"
+                                           FontSize="14"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

@@ -55,7 +55,7 @@ namespace WDown.Models
 
             ImageURI = "https://i.imgur.com/DeFwZPA.png";
 
-            BattleNumber = 0;
+            BattleNumber = 1;
             ScoreTotal = 0;
             GameDate = DateTime.MinValue;
             AutoBattle = false;

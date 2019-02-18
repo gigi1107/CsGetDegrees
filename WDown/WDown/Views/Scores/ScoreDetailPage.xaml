@@ -9,20 +9,22 @@
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-        <StackLayout x:Name="DetailsRoot" Orientation="Vertical" Spacing="1" Padding="0.5">
+        <StackLayout x:Name="DetailsRoot" Orientation="Vertical"
+                     Spacing="1"
+                     Padding="0.5">
+            
             <Label Text="Score Details"
                    HorizontalOptions="Center" 
                    FontSize="Small" />
-            <Label Text="{Binding Data.Name}"
-                   FontSize="Medium" 
+            <StackLayout Orientation="Horizontal">
+                <Image Source="{Binding ImageURI}"
+                       HeightRequest="50"
+                       WidthRequest="50"/>
+                 <Label Text="{Binding Data.Name}"
+                   FontSize="20" 
                    HorizontalOptions="Center" />
-            <Image Source="{Binding Data.ImageURI}" 
-                   WidthRequest="150" 
-                   HeightRequest="150"
-                   HorizontalOptions="Center" 
-                   VerticalOptions="Center" />
-
-
+                </StackLayout>
+          
             <StackLayout 
                 Orientation = "Horizontal">
                 <Label Text="Date " 
@@ -78,19 +80,42 @@
                        FontSize = "Small"
                        HorizontalOptions = "Center"/>
             </StackLayout>
-            <StackLayout >
+               <StackLayout Orientation="Horizontal">
+                <Label Text="Monsters Slain"
+                       FontSize="Small"
+                       HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.MonsterSlainNumber}"/>
+                </StackLayout>
+            <StackLayout Orientation="Horizontal" >
                 <Label Text="Experience Gained, total  " 
                        FontSize="Small" 
                        HorizontalOptions="Start" />
-            </StackLayout>
-
-            <StackLayout  >
-                <Frame OutlineColor="Black">
-                    <Label Text="{Binding Data.ExperienceGainedTotal}" 
+                <Label Text="{Binding Data.ExperienceGainedTotal}" 
                            FontSize="Small"
                            HorizontalOptions = "Center"/>
-                </Frame>
             </StackLayout>
+               <StackLayout Orientation="Horizontal">
+                <Label Text="Characters at Death List"
+                       FontSize="Small"
+                       HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.CharacterAtDeathList}"/>
+                </StackLayout>
+               <StackLayout Orientation="Horizontal">
+                <Label Text="Monsters Killed List"
+                       FontSize="Small"
+                       HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.MonstersKilledList}"/>
+                </StackLayout>
+               <StackLayout Orientation="Horizontal">
+                <Label Text="Items Dropped List"
+                       FontSize="Small"
+                       HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.ItemsDroppedList}"/>
+                </StackLayout>
+            
+         
+
+           
         </StackLayout>
     </ScrollView>
 </ContentPage>
