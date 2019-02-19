@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WDown.Views.Items.ItemEditPage"		     
              xmlns:local="using:WDown.Models"
-             xmlns:local1="clr-namespace:Newtonsoft.Json.Converters;assembly=Newtonsoft.Json"
+             xmlns:local1="clr-namespace:WDown.Models"
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
@@ -119,21 +119,22 @@
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
-
+                    <!--Attribute Picker-->
                     <StackLayout Grid.Row="4" Grid.Column="0">
                         <Label 
-                            Text="Attribute: " 
-                            FontSize="Medium" 
+                            Text="Attribute" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    <!--<StackLayout Grid.Row="4" Grid.Column="1">
+                    <StackLayout Grid.Row="4" Grid.Column="1">
                         <Picker 
                             ItemsSource="{x:Static local:AttributeList.GetListItem}" 
                             SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
                             x:Name="AttributePicker"
                             VerticalOptions="Center"/>
-                    </StackLayout>-->
+                    </StackLayout>
+                    
                     <StackLayout Grid.Row="5" Grid.Column="0">
                         <Label 
                             Text="Value"
@@ -161,7 +162,7 @@
                     <StackLayout Grid.Row="6" Grid.Column="0">
                         <Label 
                             Text="Image" 
-                            FontSize="Medium" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
@@ -180,21 +181,71 @@
                     <StackLayout Grid.Row="7" Grid.Column="0">
                         <Label 
                             Text="Location: " 
-                            FontSize="Medium" 
+                            FontSize="Small" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    <!--<StackLayout Grid.Row="7" Grid.Column="1">
+                    <StackLayout Grid.Row="7" Grid.Column="1">
                         <Picker 
                             ItemsSource="{x:Static local:ItemLocationList.GetListItem}" 
                             SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
                             x:Name="LocationPicker" 
                             VerticalOptions="Center"/>
-                    </StackLayout>-->
+                    </StackLayout>
+                    <StackLayout Grid.Row="8" Grid.Column="0">
 
+
+                        <Label 
+                            Text="Wearable?"
+                            FontSize="Small"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="8" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                        <Switch 
+                            x:Name="WearableSetting"
+                            HorizontalOptions="Center"
+                            Toggled="WearableSetting_OnToggled"></Switch>
+                            
+                    </StackLayout>
 
                 </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+
+                    <!--<StackLayout 
+                    Margin="0,50,0,0"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Start"
+                        Orientation="Vertical">-->
+
+                        <!--<StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Start"
+                        Orientation="Horizontal">
+
+                            <Label 
+                            FontSize="Small"
+                            Text="Wearable: "
+                            HorizontalTextAlignment="Start"
+                            HorizontalOptions="Start"/>
+
+                            <Switch 
+                            x:Name="WearableSetting"
+                            Style="{DynamicResource BindingData.Item.Wearable}"
+                            HorizontalOptions="EndAndExpand"
+                            Toggled="WearableSetting_OnToggled"
+                            IsToggled="True"/>
+                        </StackLayout>
+
+                        <StackLayout
+                        x:Name="DebugSettingsFrame"
+                        IsVisible="True"
+                        BackgroundColor="WhiteSmoke"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="StartAndExpand">
+                        </StackLayout>-->
+                    <!--</StackLayout>-->
+                

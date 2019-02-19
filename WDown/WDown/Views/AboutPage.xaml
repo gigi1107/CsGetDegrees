@@ -59,19 +59,16 @@
 
                 </Label>
                 <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="About Page" />
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="About Page" />
 
 
-                            </FormattedString.Spans>
-                        </FormattedString>
-
-
-                    </Label.FormattedText>
-
-                </Label>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
 
             </StackLayout>
         </ScrollView>

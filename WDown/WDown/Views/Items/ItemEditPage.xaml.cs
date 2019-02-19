@@ -4,6 +4,7 @@ using WDown.Controllers;
 using WDown.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using WDown.Services;
 namespace WDown.Views.Items
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -13,7 +14,7 @@ namespace WDown.Views.Items
 	    private ItemDetailViewModel _viewModel;
 
         // The data returned from the edit.
-        public WDown.Models.Item Data { get; set; }
+        public Item Data { get; set; }
 
         // The constructor takes a View Model
         // It needs to set the Picker values after doing the bindings.
@@ -30,8 +31,10 @@ namespace WDown.Views.Items
             BindingContext = _viewModel = viewModel;
 
             //Need to make the SelectedItem a string, so it can select the correct item.
-            //LocationPicker.SelectedItem = Data.Location.ToString();
-           //AttributePicker.SelectedItem = Data.Attribute.ToString();
+            LocationPicker.SelectedItem = Data.Location.ToString();
+            AttributePicker.SelectedItem = Data.Attribute.ToString();
+            //EnableCriticalMissProblems.IsToggled = GameGlobals.EnableCriticalMissProblems;
+            //EnableCriticalHitDamage.IsToggled = GameGlobals.EnableCriticalHitDamage;
 
         }
 
@@ -78,6 +81,12 @@ namespace WDown.Views.Items
         void Damage_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             DamageValue.Text = String.Format("{0}", e.NewValue);
+        }
+
+        // This will allow user to toggle Wearable
+        private void WearableSetting_OnToggled(object sender, ToggledEventArgs e)
+        {
+            Data.Wearable = e.Value;
         }
     }
 }

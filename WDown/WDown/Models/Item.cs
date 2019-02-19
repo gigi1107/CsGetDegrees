@@ -145,5 +145,10 @@ namespace WDown.Models
 
             Value = newValue;
         }
+
+        public void SetWearable(bool value)
+        {
+            Wearable = value;
+        }
     }
 }
