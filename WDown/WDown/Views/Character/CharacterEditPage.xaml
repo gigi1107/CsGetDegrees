@@ -166,7 +166,7 @@
                             VerticalOptions="Center"/>
 
                         <Stepper 
-                            Value="{Binding Data.CharacterAttribute.Widsom, Mode=TwoWay}"
+                            Value="{Binding Data.CharacterAttribute.Wisdom, Mode=TwoWay}"
                             Minimum="0"
                             Maximum="20"
                             Increment="1"

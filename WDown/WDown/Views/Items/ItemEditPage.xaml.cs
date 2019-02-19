@@ -4,7 +4,6 @@ using WDown.Controllers;
 using WDown.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 namespace WDown.Views.Items
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -14,7 +13,7 @@ namespace WDown.Views.Items
 	    private ItemDetailViewModel _viewModel;
 
         // The data returned from the edit.
-        public Item Data { get; set; }
+        public WDown.Models.Item Data { get; set; }
 
         // The constructor takes a View Model
         // It needs to set the Picker values after doing the bindings.
@@ -31,8 +30,8 @@ namespace WDown.Views.Items
             BindingContext = _viewModel = viewModel;
 
             //Need to make the SelectedItem a string, so it can select the correct item.
-           // LocationPicker.SelectedItem = Data.Location.ToString();
-           // AttributePicker.SelectedItem = Data.Attribute.ToString();
+            //LocationPicker.SelectedItem = Data.Location.ToString();
+           //AttributePicker.SelectedItem = Data.Attribute.ToString();
 
         }
 
@@ -42,7 +41,7 @@ namespace WDown.Views.Items
             // If the image in teh data box is empty, use the default one..
             if (string.IsNullOrEmpty(Data.ImageURI))
             {
-                Data.ImageURI = ""; // TODO: ItemsController.DefaultImageURI;
+                Data.ImageURI = CharacterController.DefaultImageURI; // TODO: ItemsController.DefaultImageURI;
             }
 
             MessagingCenter.Send(this, "EditData", Data);
@@ -63,22 +62,22 @@ namespace WDown.Views.Items
             await Navigation.PopAsync();
         }
 
-        //// The stepper function for Range
-        //void Range_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
-        //{
-        //    RangeValue.Text = String.Format("{0}", e.NewValue);
-        //}
+        //The stepper function for Range
+        void Range_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            RangeValue.Text = String.Format("{0}", e.NewValue);
+        }
 
-        //// The stepper function for Value
-        //void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
-        //{
-        //    ValueValue.Text = String.Format("{0}", e.NewValue);
-        //}
+        //The stepper function for Value
+        void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            ValueValue.Text = String.Format("{0}", e.NewValue);
+        }
 
-        //// The stepper function for Damage
-        //void Damage_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
-        //{
-        //    DamageValue.Text = String.Format("{0}", e.NewValue);
-        //}
+        // The stepper function for Damage
+        void Damage_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DamageValue.Text = String.Format("{0}", e.NewValue);
+        }
     }
 }
