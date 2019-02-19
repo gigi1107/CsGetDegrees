@@ -41,7 +41,7 @@ namespace WDown.Views.Items
             // If the image in teh data box is empty, use the default one..
             if (string.IsNullOrEmpty(Data.ImageURI))
             {
-                Data.ImageURI = CharacterController.DefaultImageURI; // TODO: ItemsController.DefaultImageURI;
+                Data.ImageURI = ItemController.DefaultImageURI; 
             }
 
             MessagingCenter.Send(this, "EditData", Data);
