@@ -4,15 +4,35 @@
              x:Class="WDown.Views.Items.ItemPage"
               Title="{Binding Title}"
              x:Name="BrowseItemsPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
-    </ContentPage.ToolbarItems>
+    <!--This page allows user to view all current items in the Item List and choose to add new Item-->
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="10">
 
-            <Label Text="Your Available Items" FontSize="Large" />
 
-            <ListView x:Name="ItemsListView" 
+            <StackLayout
+                HorizontalOptions = "Center"
+                Orientation = "Horizontal">
+
+                <Image Source = "https://i.imgur.com/QJtaZqu.png"
+                            WidthRequest = "50"
+                            HeightRequest = "50"
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center"
+                                />
+                <Label Text = "Add New Item ..."
+                            FontSize = "16" 
+                            HorizontalOptions = "Center"
+                            VerticalOptions = "Center"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped = "AddItem_Clicked"/>
+                </StackLayout.GestureRecognizers>
+
+            </StackLayout>
+            <StackLayout>
+
+                <Label Text="Your Available Items" FontSize="Large" />
+
+                <ListView x:Name="ItemsListView" 
                 ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"
                  HasUnevenRows="true"
@@ -21,50 +41,40 @@
                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                  CachingStrategy="RecycleElement"
                  ItemSelected="OnItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
 
-                            <StackLayout Padding="10"
+                                <StackLayout Padding="10"
                                          Orientation="Horizontal"
                                          VerticalOptions="Start"
                                          HorizontalOptions="Start">
 
-                                <Image Source="{Binding ImageURI}"
+                                    <Image Source="{Binding ImageURI}"
                                        WidthRequest="50"
                                        HeightRequest="50" 
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center"/>
 
 
-                                <StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" 
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="16" />
-                                        <Label Text="to boost your" 
-                                           LineBreakMode="NoWrap" 
-                                           Style="{DynamicResource ListItemTextStyle}" 
-                                           FontSize="16" />
-                                        <Label Text="{Binding Attribute}" 
-                                           LineBreakMode="NoWrap" 
-                                           Style="{DynamicResource ListItemTextStyle}" 
-                                           FontSize="16" />
+
+
+                                        </StackLayout>
 
                                     </StackLayout>
-                                    <Label Text="{Binding Description}" 
-                                       LineBreakMode="WordWrap"
-                                       Style="{DynamicResource ListItemDetailTextStyle}"
-                                       FontSize="12" />
 
                                 </StackLayout>
-
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

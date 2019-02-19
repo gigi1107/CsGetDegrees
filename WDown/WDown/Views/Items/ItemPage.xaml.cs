@@ -8,11 +8,17 @@ using WDown.ViewModels;
 
 namespace WDown.Views.Items
 {
+    // This page populates the Index view for Item 
+    // Letting user views the list of available items
+    // and chooses to add a new item if wishes
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemPage : ContentPage
     {
         private ItemsViewModel _viewModel;
+        
 
+        // Constructor
         public ItemPage()
         {
             InitializeComponent();
@@ -31,6 +37,9 @@ namespace WDown.Views.Items
             ItemsListView.SelectedItem = null;
         }
 
+
+        // Handles if user click Add button
+        // Moves user to New Page 
         private async void AddItem_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ItemNewPage());
