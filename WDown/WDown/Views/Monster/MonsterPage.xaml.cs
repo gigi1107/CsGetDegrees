@@ -16,12 +16,15 @@ namespace WDown.Views.Monster
     {
         private MonstersViewModel _viewModel;
 
+        // Constructor
         public MonsterPage()
         {
             InitializeComponent();
             BindingContext = _viewModel = MonstersViewModel.Instance;
         }
 
+        // Handles when user selects a particular monster 
+        // Take user to the Detail View page of chosen monster
         private async void OnMonsterSelected(object sender, SelectedItemChangedEventArgs args)
         {
             var data = args.SelectedItem as WDown.Models.Monster;
@@ -34,6 +37,8 @@ namespace WDown.Views.Monster
             //MonsterListView.SelectedCharacter = null;
         }
 
+        // Handles when user clicks Add
+        // Takes user to New page so user can put in information for a new monster
         private async void AddMonster_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MonsterNewPage());

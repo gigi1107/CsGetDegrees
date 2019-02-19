@@ -6,7 +6,7 @@
         <ToolbarItem Text="Save" Clicked="Save_Clicked" />
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
-
+    <!--This page allows user to edit the information and values of a certain monster.--> 
 
     <ContentPage.Content>
 

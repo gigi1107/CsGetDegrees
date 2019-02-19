@@ -6,7 +6,7 @@
         <ToolbarItem Text="Edit" Clicked="Edit_Clicked" />
         <ToolbarItem Text="Delete" Clicked="Delete_Clicked" />
     </ContentPage.ToolbarItems>
-
+<!--This page allows users to view information about a certain monster.-->
     <ScrollView>
         <StackLayout x:Name="DetailsRoot" Orientation="Vertical" Spacing="1" Padding="0.5">
             <Label Text="Character Details"

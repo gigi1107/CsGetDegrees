@@ -37,7 +37,7 @@ namespace WDown.Views.Monster
            
         }
 
-
+        // This function saves the information that the user just put in 
         public async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "EditData", Data);
@@ -52,6 +52,7 @@ namespace WDown.Views.Monster
             Navigation.RemovePage(this);
         }
 
+        // This function handles when users click Cancel button and discard the new input values
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

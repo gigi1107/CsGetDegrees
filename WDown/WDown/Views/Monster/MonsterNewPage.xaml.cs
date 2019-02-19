@@ -30,6 +30,8 @@ namespace WDown.Views.Monster
 
             BindingContext = this;
         }
+
+        // Saves all the information the user has input and create a new character with these information
         private async void Save_Clicked(object sender, EventArgs e)
         {
             // If the image in teh data box is empty, use the default one..

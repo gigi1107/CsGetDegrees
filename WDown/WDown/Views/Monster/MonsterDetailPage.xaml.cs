@@ -16,6 +16,7 @@ namespace WDown.Views.Monster
     {
         private MonsterDetailViewModel _viewModel;
 
+
         public MonsterDetailPage(MonsterDetailViewModel viewModel)
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace WDown.Views.Monster
            
         }
 
+        // Constructor
         public MonsterDetailPage()
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace WDown.Views.Monster
             await Navigation.PushAsync(new WDown.Views.Monster.MonsterDeletePage(_viewModel));
         }
 
+        // Handles when user choose Cancel button
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
