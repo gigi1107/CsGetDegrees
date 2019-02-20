@@ -17,6 +17,7 @@ namespace WDown.ViewModels
     {
         #region Singleton
         // Make this a singleton so it only exist one time because holds all the data records in memory
+        // Instance of the object
         private static ItemsViewModel _instance;
 
         public static ItemsViewModel Instance
@@ -38,14 +39,18 @@ namespace WDown.ViewModels
 
         private bool _needsRefresh;
 
+        // Default constructor
         public ItemsViewModel()
         {
-
+            
             Title = "Item List";
             Dataset = new ObservableCollection<Item>();
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
+
             #region Messages
+
+            // To call CRUDi operations
             MessagingCenter.Subscribe<ItemDeletePage, Item>(this, "DeleteData", async (obj, data) =>
             {
                 await DeleteAsync(data);
@@ -123,6 +128,7 @@ namespace WDown.ViewModels
             }
         }
 
+        // Force data to refresh
         public void ForceDataRefresh()
         {
             // Reset
@@ -134,13 +140,14 @@ namespace WDown.ViewModels
 
         #region DataOperations
 
+        // Add a new Item
         public async Task<bool> AddAsync(Item data)
         {
             Dataset.Add(data);
             var myReturn = await DataStore.AddAsync_Item(data);
             return myReturn;
         }
-
+        // Delete a current Item
         public async Task<bool> DeleteAsync(Item data)
         {
             Dataset.Remove(data);
@@ -148,6 +155,7 @@ namespace WDown.ViewModels
             return myReturn;
         }
 
+        // Edit/update a current Item
         public async Task<bool> UpdateAsync(Item data)
         {
             // Find the Item, then update it
@@ -227,12 +235,12 @@ namespace WDown.ViewModels
 
         #endregion ItemConversion
 
-        //// Return a random item from the list of items...
-        //public string ChooseRandomItemString(ItemLocationEnum location, AttributeEnum attribute)
-        //{
-        //    // Implement 
+        // Return a random item from the list of items...
+        public string ChooseRandomItemString(ItemLocationEnum location, AttributeEnum attribute)
+        {
+            // Implement 
 
-        //    return null;
-        //}
+            return null;
+        }
     }
 }
