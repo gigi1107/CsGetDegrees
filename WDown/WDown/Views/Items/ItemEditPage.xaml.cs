@@ -33,10 +33,8 @@ namespace WDown.Views.Items
             //Need to make the SelectedItem a string, so it can select the correct item.
             LocationPicker.SelectedItem = Data.Location.ToString();
             AttributePicker.SelectedItem = Data.Attribute.ToString();
-            //EnableCriticalMissProblems.IsToggled = GameGlobals.EnableCriticalMissProblems;
-            //EnableCriticalHitDamage.IsToggled = GameGlobals.EnableCriticalHitDamage;
-
-        }
+            EnableCriticalMissProblems.IsToggled = GameGlobals.EnableCriticalMissProblems;
+            EnableCriticalHitDamage.IsToggled = GameGlobals.EnableCriticalHitDamage;        }
 
         // Save on the Tool bar
         private async void Save_Clicked(object sender, EventArgs e)
@@ -87,6 +85,27 @@ namespace WDown.Views.Items
         private void WearableSetting_OnToggled(object sender, ToggledEventArgs e)
         {
             Data.Wearable = e.Value;
+        }
+
+        private void EnableDebugSettings_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // This will change out the DataStore to be the Mock Store if toggled on, or the SQL if off.
+
+            DebugSettingsFrame.IsVisible = (e.Value);
+        }
+
+        // Turn on Critical Misses
+        private void EnableCriticalMissProblems_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // This will change out the DataStore to be the Mock Store if toggled on, or the SQL if off.
+            GameGlobals.EnableCriticalMissProblems = e.Value;
+        }
+
+        // Turn on Critical Hit Damage
+        private void EnableCriticalHitDamage_OnToggled(object sender, ToggledEventArgs e)
+        {
+            // This will change out the DataStore to be the Mock Store if toggled on, or the SQL if off.
+            GameGlobals.EnableCriticalHitDamage = e.Value;
         }
     }
 }

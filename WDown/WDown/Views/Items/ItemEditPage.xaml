@@ -210,6 +210,73 @@
                     </StackLayout>
 
                 </Grid>
+                <!--Debug Settings-->
+                <StackLayout
+                      HorizontalOptions="StartAndExpand"
+                      VerticalOptions="Start"
+                      Orientation="Vertical">
+
+                    <StackLayout
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="Start"
+                      Orientation="Horizontal">
+
+                        <Label
+                            FontSize="Small"
+                            Text="Debug Settings"
+                            HorizontalTextAlignment="Start"
+                            HorizontalOptions="Start"/>
+
+                        <Switch
+                            x:Name="EnableDebugSettings"
+                            HorizontalOptions="EndAndExpand"
+                            Toggled="EnableDebugSettings_OnToggled"
+                            IsToggled="False"/>
+                    </StackLayout>
+
+                    <StackLayout
+                          x:Name="DebugSettingsFrame"
+                          IsVisible="True"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="StartAndExpand"
+                          BackgroundColor="WhiteSmoke">
+
+                        <StackLayout
+                          Margin="50,0,0,0"
+                          BackgroundColor="WhiteSmoke">
+
+                            <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal">
+
+                                <Label
+                                  Text="Critical Hit Double Damage"
+                                  Style="{DynamicResource DebugSwitchLabel}"/>
+
+                                <Switch
+                                  x:Name="EnableCriticalHitDamage"
+                                  HorizontalOptions="EndAndExpand"
+                                  Toggled="EnableCriticalHitDamage_OnToggled"
+                                  IsToggled="False"/>
+                            </StackLayout>
+
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal">
+
+                                <Label
+                                    Text="Critical Miss Bad Things"
+                                    Style="{DynamicResource DebugSwitchLabel}"/>
+
+                                <Switch
+                                    x:Name="EnableCriticalMissProblems"
+                                    HorizontalOptions="EndAndExpand"
+                                    Toggled="EnableCriticalMissProblems_OnToggled"
+                                    IsToggled="False"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
