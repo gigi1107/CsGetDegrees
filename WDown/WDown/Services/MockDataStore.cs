@@ -7,7 +7,8 @@ using WDown.ViewModels;
 
 namespace WDown.Services
 {
-    //makes and stores mock data not stored in a real database
+    // This page creates mock data store for Character, Item, Monster, and Score
+    // Used to help testing with Mock Data
     public sealed class MockDataStore : IDataStore
     {
 
@@ -41,7 +42,7 @@ namespace WDown.Services
 
 
            
-            // Load Items.
+            // Load mock Item and their values
             _itemDataset.Add(new Item
             {
                 Name = "Fresh Carrot",
@@ -134,7 +135,7 @@ namespace WDown.Services
             });
 
 
-            // Implement Characters
+            // Load mock Characters and their values
 
             _characterDataset.Add(new Character
             {
@@ -210,7 +211,7 @@ namespace WDown.Services
 
 
 
-            // Implement Monsters
+            // load Monsters and their values
             _monsterDataset.Add(new Monster
             {
                 Name = "Cat",
@@ -277,7 +278,7 @@ namespace WDown.Services
 
             });
 
-            // Implement Scores
+            // Load mock Scores and their values
             _scoreDataset.Add(new Score
             {
                 Name = "Score 1",
@@ -326,18 +327,16 @@ namespace WDown.Services
         {
             _characterDataset.Clear();
             _itemDataset.Clear();
+            _monsterDataset.Clear();
         }
 
         // Tells the View Models to update themselves.
         private void NotifyViewModelsOfDataChange()
         {
             ItemsViewModel.Instance.SetNeedsRefresh(true);
-            // Implement Monsters
-
-            // Implement Characters 
+            MonstersViewModel.Instance.SetNeedsRefresh(true);
             CharactersViewModel.Instance.SetNeedsRefresh(true);
-
-            // Implement Scores
+            ScoresViewModel.Instance.SetNeedsRefresh(true);
         }
 
         public void InitializeDatabaseNewTables()
@@ -424,7 +423,7 @@ namespace WDown.Services
         #endregion Item
 
 
-        // Character
+        // Add a new character
         public async Task<bool> AddAsync_Character(Character data)
         {
             // Check to see if the item exist
@@ -445,6 +444,8 @@ namespace WDown.Services
 
             return false;
         }
+
+        // Update/edit a character
         public async Task<bool> InsertUpdateAsync_Character(Character data)
         {
 
@@ -466,6 +467,8 @@ namespace WDown.Services
 
             return false;
         }
+
+        // Edit/Update a character
         public async Task<bool> UpdateAsync_Character(Character data)
         {
             var myData = _characterDataset.FirstOrDefault(arg => arg.Id == data.Id);
@@ -479,6 +482,7 @@ namespace WDown.Services
             return await Task.FromResult(true);
         }
 
+        // Delete a character
         public async Task<bool> DeleteAsync_Character(Character data)
         {
             var myData = _characterDataset.FirstOrDefault(arg => arg.Id == data.Id);
@@ -487,11 +491,13 @@ namespace WDown.Services
             return await Task.FromResult(true);
         }
 
+        // Get a character's information
         public async Task<Character> GetAsync_Character(string id)
         {
             return await Task.FromResult(_characterDataset.FirstOrDefault(s => s.Id == id));
         }
 
+        // Get all characters
         public async Task<IEnumerable<Character>> GetAllAsync_Character(bool forceRefresh = false)
         {
             return await Task.FromResult(_characterDataset);
@@ -502,7 +508,7 @@ namespace WDown.Services
         //Monster
         #region Monster
 
-
+        // Insert update monsters
         public async Task<bool> InsertUpdateAsync_Monster(Monster data)
         {
 
@@ -524,12 +530,15 @@ namespace WDown.Services
 
             return false;
         }
+
+        // Add a new monster
         public async Task<bool> AddAsync_Monster(Monster data)
         {
             _monsterDataset.Add(data);
             return await Task.FromResult(true);
         }
 
+        // Update/edit a current monster
         public async Task<bool> UpdateAsync_Monster(Monster data)
         {
             var myData = _monsterDataset.FirstOrDefault(arg => arg.Id == data.Id);
@@ -543,6 +552,7 @@ namespace WDown.Services
             return await Task.FromResult(true);
         }
 
+        // Delete a current monster
         public async Task<bool> DeleteAsync_Monster(Monster data)
         {
             var myData = _monsterDataset.FirstOrDefault(arg => arg.Id == data.Id);
@@ -551,11 +561,13 @@ namespace WDown.Services
             return await Task.FromResult(true);
         }
 
+        // Get the information of a monster
         public async Task<Monster> GetAsync_Monster(string id)
         {
             return await Task.FromResult(_monsterDataset.FirstOrDefault(s => s.Id == id));
         }
 
+        // Get all current monsters
         public async Task<IEnumerable<Monster>> GetAllAsync_Monster(bool forceRefresh = false)
         {
             return await Task.FromResult(_monsterDataset);
@@ -565,12 +577,15 @@ namespace WDown.Services
 
         #region Score
         // Score
+
+            // Add a new score
         public async Task<bool> AddAsync_Score(Score data)
         {
             _scoreDataset.Add(data);
             return await Task.FromResult(true);
         }
 
+        // Edit/update a new score
         public async Task<bool> UpdateAsync_Score(Score data)
         {
             var myData = _scoreDataset.FirstOrDefault(arg => arg.Id == data.Id);
@@ -584,6 +599,7 @@ namespace WDown.Services
             return await Task.FromResult(true);
         }
 
+        // Delete a score
         public async Task<bool> DeleteAsync_Score(Score data)
         {
             var myData = _scoreDataset.FirstOrDefault(arg => arg.Id == data.Id);
@@ -592,17 +608,20 @@ namespace WDown.Services
             return await Task.FromResult(true);
         }
 
+        // Get a score's information
         public async Task<Score> GetAsync_Score(string id)
         {
             return await Task.FromResult(_scoreDataset.FirstOrDefault(s => s.Id == id));
 
         }
-
+    
+        // Get information of all scores
         public async Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false)
         {
             return await Task.FromResult(_scoreDataset);
         }
 
+        // insert update a score
         public async Task<bool> InsertUpdateAsync_Score(Score data)
         {
 

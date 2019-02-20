@@ -8,12 +8,14 @@ using SQLite;
 
 namespace WDown.Services
 {
+    // This page allows the app to communicate with the SQL database
     public sealed class SQLDataStore : IDataStore
     {
 
         // Make this a singleton so it only exist one time because holds all the data records in memory
         private static SQLDataStore _instance;
 
+        
         public static SQLDataStore Instance
         {
             get
@@ -26,13 +28,18 @@ namespace WDown.Services
             }
         }
 
+        
         private SQLDataStore()
         {
+            // Create new db tables
             CreateTables();
           
         }
+        // Initialize tables inside database
         public void InitializeDatabaseNewTables()
         {
+
+            // Drop all tables and make new ones
             DeleteTables();
             CreateTables();
 
@@ -72,44 +79,7 @@ namespace WDown.Services
         //create a list of Items to initialize the data
         private async void InitilizeSeedData()
         {
-           
-
-            //await AddAsync_Item(new Item
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    Name = "Jewels of Gibberish",
-            //    Description = "Nonsense Item"
-            //});
-            //await AddAsync_Item(new Item
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    Name = "Tree Bark",
-            //    Description = "Increase Defense"
-            //});
-
-            //await AddAsync_Character(new Character
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    Name = "Hazel",
-            //    Description = "Hazel-rah, the leader of Watership Down warren."
-            //});
-
-            //await AddAsync_Character(new Character
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    Name = "BigWig",
-            //    Description = "The strongest defended of the warren, with a passion of fire."
-            //});
-
-            //await AddAsync_Monster(new Monster
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    Name = "General Woundwort",
-            //    Description = "The tyranny leader of Efrafa Warren."
-            //});
-
-             
-            // Implement Characters
+            // Character
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL First Character", Description = "This is an Character description.", Level = 1 });
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Second Character", Description = "This is an Character description.", Level = 1 });
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Third Character", Description = "This is an Character description.", Level = 2 });
@@ -117,7 +87,7 @@ namespace WDown.Services
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Fifth Character", Description = "This is an Character description.", Level = 3 });
             await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "SQL Sixth Character", Description = "This is an Character description.", Level = 3 });
 
-            // Implement Monsters
+            // Monster
             await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "SQL First Monster", Description = "This is an Monster description." });
             await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "SQL Second Monster", Description = "This is an Monster description." });
             await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "SQL Third Monster", Description = "This is an Monster description." });
@@ -147,7 +117,7 @@ namespace WDown.Services
             return false;
         }
    
-
+        // Add a new item to DB
         public async Task<bool> AddAsync_Item(Item data)
         {
             var result = await App.Database.InsertAsync(data);
@@ -159,7 +129,7 @@ namespace WDown.Services
             return false;
 
         }
-
+        // Edit an item from DB
         public async Task<bool> UpdateAsync_Item(Item data)
         {
             var result = await App.Database.UpdateAsync(data);
@@ -171,7 +141,7 @@ namespace WDown.Services
             return false;
 
     }
-
+        // Delete an item from DB
         public async Task<bool> DeleteAsync_Item(Item data)
         {
             var result = await App.Database.DeleteAsync(data);
@@ -183,7 +153,7 @@ namespace WDown.Services
         return false;
 
     }
-
+        // Get information of an item
         public async Task<Item> GetAsync_Item(string id)
         {
             var result = await App.Database.GetAsync<Item>(id);
@@ -191,6 +161,7 @@ namespace WDown.Services
         }
 
 
+        // Get list of current items
         public async Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false)
         {
             var result = await App.Database.Table<Item>().ToListAsync();
@@ -217,6 +188,7 @@ namespace WDown.Services
             return false;
         }
 
+        // Insert update a character to db
         public async Task<bool> InsertUpdateAsync_Character(Character data)
         {
 
@@ -314,6 +286,7 @@ namespace WDown.Services
             return false;
         }
 
+        // Insert update a monster
         public async Task<bool> InsertUpdateAsync_Monster(Monster data)
         {
 
@@ -395,6 +368,8 @@ namespace WDown.Services
 
         #region Score
         // Score
+
+            // Add a new score to the DB
         public async Task<bool> AddAsync_Score(Score data)
         {
             var result = await App.Database.InsertAsync(data);
@@ -406,6 +381,7 @@ namespace WDown.Services
             return false;
         }
 
+        // Update a score's information in DB
         public async Task<bool> UpdateAsync_Score(Score data)
         {
             var result = await App.Database.UpdateAsync(data);
@@ -417,6 +393,7 @@ namespace WDown.Services
             return false;
         }
 
+        // Delete a score in DB
         public async Task<bool> DeleteAsync_Score(Score data)
         {
            
@@ -430,6 +407,7 @@ namespace WDown.Services
 
          }
 
+        // Get information of a score from DB
             public async Task<Score> GetAsync_Score(string id)
         {
             var result = await App.Database.GetAsync<Score>(id);
@@ -437,12 +415,14 @@ namespace WDown.Services
 
         }
 
+        // Get list and information of current scores
         public async Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false)
         {
             var result = await App.Database.Table<Score>().ToListAsync();
             return result;
         }
 
+        // Insert update a score
         public async Task<bool> InsertUpdateAsync_Score(Score data)
         {
 
