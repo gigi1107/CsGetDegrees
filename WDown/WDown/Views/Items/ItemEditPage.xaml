@@ -134,7 +134,7 @@
                             x:Name="AttributePicker"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    
+
                     <StackLayout Grid.Row="5" Grid.Column="0">
                         <Label 
                             Text="Value"
@@ -178,21 +178,7 @@
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    <!--<StackLayout Grid.Row="7" Grid.Column="0">
-                        <Label 
-                            Text="Location: " 
-                            FontSize="Small" 
-                            HorizontalOptions="Start"
-                            VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="7" Grid.Column="1">
-                        <Picker 
-                            ItemsSource="{x:Static local:ItemLocationList.GetListItem}" 
-                            SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
-                            x:Name="LocationPicker" 
-                            VerticalOptions="Center"/>
-                    </StackLayout>-->
-                    <StackLayout Grid.Row="8" Grid.Column="0">
+                    <StackLayout Grid.Row="7" Grid.Column="0">
 
 
                         <Label 
@@ -201,12 +187,12 @@
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    <StackLayout Grid.Row="8" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                    <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="StartAndExpand">
                         <Switch 
                             x:Name="WearableSetting"
                             HorizontalOptions="Center"
                             Toggled="WearableSetting_OnToggled"></Switch>
-                            
+
                     </StackLayout>
 
                 </Grid>
@@ -215,28 +201,6 @@
                       HorizontalOptions="StartAndExpand"
                       VerticalOptions="Start"
                       Orientation="Vertical">
-
-                    <!--<StackLayout
-                      HorizontalOptions="FillAndExpand"
-                      VerticalOptions="Start"
-                      Orientation="Horizontal">
-
-                        <Label
-                            FontSize="Small"
-                            Text="Wearable?"
-                            HorizontalTextAlignment="Start"
-                            HorizontalOptions="Start"/>
-
-                        <Switch 
-                            x:Name="WearableSetting"
-                            HorizontalOptions="Center"
-                            Toggled="WearableSetting_OnToggled"></Switch>
-                        <Switch
-                            x:Name="EnableDebugSettings"
-                            HorizontalOptions="EndAndExpand"
-                            Toggled="EnableDebugSettings_OnToggled"
-                            IsToggled="False"/>
-                    </StackLayout>-->
 
                     <StackLayout
                           x:Name="LocationSettingsFrame"
@@ -249,20 +213,6 @@
                           Margin="50,0,0,0"
                           BackgroundColor="WhiteSmoke">
 
-                            <!--<StackLayout
-                            HorizontalOptions="FillAndExpand"
-                            Orientation="Horizontal">
-
-                                <Label
-                                  Text="LocationPicker"
-                                  Style="{DynamicResource DebugSwitchLabel}"/>
-
-                                <Switch
-                                  x:Name="EnableCriticalHitDamage"
-                                  HorizontalOptions="EndAndExpand"
-                                  Toggled="EnableCriticalHitDamage_OnToggled"
-                                  IsToggled="False"/>
-                            </StackLayout>-->
 
                             <StackLayout>
                                 <Label 
@@ -285,38 +235,4 @@
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
-
-                    <!--<StackLayout 
-                    Margin="0,50,0,0"
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="Start"
-                        Orientation="Vertical">-->
-
-                        <!--<StackLayout
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Start"
-                        Orientation="Horizontal">
-
-                            <Label 
-                            FontSize="Small"
-                            Text="Wearable: "
-                            HorizontalTextAlignment="Start"
-                            HorizontalOptions="Start"/>
-
-                            <Switch 
-                            x:Name="WearableSetting"
-                            Style="{DynamicResource BindingData.Item.Wearable}"
-                            HorizontalOptions="EndAndExpand"
-                            Toggled="WearableSetting_OnToggled"
-                            IsToggled="True"/>
-                        </StackLayout>
-
-                        <StackLayout
-                        x:Name="DebugSettingsFrame"
-                        IsVisible="True"
-                        BackgroundColor="WhiteSmoke"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="StartAndExpand">
-                        </StackLayout>-->
-                    <!--</StackLayout>-->
                 

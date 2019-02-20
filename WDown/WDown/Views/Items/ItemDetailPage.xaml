@@ -77,17 +77,6 @@
                     HorizontalOptions="Center"/>
             </StackLayout>
 
-            <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Start">
-                <Label Text="Location : " 
-                   FontSize="Medium" 
-                   HorizontalOptions="Start"/>
-                <Label Text="{Binding Data.Location}" 
-                    FontSize="Medium" 
-                    HorizontalOptions="Center"/>
-            </StackLayout>
-
             <StackLayout 
                 Orientation="Horizontal" 
                 HorizontalOptions="Start">
@@ -108,6 +97,16 @@
                 <Label Text="{Binding Data.Wearable}" 
                    FontSize="Medium" 
                    HorizontalOptions="Center"/>
+            </StackLayout>
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                <Label Text="Location : " 
+                   FontSize="Medium" 
+                   HorizontalOptions="Start"/>
+                <Label Text="{Binding Data.Location}" 
+                    FontSize="Medium" 
+                    HorizontalOptions="Center"/>
             </StackLayout>
         </StackLayout>
     </ScrollView>
