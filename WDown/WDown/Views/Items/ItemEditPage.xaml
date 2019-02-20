@@ -178,7 +178,7 @@
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    <StackLayout Grid.Row="7" Grid.Column="0">
+                    <!--<StackLayout Grid.Row="7" Grid.Column="0">
                         <Label 
                             Text="Location: " 
                             FontSize="Small" 
@@ -191,7 +191,7 @@
                             SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
                             x:Name="LocationPicker" 
                             VerticalOptions="Center"/>
-                    </StackLayout>
+                    </StackLayout>-->
                     <StackLayout Grid.Row="8" Grid.Column="0">
 
 
@@ -216,26 +216,30 @@
                       VerticalOptions="Start"
                       Orientation="Vertical">
 
-                    <StackLayout
+                    <!--<StackLayout
                       HorizontalOptions="FillAndExpand"
                       VerticalOptions="Start"
                       Orientation="Horizontal">
 
                         <Label
                             FontSize="Small"
-                            Text="Debug Settings"
+                            Text="Wearable?"
                             HorizontalTextAlignment="Start"
                             HorizontalOptions="Start"/>
 
+                        <Switch 
+                            x:Name="WearableSetting"
+                            HorizontalOptions="Center"
+                            Toggled="WearableSetting_OnToggled"></Switch>
                         <Switch
                             x:Name="EnableDebugSettings"
                             HorizontalOptions="EndAndExpand"
                             Toggled="EnableDebugSettings_OnToggled"
                             IsToggled="False"/>
-                    </StackLayout>
+                    </StackLayout>-->
 
                     <StackLayout
-                          x:Name="DebugSettingsFrame"
+                          x:Name="LocationSettingsFrame"
                           IsVisible="True"
                           HorizontalOptions="FillAndExpand"
                           VerticalOptions="StartAndExpand"
@@ -245,12 +249,12 @@
                           Margin="50,0,0,0"
                           BackgroundColor="WhiteSmoke">
 
-                            <StackLayout
+                            <!--<StackLayout
                             HorizontalOptions="FillAndExpand"
                             Orientation="Horizontal">
 
                                 <Label
-                                  Text="Critical Hit Double Damage"
+                                  Text="LocationPicker"
                                   Style="{DynamicResource DebugSwitchLabel}"/>
 
                                 <Switch
@@ -258,21 +262,21 @@
                                   HorizontalOptions="EndAndExpand"
                                   Toggled="EnableCriticalHitDamage_OnToggled"
                                   IsToggled="False"/>
+                            </StackLayout>-->
+
+                            <StackLayout>
+                                <Label 
+                            Text="Location: " 
+                            FontSize="Small" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
                             </StackLayout>
-
-                            <StackLayout
-                                HorizontalOptions="FillAndExpand"
-                                Orientation="Horizontal">
-
-                                <Label
-                                    Text="Critical Miss Bad Things"
-                                    Style="{DynamicResource DebugSwitchLabel}"/>
-
-                                <Switch
-                                    x:Name="EnableCriticalMissProblems"
-                                    HorizontalOptions="EndAndExpand"
-                                    Toggled="EnableCriticalMissProblems_OnToggled"
-                                    IsToggled="False"/>
+                            <StackLayout>
+                                <Picker 
+                            ItemsSource="{x:Static local:ItemLocationList.GetListItem}" 
+                            SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                            x:Name="LocationPicker" 
+                            VerticalOptions="Center"/>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>

@@ -103,7 +103,7 @@
                 Orientation="Horizontal" 
                 HorizontalOptions="Start">
                 <Label Text="Is it wearable?  " 
-                   FontSize="Small" 
+                   FontSize="Medium" 
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Wearable}" 
                    FontSize="Medium" 
