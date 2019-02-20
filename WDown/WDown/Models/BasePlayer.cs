@@ -26,6 +26,8 @@ namespace WDown.Models
         // but it needs to go here as a string so it can be saved to the database.
         public string AttributeString { get; set; }
 
+        // The Dice to use when leveling up, defualt is d10
+        public int HealthDice { get; set; } = 10;
 
         // Death
         // Alive turns to False

@@ -45,7 +45,7 @@ namespace WDown.Models
             // Set the strings for the items
             Head = newData.Head;
             Feet = newData.Feet;
-            Necklace = newData.Necklace;
+            Necklass = newData.Necklass;
             RightFinger = newData.RightFinger;
             LeftFinger = newData.LeftFinger;
             Feet = newData.Feet;
@@ -73,7 +73,7 @@ namespace WDown.Models
             // Set the strings for the items
             Head = newData.Head;
             Feet = newData.Feet;
-            Necklace = newData.Necklace;
+            Necklass = newData.Necklass;
             RightFinger = newData.RightFinger;
             LeftFinger = newData.LeftFinger;
             Feet = newData.Feet;

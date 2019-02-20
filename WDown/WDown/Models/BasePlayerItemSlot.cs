@@ -20,7 +20,7 @@ namespace WDown.Models
         public string Feet { get; set; }
 
         // Necklasss is a string referencing the database table
-        public string Necklace { get; set; }
+        public string Necklass { get; set; }
 
         // PrimaryHand is a string referencing the database table
         public string PrimaryHand { get; set; }
