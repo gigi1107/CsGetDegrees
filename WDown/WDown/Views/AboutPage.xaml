@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WDown.Views.AboutPage"
@@ -25,18 +25,19 @@
         </Grid.RowDefinitions>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="rabbit.png" VerticalOptions="Center" HeightRequest="100" />
+                <ContentView Padding="0,10,0,40" VerticalOptions="FillAndExpand">
+                    <!--<Image Source="http://www.claretwalker.com/wp-content/uploads/IMG_3000-1.jpg"
+                           VerticalOptions="Center" HeightRequest="200" />-->
                 </ContentView>
             </StackLayout>
         </StackLayout>
-        <ScrollView Grid.Row="1">
+        <StackLayout Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
                 <Label FontSize="22">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Cs Get Degrees Team" FontAttributes="Bold" FontSize="22" />
+                                <Span Text="Watership Down" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
 
                             </FormattedString.Spans>
@@ -71,7 +72,7 @@
                     </Label>
 
             </StackLayout>
-        </ScrollView>
+        </StackLayout>
     </Grid>
 
     <StackLayout 

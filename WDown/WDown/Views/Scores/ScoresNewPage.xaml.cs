@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using WDown.Controllers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using WDown.ViewModels;
 
 namespace WDown.Views.Scores
 {
@@ -17,6 +18,7 @@ namespace WDown.Views.Scores
     public partial class ScoresNewPage : ContentPage
     {
         public Models.Score Data { get; set; }
+       
         public ScoresNewPage()
         {
             InitializeComponent();

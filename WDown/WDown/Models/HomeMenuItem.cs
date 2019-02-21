@@ -9,7 +9,9 @@ namespace WDown.Models
     {
         About,
   
-        Manage
+        Manage,
+
+        Game
 
     }
     public class HomeMenuItem

@@ -23,6 +23,8 @@ namespace WDown.Views
             
                 new HomeMenuItem {Id = MenuItemType.Manage, Title="Manage"},
 
+                new HomeMenuItem {Id = MenuItemType.Game, Title="Game"}
+
                
             };
 

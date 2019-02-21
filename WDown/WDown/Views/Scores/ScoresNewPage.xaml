@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WDown.Views.Scores.ScoresNewPage">
+             x:Class="WDown.Views.Scores.ScoresNewPage"
+             xmlns:Monsters="clr-namespace:WDown.ViewModels">
       <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save" Clicked="Save_Clicked" />
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
@@ -19,54 +20,39 @@
                 HeightRequest="75" 
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
-
-                <Grid
-                    RowSpacing="10"
-                    ColumnSpacing="10"
-                    VerticalOptions="Center">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
-                      <StackLayout Grid.Row="0" Grid.Column="0">
+                
+                   <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="Name" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="0" Grid.Column="1">
+                 
                         <Entry 
                             Text="{Binding Data.Name}" 
                             WidthRequest="150"
                             />
                     </StackLayout>
-                    <StackLayout Grid.Row="1" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="Date" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="1" Grid.Column="1">
+                    
                         <DatePicker 
                             WidthRequest="150"
                             Date="{Binding Data.GameDate}" 
                             />
                     </StackLayout>
 
-                    <StackLayout Grid.Row="2" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal">
                         <Label
                             Text="Battle Number" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
-                            VerticalOptions="Center"
-                       />
-                    </StackLayout>
-                    <StackLayout Grid.Row="2" Grid.Column="1">
+                            VerticalOptions="Center"/>
+                   
                        <Label 
                             Text="{Binding Data.BattleNumber}" 
                             FontSize="Medium" 
@@ -85,14 +71,13 @@
                     </StackLayout>
 
 
-                    <StackLayout Grid.Row="3" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="ScoreTotal"
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                
                         <Label 
                             Text="{Binding Data.ScoreTotal}" 
                             FontSize="Medium" 
@@ -110,15 +95,13 @@
                            
                     </StackLayout>
 
-                    <StackLayout Grid.Row="4" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="Turn Count"
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
-                        <Label 
+                         <Label 
                             Text="{Binding Data.TurnCount}" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
@@ -134,15 +117,13 @@
                             VerticalOptions="Center"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="5" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="Round Count"
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
-                        <Label 
+                         <Label 
                             Text="{Binding Data.RoundCount}" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
@@ -157,27 +138,23 @@
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                     <StackLayout Grid.Row="6" Grid.Column="0">
+                     <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="AutoBattle? "
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="6" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
-                        <Switch
+                         <Switch
                             IsToggled="{Binding Data.AutoBattle}"/>
                             
                     </StackLayout>
                     
-                    <StackLayout Grid.Row="7" Grid.Column="0">
+                    <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="Number of Monsters Slain"
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.MonstersSlainNumber}" 
                             FontSize="Medium" 
@@ -194,32 +171,53 @@
                             VerticalOptions="Center"/>
                     </StackLayout>
                     
-                      <StackLayout Grid.Row="8" Grid.Column="0">
+                    <!--****TODO***********-->
+                    
+                      <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="List of Monsters Slain"
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="8" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
-                        <Label 
-                            Text="{Binding Data.MonstersKilledList}" 
-                            FontSize="Medium" 
-                            HorizontalOptions="Start"
-                            x:Name= "MonstersKilledList"
-                            VerticalOptions="Center"/>
+                        
+                 <ListView
+                         x:Name="MonsterList"
+                            ItemsSource="{Binding Monsters:MonstersViewModel.Dataset}" 
+                            VerticalOptions="FillAndExpand" 
+                            HasUnevenRows="true"
+                            RefreshCommand="{Binding LoadItemsCommand}" 
+                            IsPullToRefreshEnabled="true"
+                             IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                             CachingStrategy="RecycleElement" >
+                          <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="15">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding ImageURI}"
+                                           HeightRequest="50" WidthRequest="50" />
+                                   
+                           
+                                    <Label Text="{Binding Name}" 
+                                           FontSize="14"/>
+                                    <Switch IsToggled="true"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                            </ListView>
+                  
 
                        
                     </StackLayout>
                     
-                      <StackLayout Grid.Row="9" Grid.Column="0">
+                      <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="Total Experience Gained"
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="9" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.ExperienceGainedTotal}" 
                             FontSize="Medium" 
@@ -236,14 +234,12 @@
                             VerticalOptions="Center"/>
                     </StackLayout>
                     
-                      <StackLayout Grid.Row="10" Grid.Column="0">
+                      <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="Characters Remaining"
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="10" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.CharactersAtDeathList}" 
                             FontSize="Medium" 
@@ -254,15 +250,13 @@
                        
                     </StackLayout>
                     
-                      <StackLayout Grid.Row="11" Grid.Column="0">
+                      <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="Items Dropped"
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="11" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
-                        <Label 
+                         <Label 
                             Text="{Binding Data.ItemsDroppedList}" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
@@ -273,15 +267,13 @@
                     </StackLayout>
                     
                     
-                      <StackLayout Grid.Row="12" Grid.Column="0">
+                      <StackLayout Orientation="Horizontal">
                         <Label 
                             Text="Image URI"
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="12" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
-                        <Entry 
+                         <Entry 
                             Text="{Binding Data.ImageURI}" 
                             FontSize="Small" 
                             HorizontalOptions="Start"
@@ -290,9 +282,6 @@
                          
                     </StackLayout>
           
-                   
-                </Grid>
-
             </StackLayout>
         </ScrollView>
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WDown.Views.GameOpeningPage" Title="Game">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="0">
+                <Label Text="Watership Down" HorizontalOptions="Center" FontSize="Large" />
+                <Label Text="the game" HorizontalOptions="Center" FontSize="Small" />
+                <StackLayout Padding="0"
+                             Margin = "0">
+                
+                    <Image Source="http://www.claretwalker.com/wp-content/uploads/IMG_3000-1.jpg"
+                           HeightRequest = "250"/>
+                    </StackLayout>
+                    <Button Text="Auto Battle" />
+                    <Button Text="Regular Battle" />
+              
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

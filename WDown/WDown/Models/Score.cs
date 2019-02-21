@@ -57,7 +57,7 @@ namespace WDown.Models
 
             BattleNumber = 0;
             ScoreTotal = 0;
-            GameDate = DateTime.MinValue;
+            GameDate = DateTime.Today;
             AutoBattle = false;
             TurnCount = 0;
             RoundCount = 0;

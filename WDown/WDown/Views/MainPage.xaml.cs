@@ -34,7 +34,11 @@ namespace WDown.Views
                     case (int)MenuItemType.Manage:
                         MenuPages.Add(id, new NavigationPage(new ManagePage()));
                         break;
-                   
+
+                    case (int)MenuItemType.Game:
+                        MenuPages.Add(id, new NavigationPage(new GameOpeningPage()));
+                        break;
+
                 }
             }
 

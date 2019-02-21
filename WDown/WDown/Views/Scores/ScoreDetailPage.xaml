@@ -48,7 +48,17 @@
                        FontSize = "Medium"
                        HorizontalOptions = "Center"/>
             </StackLayout>
+            
+            
+              <StackLayout  Orientation = "Horizontal">
+                <Label Text="Auto Battle " 
+                       FontSize="Medium" 
+                       HorizontalOptions="Start" />
 
+                <Label Text= "{Binding Data.AutoBattle}"
+                       FontSize = "Medium"
+                       HorizontalOptions = "Center"/>
+            </StackLayout>
 
             <StackLayout  Orientation = "Horizontal">
                 <Label Text="Score Total " 
