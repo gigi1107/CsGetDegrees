@@ -25,9 +25,9 @@
                                 <StackLayout Orientation="Horizontal">
                                     <Image Source="{Binding ImageURI}"
                                            HeightRequest="50" WidthRequest="50" />
-                                    <Label Text="Battle Number" HorizontalOptions="Center" 
+                                    <Label Text="Battle Name: " HorizontalOptions="Center" 
                                            FontSize="14" />
-                                    <Label Text="{Binding BattleNumber}" 
+                                    <Label Text="{Binding Name}" 
                                            FontSize="14"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
