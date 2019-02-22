@@ -13,7 +13,7 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="20">
 
-                <Label Text="edit score" FontSize="Medium" />
+                <Label Text="Edit Score" FontSize="Medium" />
 
                 <Image Source="{Binding Data.ImageURI}"
                 WidthRequest="75"
@@ -34,7 +34,7 @@
                     </Grid.ColumnDefinitions>
                       <StackLayout Grid.Row="0" Grid.Column="0">
                         <Label 
-                            Text="Name" 
+                            Text="Name: " 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
@@ -61,7 +61,7 @@
 
                     <StackLayout Grid.Row="2" Grid.Column="0">
                         <Label
-                            Text="Battle Number" 
+                            Text="Battle Number: " 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"

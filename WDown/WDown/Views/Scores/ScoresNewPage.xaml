@@ -13,7 +13,7 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="20">
 
-                <Label Text="New Score Page" FontSize="Small" />
+                <Label Text="New Score" FontSize="Small" />
 
                 <Image Source="{Binding Data.ImageURI}"
                 WidthRequest="75"
@@ -23,25 +23,25 @@
                 
                    <StackLayout Orientation="Horizontal">
                         <Label 
-                            Text="Name" 
+                            Text="Name: " 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                  
                         <Entry 
                             Text="{Binding Data.Name}" 
-                            WidthRequest="150"
+                            WidthRequest="350"
                             />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label 
-                            Text="Date" 
+                            Text="Date: " 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     
                         <DatePicker 
-                            WidthRequest="150"
+                            WidthRequest="350"
                             Date="{Binding Data.GameDate}" 
                             />
                     </StackLayout>
@@ -171,7 +171,6 @@
                             VerticalOptions="Center"/>
                     </StackLayout>
                     
-                    <!--****TODO***********-->
                     
                       <StackLayout Orientation="Horizontal">
                         <Label 
