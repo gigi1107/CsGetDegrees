@@ -27,7 +27,7 @@ namespace WDown.Services
                     ItemsViewModel.Instance.SetDataStore(DataStoreEnum.Mock);
                     MonstersViewModel.Instance.SetDataStore(DataStoreEnum.Mock);
                     CharactersViewModel.Instance.SetDataStore(DataStoreEnum.Mock);
-                    // Implement Score
+                    ScoresViewModel.Instance.SetDataStore(DataStoreEnum.Mock);
 
                     break;
 
@@ -37,7 +37,7 @@ namespace WDown.Services
                     ItemsViewModel.Instance.SetDataStore(DataStoreEnum.SQL);
                     MonstersViewModel.Instance.SetDataStore(DataStoreEnum.SQL);
                     CharactersViewModel.Instance.SetDataStore(DataStoreEnum.SQL);
-                    // Implement Score
+                    ScoresViewModel.Instance.SetDataStore(DataStoreEnum.SQL);
                     break;
             }
 
@@ -51,6 +51,7 @@ namespace WDown.Services
             ItemsViewModel.Instance.ForceDataRefresh();
             MonstersViewModel.Instance.ForceDataRefresh();
             CharactersViewModel.Instance.ForceDataRefresh();
+            ScoresViewModel.Instance.ForceDataRefresh();
         }
     }
 }
