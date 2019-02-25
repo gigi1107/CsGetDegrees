@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <Folder Include="Views\Scores\" />
+    <Folder Include="Views\Battle\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Views\Character\CharacterDeletePage.xaml">

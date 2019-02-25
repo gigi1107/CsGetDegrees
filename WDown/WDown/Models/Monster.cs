@@ -12,7 +12,7 @@ namespace WDown.Models
     public class Monster : BaseMonster
     {
         // Remaining Experience Points to give
-        public int ExperienceGiven { get; set; }
+        public int ExperienceRemaining { get; set; }
         
 
         // Add in the actual attribute class
@@ -28,75 +28,126 @@ namespace WDown.Models
             Level = 1;
 
             // Scale up to the level
-            // // Implement ScaleLevel(Level);
+            ScaleLevel(Level);
         }
 
         // Passed in from creating via the Database, so use the guid passed in...
         public Monster(BaseMonster newData)
         {
+            // Database information
+            Guid = newData.Guid;
+            Id = newData.Id;
+
+            // Set the strings for the items
+            Head = newData.Head;
+            Feet = newData.Feet;
+            Necklass = newData.Necklass;
+            RightFinger = newData.RightFinger;
+            LeftFinger = newData.LeftFinger;
+            Feet = newData.Feet;
+
             Name = newData.Name;
             Description = newData.Description;
             ImageURI = newData.ImageURI;
+            Alive = newData.Alive;
+
+            Level = newData.Level;
+
+            // Populate the Attributes
+            MonsterAttribute = new AttributeBase(newData.AttributeString);
+
+            // Scale up to the level
+            ScaleLevel(Level);
 
         }
 
         // For making a new one for lists etc..
         public Monster(Monster newData)
         {
-            Name = newData.Name;
-            Description = newData.Description;
-            ImageURI = newData.ImageURI;
+            // Set the strings for the items
+            Update(newData);
+
+            // Scale up to the level
+            ScaleLevel(Level);
 
         }
 
         // Upgrades a monster to a set level
         public void ScaleLevel(int level)
         {
-            //we are using the dictionary in HelperEngine to level up
-            //key: level
-            //value: (speed, defense, attack, wisdom-opt)
-            Random r = new Random();
-            MonsterAttribute.Speed = HelperEngine.levelDictionary[level][0];
-            MonsterAttribute.Defense = HelperEngine.levelDictionary[level][1];
-            MonsterAttribute.Attack = HelperEngine.levelDictionary[level][2];
-
-            int oldCurrHealth = MonsterAttribute.CurrentHealth;
-            int healthDiff = MonsterAttribute.MaxHealth - oldCurrHealth;
-            MonsterAttribute.MaxHealth = HelperEngine.RollDice(level, 10);
-            MonsterAttribute.CurrentHealth = MonsterAttribute.CurrentHealth - healthDiff;
+            // Calculate Experience Remaining based on Lookup...
             Level = level;
 
-          
+            // Get the number of points at the next level, and set it for Experience Total...
+            ExperienceTotal = LevelTable.Instance.LevelDetailsList[Level + 1].Experience;
+            ExperienceRemaining = ExperienceTotal;
+
+            Damage = GetLevelBasedDamage() + LevelTable.Instance.LevelDetailsList[Level].Attack;
+            MonsterAttribute.Attack = LevelTable.Instance.LevelDetailsList[Level].Attack;
+            MonsterAttribute.Defense = LevelTable.Instance.LevelDetailsList[Level].Defense;
+            MonsterAttribute.Speed = LevelTable.Instance.LevelDetailsList[Level].Speed;
+            MonsterAttribute.MaxHealth = 5 * Level;    // 1/2 of what Characters can get per level.. 
+            MonsterAttribute.CurrentHealth = MonsterAttribute.MaxHealth;
+
+            AttributeString = AttributeBase.GetAttributeString(MonsterAttribute);
         }
 
         // Update the values passed in
         public new void Update(Monster newData)
         {
-            MonsterAttribute.Speed = newData.MonsterAttribute.Speed;
-            MonsterAttribute.Attack = newData.MonsterAttribute.Attack;
-            MonsterAttribute.Defense = newData.MonsterAttribute.Defense;
-            MonsterAttribute.CurrentHealth = newData.MonsterAttribute.CurrentHealth;
-            MonsterAttribute.MaxHealth = newData.MonsterAttribute.MaxHealth;
+         
 
-            ExperienceTotal = newData.ExperienceTotal;
-            Level = newData.Level;
+            if (newData == null)
+            {
+                return;
+            }
+
+            // Update all the fields in the Data, except for the Id
             Name = newData.Name;
             Description = newData.Description;
+            Level = newData.Level;
+            ExperienceTotal = newData.ExperienceTotal;
+            ImageURI = newData.ImageURI;
+            Alive = newData.Alive;
 
+            // Database information
+            Guid = newData.Guid;
+            Id = newData.Id;
 
+            // Populate the Attributes
+            AttributeString = newData.AttributeString;
+            MonsterAttribute = new AttributeBase(newData.AttributeString);
 
-            return;
+            // Set the strings for the items
+            Head = newData.Head;
+            Feet = newData.Feet;
+            Necklass = newData.Necklass;
+            RightFinger = newData.RightFinger;
+            LeftFinger = newData.LeftFinger;
+            Feet = newData.Feet;
+            UniqueItem = newData.UniqueItem;
+
+            // Calculate Experience Remaining based on Lookup...
+            ExperienceTotal = newData.ExperienceTotal;
+            ExperienceRemaining = newData.ExperienceRemaining;
+
+            Damage = newData.Damage;
         }
 
         // Helper to combine the attributes into a single line, to make it easier to display the item as a string
         public string FormatOutput()
         {
-            var UniqueOutput = "Implement";
+            var UniqueOutput = "None";
+            var myUnique = ItemsViewModel.Instance.GetItem(UniqueItem);
+            if (myUnique != null)
+            {
+                UniqueOutput = myUnique.FormatOutput();
+            }
 
-            var myReturn = "Implement";
-
-            // Implement
-
+            var myReturn = Name;
+            myReturn += " , " + Description;
+            myReturn += " , Level : " + Level.ToString();
+            myReturn += " , Total Experience : " + ExperienceTotal;
             myReturn += " , Unique Item : " + UniqueOutput;
 
             return myReturn;
@@ -107,8 +158,30 @@ namespace WDown.Models
         // Needs to be called before applying damage
         public int CalculateExperienceEarned(int damage)
         {
-            int xp = (damage / MonsterAttribute.MaxHealth) * ExperienceTotal;
-            return xp;
+            if (damage < 1)
+            {
+                return 0;
+            }
+
+            int remainingHealth = Math.Max(MonsterAttribute.CurrentHealth - damage, 0); // Go to 0 is OK...
+            double rawPercent = (double)remainingHealth / (double)MonsterAttribute.CurrentHealth;
+            double deltaPercent = 1 - rawPercent;
+            var pointsAllocate = (int)Math.Floor(ExperienceRemaining * deltaPercent);
+
+            // Catch rounding of low values, and force to 1.
+            if (pointsAllocate < 1)
+            {
+                pointsAllocate = 1;
+            }
+
+            // Take away the points from remaining experience
+            ExperienceRemaining -= pointsAllocate;
+            if (ExperienceRemaining < 0)
+            {
+                pointsAllocate = 0;
+            }
+
+            return pointsAllocate;
 
         }
 
@@ -160,7 +233,24 @@ namespace WDown.Models
             return myReturn;
         }
 
-        #endregion GetMonsterAttributes
+        // Get the Level based damage
+        // Then add in the monster damage
+        public int GetDamage()
+        {
+            var myReturn = 0; // = GetLevelBasedDamage();  BaseDamage Already calculated in
+            myReturn += Damage;
+
+            return myReturn;
+        }
+
+        // Get the Level based damage
+        // Then add the damage for the primary hand item as a Dice Roll
+        public int GetDamageRollValue()
+        {
+            return GetDamage();
+        }
+
+        #endregion GetAttributes
 
         #region Items
         // Gets the unique item (if any) from this monster when it dies...
@@ -171,6 +261,21 @@ namespace WDown.Models
             return myReturn;
         }
 
+        // Drop all the items the monster has
+        public List<Item> DropAllItems()
+        {
+            var myReturn = new List<Item>();
+
+            // Drop all Items
+            Item myItem;
+
+            myItem = ItemsViewModel.Instance.GetItem(UniqueItem);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+            return myReturn;
+        }
 
         #endregion Items
 
@@ -180,10 +285,18 @@ namespace WDown.Models
         // monsters give experience to characters.  Characters don't accept expereince from monsters
         public void TakeDamage(int damage)
         {
-            //implement
-            return;
+            if (damage <= 0)
+            {
+                return;
+            }
 
-            // Implement   CauseDeath();
+            MonsterAttribute.CurrentHealth = MonsterAttribute.CurrentHealth - damage;
+            if (MonsterAttribute.CurrentHealth <= 0)
+            {
+                MonsterAttribute.CurrentHealth = 0;
+                // Death...
+                CauseDeath();
+            }
         }
     }
 }

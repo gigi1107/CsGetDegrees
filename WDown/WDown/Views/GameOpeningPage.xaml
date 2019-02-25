@@ -11,7 +11,8 @@
                     <Image Source="http://www.claretwalker.com/wp-content/uploads/IMG_3000-1.jpg"
                            HeightRequest = "250"/>
                     </StackLayout>
-                    <Button Text="Auto Battle" />
+                    <Button Text="Auto Battle"
+                            Clicked="AutoBattle_Clicked"/>
                     <Button Text="Regular Battle" />
               
             </StackLayout>
