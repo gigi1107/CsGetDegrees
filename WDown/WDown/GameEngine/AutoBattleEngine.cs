@@ -6,7 +6,7 @@ using WDown.Models;
 
 namespace WDown.GameEngine
 {
-    class AutoBattleEngine
+    public class AutoBattleEngine
     {
         public BattleEngine BattleEngine = new BattleEngine();
 
