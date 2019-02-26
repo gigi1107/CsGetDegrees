@@ -28,13 +28,14 @@ namespace WDown.GameEngine
 
             // Initialize the Rounds
             BattleEngine.StartRound();
-
+            Debug.WriteLine("Round Start");
             Round.RoundEnum RoundResult;
 
             // Fight Loop. Continue until Game is Over...
             do
             {
                 // Do the turn...
+                Debug.WriteLine("Starting next turn...");
                 RoundResult = BattleEngine.RoundNextTurn();
 
                 // If the round is over start a new one...
@@ -47,6 +48,10 @@ namespace WDown.GameEngine
             } while (RoundResult != Round.RoundEnum.GameOver);
 
             BattleEngine.EndBattle();
+            Debug.WriteLine("Battle Ended");
+
+            var MyOutput = GetResultsOutput();
+            Debug.WriteLine("End of Auto Battle");
 
             return true;
         }

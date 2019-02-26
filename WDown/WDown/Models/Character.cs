@@ -13,6 +13,7 @@ namespace WDown.Models
     // Character has all attributes defined 
     public class Character : BaseCharacter
     {
+        private const int MAX_LEVEL = 20;
         // Attribute class 
         public AttributeBase CharacterAttribute { get; set; }
 
@@ -219,12 +220,14 @@ namespace WDown.Models
                 return Level;
             }
 
-            if (Value > LevelTable.MaxLevel)
+            if (Value >= LevelTable.MaxLevel)
             {
-                Value = LevelTable.MaxLevel;
+                // Skip, and return to old level
+                //Value = LevelTable.MaxLevel;
+                return Level;
             }
 
-            AddExperience(LevelTable.Instance.LevelDetailsList[Value].Experience + 1);
+            AddExperience(LevelTable.Instance.LevelDetailsList[Value+1].Experience);
 
             return Level;
         }
@@ -243,7 +246,11 @@ namespace WDown.Models
 
             // Then check for Level UP
             // If experience is higher than the experience at the next level, level up is OK.
-            if (ExperienceTotal >= LevelTable.Instance.LevelDetailsList[Level + 1].Experience)
+            if (ExperienceTotal >= LevelTable.Instance.LevelDetailsList[MAX_LEVEL].Experience)
+            {
+                // Max level reach, cannot level up
+                return false;
+            } else if (ExperienceTotal >= LevelTable.Instance.LevelDetailsList[Level + 1].Experience)
             {
                 return LevelUp();
             }
