@@ -80,7 +80,13 @@ namespace WDown.GameEngine
         /// <returns>the count of rounds</returns>
         public int GetRoundsValue()
         {
-            return BattleEngine.BattleScore.RoundCount;
+            if (BattleEngine.BattleScore.RoundCount >=1)
+            {
+                return BattleEngine.BattleScore.RoundCount;
+            } else
+            {
+                return 1;
+            }
         }
 
         /// <summary>
