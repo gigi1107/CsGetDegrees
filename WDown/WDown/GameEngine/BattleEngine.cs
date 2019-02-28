@@ -9,7 +9,7 @@ using WDown.ViewModels;
 namespace WDown.GameEngine
 {
     
-    class BattleEngine : RoundEngine
+    public class BattleEngine : RoundEngine
     {
         // The status of the actual battle, running or not (over)
         private bool isBattleRunning = false;
