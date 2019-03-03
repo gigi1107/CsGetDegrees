@@ -71,36 +71,36 @@ namespace WDown.ViewModels
                 SelectedListRemove(data);
             });
 
-            //MessagingCenter.Subscribe<BattleMainPage>(this, "StartBattle", async (obj) =>
-            //{
-            //    StartBattle();
-            //});
+            MessagingCenter.Subscribe<BattleMainPage>(this, "StartBattle", async (obj) =>
+            {
+                StartBattle();
+            });
 
-            //MessagingCenter.Subscribe<BattleMainPage>(this, "EndBattle", async (obj) =>
-            //{
-            //    EndBattle();
-            //});
+            MessagingCenter.Subscribe<BattleMainPage>(this, "EndBattle", async (obj) =>
+            {
+                EndBattle();
+            });
 
-            //MessagingCenter.Subscribe<BattleMainPage>(this, "StartRound", async (obj) =>
-            //{
-            //    StartRound();
-            //});
+            MessagingCenter.Subscribe<BattleMainPage>(this, "StartRound", async (obj) =>
+            {
+                StartRound();
+            });
 
-            //MessagingCenter.Subscribe<BattleMainPage>(this, "LoadCharacters", async (obj) =>
-            //{
-            //    LoadCharacters();
-            //});
+            MessagingCenter.Subscribe<BattleMainPage>(this, "LoadCharacters", async (obj) =>
+            {
+                LoadCharacters();
+            });
 
 
-            //MessagingCenter.Subscribe<BattleMainPage>(this, "RoundNextTurn", async (obj) =>
-            //{
-            //    RoundNextTurn();
-            //});
+            MessagingCenter.Subscribe<BattleMainPage>(this, "RoundNextTurn", async (obj) =>
+            {
+                RoundNextTurn();
+            });
 
-            //MessagingCenter.Subscribe<BattleMainPage>(this, "NewRound", async (obj) =>
-            //{
-            //    NewRound();
-            //});
+            MessagingCenter.Subscribe<BattleMainPage>(this, "NewRound", async (obj) =>
+            {
+                NewRound();
+            });
         }
 
         /// <summary>

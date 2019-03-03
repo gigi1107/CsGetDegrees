@@ -1,40 +1,62 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WDown.Views.Battle.BattleMainPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="The Battle Screen"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
-            <Label Text="Characters"></Label>
-            <StackLayout x:Name="CharacterBox"></StackLayout>
-
-            <Label Text="Monsters"></Label>
-            <StackLayout x:Name="MonsterBox"></StackLayout>
-            
-            <Label Text="Messages"></Label>
-            <StackLayout x:Name="MessageBox">
-                <Label x:Name ="MessageText"
-                       LineBreakMode="WordWrap"
-                       MaxLines="5"
-                       HeightRequest="50">
-                </Label>
-                <WebView
-                    HeightRequest="100"
-                    WidthRequest="100"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="Start"
-                    x:Name="HtmlBox">
-                </WebView>
-                    
+        <StackLayout Orientation="Vertical">
+            <AbsoluteLayout>
+                <Frame OutlineColor="Black"
+                       AbsoluteLayout.LayoutBounds="0.5,0,350,200"
+                       AbsoluteLayout.LayoutFlags="XProportional,YProportional">
+                    <StackLayout Orientation="Vertical">
+                    <Label Text="First Character up, binding" 
+                           VerticalOptions="CenterAndExpand" 
+                           HorizontalOptions="CenterAndExpand" />
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="HP bar here" />
+                            <Label Text="Wisdom bar here" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Image Source="https://i.imgur.com/pNTXqMH.png" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="Attack level here" />
+                            <Label Text="Defense level here" />
+                            <Label Text="Speed level here" />
+                        </StackLayout>
+                    </StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <Button Text="Attack"
+                                    HorizontalOptions="CenterAndExpand"
+                                    />
+                            <Button Text="Rest"
+                                    HorizontalOptions="CenterAndExpand"/>
+                            <Button Text="Use Item"
+                                    HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </StackLayout>
+                </Frame>
+            </AbsoluteLayout>
+            <Label Text="Characters">
+            </Label>
+            <StackLayout x:Name="CharacterBox">
             </StackLayout>
-            
-            <Button x:Name="GameNextButton" IsVisible ="true" Clicked="OnNextClicked" Text="Next Turn"/>
-
-            <Button x:Name="GameOverButton" IsVisible ="False" Clicked="OnGameOverClicked" Text="Game Over"/>
-
+            <Label Text="Monsters">
+            </Label>
+            <StackLayout x:Name="MonsterBox">
+            </StackLayout>
+            <Label Text="Messages">
+            </Label>
+            <StackLayout x:Name="MessageBox">
+                <Label x:Name="MessageText" LineBreakMode="WordWrap" MaxLines="5" HeightRequest="50">
+                </Label>
+                <WebView HeightRequest="100" WidthRequest="100" HorizontalOptions="FillAndExpand" VerticalOptions="Start" x:Name="HtmlBox">
+                </WebView>
+            </StackLayout>
+            <Button x:Name="GameNextButton" IsVisible="true" Clicked="OnNextClicked" Text="Next Turn" />
+            <Button x:Name="GameOverButton" IsVisible="False" Clicked="OnGameOverClicked" Text="Game Over" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,5 +1,5 @@
 ﻿using System;
-using System;
+
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -145,6 +145,7 @@ namespace WDown.GameEngine
         // Item pool is empty
         // Monster List is new
         // Start Round
+       
 
         // Start Round
         // Choose Attack Order
