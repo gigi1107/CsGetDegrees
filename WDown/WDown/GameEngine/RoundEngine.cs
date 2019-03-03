@@ -17,6 +17,8 @@ namespace WDown.GameEngine
         // Player currently engaged
         public Round.PlayerInfo PlayerCurrent;
 
+        public Models.Round.RoundEnum RoundStateEnum = Round.RoundEnum.Unknown;
+
         public RoundEngine()
         {
             ClearLists();
@@ -56,21 +58,49 @@ namespace WDown.GameEngine
             BattleScore.RoundCount++;
         }
 
+        /// <summary>
+        /// Will return the Min, Max, Average for the Characters in the party
+        /// So the monster can get scaled to the appropraite level
+        /// </summary>
+        /// <returns></returns>
+        public int GetAverageCharacterLevel()
+        {
+            var data = CharacterList.Average(m => m.Level);
+            return (int)Math.Floor(data);
+        }
+
+        /// <summary>
+        /// Will return the Min, Max, Average for the Characters in the party
+        /// So the monster can get scaled to the appropraite level
+        /// </summary>
+        /// <returns></returns>
+        public int GetMinCharacterLevel()
+        {
+            var data = CharacterList.Min(m => m.Level);
+            return data;
+        }
+
+        /// <summary>
+        /// Will return the Min, Max, Average for the Characters in the party
+        /// So the monster can get scaled to the appropraite level
+        /// </summary>
+        /// <returns></returns>
+        public int GetMaxCharacterLevel()
+        {
+            var data = CharacterList.Max(m => m.Level);
+            return data;
+        }
+
         // Add Monsters
         // Scale them to meet Character Strength...
         public void AddMonstersToRound()
         {
 
             // Check to see if the monster list is full, if so, no need to add more...
-            if (MonsterList.Count() >= 6)
+            if (MonsterList.Count() >= GameGlobals.MaxNumberPartyPlayers)
             {
                 return;
             }
-
-            // TODO, determine the character strength
-            // add monsters up to that strength...
-            var ScaleLevelMax = 2;
-            var ScaleLevelMin = 1;
 
             // Make Sure Monster List exists and is loaded...
             var myMonsterViewModel = MonstersViewModel.Instance;
@@ -78,27 +108,41 @@ namespace WDown.GameEngine
 
             if (myMonsterViewModel.Dataset.Count() > 0)
             {
+                // Scale monsters to be within the range of the Characters
+
+                var ScaleLevelMax = 1;
+                var ScaleLevelMin = 1;
+                var ScaleLevelAverage = 1;
+
+                if (CharacterList.Any())
+                {
+                    ScaleLevelMax = GetMaxCharacterLevel();
+                    ScaleLevelMin = GetMinCharacterLevel();
+                    ScaleLevelAverage = GetAverageCharacterLevel();
+                }
+
                 // Get 6 monsters
                 do
                 {
                     var rnd = HelperEngine.RollDice(1, myMonsterViewModel.Dataset.Count);
                     {
-                        var item = new Monster(myMonsterViewModel.Dataset[rnd - 1]);
+                        var monster = new Monster(myMonsterViewModel.Dataset[rnd - 1]);
 
                         // Help identify which monster it is...
-                        item.Name += " " + (1 + MonsterList.Count()).ToString();
+                        monster.Name += " " + (1 + MonsterList.Count()).ToString();
 
-                        var rndScale = HelperEngine.RollDice(ScaleLevelMin, ScaleLevelMax);
-                        item.ScaleLevel(rndScale);
-                        MonsterList.Add(item);
+                        // Scale the monster to be between the average level of the characters+1
+                        var rndScale = HelperEngine.RollDice(1, ScaleLevelAverage + 1);
+                        monster.ScaleLevel(rndScale);
+                        MonsterList.Add(monster);
                     }
 
-                } while (MonsterList.Count() < 6);
+                } while (MonsterList.Count() < GameGlobals.MaxNumberPartyPlayers);
             }
             else
             {
                 // No monsters in DB, so add 6 new ones...
-                for (var i = 0; i < 6; i++)
+                for (var i = 0; i < GameGlobals.MaxNumberPartyPlayers; i++)
                 {
                     var item = new Monster();
                     // Help identify which monster it is...
@@ -133,7 +177,8 @@ namespace WDown.GameEngine
             if (CharacterList.Count < 1)
             {
                 // Game Over
-                return Round.RoundEnum.GameOver;
+                RoundStateEnum = Round.RoundEnum.GameOver;
+                return RoundStateEnum;
             }
 
             // Check if round is over
@@ -167,7 +212,8 @@ namespace WDown.GameEngine
                 TakeTurn(myPlayer);
             }
 
-            return Round.RoundEnum.NextTurn;
+            RoundStateEnum = Round.RoundEnum.NextTurn;
+            return RoundStateEnum;
         }
 
         public Round.PlayerInfo GetNextPlayerTurn()

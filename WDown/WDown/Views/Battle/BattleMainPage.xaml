@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WDown.Views.Battle.BattleMainPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="The Battle Screen"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Characters"></Label>
+            <StackLayout x:Name="CharacterBox"></StackLayout>
+
+            <Label Text="Monsters"></Label>
+            <StackLayout x:Name="MonsterBox"></StackLayout>
+            
+            <Label Text="Messages"></Label>
+            <StackLayout x:Name="MessageBox">
+                <Label x:Name ="MessageText"
+                       LineBreakMode="WordWrap"
+                       MaxLines="5"
+                       HeightRequest="50">
+                </Label>
+                <WebView
+                    HeightRequest="100"
+                    WidthRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    x:Name="HtmlBox">
+                </WebView>
+                    
+            </StackLayout>
+            
+            <Button x:Name="GameNextButton" IsVisible ="true" Clicked="OnNextClicked" Text="Next Turn"/>
+
+            <Button x:Name="GameOverButton" IsVisible ="False" Clicked="OnGameOverClicked" Text="Game Over"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

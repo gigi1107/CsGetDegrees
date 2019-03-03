@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WDown.Views.Battle.BattleMonsterListPage"
+             Title="Monster List">
+
+    <ContentPage.Content>
+
+        <ScrollView>
+            <StackLayout
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand">
+
+                <Label Text="They are excited to meet you"
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" />
+
+                <StackLayout
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand">
+
+                    <FlexLayout x:Name="MonsterListFrame"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Center"
+                                Padding="5"/>
+                    
+                </StackLayout>
+
+                <Button Clicked="OnNextClicked" Text="Next"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

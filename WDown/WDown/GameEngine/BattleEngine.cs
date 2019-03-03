@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -8,7 +9,10 @@ using WDown.ViewModels;
 
 namespace WDown.GameEngine
 {
-    
+    // Battle is the top structure
+
+    // A battle has
+
     public class BattleEngine : RoundEngine
     {
         // The status of the actual battle, running or not (over)
@@ -75,28 +79,29 @@ namespace WDown.GameEngine
         // Scale them to meet Character Strength...
         public bool AddCharactersToBattle()
         {
+            // Check if the Character list is empty
+            if (CharactersViewModel.Instance.Dataset.Count < 1)
+            {
+                return false;
+            }
+
             // Check to see if the Character list is full, if so, no need to add more...
-            if (CharacterList.Count >= 6)
+            if (CharacterList.Count >= GameGlobals.MaxNumberPartyPlayers)
             {
                 return true;
             }
 
             // TODO, determine the character strength
             // add Characters up to that strength...
-            var ScaleLevelMax = 2;
+            var ScaleLevelMax = 3;
             var ScaleLevelMin = 1;
-
-            if (CharactersViewModel.Instance.Dataset.Count < 1)
-            {
-                return false;
-            }
 
             // Get 6 Characters
             do
             {
-                var myData = GetRandomCharacter(ScaleLevelMin, ScaleLevelMax);
-                CharacterList.Add(myData);
-            } while (CharacterList.Count < 6);
+                var Data = GetRandomCharacter(ScaleLevelMin, ScaleLevelMax);
+                CharacterList.Add(Data);
+            } while (CharacterList.Count < GameGlobals.MaxNumberPartyPlayers);
 
             return true;
         }
@@ -145,6 +150,27 @@ namespace WDown.GameEngine
         // Choose Attack Order
         // Walk Attack Order
         // Take Turn A attacks B
+
+
+        /// <summary>
+        /// Retruns a formated String of the Results of the Battle
+        /// </summary>
+        /// <returns></returns>
+        public string GetResultsOutput()
+        {
+
+            string myResult = "" +
+                    " Battle Ended" + BattleScore.ScoreTotal +
+                    " Total Score :" + BattleScore.ExperienceGainedTotal +
+                    " Total Experience :" + BattleScore.ExperienceGainedTotal +
+                    " Rounds :" + BattleScore.RoundCount +
+                    " Turns :" + BattleScore.TurnCount +
+                    " Monster Kills :" + BattleScore.MonstersKilledList;
+
+            Debug.WriteLine(myResult);
+
+            return myResult;
+        }
 
     }
 }

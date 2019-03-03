@@ -34,10 +34,10 @@ namespace WDown.Views.Battle
         {
 
             // Jump to Main Battle Page
-            //await Navigation.PushAsync(new BattleMainPage());
+            await Navigation.PushAsync(new BattleMainPage());
 
-            //// Last, remove this page
-            //Navigation.RemovePage(this);
+            // Last, remove this page
+            Navigation.RemovePage(this);
         }
 
         private async void OnAvailableCharacterItemSelected(object sender, SelectedItemChangedEventArgs args)
