@@ -13,7 +13,9 @@
                     </StackLayout>
                     <Button Text="Auto Battle"
                             Clicked="AutoBattle_Clicked"/>
-                    <Button Text="Regular Battle" />
+                    <Button Text="Battle Character select page"
+                            Clicked="Character_Select_Clicked"/>
+                  
               
             </StackLayout>
         </ScrollView>

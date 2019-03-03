@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WDown.Views.Battle.BattleCharacterSelectPage">
+
+    <ContentPage.Content>
+        <AbsoluteLayout 
+             BackgroundColor="Black"
+             Padding="0,4,0,4"
+            >
+             <Image 
+                 Aspect="AspectFill" 
+                 AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All"
+                 Source="Hill-PNG-File.png"
+                 BackgroundColor="White"
+                
+                />
+        <ScrollView>
+            <StackLayout>
+
+                <StackLayout>
+                    <Label Text="Pick your Team"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" 
+                           FontSize="Large"/>
+                </StackLayout>
+
+
+                <StackLayout
+                VerticalOptions="Start"
+                HorizontalOptions="CenterAndExpand"
+                Orientation="Vertical">
+                    <StackLayout
+                        Orientation="Horizontal"
+                        VerticalOptions="Start"
+                        HorizontalOptions="CenterAndExpand ">
+
+                        <StackLayout 
+                                    HorizontalOptions="StartAndExpand ">
+
+                            <Label Text="Available Characters "
+                                    HorizontalOptions="CenterAndExpand "/>
+
+
+                            <ListView x:Name="AvailableCharactersListView" 
+                                ItemsSource="{Binding AvailableCharacters}"
+                                VerticalOptions="Start"
+                                HorizontalOptions="StartAndExpand"
+                                      BackgroundColor="Transparent"
+                                 HasUnevenRows="true"
+                                 RefreshCommand="{Binding LoadItemsCommand}"
+                                 IsPullToRefreshEnabled="true"
+                                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                                 CachingStrategy="RecycleElement"
+                                 ItemSelected="OnAvailableCharacterItemSelected">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+
+                                            <StackLayout Padding="10"
+                                                 Orientation="Horizontal"
+                                                 VerticalOptions="Start"
+                                                 HorizontalOptions="Start">
+
+                                                <Image Source="{Binding ImageURI}"
+                                                   WidthRequest="50"
+                                                   HeightRequest="50" 
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center"/>
+
+                                                <StackLayout>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="{Binding Name}" 
+                                                           LineBreakMode="NoWrap" 
+                                                           Style="{DynamicResource ListItemTextStyle}" />
+                                                        <Label Text="{Binding Level}" 
+                                                           LineBreakMode="NoWrap" 
+                                                           Style="{DynamicResource ListItemTextStyle}" />
+                                                    </StackLayout>
+                                                </StackLayout>
+
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+
+                        <StackLayout 
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Start">
+
+                            <Label 
+                                HorizontalOptions="CenterAndExpand"
+                                Text="Party Count"
+                                FontSize="Large"/>
+                            <Label 
+                                Text="0"
+                                HorizontalOptions="CenterAndExpand"
+                                x:Name="PartyCountLabel"/>
+
+                            <Button 
+                                x:Name="NextButton"
+                                HorizontalOptions="CenterAndExpand"
+                                Clicked="OnNextClicked" 
+                                Text="Accept Party"
+                                IsEnabled="False"
+                                />
+
+                        </StackLayout>
+
+                        <StackLayout 
+                            HorizontalOptions="EndAndExpand">
+
+                            <Label Text="Selected Characters"
+                                   HorizontalOptions="CenterAndExpand "/>
+
+                            <ListView x:Name="SelectedCharactersListView" 
+                                ItemsSource="{Binding SelectedCharacters}"
+                                VerticalOptions="Start"
+                                HorizontalOptions="EndAndExpand"
+                                      BackgroundColor="Transparent"
+                                HasUnevenRows="true"
+                                RefreshCommand="{Binding LoadItemsCommand}"
+                                IsPullToRefreshEnabled="true"
+                                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                                CachingStrategy="RecycleElement"
+                                ItemSelected="OnSelectedCharacterItemSelected">
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+
+                                            <StackLayout Padding="10"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="Start"
+                                            HorizontalOptions="StartAndExpand">
+
+                                                <Image Source="{Binding ImageURI}"
+                                               WidthRequest="50"
+                                               HeightRequest="50" 
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center"/>
+
+                                                <StackLayout>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="{Binding Name}" 
+                                                           LineBreakMode="NoWrap" 
+                                                           Style="{DynamicResource ListItemTextStyle}" />
+                                                        <Label Text="{Binding Level}" 
+                                                           LineBreakMode="NoWrap" 
+                                                           Style="{DynamicResource ListItemTextStyle}" />
+                                                    </StackLayout>
+                                                </StackLayout>
+
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+
+                    </StackLayout>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+            </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -5,6 +5,9 @@ namespace WDown.Models
 {
     public static class GameGlobals
     {
+        // Max number of Players in a Party
+        public static int MaxNumberPartyPlayers = 6;
+
         // Turn on to force Rolls to be non random
         public static bool ForceRollsToNotRandom = false;
 
@@ -12,9 +15,10 @@ namespace WDown.Models
         private static int _ForcedRandomValue = 1;
 
         // What number should return for random numbers (1 is good choice...)
-        public static int ForcedRandomValue {
-            get => _ForcedRandomValue; 
-            }
+        public static int ForcedRandomValue
+        {
+            get => _ForcedRandomValue;
+        }
 
         // What number to use for ToHit values (1,2, 19, 20)
         public static int ForceToHitValue = 20;
@@ -25,11 +29,11 @@ namespace WDown.Models
 
         // Forces Characters to hit with a set value
         // Zero, because don't want to add it in unless it is used...
-        public static int ForceCharacterDamangeBonusValue = 0; 
+        public static int ForceCharacterDamangeBonusValue = 0;
 
         // Allow Random Items when monsters die...
         public static bool AllowMonsterDropItems = true;
-        
+
         // Turn Off Random Number Generation, and use the passed in values.
         public static void SetForcedRandomNumbersValueAndToHit(int value, int hit)
         {

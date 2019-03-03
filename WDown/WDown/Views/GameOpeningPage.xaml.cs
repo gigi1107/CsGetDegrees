@@ -17,5 +17,10 @@ namespace WDown.Views
         {
             await Navigation.PushAsync(new WDown.Views.Battle.AutoBattlePage());
         }
+
+        private async void Character_Select_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new WDown.Views.Battle.BattleCharacterSelectPage());
+        }
     }
 }
