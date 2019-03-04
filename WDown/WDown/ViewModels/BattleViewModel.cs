@@ -41,6 +41,8 @@ namespace WDown.ViewModels
         // Class for the AvailableCharacters
         public ObservableCollection<Character> AvailableCharacters { get; set; }
 
+
+
         // Load the Data command
         public Command LoadDataCommand { get; set; }
 

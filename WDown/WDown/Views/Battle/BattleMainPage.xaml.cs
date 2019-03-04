@@ -31,8 +31,8 @@ namespace WDown.Views.Battle
             InitializeComponent();
 
             // Show the Next button, hide the Game Over button
-            GameNextButton.IsVisible = true;
-            GameOverButton.IsVisible = false;
+            //GameNextButton.IsVisible = true;
+            //GameOverButton.IsVisible = false;
 
             MessagingCenter.Send(this, "StartBattle");
             Debug.WriteLine("Battle Start" + " Characters :" + BattleViewModel.Instance.BattleEngine.CharacterList.Count);
@@ -93,8 +93,8 @@ namespace WDown.Views.Battle
                 GameMessage("Game Over\n");
 
                 // Change to the Game Over Button
-                GameNextButton.IsVisible = false;
-                GameOverButton.IsVisible = true;
+                //GameNextButton.IsVisible = false;
+                //GameOverButton.IsVisible = true;
 
                 return;
             }
@@ -111,7 +111,7 @@ namespace WDown.Views.Battle
         {
             Debug.WriteLine("Message: " + message);
 
-            MessageText.Text = message + "\n" + MessageText.Text;
+            //MessageText.Text = message + "\n" + MessageText.Text;
         }
 
         /// <summary>
