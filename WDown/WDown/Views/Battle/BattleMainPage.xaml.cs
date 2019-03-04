@@ -48,11 +48,11 @@ namespace WDown.Views.Battle
 
             //            var browser = new WebView();
 
-            var htmlSource = new HtmlWebViewSource();
+            //var htmlSource = new HtmlWebViewSource();
 
-            htmlSource.Html = @"<html><body><h1>Xamarin.Forms</h1><p>Welcome to WebView.</p></body></html>";
+            //htmlSource.Html = @"<html><body><h1>Xamarin.Forms</h1><p>Welcome to WebView.</p></body></html>";
 
-            HtmlBox.Source = htmlSource;
+            //HtmlBox.Source = htmlSource;
 
         }
 
