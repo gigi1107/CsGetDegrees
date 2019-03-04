@@ -357,7 +357,6 @@ namespace WDown.Services
         // Item
         public async Task<bool> InsertUpdateAsync_Item(Item data)
         {
-
             // Check to see if the item exist
             var oldData = await GetAsync_Item(data.Id);
             if (oldData == null)
