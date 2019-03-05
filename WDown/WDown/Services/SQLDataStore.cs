@@ -98,25 +98,18 @@ namespace WDown.Services
         public async Task<bool> InsertUpdateAsync_Item(Item data)
         {
 
-            // Check to see if the item exist
-            var oldData = await GetAsync_Item(data.Id);
-            if (oldData == null)
+            // Implement
+            var _count = App.Database.Table<Item>().Where(i => i.Id == data.Id).CountAsync().Result;
+            if (_count == 0)
             {
-                await AddAsync_Item(data);
-                return true;
+                return await AddAsync_Item(data);
+            }
+            else
+            {
+                return await UpdateAsync_Item(data);
             }
 
-            // Compare it, if different update in the DB
-            var UpdateResult = await UpdateAsync_Item(data);
-            if (UpdateResult)
-            {
-                await AddAsync_Item(data);
-                return true;
-            }
-
-            return false;
-        }
-   
+        }   
         // Add a new item to DB
         public async Task<bool> AddAsync_Item(Item data)
         {
