@@ -7,11 +7,22 @@
                 <AbsoluteLayout>
                     <!--CHARACTERS-->
                     <StackLayout HorizontalOptions="StartAndExpand">
-                        <ListView x:Name="SelectedCharactersListView" ItemsSource="{Binding SelectedCharacters}" VerticalOptions="Start" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="None">
+                        <ListView x:Name="SelectedCharactersListView" 
+                                  ItemsSource="{Binding SelectedCharacters}"
+                                  VerticalOptions="Start" 
+                                  HorizontalOptions="EndAndExpand" 
+                                  BackgroundColor="Transparent"
+                                  HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" 
+                                  IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                                  CachingStrategy="RecycleElement"
+                                  SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <StackLayout Padding="1" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="StartAndExpand">
+                                        <StackLayout Padding="1" 
+                                                     Orientation="Horizontal" 
+                                                     VerticalOptions="Start" 
+                                                     HorizontalOptions="StartAndExpand">
                                             <Image Source="{Binding ImageURI}" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" />
                                             <StackLayout>
                                                 <StackLayout Orientation="Horizontal">
@@ -25,7 +36,7 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
-                    <Frame OutlineColor="Black" BackgroundColor="White" AbsoluteLayout.LayoutBounds="0.5,0,0.4,200" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
+                    <Frame OutlineColor="Black" BackgroundColor="White" AbsoluteLayout.LayoutBounds="0.35,0,0.35,200" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
                         <StackLayout Orientation="Vertical">
                             <Label Text="First Character up, binding" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
                             <StackLayout Orientation="Horizontal">
@@ -49,15 +60,29 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                </AbsoluteLayout>
+              
                 <!--                    MONSTERS SECTION-->
-                <StackLayout HorizontalOptions="StartAndExpand">
-                    <ListView x:Name="SelectedMonstersView" ItemsSource="{Binding Instance.BattleEngine.MonsterList}" VerticalOptions="Start" HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="None">
+                  
+           <StackLayout
+                            AbsoluteLayout.LayoutBounds="1,0,0.4,1" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional" >
+                    <ListView x:Name="SelectedMonstersView" 
+                              ItemsSource="{Binding FightingMonsters}"
+                              VerticalOptions="Start"
+                              HorizontalOptions="StartAndExpand" 
+                              BackgroundColor="Transparent" 
+                              HasUnevenRows="true" 
+                              RefreshCommand="{Binding LoadItemsCommand}" 
+                              IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                              CachingStrategy="RecycleElement"
+                              SelectionMode="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout Padding="1" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="StartAndExpand">
-                                        <Image Source="{Binding ImageURI}" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" />
+                                    <StackLayout Padding="1" Orientation="Horizontal"
+                                                 VerticalOptions="Start" 
+                                                 HorizontalOptions="StartAndExpand">
+                                        <Image Source="{Binding ImageURI}" 
+                                               WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center" />
                                         <StackLayout>
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" />
@@ -70,17 +95,19 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-                <!--   <StackLayout x:Name="MonsterBox">-->
-                <!-- <Label Text="Messages"/>
+                      </AbsoluteLayout>
+                  
+                 <Label Text="Messages"/>
            
             <StackLayout x:Name="MessageBox">
-                <Label x:Name="MessageText" LineBreakMode="WordWrap" MaxLines="5" HeightRequest="50">
+                    </StackLayout>
+                <!--<Label x:Name="MessageText" LineBreakMode="WordWrap" MaxLines="5" HeightRequest="50">
                 </Label>
             <WebView HeightRequest="100" WidthRequest="100" HorizontalOptions="FillAndExpand" VerticalOptions="Start" x:Name="HtmlBox">
-                </WebView
-           </StackLayout>
+                </WebView-->
+      
             <Button x:Name="GameNextButton" IsVisible="true" Clicked="OnNextClicked" Text="Next Turn" />
-            <Button x:Name="GameOverButton" IsVisible="False" Clicked="OnGameOverClicked" Text="Game Over" />-->
+            <Button x:Name="GameOverButton" IsVisible="False" Clicked="OnGameOverClicked" Text="Game Over" />
             </StackLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

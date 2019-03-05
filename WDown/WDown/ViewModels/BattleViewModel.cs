@@ -41,7 +41,8 @@ namespace WDown.ViewModels
         // Class for the AvailableCharacters
         public ObservableCollection<Character> AvailableCharacters { get; set; }
 
-
+        //added class for the fightingmonsters to display in UI
+        public ObservableCollection<Monster> FightingMonsters { get; set; }
 
         // Load the Data command
         public Command LoadDataCommand { get; set; }
@@ -55,6 +56,7 @@ namespace WDown.ViewModels
 
             SelectedCharacters = new ObservableCollection<Character>();
             AvailableCharacters = new ObservableCollection<Character>();
+            FightingMonsters = new ObservableCollection<Monster>();
 
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
@@ -127,6 +129,10 @@ namespace WDown.ViewModels
         public void StartRound()
         {
             BattleViewModel.Instance.BattleEngine.StartRound();
+            foreach (var data in BattleViewModel.Instance.BattleEngine.MonsterList)
+            {
+                FightingMonsters.Add(new Monster(data));
+            }
         }
 
         /// <summary>
@@ -139,6 +145,8 @@ namespace WDown.ViewModels
             {
                 BattleViewModel.Instance.BattleEngine.CharacterList.Add(new Character(data));
             }
+
+           
 
         }
 
@@ -156,6 +164,7 @@ namespace WDown.ViewModels
         public void NewRound()
         {
             BattleViewModel.Instance.BattleEngine.NewRound();
+
         }
 
         #region DataOperations

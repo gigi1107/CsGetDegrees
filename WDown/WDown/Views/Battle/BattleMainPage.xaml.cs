@@ -44,6 +44,17 @@ namespace WDown.Views.Battle
             MessagingCenter.Send(this, "StartRound");
             Debug.WriteLine("Round Start" + " Monsters:" + BattleViewModel.Instance.BattleEngine.MonsterList.Count);
 
+            foreach(Models.Monster Monster in BattleViewModel.Instance.BattleEngine.MonsterList)
+            {
+                Debug.WriteLine("Round Start" + " Monster List:" + Monster.Name);
+            }
+            Debug.WriteLine("round start observable collection monster list: ");
+            foreach (Models.Monster Monster in BattleViewModel.Instance.FightingMonsters)
+            {
+                Debug.WriteLine("Round Start" + " Monster List:" + Monster.Name);
+            }
+
+
             BindingContext = _viewModel = BattleViewModel.Instance;
 
             //            var browser = new WebView();
@@ -54,7 +65,10 @@ namespace WDown.Views.Battle
 
             //HtmlBox.Source = htmlSource;
 
+        
         }
+
+    
 
         /// <summary>
         /// Next Turn Button

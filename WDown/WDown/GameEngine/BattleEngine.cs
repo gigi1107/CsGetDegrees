@@ -30,7 +30,6 @@ namespace WDown.GameEngine
             BattleScore = new Score();
             CharacterList = new List<Character>();
             ItemPool = new List<Item>();
-            //i think there is a MonsterList inherited...
         }
 
         // Determine if Auto Battle is On or Off
