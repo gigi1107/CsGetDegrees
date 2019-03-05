@@ -132,7 +132,7 @@
                                     <DataTemplate>
                                         <ViewCell>
 
-                                            <StackLayout Padding="10"
+                                            <StackLayout Padding="1"
                                             Orientation="Horizontal"
                                             VerticalOptions="Start"
                                             HorizontalOptions="StartAndExpand">

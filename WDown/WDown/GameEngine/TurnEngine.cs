@@ -152,7 +152,7 @@ namespace WDown.GameEngine
                 TurnMessageSpecial = " and causes death";
 
                 // Add the monster to the killed list
-                BattleScore.CharacterAtDeathList += Target.FormatOutput() + "\n";
+                BattleScore.CharacterAtDeathList.Add(Target);
 
                 // Drop Items to item Pool
                 var myItemList = Target.DropAllItems();
@@ -160,7 +160,7 @@ namespace WDown.GameEngine
                 // Add to Score
                 foreach (var item in myItemList)
                 {
-                    BattleScore.ItemsDroppedList += item.FormatOutput() + "\n";
+                    BattleScore.ItemsDroppedList.Add(item);
                     TurnMessageSpecial += " Item " + item.Name + " dropped";
                 }
 
@@ -271,7 +271,7 @@ namespace WDown.GameEngine
                 BattleScore.MonsterSlainNumber++;
 
                 // Add the monster to the killed list
-                BattleScore.MonstersKilledList += Target.FormatOutput() + "\n";
+                BattleScore.MonstersKilledList.Add(Target);
 
                 // Drop Items to item Pool
                 var myItemList = Target.DropAllItems();
@@ -282,7 +282,7 @@ namespace WDown.GameEngine
                 // Add to Score
                 foreach (var item in myItemList)
                 {
-                    BattleScore.ItemsDroppedList += item.FormatOutput() + "\n";
+                    BattleScore.ItemsDroppedList.Add(item);
                     TurnMessageSpecial += " Item " + item.Name + " dropped";
                 }
 

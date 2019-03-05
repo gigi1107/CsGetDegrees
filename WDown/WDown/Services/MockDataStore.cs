@@ -290,9 +290,9 @@ namespace WDown.Services
                 RoundCount = 3,
                 MonsterSlainNumber = 18,
                 ExperienceGainedTotal = 10000,
-                CharacterAtDeathList = "Hazel, BigWig",
-                MonstersKilledList = "Dog, Cat, Fox, Bird, Cult Rabbit, Dog",
-                ItemsDroppedList = "Tree Bark, Collar of Transcendence, Magical Dew",
+                CharacterAtDeathList = new List<Character>(),
+                MonstersKilledList = new List<Monster>(),
+                ItemsDroppedList = new List<Item>(),
                 Description = "First score"
 
             });
@@ -308,9 +308,9 @@ namespace WDown.Services
                 RoundCount = 4,
                 MonsterSlainNumber = 24,
                 ExperienceGainedTotal = 20000,
-                CharacterAtDeathList = "Hyzenthlay, Clover",
-                MonstersKilledList = "Cat, Cat, Dog, Bird, Cult Rabbit, Dog",
-                ItemsDroppedList = "Grass, Collar of Transcendence, Magical Dew",
+                CharacterAtDeathList = new List<Character>(),
+                MonstersKilledList = new List<Monster>(),
+                ItemsDroppedList = new List<Item>(),
                 Description = "Second Score"
 
             });

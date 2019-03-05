@@ -48,7 +48,7 @@ namespace WDown.Models
         {
             Name = "Unknown";
             Description = "Unknown";
-            ImageURI = ""; // TODO: ItemsController.DefaultImageURI;
+            ImageURI = ""; 
 
             Range = 0;
             Value = 0;

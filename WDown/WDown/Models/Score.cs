@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using WDown.Models;
 
 namespace WDown.Models
 {
@@ -30,15 +32,15 @@ namespace WDown.Models
 
         // A list of all the characters at the time of death and their stats.  
         // Only use Get only, set will be done by the Add feature.
-        public string CharacterAtDeathList { get; set; }
+        public List<Character> CharacterAtDeathList { get; set; }
 
         // All of the monsters killed and their stats. 
         // Only use Get only, set will be done by the Add feature.
-        public string MonstersKilledList { get; set; }
+        public List<Monster> MonstersKilledList { get; set; }
 
         // All of the items dropped and their stats. 
         // Only use Get only, set will be done by the Add feature.
-        public string ItemsDroppedList { get; set; }
+        public List<Item> ItemsDroppedList { get; set; }
 
         // Instantiate new Score
         public Score()
@@ -63,9 +65,9 @@ namespace WDown.Models
             RoundCount = 0;
             MonsterSlainNumber = 0;
             ExperienceGainedTotal = 0;
-            CharacterAtDeathList = "";
-            MonstersKilledList = "";
-            ItemsDroppedList = "";
+            CharacterAtDeathList = new List<Character>();
+            MonstersKilledList = new List<Monster>();
+            ItemsDroppedList = new List<Item>();
         }
 
         public Score(Score newData)
@@ -121,14 +123,14 @@ namespace WDown.Models
         // Adding a character to the score output as a text string
         public bool AddCharacterToList( Character data)
         {
-            CharacterAtDeathList += data.ToString();
+            CharacterAtDeathList.Add(new Character(data));
             return true;
         }
 
         // All a monster to the list of monsters and their stats
         public bool AddMonsterToList( Monster data)
         {
-            MonstersKilledList += data.ToString();
+            MonstersKilledList.Add(new Monster(data));
             return true;
            
         }
@@ -136,7 +138,7 @@ namespace WDown.Models
         // Add an item to the list of items for score and their stats
         public bool AddItemToList( Item data)
         {
-            ItemsDroppedList += data.ToString();
+            ItemsDroppedList.Add(new Item(data));
             return false;
 
         }

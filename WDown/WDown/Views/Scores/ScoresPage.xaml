@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WDown.Views.Scores.ScoresPage" Title="Scores">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
+             x:Class="WDown.Views.Scores.ScoresPage" Title="Scores">
     <ContentPage.Content>
         <StackLayout Padding="10">
             <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
@@ -23,11 +26,9 @@
                         <ViewCell>
                             <StackLayout Margin="15">
                                 <StackLayout Orientation="Horizontal">
-                                    <Image Source="{Binding ImageURI}"
-                                           HeightRequest="50" WidthRequest="50" />
-                                    <Label Text="Battle Name: " HorizontalOptions="Center" 
+                                    <Label Text="Battle Number: " HorizontalOptions="Center" 
                                            FontSize="14" />
-                                    <Label Text="{Binding Name}" 
+                                    <Label Text="{Binding BattleNumber}" 
                                            FontSize="14"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
@@ -36,6 +37,23 @@
                                     <Label Text="{Binding GameDate}"
                                            FontSize="14"/>
                                 </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Monsters Killed: " 
+                                           FontSize="14"/>
+                                    <Label Text="{Binding MonstersKilledList.Count}"
+                                           FontSize="14"/>
+                                    <Label Text="Characters Killed: " 
+                                           FontSize="14"/>
+                                    <Label Text="{Binding CharacterAtDeathList.Count}"
+                                           FontSize="14"/>
+                                    
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                <Label Text="Items Collected: " 
+                                           FontSize="14"/>
+                                    <Label Text="{Binding ItemsDroppedList.Count}"
+                                           FontSize="14"/>
+                                    </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
