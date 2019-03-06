@@ -75,7 +75,7 @@ namespace WDown.ViewModels
                 SelectedListRemove(data);
             });
 
-            MessagingCenter.Subscribe<BattleMainPage>(this, "StartBattle", async (obj) =>
+            MessagingCenter.Subscribe<BattleMonsterListPage>(this, "StartBattle", async (obj) =>
             {
                 StartBattle();
             });
@@ -85,12 +85,12 @@ namespace WDown.ViewModels
                 EndBattle();
             });
 
-            MessagingCenter.Subscribe<BattleMainPage>(this, "StartRound", async (obj) =>
+            MessagingCenter.Subscribe<BattleMonsterListPage>(this, "StartRound", async (obj) =>
             {
                 StartRound();
             });
 
-            MessagingCenter.Subscribe<BattleMainPage>(this, "LoadCharacters", async (obj) =>
+            MessagingCenter.Subscribe<BattleMonsterListPage>(this, "LoadCharacters", async (obj) =>
             {
                 LoadCharacters();
             });
@@ -102,6 +102,10 @@ namespace WDown.ViewModels
             });
 
             MessagingCenter.Subscribe<BattleMainPage>(this, "NewRound", async (obj) =>
+            {
+                NewRound();
+            });
+            MessagingCenter.Subscribe<BattleMonsterListPage>(this, "NewRound", async (obj) =>
             {
                 NewRound();
             });

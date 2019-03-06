@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 
 using WDown.GameEngine;
 using WDown.ViewModels;
@@ -17,14 +23,40 @@ namespace WDown.Views.Battle
         {
             public List<WDown.Models.Monster> Datalist = new List<WDown.Models.Monster>();
 
-            public BattleMonsterListPage()
+        private BattleViewModel _viewModel;
+
+
+        public BattleMonsterListPage()
             {
                 InitializeComponent();
+              
 
-                Datalist = BattleViewModel.Instance.BattleEngine.MonsterList;
-                BindingContext = Datalist;
+            MessagingCenter.Send(this, "StartBattle");
+            Debug.WriteLine("Battle Start" + " Characters :" + BattleViewModel.Instance.BattleEngine.CharacterList.Count);
 
-                foreach (var data in Datalist)
+            // Load the Characters into the Battle Engine
+            MessagingCenter.Send(this, "LoadCharacters");
+
+            // Start the Round
+            MessagingCenter.Send(this, "StartRound");
+            Debug.WriteLine("Round Start" + " Monsters:" + BattleViewModel.Instance.BattleEngine.MonsterList.Count);
+
+            foreach (Models.Monster Monster in BattleViewModel.Instance.BattleEngine.MonsterList)
+            {
+                Debug.WriteLine("Round Start" + " Monster List:" + Monster.Name);
+            }
+            Debug.WriteLine("round start observable collection monster list: ");
+            foreach (Models.Monster Monster in BattleViewModel.Instance.FightingMonsters)
+            {
+                Debug.WriteLine("Round Start" + " Monster List:" + Monster.Name);
+            }
+
+            _viewModel = BattleViewModel.Instance;
+
+            Datalist = BattleViewModel.Instance.BattleEngine.MonsterList;
+            BindingContext = Datalist;
+
+            foreach (var data in Datalist)
                 {
                     var myHP = new Label()
                     {
@@ -105,7 +137,7 @@ namespace WDown.Views.Battle
         // This starts the Character Select Page    
         private async void OnNextClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new WDown.Views.Battle.BattleMainPage());
+            await Navigation.PushAsync(new WDown.Views.Battle.BattleMainPage(_viewModel));
         }
 
     }

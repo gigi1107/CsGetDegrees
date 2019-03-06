@@ -26,36 +26,18 @@ namespace WDown.Views.Battle
         /// <summary>
         /// Stand up the Page and initiate state
         /// </summary>
-        public BattleMainPage()
+        public BattleMainPage(BattleViewModel viewModel)
         {
             InitializeComponent();
 
             // Show the Next button, hide the Game Over button
             //GameNextButton.IsVisible = true;
             //GameOverButton.IsVisible = false;
-
-            MessagingCenter.Send(this, "StartBattle");
-            Debug.WriteLine("Battle Start" + " Characters :" + BattleViewModel.Instance.BattleEngine.CharacterList.Count);
-
-            // Load the Characters into the Battle Engine
-            MessagingCenter.Send(this, "LoadCharacters");
-
-            // Start the Round
-            MessagingCenter.Send(this, "StartRound");
-            Debug.WriteLine("Round Start" + " Monsters:" + BattleViewModel.Instance.BattleEngine.MonsterList.Count);
-
-            foreach(Models.Monster Monster in BattleViewModel.Instance.BattleEngine.MonsterList)
-            {
-                Debug.WriteLine("Round Start" + " Monster List:" + Monster.Name);
-            }
-            Debug.WriteLine("round start observable collection monster list: ");
-            foreach (Models.Monster Monster in BattleViewModel.Instance.FightingMonsters)
-            {
-                Debug.WriteLine("Round Start" + " Monster List:" + Monster.Name);
-            }
+          
 
 
-            BindingContext = _viewModel = BattleViewModel.Instance;
+
+            BindingContext = _viewModel = viewModel;
 
             //            var browser = new WebView();
 
