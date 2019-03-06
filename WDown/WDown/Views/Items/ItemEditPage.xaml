@@ -151,9 +151,9 @@
                             VerticalOptions="Center"/>
 
                         <Stepper Value="{Binding Data.Value, Mode=TwoWay}"
-                            Minimum="0"
-                            Maximum="200"
-                            Increment="10"
+                            Minimum="-1"
+                            Maximum="20"
+                            Increment="1"
                             ValueChanged="Value_OnStepperValueChanged"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>

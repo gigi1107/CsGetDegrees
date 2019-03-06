@@ -36,7 +36,7 @@ namespace WDown.Views
         // This starts the Monster List Page
         private async void Monster_Select_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new WDown.Views.Battle.BattleMonsterListTest());
+            await Navigation.PushAsync(new WDown.Views.Battle.BattleMonsterListPage());
         }
     }
 }

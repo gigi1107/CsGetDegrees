@@ -13,7 +13,7 @@
                     <Image Source="http://www.claretwalker.com/wp-content/uploads/IMG_3000-1.jpg"
                            HeightRequest = "250"/>
                 </StackLayout>
-                <Button Text="Let's Start with Selecting Character Party!"
+                <Button Text="Let's start with Selecting Character Party!"
                             Clicked="Character_Select_Clicked"/>
 
 

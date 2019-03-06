@@ -18,6 +18,9 @@ namespace WDown.Views.Battle
 		{
 			InitializeComponent ();
 		}
+
+        // Handle when user click next
+        // Let user view Score Detail
         async void OnNextClicked(object sender, EventArgs args)
         {
             var myScoreObject = BattleViewModel.Instance.BattleEngine.BattleScore;

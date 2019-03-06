@@ -103,8 +103,8 @@
                             VerticalOptions="Center"/>
 
                             <Stepper Value="{Binding Data.Item.Damage, Mode=TwoWay}"
-                            Minimum="0"
-                            Maximum="10"
+                            Minimum="-1"
+                            Maximum="20"
                             Increment="1"
                             ValueChanged="Damage_OnStepperValueChanged"
                             HorizontalOptions="Start"
