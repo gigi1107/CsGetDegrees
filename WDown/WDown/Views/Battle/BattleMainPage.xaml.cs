@@ -139,11 +139,16 @@ namespace WDown.Views.Battle
             var outputString = "Battle Over! Score " + myScore.ToString();
             Debug.WriteLine(outputString);
 
-            var myScoreObject = _viewModel.BattleEngine.BattleScore;
-            await Navigation.PushAsync(new Scores.ScoreDetailPage(new ScoreDetailViewModel(myScoreObject)));
+            // Alternative way to have Game Over Page
 
+            //var myScoreObject = _viewModel.BattleEngine.BattleScore;
+            //await Navigation.PushAsync(new Scores.ScoreDetailPage(new ScoreDetailViewModel(myScoreObject)));
             // Back up to the Start of Battle
-            await Navigation.PopToRootAsync();
+            //await Navigation.PopToRootAsync()
+
+
+            await Navigation.PushAsync(new BattleGameOverPage());
+            ;
         }
 
         private void HandleModalPopping(object sender, ModalPoppingEventArgs e)

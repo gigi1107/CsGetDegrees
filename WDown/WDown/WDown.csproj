@@ -55,6 +55,12 @@
     <Compile Remove="Views\TitlePage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Views\Battle\BattleGameOverPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Battle\BattleMonsterListTest.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Battle\BattleOpeningPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

@@ -107,7 +107,7 @@
                         <StackLayout Orientation="Vertical">
                            
                             <Button x:Name="GameNextButton" IsVisible="true" Clicked="OnNextClicked" Text="Next Turn" />
-                            <Button x:Name="GameOverButton" IsVisible="False" Clicked="OnGameOverClicked" Text="Game Over" />
+                            <Button x:Name="GameOverButton" IsVisible="true" Clicked="OnGameOverClicked" Text="Game Over" />
                              <Label Text="Messages" />
                             <StackLayout x:Name="MessageBox">
                                 <Label x:Name="MessageText" LineBreakMode="WordWrap" MaxLines="5" HeightRequest="50">

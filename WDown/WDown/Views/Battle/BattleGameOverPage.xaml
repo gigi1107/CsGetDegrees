@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WDown.Views.Battle.BattleGameOverPage">
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions="CenterAndExpand">
+
+            <StackLayout 
+            HorizontalOptions="Center" 
+            VerticalOptions="Start"
+            Orientation="Vertical">
+
+                <Image 
+                Source="GameOver.png" 
+                VerticalOptions="Center" 
+                HeightRequest="150"
+                HorizontalOptions="Fill"/>
+
+                <Label 
+                FontSize="Large"
+                Text="You've failed defending the Warren. Try again next time!"/>
+            </StackLayout>
+
+            <StackLayout>
+                <Button Clicked="OnNextClicked" Text="View Score and Battle Information"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
