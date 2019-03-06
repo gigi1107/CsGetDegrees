@@ -11,7 +11,7 @@ namespace WDown.Views.Scores
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScoreDeletePage : ContentPage
     {
-        // ReSharper disable once NotAccessedField.Local
+        //this is the code behind for the delete page for score
         private ScoreDetailViewModel _viewModel;
 
         public Score Data { get; set; }
@@ -28,6 +28,7 @@ namespace WDown.Views.Scores
             BindingContext = _viewModel = viewModel;
         }
 
+        //DELETES CURRENT SCORE AND TAKES YOU BACK TWO PAGES
         private async void Delete_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "DeleteData", Data);
@@ -38,6 +39,7 @@ namespace WDown.Views.Scores
             await Navigation.PopAsync();
         }
 
+        //CANCELS OPERATION, HANDELS CANCEL CLICKED
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

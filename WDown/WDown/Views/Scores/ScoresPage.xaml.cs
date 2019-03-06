@@ -22,6 +22,7 @@ namespace WDown.Views.Scores
 
         }
 
+        //HANDLES WHEN THE USER SELECTS A PARTICULAR SCORE ON THE LIST
         private async void OnScoreSelected(object sender, SelectedItemChangedEventArgs args)
         {
             var data = args.SelectedItem as Score;
@@ -33,6 +34,7 @@ namespace WDown.Views.Scores
             ScoreListView.SelectedItem = null;
         }
 
+        //HANDLES WHEN USER TAPS ADD SCORE AND TAKES USER TO A SCORESNEWPAGE
         private async void AddScore_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ScoresNewPage());
