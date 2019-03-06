@@ -103,11 +103,11 @@ namespace WDown.Views.Battle
             }
         }
 
-        // Close this page
+        // Handles when user click Next
+        // Go to the Main Battle Page
         async void OnNextClicked(object sender, EventArgs args)
         {
-            // Go back a page.
-            await Navigation.PopModalAsync();
+            await Navigation.PushAsync(new WDown.Views.Battle.BattleMainPage());
         }
     }
 }

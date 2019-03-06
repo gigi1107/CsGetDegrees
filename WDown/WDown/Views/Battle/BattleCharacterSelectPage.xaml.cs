@@ -34,7 +34,7 @@ namespace WDown.Views.Battle
         {
 
             // Jump to Main Battle Page
-            await Navigation.PushAsync(new BattleMainPage());
+            await Navigation.PushAsync(new BattleMonsterListPage());
 
             // Last, remove this page
             Navigation.RemovePage(this);

@@ -9,9 +9,10 @@
             <StackLayout>
 
 
-                <Label Text="They are excited to meet you"
+                <Label Text="Here are your current monsters!"
                     VerticalOptions="Center" 
-                    HorizontalOptions="CenterAndExpand" />
+                    HorizontalOptions="CenterAndExpand"
+                    FontSize="Large"/>
 
                 <StackLayout
                 VerticalOptions="Center" 
@@ -23,6 +24,43 @@
                                 Padding="5"/>
 
                 </StackLayout>
+
+                <!--                    MONSTERS SECTION-->
+                <!--<StackLayout AbsoluteLayout.LayoutBounds="1,0,0.4,1"
+                                 AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional">
+                    <ListView x:Name="SelectedMonstersView" 
+                                  ItemsSource="{Binding FightingMonsters}" 
+                                  VerticalOptions="Start" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical">
+                                        <StackLayout Padding="1" Orientation="Horizontal" 
+                                                         VerticalOptions="Start" 
+                                                         HorizontalOptions="StartAndExpand">
+                                            <Image Source="{Binding ImageURI}"
+                                                       WidthRequest="20" 
+                                                       HeightRequest="20"
+                                                       HorizontalOptions="Center" VerticalOptions="Center" />
+
+
+                                            <Label Text="{Binding Name}" 
+                                                            LineBreakMode="NoWrap"
+                                                            Style="{DynamicResource ListItemTextStyle}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="HP  "/>
+                                            <Label Text="{Binding MonsterAttribute.CurrentHealth}"/>
+                                            <Label Text=" / "/>
+                                            <Label Text="{Binding MonsterAttribute.MaxHealth}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>-->
 
                 <Button Clicked="OnNextClicked" Text="Next"/>
 

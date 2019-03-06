@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Views\Scores\" />
-    <Folder Include="Views\Battle\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Views\Character\CharacterDeletePage.xaml">
@@ -54,5 +53,10 @@
   <ItemGroup>
     <Compile Remove="Views\HistoryPage.xaml.cs" />
     <Compile Remove="Views\TitlePage.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Views\Battle\BattleOpeningPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -104,7 +104,7 @@
                                 x:Name="NextButton"
                                 HorizontalOptions="CenterAndExpand"
                                 Clicked="OnNextClicked" 
-                                Text="Accept Party"
+                                Text="Accept Party and move to Monster"
                                 IsEnabled="False"
                                 />
 
