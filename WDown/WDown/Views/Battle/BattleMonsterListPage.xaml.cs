@@ -99,7 +99,7 @@ namespace WDown.Views.Battle
                 OuterFrame.Children.Add(myLevel);
                 OuterFrame.Children.Add(myHP);
 
-                //MonsterListFrame.Children.Add(OuterFrame);
+                MonsterListFrame.Children.Add(OuterFrame);
             }
         }
 
