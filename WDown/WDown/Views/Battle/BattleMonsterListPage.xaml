@@ -5,40 +5,28 @@
              Title="Monster List">
 
     <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
 
-        <StackLayout Padding="5, 20, 5, 0">
-            <StackLayout Padding="0, 0, 0, 5">
-                <Label Text="Current Monsters" HorizontalOptions="Center" FontSize="Medium" FontAttributes="Bold"></Label>
+
+                <Label Text="They are excited to meet you"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="CenterAndExpand" />
+
+                <StackLayout
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand">
+
+                    <FlexLayout x:Name="MonsterListFrame"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Center"
+                                Padding="5"/>
+
+                </StackLayout>
+
+                <Button Clicked="OnNextClicked" Text="Next"/>
+
             </StackLayout>
-            <ListView x:Name="MonstersListView"
-                      ItemsSource="{Binding DataSet}"
-                      VerticalOptions="FillAndExpand"
-                      HasUnevenRows="true">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="10">
-                                <Image Source="{Binding ImageURI}" WidthRequest="50" HeightRequest="50" Margin="10, 0, 0, 0"></Image>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" BackgroundColor="Gray">
-                                        <Label Text="{Binding Level, StringFormat='Lvl: {0}'}" FontSize="12"></Label>
-                                        <Label Text="{Binding ExperienceTotal, StringFormat='XP: {0}'}" FontSize="12"></Label>
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" BackgroundColor="Gray">
-                                        <Label Text="{Binding Attribute.Attack, StringFormat='ATK: {0}'}" FontSize="12"></Label>
-                                        <Label Text="{Binding Attribute.Defense, StringFormat='DEF: {0}'}" FontSize="12"></Label>
-                                        <Label Text="{Binding Attribute.Speed, StringFormat='SPD: {0}'}" FontSize="12"></Label>
-                                        <Label Text="{Binding Attribute.CurrentHealth, StringFormat='HP: {0}'}" FontSize="12"></Label>
-                                        <Label Text="{Binding Attribute.MaxHealth, StringFormat='Max. HP: {0}'}" FontSize="12"></Label>
-                                    </StackLayout>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button x:Name="PickMonsters_NextButton" Text="Next" Clicked="NextClicked" IsEnabled="True"></Button>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
