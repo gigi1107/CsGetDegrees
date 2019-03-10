@@ -86,7 +86,7 @@ namespace WDown.Services
             {
                 Name = "Tree Bark of Agility",
                 Location = ItemLocationEnum.PrimaryHand,
-                Description = "Increases defense. ",
+                Description = "Acts as a shield and increases defense",
                 Value = 1,
                 Range = 0,
                 Damage = 0,
@@ -99,10 +99,10 @@ namespace WDown.Services
             {
                 Name = "Rope of Vengeance",
                 Location = ItemLocationEnum.Head,
-                Description = "Increases Attack ",
+                Description = "Can use as a weapon to attack with",
                 Value = 1,
-                Range = 0,
-                Damage = 0,
+                Range = 40,
+                Damage = 1,
                 Wearable = true,
                 Attribute = AttributeEnum.Attack,
                 ImageURI = "https://i.imgur.com/ZpEuNvv.png"
@@ -112,7 +112,7 @@ namespace WDown.Services
             {
                 Name = "Collar of Transcendence",
                 Location = ItemLocationEnum.Necklass,
-                Description = "Increases speed. ",
+                Description = "When worn, this collar makes the wearer very fast",
                 Value = 1,
                 Range = 0,
                 Damage = 0,
@@ -125,7 +125,7 @@ namespace WDown.Services
             {
                 Name = "Jewel of Gibberish",
                 Location = ItemLocationEnum.LeftFinger,
-                Description = "Decreases Attack. ",
+                Description = "This mysterious item glimmers...",
                 Value = -1,
                 Range = 0,
                 Damage = 0,

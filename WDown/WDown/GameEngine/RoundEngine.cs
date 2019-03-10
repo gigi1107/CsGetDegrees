@@ -12,12 +12,12 @@ namespace WDown.GameEngine
     public class RoundEngine : TurnEngine
     {
         // Hold the list of players (monster, and character by guid), and order by speed
-        public List<Round.PlayerInfo> PlayerList;
+        public List<PlayerInfo> PlayerList;
 
         // Player currently engaged
-        public Round.PlayerInfo PlayerCurrent;
+        public PlayerInfo PlayerCurrent;
 
-        public Models.Round.RoundEnum RoundStateEnum = Round.RoundEnum.Unknown;
+        public RoundEnum RoundStateEnum = RoundEnum.Unknown;
 
         public RoundEngine()
         {
@@ -104,8 +104,6 @@ namespace WDown.GameEngine
 
             // Make Sure Monster List exists and is loaded...
             var myMonsterViewModel = MonstersViewModel.Instance;
-            myMonsterViewModel.ForceDataRefresh();
-
             if (myMonsterViewModel.Dataset.Count() > 0)
             {
                 // Scale monsters to be within the range of the Characters
@@ -171,13 +169,13 @@ namespace WDown.GameEngine
         // Rember Who's Turn
 
         // RoundNextTurn
-        public Round.RoundEnum RoundNextTurn()
+        public RoundEnum RoundNextTurn()
         {
             // No characters, game is over...
             if (CharacterList.Count < 1)
             {
                 // Game Over
-                RoundStateEnum = Round.RoundEnum.GameOver;
+                RoundStateEnum = RoundEnum.GameOver;
                 return RoundStateEnum;
             }
 
@@ -185,7 +183,7 @@ namespace WDown.GameEngine
             if (MonsterList.Count < 1)
             {
                 // If over, New Round
-                return Round.RoundEnum.NewRound;
+                return RoundEnum.NewRound;
             }
 
             // Decide Who gets next turn
@@ -194,7 +192,7 @@ namespace WDown.GameEngine
 
             // Decide Who to Attack
             // Do the Turn         
-            if (PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
+            if (PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
                 // Get the player
                 var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
@@ -203,7 +201,7 @@ namespace WDown.GameEngine
                 TakeTurn(myPlayer);
             }
             // Add Monster turn here...
-            else if (PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Monster)
+            else if (PlayerCurrent.PlayerType == PlayerTypeEnum.Monster)
             {
                 // Get the player
                 var myPlayer = MonsterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
@@ -212,11 +210,11 @@ namespace WDown.GameEngine
                 TakeTurn(myPlayer);
             }
 
-            RoundStateEnum = Round.RoundEnum.NextTurn;
+            RoundStateEnum = RoundEnum.NextTurn;
             return RoundStateEnum;
         }
 
-        public Round.PlayerInfo GetNextPlayerTurn()
+        public PlayerInfo GetNextPlayerTurn()
         {
             // Recalculate Order
             OrderPlayerListByTurnOrder();
@@ -230,7 +228,7 @@ namespace WDown.GameEngine
 
         public void OrderPlayerListByTurnOrder()
         {
-            var myReturn = new List<Round.PlayerInfo>();
+            var myReturn = new List<PlayerInfo>();
 
             // Order is based by... 
             // Order by Speed (Desending)
@@ -253,8 +251,8 @@ namespace WDown.GameEngine
 
         private void MakePlayerList()
         {
-            PlayerList = new List<Round.PlayerInfo>();
-            Round.PlayerInfo tempPlayer;
+            PlayerList = new List<PlayerInfo>();
+            PlayerInfo tempPlayer;
 
             var ListOrder = 0;
 
@@ -262,7 +260,7 @@ namespace WDown.GameEngine
             {
                 if (data.Alive)
                 {
-                    tempPlayer = new Round.PlayerInfo(data);
+                    tempPlayer = new PlayerInfo(data);
 
                     // Remember the order
                     tempPlayer.ListOrder = ListOrder;
@@ -278,7 +276,7 @@ namespace WDown.GameEngine
                 if (data.Alive)
                 {
 
-                    tempPlayer = new Round.PlayerInfo(data);
+                    tempPlayer = new PlayerInfo(data);
 
                     // Remember the order
                     tempPlayer.ListOrder = ListOrder;
@@ -290,7 +288,7 @@ namespace WDown.GameEngine
             }
         }
 
-        public Round.PlayerInfo GetNextPlayerInList()
+        public PlayerInfo GetNextPlayerInList()
         {
             // Walk the list from top to bottom
             // If Player is found, then see if next player exist, if so return that.
