@@ -4,6 +4,7 @@ using System.Text;
 using System.Linq;
 
 using WDown.Models;
+
 using WDown.ViewModels;
 using System.Diagnostics;
 
@@ -12,12 +13,12 @@ namespace WDown.GameEngine
     public class RoundEngine : TurnEngine
     {
         // Hold the list of players (monster, and character by guid), and order by speed
-        public List<PlayerInfo> PlayerList;
+        public List<Round.PlayerInfo> PlayerList;
 
         // Player currently engaged
-        public PlayerInfo PlayerCurrent;
+        public Round.PlayerInfo PlayerCurrent;
 
-        public RoundEnum RoundStateEnum = RoundEnum.Unknown;
+        public Round.RoundEnum RoundStateEnum = Round.RoundEnum.Unknown;
 
         public RoundEngine()
         {
@@ -169,13 +170,13 @@ namespace WDown.GameEngine
         // Rember Who's Turn
 
         // RoundNextTurn
-        public RoundEnum RoundNextTurn()
+        public Round.RoundEnum RoundNextTurn()
         {
             // No characters, game is over...
             if (CharacterList.Count < 1)
             {
                 // Game Over
-                RoundStateEnum = RoundEnum.GameOver;
+                RoundStateEnum = Round.RoundEnum.GameOver;
                 return RoundStateEnum;
             }
 
@@ -183,7 +184,7 @@ namespace WDown.GameEngine
             if (MonsterList.Count < 1)
             {
                 // If over, New Round
-                return RoundEnum.NewRound;
+                return Round.RoundEnum.NewRound;
             }
 
             // Decide Who gets next turn
@@ -192,7 +193,7 @@ namespace WDown.GameEngine
 
             // Decide Who to Attack
             // Do the Turn         
-            if (PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
+            if (PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
             {
                 // Get the player
                 var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
@@ -201,7 +202,7 @@ namespace WDown.GameEngine
                 TakeTurn(myPlayer);
             }
             // Add Monster turn here...
-            else if (PlayerCurrent.PlayerType == PlayerTypeEnum.Monster)
+            else if (PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Monster)
             {
                 // Get the player
                 var myPlayer = MonsterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
@@ -210,11 +211,11 @@ namespace WDown.GameEngine
                 TakeTurn(myPlayer);
             }
 
-            RoundStateEnum = RoundEnum.NextTurn;
+            RoundStateEnum = Round.RoundEnum.NextTurn;
             return RoundStateEnum;
         }
 
-        public PlayerInfo GetNextPlayerTurn()
+        public Round.PlayerInfo GetNextPlayerTurn()
         {
             // Recalculate Order
             OrderPlayerListByTurnOrder();
@@ -251,8 +252,8 @@ namespace WDown.GameEngine
 
         private void MakePlayerList()
         {
-            PlayerList = new List<PlayerInfo>();
-            PlayerInfo tempPlayer;
+            PlayerList = new List<Round.PlayerInfo>();
+            Round.PlayerInfo tempPlayer;
 
             var ListOrder = 0;
 
@@ -260,7 +261,7 @@ namespace WDown.GameEngine
             {
                 if (data.Alive)
                 {
-                    tempPlayer = new PlayerInfo(data);
+                    tempPlayer = new Round.PlayerInfo(data);
 
                     // Remember the order
                     tempPlayer.ListOrder = ListOrder;
@@ -276,7 +277,7 @@ namespace WDown.GameEngine
                 if (data.Alive)
                 {
 
-                    tempPlayer = new PlayerInfo(data);
+                    tempPlayer = new Round.PlayerInfo(data);
 
                     // Remember the order
                     tempPlayer.ListOrder = ListOrder;
@@ -288,7 +289,7 @@ namespace WDown.GameEngine
             }
         }
 
-        public PlayerInfo GetNextPlayerInList()
+        public Round.PlayerInfo GetNextPlayerInList()
         {
             // Walk the list from top to bottom
             // If Player is found, then see if next player exist, if so return that.
