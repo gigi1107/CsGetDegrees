@@ -32,7 +32,8 @@ namespace WDown.Views.Battle
             InitializeComponent();
 
             // Show the Next button, hide the Game Over button
-            GameNextButton.IsVisible = true;
+            GameStartButton.IsVisible = true;
+            GameNextButton.IsVisible = false;
             GameOverButton.IsVisible = false;
           
 
@@ -62,13 +63,13 @@ namespace WDown.Views.Battle
         public async void OnNextClicked(object sender, EventArgs args)
         {
             // Do the turn...
+            GameStartButton.IsVisible = false;
+            GameNextButton.IsVisible = true;
             MessagingCenter.Send(this, "RoundNextTurn");
 
             // Hold the current state
             var CurrentRoundState = _viewModel.BattleEngine.RoundStateEnum;
 
-            Debug.WriteLine("current player: " + _viewModel.currentPlayerName);
-            Debug.WriteLine("current player imageUrI: " + _viewModel.currentPlayerURI);
 
             OnPropertyChanged();
 
