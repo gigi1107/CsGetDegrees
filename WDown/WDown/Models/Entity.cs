@@ -14,5 +14,11 @@ namespace WDown.Models
         public string Description { get; set; }
 
         public string ImageURI { get; set; }
+
+        //get image uri 
+        public string GetImageURI()
+        {
+            return ImageURI;
+        }
     }
 }

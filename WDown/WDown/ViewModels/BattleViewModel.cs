@@ -44,6 +44,79 @@ namespace WDown.ViewModels
         //added class for the fightingmonsters to display in UI
         public ObservableCollection<Monster> FightingMonsters { get; set; }
 
+        private string _currentPlayerName;
+        public string currentPlayerName
+        {
+            get
+            {
+                return _currentPlayerName;
+            }
+            set
+            {
+                if (_currentPlayerName != BattleEngine.PlayerCurrent.Name)
+                {
+                    _currentPlayerName = BattleEngine.PlayerCurrent.Name;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
+        private string _currentPlayerURI;
+       
+        public string currentPlayerURI
+        {
+            get
+            {
+                return _currentPlayerURI;
+            }
+
+            set
+            {
+                if (_currentPlayerURI != BattleEngine.PlayerCurrent.ImageURI)
+                {
+                    _currentPlayerURI = BattleEngine.PlayerCurrent.ImageURI;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
+
+        private int _currentPlayerHPTotal;
+        public int currentPlayerHPTotal
+        {
+            get
+            {
+                return _currentPlayerHPTotal;
+            }
+            set
+            {
+                if (_currentPlayerHPTotal != BattleEngine.PlayerCurrent.TotalHP)
+                {
+                    _currentPlayerHPTotal = BattleEngine.PlayerCurrent.TotalHP;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private int _currentPlayerHPCurrent;
+        public int currentPlayerHPCurrent
+        {
+            get
+            {
+                return _currentPlayerHPCurrent;
+            }
+            set
+            {
+                if (_currentPlayerHPCurrent != BattleEngine.PlayerCurrent.RemainingHP)
+                {
+                    _currentPlayerHPCurrent = BattleEngine.PlayerCurrent.RemainingHP;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         // Load the Data command
         public Command LoadDataCommand { get; set; }
 
@@ -61,6 +134,12 @@ namespace WDown.ViewModels
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
             BattleEngine = new BattleEngine();
+            _currentPlayerName = "Current Character";
+            _currentPlayerURI = "";
+            _currentPlayerHPTotal = 0;
+            _currentPlayerHPCurrent = 0;
+            
+
 
             // Load Data
             ExecuteLoadDataCommand().GetAwaiter().GetResult();
@@ -94,11 +173,18 @@ namespace WDown.ViewModels
             {
                 LoadCharacters();
             });
-
-
+            
             MessagingCenter.Subscribe<BattleMainPage>(this, "RoundNextTurn", async (obj) =>
             {
                 RoundNextTurn();
+                currentPlayerName = BattleEngine.PlayerCurrent.Name;
+                OnPropertyChanged();
+                currentPlayerURI = BattleEngine.PlayerCurrent.ImageURI;
+                OnPropertyChanged();
+                currentPlayerHPCurrent = BattleEngine.PlayerCurrent.RemainingHP;
+                OnPropertyChanged();
+                currentPlayerHPTotal = BattleEngine.PlayerCurrent.TotalHP;
+                OnPropertyChanged();
             });
 
             MessagingCenter.Subscribe<BattleMainPage>(this, "NewRound", async (obj) =>

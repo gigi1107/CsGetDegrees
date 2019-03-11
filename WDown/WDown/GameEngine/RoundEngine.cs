@@ -191,6 +191,7 @@ namespace WDown.GameEngine
             // Remember who just went...
             PlayerCurrent = GetNextPlayerTurn();
 
+
             // Decide Who to Attack
             // Do the Turn         
             if (PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
@@ -229,7 +230,7 @@ namespace WDown.GameEngine
 
         public void OrderPlayerListByTurnOrder()
         {
-            var myReturn = new List<PlayerInfo>();
+            var myReturn = new List<Round.PlayerInfo>();
 
             // Order is based by... 
             // Order by Speed (Desending)

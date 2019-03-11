@@ -41,6 +41,16 @@ namespace WDown.Models
             // Total speed, including level and items
             public int Speed;
 
+            public int RemainingHP;
+
+            public int TotalHP;
+
+            public int Attack;
+
+            public int Defense;
+
+            public string ImageURI;
+
             // Level of character or monster
             public int Level;
 
@@ -72,6 +82,11 @@ namespace WDown.Models
                 Level = data.Level;
                 Name = data.Name;
                 Speed = data.GetSpeed();
+                RemainingHP = data.GetHealthCurrent();
+                TotalHP = data.GetHealthMax();
+                Attack = data.GetAttack();
+                Defense = data.GetDefense();
+                ImageURI = data.GetImageURI();
             }
 
             // Take a monster and add it to the player
@@ -84,6 +99,11 @@ namespace WDown.Models
                 Level = data.Level;
                 Name = data.Name;
                 Speed = data.GetSpeed();
+                RemainingHP = data.GetHealthCurrent();
+                TotalHP = data.GetHealthMax();
+                Attack = data.GetAttack();
+                Defense = data.GetDefense();
+                ImageURI = data.GetImageURI();
             }
         }
     }
