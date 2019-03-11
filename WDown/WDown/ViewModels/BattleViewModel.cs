@@ -63,7 +63,7 @@ namespace WDown.ViewModels
 
 
         private string _currentPlayerURI;
-       
+
         public string currentPlayerURI
         {
             get
@@ -117,6 +117,60 @@ namespace WDown.ViewModels
             }
         }
 
+        private int _currentPlayerAttack;
+        public int currentPlayerAttack
+        {
+            get
+            {
+                return _currentPlayerAttack;
+            }
+            set
+            {
+                if (_currentPlayerAttack != BattleEngine.PlayerCurrent.Attack)
+                {
+                    _currentPlayerAttack = BattleEngine.PlayerCurrent.Attack;
+                    OnPropertyChanged();
+                }
+            }
+
+        }
+
+        private int _currentPlayerSpeed;
+        public int currentPlayerSpeed
+        {
+            get
+            {
+                return _currentPlayerSpeed;
+            }
+            set
+            {
+                if (_currentPlayerSpeed != BattleEngine.PlayerCurrent.Speed)
+                {
+                    _currentPlayerSpeed = BattleEngine.PlayerCurrent.Speed;
+                    OnPropertyChanged();
+                }
+            }
+
+        }
+
+        private int _currentPlayerDefense;
+        public int currentPlayerDefense
+        {
+            get
+            {
+                return _currentPlayerDefense;
+            }
+            set
+            {
+                if (_currentPlayerDefense != BattleEngine.PlayerCurrent.Defense)
+                {
+                    _currentPlayerDefense = BattleEngine.PlayerCurrent.Defense;
+                    OnPropertyChanged();
+                }
+            }
+
+        }
+
         // Load the Data command
         public Command LoadDataCommand { get; set; }
 
@@ -138,7 +192,8 @@ namespace WDown.ViewModels
             _currentPlayerURI = "";
             _currentPlayerHPTotal = 0;
             _currentPlayerHPCurrent = 0;
-            
+            _currentPlayerAttack = 0;
+
 
 
             // Load Data
@@ -173,7 +228,7 @@ namespace WDown.ViewModels
             {
                 LoadCharacters();
             });
-            
+
             MessagingCenter.Subscribe<BattleMainPage>(this, "RoundNextTurn", async (obj) =>
             {
                 RoundNextTurn();
@@ -185,6 +240,13 @@ namespace WDown.ViewModels
                 OnPropertyChanged();
                 currentPlayerHPTotal = BattleEngine.PlayerCurrent.TotalHP;
                 OnPropertyChanged();
+                currentPlayerAttack = BattleEngine.PlayerCurrent.Attack;
+                OnPropertyChanged();
+                currentPlayerDefense = BattleEngine.PlayerCurrent.Defense;
+                OnPropertyChanged();
+                currentPlayerSpeed = BattleEngine.PlayerCurrent.Speed;
+                OnPropertyChanged();
+
             });
 
             MessagingCenter.Subscribe<BattleMainPage>(this, "NewRound", async (obj) =>
@@ -236,7 +298,7 @@ namespace WDown.ViewModels
                 BattleViewModel.Instance.BattleEngine.CharacterList.Add(new Character(data));
             }
 
-           
+
 
         }
 
