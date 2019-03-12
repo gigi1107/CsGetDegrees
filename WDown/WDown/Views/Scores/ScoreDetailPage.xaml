@@ -14,6 +14,7 @@
                      Margin="20" 
                      Padding="20">
             <Label Text="Score Details" HorizontalOptions="Center" FontSize="Small" />
+            <Button Text="Return to Main Battle Screen" Clicked="Return_To_Main_Battle_Screen"/>
             <StackLayout Orientation="Horizontal">
                 <Image Source="{Binding Data.ImageURI}" HeightRequest="50" WidthRequest="50" />
                 <Label Text="{Binding Data.Name}" FontSize="20" HorizontalOptions="Center" />
