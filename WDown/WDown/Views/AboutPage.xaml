@@ -59,6 +59,11 @@
                     </Label.FormattedText>
 
                 </Label>
+                     <StackLayout
+                    x:Name="DateRoot"
+                    HorizontalOptions="CenterAndExpand"
+                    Orientation="Vertical">
+                </StackLayout>
                 <Label>
                         <Label.FormattedText>
                             <FormattedString>
@@ -75,48 +80,260 @@
         </StackLayout>
     </Grid>
 
-    <StackLayout 
-                VerticalOptions="EndAndExpand"
-                HorizontalOptions="StartAndExpand" 
-                Orientation="Vertical"
-                >
+       <!--Database Settings-->
+                <StackLayout>
+                    <StackLayout
+                      Orientation="Horizontal"
+                      HorizontalOptions="StartAndExpand">
 
-        <StackLayout
-                HorizontalOptions="Start"
-                Orientation="Horizontal">
+                        <Label
+                            Text="Database Settings"
+                            Style="{DynamicResource DebugSwitchLabel}"/>
 
-            <Label 
-                FontSize="Small"
-                Text="Use Mock DataStore"
-                HorizontalTextAlignment="Start"
-                HorizontalOptions="Start"
-                    x:Name="SettingDataSourceLabel"
-                />
+                        <Switch
+                            x:Name="DatabaseSettings"
+                            HorizontalOptions="EndAndExpand"
+                            Toggled="DatabaseSettingsSwitch_OnToggled"
+                            IsToggled="False"/>
+                    </StackLayout>
 
-            <Switch 
-                x:Name="SettingDataSource"
-                HorizontalOptions="Center"
-                Toggled="Switch_OnToggled"/>
-        </StackLayout>
+                    <StackLayout
+                        x:Name="DatabaseSettingsFrame"
+                        IsVisible="True">
 
-        <StackLayout
-                HorizontalOptions="Start"
-                Orientation="Horizontal">
+                        <StackLayout
+                          Orientation="Vertical"
+                          Margin="50,0,0,0">
 
-            <Label 
-                FontSize="Small"
-                Text="Clear Database"
-                    HorizontalTextAlignment="Start"
-                    HorizontalOptions="Start"
-                />
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal">
 
-            <Button  
-                    Text="Clear" 
-                    Clicked="ClearDatabase_Command" 
-                    HorizontalOptions="Center"
-                    TextColor="Black" />
-        </StackLayout>
+                        <Label
+                            Text="Use Mock DataStore"
+                            Style="{DynamicResource DebugSwitchLabel}"/>
 
-    </StackLayout>
-    </StackLayout>
+                        <Switch
+                            x:Name="UseMockDataSource"
+                            HorizontalOptions="EndAndExpand"
+                            Toggled="UseMockDataSourceSwitch_OnToggled"
+                            IsToggled="False"/>
+                            </StackLayout>
+
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Vertical">
+
+                                <StackLayout
+                                  HorizontalOptions="FillAndExpand"
+                                  Orientation="Horizontal">
+
+                                    <Label
+                                        Text="Clear Database"
+                                        HorizontalTextAlignment="Start"
+                                        HorizontalOptions="Start"/>
+
+                                    <Button
+                                        Text="Clear"
+                                        Clicked="ClearDatabase_Command"
+                                        HorizontalOptions="Fill"/>
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout
+                              HorizontalOptions="FillAndExpand"
+                              Orientation="Vertical">
+
+                                <StackLayout
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal">
+
+                                    <Label
+                                        Text="Number of Items "
+                                        HorizontalTextAlignment="Start"
+                                        HorizontalOptions="Start"/>
+
+                                    <Entry
+                                        x:Name="ServerItemValue"
+                                        Text="1" 
+                                        MaxLength="3"
+                                        CursorPosition="0"
+                                        SelectionLength = "3" />
+
+                                    <Button
+                                      Text="Get"
+                                      Clicked="GetItems_Command"
+                                      HorizontalOptions="EndAndExpand"/>
+
+                                    <Button
+                                      Text="Post"
+                                      Clicked="GetItemsPost_Command"
+                                      HorizontalOptions="EndAndExpand"/>
+
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <!--Debug Settings-->
+                <StackLayout
+                      HorizontalOptions="StartAndExpand"
+                      VerticalOptions="Start"
+                      Orientation="Vertical">
+
+                    <StackLayout
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="Start"
+                      Orientation="Horizontal">
+
+                        <Label
+                            FontSize="Small"
+                            Text="Debug Settings"
+                            Style="{DynamicResource DebugSwitchLabel}"/>
+
+                        <Switch
+                            x:Name="EnableDebugSettings"
+                            HorizontalOptions="EndAndExpand"
+                            Toggled="EnableDebugSettings_OnToggled"
+                            IsToggled="False"/>
+                    </StackLayout>
+
+                    <StackLayout
+                          x:Name="DebugSettingsFrame"
+                          IsVisible="True"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="StartAndExpand">
+
+                        <StackLayout
+                          Margin="50,0,0,0">
+
+                            <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal">
+
+                                <Label
+                                  Text="Critical Hit Double Damage"
+                                  Style="{DynamicResource DebugSwitchLabel}"/>
+
+                                <Switch
+                                  x:Name="EnableCriticalHitDamage"
+                                  HorizontalOptions="EndAndExpand"
+                                  Toggled="EnableCriticalHitDamage_OnToggled"
+                                  IsToggled="False"/>
+                            </StackLayout>
+
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal">
+
+                                <Label
+                                    Text="Critical Miss Bad Things"
+                                    Style="{DynamicResource DebugSwitchLabel}"/>
+
+                                <Switch
+                                    x:Name="EnableCriticalMissProblems"
+                                    HorizontalOptions="EndAndExpand"
+                                    Toggled="EnableCriticalMissProblems_OnToggled"
+                                    IsToggled="False"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <!--Forced Random Numbers-->
+                <StackLayout>
+                    <StackLayout
+                          Orientation="Horizontal"
+                          VerticalOptions="Center"
+                          HorizontalOptions="StartAndExpand">
+
+                        <Label
+                            Text="Forced Random Number Value"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="Center"
+                            Style="{DynamicResource DebugSwitchLabel}"/>
+
+                        <Switch
+                            x:Name="ForcedRandomValuesSettings"
+                            HorizontalOptions="EndAndExpand"
+                            Toggled="UseForcedRandomValuesSwitch_OnToggled"
+                            IsToggled="False"/>
+                    </StackLayout>
+
+                    <StackLayout
+                          x:Name="ForcedRandomValuesSettingsFrame"
+                          IsVisible="True">
+
+                        <StackLayout
+                          Orientation="Horizontal"
+                          VerticalOptions="Center"
+                          Margin="50,0,0,0">
+
+                            <Grid
+                                RowSpacing="1"
+                                ColumnSpacing="3">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--Force Ramdon Value-->
+                                <Label
+                                    Grid.Row="0" Grid.Column="0"
+                                    Text="Forced Random Number Value"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"/>
+
+                                <Label
+                                    Grid.Row="0" Grid.Column="1"
+                                    Text="1"
+                                    HorizontalOptions="Center"
+                                    x:Name="ForcedValue"
+                                    VerticalOptions="Center"/>
+
+                                <Stepper
+                                  Grid.Row="0" Grid.Column="2"
+                                  Value="{Binding Data.Range, Mode=TwoWay}"
+                                  Minimum="1"
+                                  Maximum="20"
+                                  Increment="1"
+                                  ValueChanged="ForcedValue_OnStepperValueChanged"
+                                  HorizontalOptions="End"
+                                  VerticalOptions="Center"/>
+
+                                <!--Forced To Hit Value-->
+                                <Label
+                                    Grid.Row="1" Grid.Column="0"
+                                    Text="Forced To Hit Value"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"/>
+
+                                <Label
+                                    Grid.Row="1" Grid.Column="1"
+                                    Text="1"
+                                    HorizontalOptions="Center"
+                                    x:Name="ForcedHitValue"
+                                    VerticalOptions="Center"/>
+
+                                <Stepper
+                                      Grid.Row="1" Grid.Column="2"
+                                      Value="{Binding Data.Range, Mode=TwoWay}"
+                                      Minimum="1"
+                                      Maximum="20"
+                                      Increment="1"
+                                      ValueChanged="ForcedHitValue_OnStepperValueChanged"
+                                      HorizontalOptions="End"
+                                      VerticalOptions="Center"/>
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+   
 </ContentPage>

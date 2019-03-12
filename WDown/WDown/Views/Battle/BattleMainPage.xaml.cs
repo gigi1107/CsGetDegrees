@@ -63,12 +63,14 @@ namespace WDown.Views.Battle
 
         private async void OnSelectedMonsterSelected(object sender, SelectedItemChangedEventArgs args)
         {
-           
+            if(ableToSelectMonster)
+            {
                 Debug.WriteLine("able to select monster");
                 var data = args.SelectedItem as WDown.Models.Monster;
                 _viewModel.BattleEngine.Target = data;
-                Debug.WriteLine("target monster: "+ data.Name);
-                Debug.WriteLine("In the backend, selected target: "+ _viewModel.BattleEngine.Target.Name);
+                Debug.WriteLine("target monster: " + data.Name);
+                Debug.WriteLine("In the backend, selected target: " + _viewModel.BattleEngine.Target.Name);
+            }
 
 
         }
