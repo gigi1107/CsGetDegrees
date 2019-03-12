@@ -53,7 +53,7 @@ namespace WDown.GameEngine
         // Character Attacks...
         public bool TakeTurn(Character Attacker)
         {
-            // Choose Move or Attack TODO MAKE THIS SO THAT THE CHARACTER ACTUALLY SELECTS MONSTER TP ATTACK
+            // Choose Move or Attack TODO MAKE THIS SO THAT THE CHARACTER ACTUALLY SELECTS MONSTER TO ATTACK
 
             // For Attack, Choose Who
             //If it is an autobattle, proceed noramlly

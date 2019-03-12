@@ -27,6 +27,8 @@ namespace WDown.Views.Battle
         bool ableToSelectMonster;
         bool attackButtonPressed;
 
+        bool started;
+
         
 
         /// <summary>
@@ -48,6 +50,7 @@ namespace WDown.Views.Battle
 
             SelectedMonster = null;
             ableToSelectMonster = false;
+            started = false;
 
 
             //            var browser = new WebView();
@@ -67,9 +70,8 @@ namespace WDown.Views.Battle
             {
                 Debug.WriteLine("able to select monster");
                 var data = args.SelectedItem as WDown.Models.Monster;
-                _viewModel.BattleEngine.Target = data;
-                Debug.WriteLine("target monster: " + data.Name);
-                Debug.WriteLine("In the backend, selected target: " + _viewModel.BattleEngine.Target.Name);
+                SelectedMonster = data;
+
             }
 
 
@@ -87,25 +89,55 @@ namespace WDown.Views.Battle
         }
 
 
+        public async void StartGame(object sender, EventArgs args)
+        {
+            GameStartButton.IsVisible = false;
+            GameNextButton.IsVisible = true;
+            GameNextButton.IsEnabled = true;
+
+
+            //initialize next turn's players, but don't play all the way through
+            MessagingCenter.Send(this, "SetPlayerCurrent");
+
+            if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
+            {
+                GameNextButton.IsEnabled = false;
+                AttackButton.IsEnabled = true;
+                RestButton.IsEnabled = true;
+                UseItemButton.IsEnabled = true;
+
+            }
+
+            else
+            {
+                GameNextButton.IsEnabled = true;
+                AttackButton.IsEnabled = false;
+                RestButton.IsEnabled = false;
+                UseItemButton.IsEnabled = false;
+            }
+
+        }
         /// <summary>
         /// Next Turn Button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
+        /// 
+
         public async void SubmitClicked(object sender, EventArgs args)
         {
 
             //TODO put message on screen that says target monster 
             //and what happened in that turn
             // Do the turn...
-            GameStartButton.IsVisible = false;
-            GameNextButton.IsVisible = true;
-            GameNextButton.IsEnabled = true;
+
 
             //send the selected monster info into target
-
-            
             _viewModel.BattleEngine.Target = SelectedMonster;
+            if(SelectedMonster != null)
+
+                Debug.WriteLine("backend monster selected: " + _viewModel.BattleEngine.Target.Name);
+
             MessagingCenter.Send(this, "RoundNextTurn");
             if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
             {

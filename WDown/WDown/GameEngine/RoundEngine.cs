@@ -167,9 +167,20 @@ namespace WDown.GameEngine
 
         // Get Round Turn Order
 
-        // Rember Who's Turn
+        // Set the currentPlayer
+        public bool SetPlayerCurrent()
+        {
+            PlayerCurrent = GetNextPlayerTurn();
+            if(PlayerCurrent != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
 
         // RoundNextTurn
+
         public Round.RoundEnum RoundNextTurn()
         {
             // No characters, game is over...
@@ -188,17 +199,12 @@ namespace WDown.GameEngine
                 return Round.RoundEnum.NewRound;
             }
 
-            // Decide Who gets next turn
-            // Remember who just went...
-            PlayerCurrent = GetNextPlayerTurn();
 
 
             // Decide Who to Attack
             // Do the Turn         
             if (PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
             {
-
-                //CHANGE THIS LOGIC SO THAT PLAYER SELECTS TARGET, NOT ENGINE
                 // Get the player
                 var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
 

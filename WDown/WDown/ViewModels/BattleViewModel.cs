@@ -228,10 +228,9 @@ namespace WDown.ViewModels
             {
                 LoadCharacters();
             });
-
-            MessagingCenter.Subscribe<BattleMainPage>(this, "RoundNextTurn", async (obj) =>
+            MessagingCenter.Subscribe<BattleMainPage>(this, "SetPlayerCurrent", async (obj) =>
             {
-                RoundNextTurn();
+                SetPlayerCurrent();
                 currentPlayerName = BattleEngine.PlayerCurrent.Name;
                 OnPropertyChanged();
                 currentPlayerURI = BattleEngine.PlayerCurrent.ImageURI;
@@ -246,6 +245,12 @@ namespace WDown.ViewModels
                 OnPropertyChanged();
                 currentPlayerSpeed = BattleEngine.PlayerCurrent.Speed;
                 OnPropertyChanged();
+            });
+
+            MessagingCenter.Subscribe<BattleMainPage>(this, "RoundNextTurn", async (obj) =>
+            {
+                RoundNextTurn();
+            
 
             });
 
@@ -273,6 +278,12 @@ namespace WDown.ViewModels
         public void EndBattle()
         {
             BattleViewModel.Instance.BattleEngine.EndBattle();
+        }
+
+        public void SetPlayerCurrent()
+        {
+            BattleViewModel.Instance.BattleEngine.SetPlayerCurrent();
+
         }
 
         /// <summary>
