@@ -15,10 +15,7 @@
                             Clicked="AutoBattle_Clicked"/>
                     <Button Text="Regular Battle"
                             Clicked="RegularBattle_Clicked"/>
-                    <Button Text="Battle Character select page"
-                            Clicked="Character_Select_Clicked"/>
-                    <Button Text="Battle Monster list page"
-                            Clicked="Monster_Select_Clicked"/>
+                 
                   
               
             </StackLayout>

@@ -90,7 +90,7 @@
 
                         <StackLayout 
                             HorizontalOptions="CenterAndExpand"
-                            VerticalOptions="Start">
+                            VerticalOptions="StartAndExpand">
 
                             <Label 
                                 HorizontalOptions="CenterAndExpand"
@@ -100,16 +100,20 @@
                                 Text="0"
                                 HorizontalOptions="CenterAndExpand"
                                 x:Name="PartyCountLabel"/>
-
+                                <Label Margin="25"/>
+            
                             <Button 
                                 x:Name="NextButton"
+                                Opacity="0.5"
                                 HorizontalOptions="CenterAndExpand"
                                 Clicked="OnNextClicked" 
-                                Text="Accept Party and move to Monster"
+                                Text="Accept Party"
                                 IsEnabled="False"
+                               
                                 />
+                          </StackLayout>
 
-                        </StackLayout>
+                    
 
                         <StackLayout 
                             HorizontalOptions="EndAndExpand">
