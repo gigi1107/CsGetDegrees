@@ -80,7 +80,8 @@
                                   BackgroundColor="Transparent" HasUnevenRows="true" 
                                   RefreshCommand="{Binding LoadItemsCommand}" 
                                   IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                                  CachingStrategy="RecycleElement" SelectionMode="None"
+                                  CachingStrategy="RecycleElement" 
+                                  SelectionMode="Single"
                                   SelectedItem = "OnSelectedMonsterSelected">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
