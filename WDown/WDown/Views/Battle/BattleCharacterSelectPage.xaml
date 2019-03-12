@@ -20,7 +20,7 @@
             <StackLayout>
 
                 <StackLayout>
-                    <Label Text="Pick your Team"
+                    <Label Text="Choose your Party"
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" 
                            FontSize="Large"/>
@@ -53,12 +53,13 @@
                                  IsPullToRefreshEnabled="true"
                                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                                  CachingStrategy="RecycleElement"
+                                 WidthRequest="350"
                                  ItemSelected="OnAvailableCharacterItemSelected">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
 
-                                            <StackLayout Padding="10"
+                                            <StackLayout Padding="1"
                                                  Orientation="Horizontal"
                                                  VerticalOptions="Start"
                                                  HorizontalOptions="Start">
@@ -126,6 +127,7 @@
                                 IsPullToRefreshEnabled="true"
                                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                                 CachingStrategy="RecycleElement"
+                                     
                                 ItemSelected="OnSelectedCharacterItemSelected">
 
                                 <ListView.ItemTemplate>
