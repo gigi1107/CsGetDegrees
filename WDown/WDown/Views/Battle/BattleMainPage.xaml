@@ -13,7 +13,10 @@
                                   VerticalOptions="Start" 
                                   HorizontalOptions="StartAndExpand"
                                   BackgroundColor="Transparent" 
-                                  HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="None">
+                                  HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" 
+                                  IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" 
+                                  SelectionMode="None"
+                                  WidthRequest="200">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -34,7 +37,9 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackLayout>
-                    <Frame OutlineColor="Black" BackgroundColor="White" AbsoluteLayout.LayoutBounds="0.25,0,0.25,200" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
+                    <Frame OutlineColor="Black" BackgroundColor="White" 
+                           AbsoluteLayout.LayoutBounds="0.25,0,0.25,200" 
+                           AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
                         <StackLayout Orientation="Vertical"
                                      Padding = "1">
                             <Label Text="{Binding currentPlayerName}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
@@ -73,7 +78,8 @@
                              </StackLayout>
                     </Frame>
                     <!--                    MONSTERS SECTION-->
-                    <StackLayout AbsoluteLayout.LayoutBounds="0.8,0,0.4,1" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional">
+                    <StackLayout AbsoluteLayout.LayoutBounds="0.8,0,0.4,1"
+                                 AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional">
                         <ListView x:Name="SelectedMonstersView" 
                                   ItemsSource="{Binding FightingMonsters}" 
                                   VerticalOptions="Start" HorizontalOptions="StartAndExpand"
@@ -82,7 +88,8 @@
                                   IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                                   CachingStrategy="RecycleElement" 
                                   SelectionMode="Single"
-                                  SelectedItem = "OnSelectedMonsterSelected">
+                             
+                                  ItemSelected="OnSelectedMonsterSelected">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
