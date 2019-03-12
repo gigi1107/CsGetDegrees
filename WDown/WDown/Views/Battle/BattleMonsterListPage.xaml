@@ -5,13 +5,24 @@
              Title="Monster List">
 
     <ContentPage.Content>
-
-        <ScrollView>
+     <AbsoluteLayout 
+             BackgroundColor="Black"
+             Padding="0,4,0,4"
+            >
+             <Image 
+                 Aspect="AspectFill" 
+                 AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All"
+                 Source="https://imgur.com/R3lM305.png"
+                 BackgroundColor="White"
+               
+                />
+    
             <StackLayout
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand">
 
-                <Label Text="You are currently fighting with these monsters..."
+                <Label Text="You are currently fighting with these monsters: "
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand" 
                 FontSize="Large"/>
@@ -30,6 +41,7 @@
                 <Button Clicked="OnNextClicked" Text="Next"/>
 
             </StackLayout>
-        </ScrollView>
+            </AbsoluteLayout>
+     
     </ContentPage.Content>
 </ContentPage>

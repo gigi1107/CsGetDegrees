@@ -104,7 +104,7 @@
             
                             <Button 
                                 x:Name="NextButton"
-                                Opacity="0.5"
+                               
                                 HorizontalOptions="CenterAndExpand"
                                 Clicked="OnNextClicked" 
                                 Text="Accept Party"

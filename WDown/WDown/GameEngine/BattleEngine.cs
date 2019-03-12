@@ -32,6 +32,8 @@ namespace WDown.GameEngine
 
             // Clear the rest of the data
             BattleEngineClearData();
+
+
         }
 
         // Sets the new state for the variables for Battle
@@ -43,6 +45,22 @@ namespace WDown.GameEngine
             ItemPool.Clear();
             MonsterList.Clear();
             CharacterList.Clear();
+
+            //reset players' HP to full
+       
+
+            for(int i = 0; i< CharactersViewModel.Instance.Dataset.Count; i++)
+            {
+                CharactersViewModel.Instance.Dataset[i].CharacterAttribute.CurrentHealth = 
+                CharactersViewModel.Instance.Dataset[i].CharacterAttribute.MaxHealth;
+            }
+
+
+            for (int i = 0; i < MonstersViewModel.Instance.Dataset.Count; i++)
+            {
+                MonstersViewModel.Instance.Dataset[i].MonsterAttribute.CurrentHealth =
+                MonstersViewModel.Instance.Dataset[i].MonsterAttribute.MaxHealth;
+            }
 
             // Reset current player
             PlayerCurrent = null;

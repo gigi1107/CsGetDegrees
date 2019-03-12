@@ -122,7 +122,15 @@
                     </StackLayout>
                     <Frame OutlineColor="Black" BackgroundColor="White" AbsoluteLayout.LayoutBounds="0.25,0.3,0.25,100" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
                         <StackLayout Orientation="Vertical">
-                            <Button x:Name="GameStartButton" IsVisible="true" Clicked="StartGame" Text="Start Battle!"/>
+                          
+                            <Button x:Name="GameStartButton"
+                                    
+                                    IsVisible="true"
+                                    Clicked="StartGame" 
+                                    Text="Start Battle!"
+                            
+                                    BackgroundColor="White"/>
+                         
                             <Button x:Name="GameNextButton" IsVisible="true" Clicked="SubmitClicked" Text="Submit" />
                             <Button x:Name="GameOverButton" IsVisible="true" Clicked="OnGameOverClicked" Text="Game Over" />
                             <Label Text="Messages" />
