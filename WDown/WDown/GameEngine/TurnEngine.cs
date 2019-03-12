@@ -34,8 +34,11 @@ namespace WDown.GameEngine
         public Round.PlayerInfo CurrentAttacker;
         public Round.PlayerInfo CurrentDefender;
 
+        //the Target monster that will be set via frontend
         public Monster Target;
+
         //this gets chaged in front end based on button press
+        //attack, rest, or useitem
         public Round.MoveEnum turnType;
 
         // Attack or Move
@@ -73,20 +76,22 @@ namespace WDown.GameEngine
 
             else if(turnType == Round.MoveEnum.Attack)
             {
-                if (Target == null)
+
+                if (Target == null) 
                 {
+
+                    Debug.WriteLine("Target was null");
                     return false;
                 }
                 // Do Attack
                 var AttackScore = Attacker.Level + Attacker.GetAttack();
                 var DefenseScore = Target.GetDefense() + Target.Level;
+       
                 TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
 
             }
             CurrentAttacker = new Round.PlayerInfo(Attacker);
             CurrentDefender = new Round.PlayerInfo(Target);
-
-
 
 
             return true;

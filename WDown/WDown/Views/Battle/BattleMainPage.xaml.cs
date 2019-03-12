@@ -36,15 +36,11 @@ namespace WDown.Views.Battle
         {
             InitializeComponent();
 
-            // Show the Next button, hide the Game Over button
-
-           
-
 
             BindingContext = _viewModel = viewModel;
 
             
-
+            //initialize button controls
             GameStartButton.IsVisible = true;
             GameNextButton.IsVisible = false;
 
@@ -71,8 +67,8 @@ namespace WDown.Views.Battle
                 Debug.WriteLine("able to select monster");
                 var data = args.SelectedItem as WDown.Models.Monster;
                 _viewModel.BattleEngine.Target = data;
-                Debug.WriteLine("target monster: ", data.Name);
-                Debug.WriteLine("In the backend, selected target: ", _viewModel.BattleEngine.Target.Name);
+                Debug.WriteLine("target monster: "+ data.Name);
+                Debug.WriteLine("In the backend, selected target: "+ _viewModel.BattleEngine.Target.Name);
 
 
         }
@@ -96,6 +92,9 @@ namespace WDown.Views.Battle
         /// <param name="args"></param>
         public async void SubmitClicked(object sender, EventArgs args)
         {
+
+            //TODO put message on screen that says target monster 
+            //and what happened in that turn
             // Do the turn...
             GameStartButton.IsVisible = false;
             GameNextButton.IsVisible = true;
