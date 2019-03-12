@@ -23,6 +23,11 @@ namespace WDown.Views.Battle
 
         private BattleViewModel _viewModel;
 
+        Models.Monster SelectedMonster;
+        bool ableToSelectMonster;
+        bool attackButtonPressed;
+
+        
 
         /// <summary>
         /// Stand up the Page and initiate state
@@ -32,14 +37,21 @@ namespace WDown.Views.Battle
             InitializeComponent();
 
             // Show the Next button, hide the Game Over button
-            GameStartButton.IsVisible = true;
-            GameNextButton.IsVisible = false;
-            GameOverButton.IsVisible = false;
-          
 
+           
 
 
             BindingContext = _viewModel = viewModel;
+
+            
+
+            GameStartButton.IsVisible = true;
+            GameNextButton.IsVisible = false;
+
+            GameOverButton.IsVisible = false;
+
+            SelectedMonster = null;
+            ableToSelectMonster = false;
 
 
             //            var browser = new WebView();
@@ -50,29 +62,79 @@ namespace WDown.Views.Battle
 
             //HtmlBox.Source = htmlSource;
 
-        
+
         }
 
-    
+        private async void OnSelectedMonsterSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            if(ableToSelectMonster)
+            {
+                var data = args.SelectedItem as WDown.Models.Monster;
+                _viewModel.BattleEngine.Target = data;
+                Debug.WriteLine("target monster: ",data.Name);
+
+            }
+
+          
+           
+
+        }
+
+        private async void AttackClicked(object sender, EventArgs args)
+        {
+
+            RestButton.IsEnabled = false;
+            UseItemButton.IsEnabled = false;
+            ableToSelectMonster = true;
+            attackButtonPressed = true;
+            GameNextButton.IsEnabled = true;
+            _viewModel.BattleEngine.turnType = Round.MoveEnum.Attack;
+        }
+
 
         /// <summary>
         /// Next Turn Button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public async void OnNextClicked(object sender, EventArgs args)
+        public async void SubmitClicked(object sender, EventArgs args)
         {
             // Do the turn...
             GameStartButton.IsVisible = false;
             GameNextButton.IsVisible = true;
+            GameNextButton.IsEnabled = true;
+
+            //send the selected monster info into target
+
+            
+            _viewModel.BattleEngine.Target = SelectedMonster;
             MessagingCenter.Send(this, "RoundNextTurn");
+            if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
+            {
+                GameNextButton.IsEnabled = false;
+                AttackButton.IsEnabled = true;
+                RestButton.IsEnabled = true;
+                UseItemButton.IsEnabled = true;
+
+            }
+
+            else
+            {
+                GameNextButton.IsEnabled = true;
+                AttackButton.IsEnabled = false;
+                RestButton.IsEnabled = false;
+                UseItemButton.IsEnabled = false;
+            }
 
             // Hold the current state
             var CurrentRoundState = _viewModel.BattleEngine.RoundStateEnum;
 
-
             OnPropertyChanged();
 
+            //reset all these for next turn
+            ableToSelectMonster = false;
+            attackButtonPressed = false;
+            SelectedMonster = null;
 
             // If the round is over start a new one...
             if (CurrentRoundState == Round.RoundEnum.NewRound)
@@ -83,6 +145,24 @@ namespace WDown.Views.Battle
 
                 ShowModalPageMonsterList();
                 Debug.WriteLine("current player: " + _viewModel.BattleEngine.PlayerCurrent.Name);
+
+
+                if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
+                {
+                    GameNextButton.IsEnabled = false;
+                    AttackButton.IsEnabled = true;
+                    RestButton.IsEnabled = true;
+                    UseItemButton.IsEnabled = true;
+
+                }
+
+                else
+                {
+                    GameNextButton.IsEnabled = true;
+                    AttackButton.IsEnabled = false;
+                    RestButton.IsEnabled = false;
+                    UseItemButton.IsEnabled = false;
+                }
                 OnPropertyChanged();
 
             }

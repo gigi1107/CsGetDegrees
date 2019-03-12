@@ -24,6 +24,15 @@ namespace WDown.Models
             Monster = 2,
         }
 
+        //types of moves alllowed
+        public enum MoveEnum
+        {
+            Attack = 0,
+            Rest = 1,
+            UseItem = 2,
+        }
+
+
         // The information about a Player, this allows players and monsters to be together in a single list.
         public class PlayerInfo
         {

@@ -6,8 +6,14 @@
             <StackLayout Orientation="Horizontal">
                 <AbsoluteLayout>
                     <!--CHARACTERS-->
-                    <StackLayout AbsoluteLayout.LayoutBounds="0,0,0.3,1" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional">
-                        <ListView x:Name="SelectedCharactersView" ItemsSource="{Binding SelectedCharacters}" VerticalOptions="Start" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="None">
+                    <StackLayout AbsoluteLayout.LayoutBounds="0,0,0.3,1" 
+                                 AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional">
+                        <ListView x:Name="SelectedCharactersView" 
+                                  ItemsSource="{Binding SelectedCharacters}" 
+                                  VerticalOptions="Start" 
+                                  HorizontalOptions="StartAndExpand"
+                                  BackgroundColor="Transparent" 
+                                  HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="None">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -51,15 +57,31 @@
                             </StackLayout>
 
                         <StackLayout Orientation="Horizontal">
-                            <Button Text="Attack" HorizontalOptions="CenterAndExpand" />
-                            <Button Text="Rest" HorizontalOptions="CenterAndExpand" />
-                            <Button Text="Use Item" HorizontalOptions="CenterAndExpand" />
+                            <Button Text="Attack" 
+                                    x:Name="AttackButton"
+                                    Clicked="AttackClicked"
+                                    HorizontalOptions="CenterAndExpand" 
+                                    />
+                            <Button Text="Rest"
+                                    x:Name="RestButton"
+                                    HorizontalOptions="CenterAndExpand" />
+                            <Button Text="Use Item" 
+                                    x:Name="UseItemButton"
+                                
+                                    HorizontalOptions="CenterAndExpand" />
                         </StackLayout>
                              </StackLayout>
                     </Frame>
                     <!--                    MONSTERS SECTION-->
                     <StackLayout AbsoluteLayout.LayoutBounds="0.8,0,0.4,1" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional">
-                        <ListView x:Name="SelectedMonstersView" ItemsSource="{Binding FightingMonsters}" VerticalOptions="Start" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="None">
+                        <ListView x:Name="SelectedMonstersView" 
+                                  ItemsSource="{Binding FightingMonsters}" 
+                                  VerticalOptions="Start" HorizontalOptions="StartAndExpand"
+                                  BackgroundColor="Transparent" HasUnevenRows="true" 
+                                  RefreshCommand="{Binding LoadItemsCommand}" 
+                                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                                  CachingStrategy="RecycleElement" SelectionMode="None"
+                                  SelectedItem = "OnSelectedMonsterSelected">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -82,8 +104,8 @@
                     </StackLayout>
                     <Frame OutlineColor="Black" BackgroundColor="White" AbsoluteLayout.LayoutBounds="0.25,0.3,0.25,100" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
                         <StackLayout Orientation="Vertical">
-                            <Button x:Name="GameStartButton" IsVisible="true" Clicked="OnNextClicked" Text="Start Battle!"/>
-                            <Button x:Name="GameNextButton" IsVisible="true" Clicked="OnNextClicked" Text="Next Turn" />
+                            <Button x:Name="GameStartButton" IsVisible="true" Clicked="SubmitClicked" Text="Start Battle!"/>
+                            <Button x:Name="GameNextButton" IsVisible="true" Clicked="SubmitClicked" Text="Next Turn" />
                             <Button x:Name="GameOverButton" IsVisible="true" Clicked="OnGameOverClicked" Text="Game Over" />
                             <Label Text="Messages" />
                             <StackLayout x:Name="MessageBox">

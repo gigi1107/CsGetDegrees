@@ -34,6 +34,10 @@ namespace WDown.GameEngine
         public Round.PlayerInfo CurrentAttacker;
         public Round.PlayerInfo CurrentDefender;
 
+        public Monster Target;
+        //this gets chaged in front end based on button press
+        public Round.MoveEnum turnType;
+
         // Attack or Move
         // Roll To Hit
         // Decide Hit or Miss
@@ -46,23 +50,44 @@ namespace WDown.GameEngine
         // Character Attacks...
         public bool TakeTurn(Character Attacker)
         {
-            // Choose Move or Attack
+            // Choose Move or Attack TODO MAKE THIS SO THAT THE CHARACTER ACTUALLY SELECTS MONSTER TP ATTACK
 
             // For Attack, Choose Who
-            var Target = AttackChoice(Attacker);
-
-            if (Target == null)
+            //If it is an autobattle, proceed noramlly
+            if(BattleScore.AutoBattle)
             {
-                return false;
+                var Target = AttackChoice(Attacker);
+
+
+                if (Target == null)
+                {
+                    return false;
+                }
+                // Do Attack
+                var AttackScore = Attacker.Level + Attacker.GetAttack();
+                var DefenseScore = Target.GetDefense() + Target.Level;
+                TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
+
+
             }
 
-            // Do Attack
-            var AttackScore = Attacker.Level + Attacker.GetAttack();
-            var DefenseScore = Target.GetDefense() + Target.Level;
-            TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
+            else if(turnType == Round.MoveEnum.Attack)
+            {
+                if (Target == null)
+                {
+                    return false;
+                }
+                // Do Attack
+                var AttackScore = Attacker.Level + Attacker.GetAttack();
+                var DefenseScore = Target.GetDefense() + Target.Level;
+                TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
 
+            }
             CurrentAttacker = new Round.PlayerInfo(Attacker);
             CurrentDefender = new Round.PlayerInfo(Target);
+
+
+
 
             return true;
         }
@@ -70,21 +95,23 @@ namespace WDown.GameEngine
         // Monster Attacks...
         public bool TakeTurn(Monster Attacker)
         {
-            // Choose Move or Attack
+            // Choose Attack, Rest, or Use Item
+            //here we want to use an ENUM-- Move Enum
+     
+                // For Attack, Choose Who
+                var Target = AttackChoice(Attacker);
 
-            // For Attack, Choose Who
-            var Target = AttackChoice(Attacker);
+                if (Target == null)
+                {
+                    return false;
+                }
 
-            if (Target == null)
-            {
-                return false;
-            }
-
-            // Do Attack
-            var AttackScore = Attacker.Level + Attacker.GetAttack();
-            var DefenseScore = Target.GetDefense() + Target.Level;
-            TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
-
+                // Do Attack
+                var AttackScore = Attacker.Level + Attacker.GetAttack();
+                var DefenseScore = Target.GetDefense() + Target.Level;
+                TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
+           
+            
             CurrentAttacker = new Round.PlayerInfo(Attacker);
             CurrentDefender = new Round.PlayerInfo(Target);
 
@@ -186,6 +213,7 @@ namespace WDown.GameEngine
         }
 
         // Character attacks Monster
+        //here we wanto to set monster target as something the user selects
         public bool TurnAsAttack(Character Attacker, int AttackScore, Monster Target, int DefenseScore)
         {
             BattleMessages.TurnMessage = string.Empty;
@@ -349,36 +377,52 @@ namespace WDown.GameEngine
 
         // Decide which to attack
         public Monster AttackChoice(Character data)
+            //ACTUALLY HERE IS THE PART WE WANT TO MAKE MANUAL SELECTION
+            //how do we get front end selection to work with backend?
+            //implement button function to return the attack choice
+            //TODO
+
         {
-            if (MonsterList == null)
+            //want to run automatically if in Autobattle
+            if(BattleScore.AutoBattle)
             {
-                return null;
+                if (MonsterList == null)
+                {
+                    return null;
+                }
+
+                if (MonsterList.Count < 1)
+                {
+                    return null;
+                }
+
+                // Select first one to hit in the list for now...
+                // Attack the WEAKEST (lowest HP) Monster first 
+                var DefenderWeakest = MonsterList.OrderBy(m => m.MonsterAttribute.CurrentHealth).FirstOrDefault();
+                if (DefenderWeakest.Alive)
+                {
+                    return DefenderWeakest;
+                }
+
+               
             }
 
-            if (MonsterList.Count < 1)
+            if(!BattleScore.AutoBattle && turnType == Round.MoveEnum.Attack)
             {
-                return null;
+                if (MonsterList == null)
+                {
+                    return null;
+                }
+
+                if (MonsterList.Count < 1)
+                {
+                    return null;
+                }
+                return Target;
+                
             }
-
-            //// For now, just use a simple selection of the first in the list.
-            //// Later consider, strongest, closest, with most Health etc...
-            //foreach (var Defender in MonsterList)
-            //{
-            //    if (Defender.Alive)
-            //    {
-            //        return Defender;
-            //    }
-            //}
-
-            // Select first one to hit in the list for now...
-            // Attack the Weakness (lowest HP) Monster first 
-            var DefenderWeakest = MonsterList.OrderBy(m => m.MonsterAttribute.CurrentHealth).FirstOrDefault();
-            if (DefenderWeakest.Alive)
-            {
-                return DefenderWeakest;
-            }
-
             return null;
+
         }
 
         // Decide which to attack

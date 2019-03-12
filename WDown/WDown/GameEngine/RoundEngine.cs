@@ -184,6 +184,7 @@ namespace WDown.GameEngine
             if (MonsterList.Count < 1)
             {
                 // If over, New Round
+                RoundStateEnum = Round.RoundEnum.NewRound;
                 return Round.RoundEnum.NewRound;
             }
 
@@ -196,6 +197,8 @@ namespace WDown.GameEngine
             // Do the Turn         
             if (PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
             {
+
+                //CHANGE THIS LOGIC SO THAT PLAYER SELECTS TARGET, NOT ENGINE
                 // Get the player
                 var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
 
