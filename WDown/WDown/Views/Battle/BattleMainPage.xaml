@@ -4,7 +4,7 @@
         <AbsoluteLayout BackgroundColor="Black" Padding="0,4,0,4">
             <Image Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1"
                    AbsoluteLayout.LayoutFlags="All" 
-                   Source="Hill-PNG-File.png"
+                   Source="https://i.imgur.com/NT1KMVy.png"
                    BackgroundColor="White" />
             <StackLayout Orientation="Horizontal">
                 <AbsoluteLayout>

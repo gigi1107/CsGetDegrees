@@ -25,6 +25,9 @@
             <StackLayout>
                 <Button Clicked="OnNextClicked" Text="View Score and Battle Information"/>
             </StackLayout>
+            <StackLayout>
+                <Button Clicked="GoBackClicked" Text="Return to Game Page and Start New Battle"/>
+            </StackLayout>
 
         </StackLayout>
     </ContentPage.Content>

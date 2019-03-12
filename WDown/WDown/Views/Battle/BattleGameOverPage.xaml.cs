@@ -28,6 +28,14 @@ namespace WDown.Views.Battle
             await Navigation.PushModalAsync(new WDown.Views.Scores.ScoreDetailPage(new ScoreDetailViewModel(myScoreObject)));
         }
 
+        async void GoBackClicked(object sender, EventArgs args)
+        {
+            //var myScoreObject = BattleViewModel.Instance.BattleEngine.BattleScore;
+
+            //await Navigation.PushModalAsync(new WDown.Views.Scores.ScoreDetailPage(new ScoreDetailViewModel(myScoreObject)));
+            await Navigation.PushAsync(new BattleOpeningPage());
+        }
+
         /// <summary>
         ///  Don't need the page again.
         /// </summary>
