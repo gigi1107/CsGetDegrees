@@ -26,7 +26,6 @@ namespace WDown.Views.Battle
         Models.Monster SelectedMonster;
         bool ableToSelectMonster;
         bool attackButtonPressed;
-
         bool started;
 
         
