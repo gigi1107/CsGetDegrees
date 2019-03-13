@@ -101,7 +101,9 @@ namespace WDown.Views.Battle
 
             if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
             {
-                GameNextButton.IsEnabled = false;
+                //GameNextButton.IsEnabled = false;
+                // TEST code:
+                GameNextButton.IsEnabled = true;
                 AttackButton.IsEnabled = true;
                 RestButton.IsEnabled = true;
                 UseItemButton.IsEnabled = true;
@@ -171,8 +173,10 @@ namespace WDown.Views.Battle
             {
                 MessagingCenter.Send(this, "NewRound");
 
+                // Show new round and Round count
                 Debug.WriteLine("New Round :" + _viewModel.BattleEngine.BattleScore.RoundCount);
 
+                // Show name of current player
                 ShowModalPageMonsterList();
                 Debug.WriteLine("current player: " + _viewModel.BattleEngine.PlayerCurrent.Name);
 

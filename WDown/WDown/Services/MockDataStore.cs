@@ -203,7 +203,7 @@ namespace WDown.Services
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/0uaVKml.jpg",
                 //Wisdom = 2,
-                CharacterAttribute = new AttributeBase(3, 4, 4, 8, 8, 5, 5),
+                CharacterAttribute = new AttributeBase(10, 10, 10, 20, 20, 15, 15),
                 LoveInterest = "Strawberry"
 
 
