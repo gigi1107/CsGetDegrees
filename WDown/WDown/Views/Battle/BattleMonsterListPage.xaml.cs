@@ -26,6 +26,7 @@ namespace WDown.Views.Battle
         private BattleViewModel _viewModel;
 
 
+        // Initialize page and populate buttons
         public BattleMonsterListPage()
             {
                 InitializeComponent();

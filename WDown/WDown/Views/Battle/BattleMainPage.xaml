@@ -79,7 +79,7 @@
                                     Clicked="RestClicked"/>
                             <Button Text="Use Item" 
                                     x:Name="UseItemButton"
-                                
+                                    Clicked="UseItemClicked"                                
                                     HorizontalOptions="CenterAndExpand" />
                         </StackLayout>
                              </StackLayout>

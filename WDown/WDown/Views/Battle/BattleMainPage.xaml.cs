@@ -303,7 +303,12 @@ namespace WDown.Views.Battle
             }
 
         }
+        public async void UseItemClicked(object sender, EventArgs args)
+        {
+            Debug.WriteLine("Switching to Item Pool...");
+            await Navigation.PushAsync(new BattleUseItemPage(_viewModel));
 
+        }
             private void HandleModalPopping(object sender, ModalPoppingEventArgs e)
         {
             if (e.Modal == _myModalBattleMonsterListPage)
