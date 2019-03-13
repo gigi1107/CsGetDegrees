@@ -2,7 +2,10 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WDown.Views;
+using WDown.Controllers;
 using SQLite;
+using WDown.Services;
+using WDown.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace WDown
@@ -16,6 +19,8 @@ namespace WDown
 
 
             MainPage = new MainPage();
+            // Load The Mock Datastore by default
+            MasterDataStore.ToggleDataStore(DataStoreEnum.Mock);
         }
 
         protected override void OnStart()

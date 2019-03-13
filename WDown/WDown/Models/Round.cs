@@ -114,6 +114,7 @@ namespace WDown.Models
                 Defense = data.GetDefense();
                 ImageURI = data.GetImageURI();
             }
+
         }
     }
 }

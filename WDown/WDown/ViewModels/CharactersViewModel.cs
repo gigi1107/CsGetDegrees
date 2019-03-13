@@ -162,6 +162,14 @@ namespace WDown.ViewModels
             var myData = await DataStore.GetAsync_Character(id);
             return myData;
         }
+        // Having this at the ViewModel, because it has the DataStore
+        // That allows the feature to work for both SQL and the MOCk datastores...
+        public async Task<bool> InsertUpdateAsync(Character data)
+        {
+            var myReturn = await DataStore.InsertUpdateAsync_Character(data);
+            return myReturn;
+        }
+
 
         #endregion DataOperations
 

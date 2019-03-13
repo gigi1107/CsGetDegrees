@@ -2,9 +2,10 @@
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using WDown.Views;
 using WDown.Models;
 using WDown.ViewModels;
+using WDown.Views.Battle;
 
 namespace WDown.Views.Scores
 {
@@ -53,7 +54,7 @@ namespace WDown.Views.Scores
 
         private async void Return_To_Main_Battle_Screen(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Battle.BattleOpeningPage());
+            await Navigation.PushAsync(new BattleOpeningPage());
         }
     }
 }

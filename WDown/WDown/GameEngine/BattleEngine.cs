@@ -23,13 +23,15 @@ namespace WDown.GameEngine
         public BattleEngine()
         {
             BattleEngineInit();
+            BattleScore = new Score();
+            CharacterList = new List<Character>();
         }
 
         // Sets the new state for the variables for Battle
         private void BattleEngineInit()
         {
             CharacterList.Clear();
-
+            
             // Clear the rest of the data
             BattleEngineClearData();
 
