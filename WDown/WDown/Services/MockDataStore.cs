@@ -146,8 +146,8 @@ namespace WDown.Services
                 Level = 1,
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/pNTXqMH.png",
-                Wisdom = 2,
-                CharacterAttribute = new AttributeBase(1, 2, 2, 7, 7),
+                //Wisdom = 2,
+                CharacterAttribute = new AttributeBase(3, 4, 2, 6, 6,5,5),
                 LoveInterest = "Clover"
             });
 
@@ -160,8 +160,8 @@ namespace WDown.Services
                 Level = 1,
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/lcTjFJ1.png",
-                Wisdom = 2,
-                CharacterAttribute = new AttributeBase(1, 1, 2, 6, 6),
+                //Wisdom = 2,
+                CharacterAttribute = new AttributeBase(1, 2, 2, 7, 7, 8, 8),
                 LoveInterest = "Vilthuril"
             });
 
@@ -174,8 +174,8 @@ namespace WDown.Services
                 Level = 1,
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/rB0yLge.png",
-                Wisdom = 1,
-                CharacterAttribute = new AttributeBase(2, 3, 2, 7, 7),
+                //Wisdom = 2,
+                CharacterAttribute = new AttributeBase(3, 2, 3, 6, 6, 5, 5),
                 LoveInterest = "Hazel"
 
             });
@@ -189,8 +189,8 @@ namespace WDown.Services
                 Level = 1,
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/kIH4UtV.jpg",
-                Wisdom = 2,
-                CharacterAttribute = new AttributeBase(1, 1, 2, 7, 7),
+                //Wisdom = 2,
+                CharacterAttribute = new AttributeBase(4, 4, 3, 6, 6, 5, 5),
                 LoveInterest = "None"
             });
 
@@ -202,8 +202,8 @@ namespace WDown.Services
                 Level = 1,
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/0uaVKml.jpg",
-                Wisdom = 1,
-                CharacterAttribute = new AttributeBase(3, 1, 4, 8, 8),
+                //Wisdom = 2,
+                CharacterAttribute = new AttributeBase(3, 4, 4, 8, 8, 5, 5),
                 LoveInterest = "Strawberry"
 
 
@@ -218,7 +218,7 @@ namespace WDown.Services
                 Description = "The house cat is one of the most ferocious hunters of rabbits. Its deadly" +
                 "claws and extreme agility makes it second most dangerous enemy, after the house dog.",
                 Level = 1,
-                MonsterAttribute = new AttributeBase(3,1,2,5,5),
+                MonsterAttribute = new AttributeBase(3,1,2,5,5,3,3),
                 ImageURI = "https://i.imgur.com/EamWXas.png",
                 UniqueItem = "Tree Bark",
                 UniqueDropRate = 0.5
@@ -230,7 +230,7 @@ namespace WDown.Services
                 Name = "Dog",
                 Description = "Trained to hunt, the Rottweiler is an extremely hostile enemy of the rabbits.",
                 Level = 2,
-                MonsterAttribute = new AttributeBase(4, 2, 2, 6, 6),
+                MonsterAttribute = new AttributeBase(4, 2, 2, 6, 6,5,5),
                 ImageURI = "https://i.imgur.com/OnGOYw9.png",
                 UniqueItem = "Collar of Transcendence",
                 UniqueDropRate = 0.3
@@ -242,7 +242,7 @@ namespace WDown.Services
                 Name = "Bird",
                 Description = "Fast and unpredictable creatures with wings that pose great harm to the warren.",
                 Level = 3,
-                MonsterAttribute = new AttributeBase(3, 1, 2, 10, 10),
+                MonsterAttribute = new AttributeBase(3, 1, 2, 10, 10,5,5),
                 ImageURI = "https://i.imgur.com/PirEPrm.png",
                 UniqueItem = "Rope",
                 UniqueDropRate = 0.4
@@ -256,7 +256,7 @@ namespace WDown.Services
                 " Mallow after Bigwig leads the carnivore away from Hazel and his group," +
                 " unintentionally leading it to an Efrafa Wide Patrol. ",
                 Level = 2,
-                MonsterAttribute = new AttributeBase(3,4,3,8,8),
+                MonsterAttribute = new AttributeBase(3,4,3,8,8,5,5),
                 ImageURI = "https://i.imgur.com/K8M7L7E.png",
                 UniqueItem = "Collar of Transcendence",
                 UniqueDropRate = 0.3
@@ -271,7 +271,7 @@ namespace WDown.Services
                 "He is an arrogant, cruel, bloodthirsty and viciously ruthless Chief rabbit, and will " + 
                 "execute anyone who gets in his way, or disobey him at Efrafa.",
                 Level = 20,
-                MonsterAttribute = new AttributeBase(3, 4, 3, 8, 8),
+                MonsterAttribute = new AttributeBase(3, 4, 3, 8, 8,5,5),
                 ImageURI = "https://i.imgur.com/QTJzhFI.png",
                 UniqueItem = "Champion Cup",
                 UniqueDropRate = 1.0
@@ -328,6 +328,7 @@ namespace WDown.Services
             _characterDataset.Clear();
             _itemDataset.Clear();
             _monsterDataset.Clear();
+            _scoreDataset.Clear();
         }
 
         // Tells the View Models to update themselves.
@@ -523,7 +524,7 @@ namespace WDown.Services
             var UpdateResult = await UpdateAsync_Monster(data);
             if (UpdateResult)
             {
-                await AddAsync_Monster(data);
+                //await AddAsync_Monster(data);
                 return true;
             }
 

@@ -13,7 +13,11 @@ namespace WDown.Models
     // Character has all attributes defined 
     public class Character : BaseCharacter
     {
+
+        // Maximum level a character can get up to
         private const int MAX_LEVEL = 20;
+        // Amount of Wisdom points cost for each time Character decides to Rest
+        private const int REST_COST = 3; 
         // Attribute class 
         public AttributeBase CharacterAttribute { get; set; }
 
@@ -43,7 +47,7 @@ namespace WDown.Models
             // Base information
             Name = newData.Name;
             Description = newData.Description;
-            Wisdom = newData.Wisdom;
+            //Wisdom = newData.Wisdom;
             ImageURI = newData.ImageURI;
 
             // Database information
@@ -618,6 +622,32 @@ namespace WDown.Models
                 // Death...
                 CauseDeath();
             }
+        }
+
+        // Resting functionality for Character
+        // Driver should check whether there is at least one warren in the party before 
+        // calling Rest() 
+
+        // Resting costs an enormous amount of CurrentWisdom. 
+        // Character can only get back Wisdom points
+        // by accumulating and using a lot of Wisdom-based items, or by levelling up 
+        public bool Rest()
+        {
+            CharacterAttribute.CurrentHealth = CharacterAttribute.MaxHealth;
+
+            var currWisdom = CharacterAttribute.CurrentWisdom;
+            if (currWisdom < REST_COST)
+            {
+                return false;
+            }
+                
+             else
+            {
+                CharacterAttribute.CurrentWisdom = CharacterAttribute.CurrentWisdom - REST_COST;
+                return true;
+            }
+            
+    
         }
     }
 }

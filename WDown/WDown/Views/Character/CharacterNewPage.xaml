@@ -68,7 +68,7 @@
 
                     <StackLayout Grid.Row="2" Grid.Column="0">
                         <Label 
-                            Text="Speed" 
+                            Text="Attack" 
                             FontSize="Small" 
                             HorizontalOptions="Start"/>
                     </StackLayout>
@@ -115,7 +115,7 @@
                             VerticalOptions="Center"/>
 
                         <Stepper 
-                            Value="{Binding Data.Wisdom, Mode=TwoWay}"
+                            Value="{Binding Data.CharacterAttribute.Wisdom, Mode=TwoWay}"
                             Minimum="0"
                             Maximum="100"
                             Increment="1"

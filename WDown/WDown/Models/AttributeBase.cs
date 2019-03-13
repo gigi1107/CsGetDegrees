@@ -12,16 +12,27 @@ namespace WDown.Models
     {
        
 
-        //the speed of the character
+        // Speed of the character
         public int Speed { get; set; }
 
+        // Defense, or attack dodge ability 
         public int Defense { get; set; }
 
+        // Attack value to determine attack strength during battle
         public int Attack { get; set; }
 
+        // Current HP
         public int CurrentHealth { get; set; }
 
+
+        // Maximum HP
         public int MaxHealth { get; set; }
+
+        // Wisdom to use Rest
+        public int CurrentWisdom { get; set; }
+        
+        // Maximum Wisdom
+        public int Wisdom { get; set; }
 
 
         public string FormatOutput()
@@ -41,19 +52,21 @@ namespace WDown.Models
             Speed = 1;
             Defense = 1;
             Attack = 1;
-            CurrentHealth = 1;
-            MaxHealth = 1;
+            CurrentHealth = 5;
+            MaxHealth = 5;
 
         }
 
         public AttributeBase(int speed, int defense, int attack,
-        int currentHealth, int maxHealth)
+        int currentHealth, int maxHealth, int currentWisdom, int maxWisdom)
         {
             Speed = speed;
             Defense = defense;
             Attack = attack;
             CurrentHealth = currentHealth;
             MaxHealth = maxHealth;
+            CurrentWisdom = currentWisdom;
+            Wisdom = maxWisdom;
         }
 
         public int getSpeed() { return Speed; }
@@ -61,6 +74,9 @@ namespace WDown.Models
         public int getAttack() { return Attack; }
         public int getCurrentHealth() { return CurrentHealth; }
         public int getMaxHealth() { return MaxHealth; }
+        public int getCurrentWisdom() { return CurrentWisdom; }
+        //public int getMaxWisdom { return Wisdom; }
+
         // Return attributebase based on a string as the constructor.
         public AttributeBase(string data)
         {

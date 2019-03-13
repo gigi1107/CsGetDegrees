@@ -23,8 +23,8 @@ namespace WDown.Views.Character
             Data = new WDown.Models.Character
             {
                 Name = "Character name",
-                Wisdom = 1,
-                CharacterAttribute = new AttributeBase(1, 1, 1, 1, 1),
+                //Wisdom = 1,
+                CharacterAttribute = new AttributeBase(2,2,2,5,5,5,5),
 
                 Description = "This is a character description.",
                 Id = Guid.NewGuid().ToString(),

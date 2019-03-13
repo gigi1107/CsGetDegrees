@@ -23,7 +23,6 @@ namespace WDown.Models
         {
             Name = "Monster";
             MonsterAttribute = new AttributeBase();
-
             Alive = true;
             Level = 1;
 

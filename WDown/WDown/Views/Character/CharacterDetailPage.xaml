@@ -41,7 +41,7 @@
                        HorizontalOptions="Start" />
 
 
-                <Label Text= "{Binding Data.Wisdom}"
+                <Label Text= "{Binding Data.CharacterAttribute.Wisdom}"
                        FontSize = "Small"
                        HorizontalOptions = "Center"/>
             </StackLayout>

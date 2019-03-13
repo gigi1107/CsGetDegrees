@@ -159,7 +159,7 @@
 
                     <StackLayout Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
-                            Text="{Binding Data.Wisdom}" 
+                            Text="{Binding Data.CharacterAttribute.Wisdom}" 
                             FontSize="Small" 
                             HorizontalOptions="Start"
                             x:Name="WisdomValue"
