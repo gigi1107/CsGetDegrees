@@ -103,7 +103,7 @@ namespace WDown.Views.Battle
             {
                 //GameNextButton.IsEnabled = false;
                 // TEST code:
-                GameNextButton.IsEnabled = true;
+                GameNextButton.IsEnabled = false;
                 AttackButton.IsEnabled = true;
                 RestButton.IsEnabled = true;
                 UseItemButton.IsEnabled = true;
@@ -269,9 +269,9 @@ namespace WDown.Views.Battle
 
             
             RestButton.IsEnabled = true;
-            UseItemButton.IsEnabled = false;
-            ableToSelectMonster = false;
-            attackButtonPressed = false;
+            //UseItemButton.IsEnabled = false;
+            //ableToSelectMonster = false;
+            //attackButtonPressed = false;
             GameNextButton.IsEnabled = true;
             _viewModel.BattleEngine.turnType = Round.MoveEnum.Rest;
 

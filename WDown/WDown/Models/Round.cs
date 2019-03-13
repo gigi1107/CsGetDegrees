@@ -115,11 +115,6 @@ namespace WDown.Models
                 ImageURI = data.GetImageURI();
             }
 
-            //public bool PlayerRest(Character data)
-            //{
-            //    bool result = data.Rest();
-            //    return (result);
-            //}
         }
     }
 }

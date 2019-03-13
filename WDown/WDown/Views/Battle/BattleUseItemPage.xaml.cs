@@ -18,10 +18,38 @@ namespace WDown.Views.Battle
 
         private BattleViewModel _viewModel;
         // Initialize page and populate buttons
-        public BattleUseItemPage(BattleViewModel _viewModel)
+        public BattleUseItemPage(BattleViewModel viewModel)
         {
             InitializeComponent();
+            BindingContext = _viewModel = viewModel;
 
+            CharacterImage.Source = BattleViewModel.Instance.currentPlayerURI;
+            CharacterAttack.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerAttack);
+            CharacterDefense.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerDefense);
+            CharacterSpeed.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerSpeed);
+            CharacterName.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerName);
+            CharacterCurrentHealth.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerHPTotal);
+        }
+
+        public async void SaveButtonClicked(object sender, EventArgs e)
+        {
+            //await Navigation.PushModalAsync(new ItemLocationSelectPage());
+        }
+
+        public async void CancelButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
+
+        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            if (!(args.SelectedItem is Item item))
+                return;
+
+            ItemDescription.Text = String.Format("{0}", item.Description);
+            ItemAffectsLabel.Text = String.Format("This item affects {0} with value {1}", item.Attribute.ToString(), item.Value.ToString());
+
+            ItemImage.Source = item.ImageURI;
         }
     }
 }
