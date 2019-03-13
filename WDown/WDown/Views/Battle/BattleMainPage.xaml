@@ -75,7 +75,8 @@
                                     />
                             <Button Text="Rest"
                                     x:Name="RestButton"
-                                    HorizontalOptions="CenterAndExpand" />
+                                    HorizontalOptions="CenterAndExpand"
+                                    Clicked="RestClicked"/>
                             <Button Text="Use Item" 
                                     x:Name="UseItemButton"
                                 

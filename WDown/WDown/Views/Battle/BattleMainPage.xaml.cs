@@ -126,6 +126,7 @@ namespace WDown.Views.Battle
         /// <param name="args"></param>
         /// 
 
+         // Handles when user chooses an option and hit submit
         public async void SubmitClicked(object sender, EventArgs args)
         {
 
@@ -242,6 +243,8 @@ namespace WDown.Views.Battle
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
+        /// 
+        // Handles when the characters is all dead and the game is over
         public async void OnGameOverClicked(object sender, EventArgs args)
         {
             var myScore = _viewModel.BattleEngine.BattleScore.ScoreTotal;
@@ -257,16 +260,57 @@ namespace WDown.Views.Battle
 
 
             await Navigation.PushAsync(new BattleGameOverPage());
-            ;
+            
         }
 
-        private void HandleModalPopping(object sender, ModalPoppingEventArgs e)
+        // Handle when the character chooses to rest
+        public async void RestClicked(object sender, EventArgs args)
+        {
+
+            
+            RestButton.IsEnabled = true;
+            UseItemButton.IsEnabled = false;
+            ableToSelectMonster = false;
+            attackButtonPressed = false;
+            GameNextButton.IsEnabled = true;
+            _viewModel.BattleEngine.turnType = Round.MoveEnum.Rest;
+
+            // Find out whether there is a Warren already from party
+            // If yes, allow resting
+
+            bool canRest = false;
+            for (int i = 0; i < CharactersViewModel.Instance.Dataset.Count; i++)
+            {
+                if (CharactersViewModel.Instance.Dataset[i].HasWarren == true)
+                {
+                    canRest = true;
+                    break;
+                }
+                
+            }
+            if (canRest)
+            {
+                //var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
+                //bool result = _viewModel.BattleEngine.PlayerCurrent.PlayerRest();
+
+                // Call Rest function 
+                Debug.WriteLine("Choosing Rest... Need to call Rest from Character.cs");
+
+            }
+            else
+            {
+                Debug.WriteLine("Rest cannot be done. Please build warren first.");
+            }
+
+        }
+
+            private void HandleModalPopping(object sender, ModalPoppingEventArgs e)
         {
             if (e.Modal == _myModalBattleMonsterListPage)
             {
                 _myModalBattleMonsterListPage = null;
 
-                // remember to remove the event handler:
+                // remember to remove the event handler
                 WDown.App.Current.ModalPopping -= HandleModalPopping;
             }
 
@@ -274,7 +318,7 @@ namespace WDown.Views.Battle
             {
                 _myModalCharacterSelectPage = null;
 
-                // remember to remove the event handler:
+                // remember to remove the event handler
                 WDown.App.Current.ModalPopping -= HandleModalPopping;
             }
         }

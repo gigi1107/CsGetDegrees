@@ -114,6 +114,12 @@ namespace WDown.Models
                 Defense = data.GetDefense();
                 ImageURI = data.GetImageURI();
             }
+
+            //public bool PlayerRest(Character data)
+            //{
+            //    bool result = data.Rest();
+            //    return (result);
+            //}
         }
     }
 }
