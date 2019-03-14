@@ -31,8 +31,8 @@ namespace WDown.GameEngine
         public List<Monster> MonsterList = new List<Monster>();
         public List<Character> CharacterList = new List<Character>();
 
-        public Round.PlayerInfo CurrentAttacker;
-        public Round.PlayerInfo CurrentDefender;
+        public Round.PlayerInfo CurrentAttacker = null;
+        public Round.PlayerInfo CurrentDefender = null;
 
         //the Target monster that will be set via frontend
         public Monster Target;
@@ -53,7 +53,6 @@ namespace WDown.GameEngine
         // Character Attacks...
         public bool TakeTurn(Character Attacker)
         {
-            // Choose Move or Attack TODO MAKE THIS SO THAT THE CHARACTER ACTUALLY SELECTS MONSTER TO ATTACK
 
             // For Attack, Choose Who
             //If it is an autobattle, proceed noramlly
@@ -214,6 +213,8 @@ namespace WDown.GameEngine
             BattleMessages.TurnMessage = Attacker.Name + BattleMessages.AttackStatus + Target.Name + BattleMessages.TurnMessageSpecial;
             Debug.WriteLine(BattleMessages.TurnMessage);
 
+            //TODO update character list with HP and dead chars
+
             return true;
         }
 
@@ -325,6 +326,7 @@ namespace WDown.GameEngine
 
                 ItemPool.AddRange(myItemList);
             }
+            //TODO need to update monster list 
 
             BattleMessages.TurnMessage = Attacker.Name + BattleMessages.AttackStatus + Target.Name + BattleMessages.TurnMessageSpecial;
             Debug.WriteLine(BattleMessages.TurnMessage);
@@ -382,10 +384,7 @@ namespace WDown.GameEngine
 
         // Decide which to attack
         public Monster AttackChoice(Character data)
-            //ACTUALLY HERE IS THE PART WE WANT TO MAKE MANUAL SELECTION
-            //how do we get front end selection to work with backend?
-            //implement button function to return the attack choice
-            //TODO
+           
 
         {
             //want to run automatically if in Autobattle
@@ -412,7 +411,8 @@ namespace WDown.GameEngine
                
             }
 
-            if(!BattleScore.AutoBattle && turnType == Round.MoveEnum.Attack)
+            //manual selections
+            if(turnType == Round.MoveEnum.Attack)
             {
                 if (MonsterList == null)
                 {

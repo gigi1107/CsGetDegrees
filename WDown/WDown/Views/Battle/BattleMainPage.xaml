@@ -45,7 +45,8 @@
                     </StackLayout>
                     <Frame OutlineColor="Black" BackgroundColor="White" 
                            AbsoluteLayout.LayoutBounds="0.25,0,0.25,200" 
-                           AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
+                           AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
+                           WidthRequest="250">
                         <StackLayout Orientation="Vertical"
                                      Padding = "1">
                             <Label Text="{Binding currentPlayerName}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
