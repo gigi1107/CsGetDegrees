@@ -11,6 +11,18 @@ namespace WDown.Models
         // Turn on to force Rolls to be non random
         public static bool ForceRollsToNotRandom = false;
 
+        //var to hold slow is the new fast
+        public static bool SlowIsTheNewFast = false;
+
+        //var to hold Boss battles enables
+        public static bool BossBattles = false;
+
+        //var percent chance Boss battle occurs
+        public static double BossBattleChance = 0.0;
+
+        //corresponds to Slow is the new fast
+        public static double PercentChanceValue = 0.0;
+
         // Holds the random value for the sytem
         private static int _ForcedRandomValue = 1;
 
@@ -67,8 +79,26 @@ namespace WDown.Models
             ForceRollsToNotRandom = true;
         }
 
+
+       
+
+        //sets values for slow is the new fast chance
+        public static void SetRandomValueForSlowIsTheNewFast(double value)
+        {
+            PercentChanceValue = value;
+        }
+
+       //sets values for BossBattle 
+       public static void SetPercentChanceOccurringBossBattle(double value)
+        {
+            BossBattleChance = value;
+        }
+
+
         // Debug Settings
         public static bool EnableCriticalMissProblems = true;
         public static bool EnableCriticalHitDamage = true;
+
+
     }
 }

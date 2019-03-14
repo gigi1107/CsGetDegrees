@@ -1,14 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WDown.Views.AboutPage"
-             xmlns:vm="clr-namespace:WDown.ViewModels"
-             Title="{Binding Title}">
-    
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WDown.Views.AboutPage" xmlns:vm="clr-namespace:WDown.ViewModels" Title="{Binding Title}">
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <!--Page Level Resources: Compatible with Xamarin Live Player -->
@@ -18,322 +12,151 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,10,0,40" VerticalOptions="FillAndExpand">
-                    <!--<Image Source="http://www.claretwalker.com/wp-content/uploads/IMG_3000-1.jpg"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,10,0,40" VerticalOptions="FillAndExpand">
+                        <!--<Image Source="http://www.claretwalker.com/wp-content/uploads/IMG_3000-1.jpg"
                            VerticalOptions="Center" HeightRequest="200" />-->
-                </ContentView>
-            </StackLayout>
-        </StackLayout>
-        <StackLayout Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                <Label FontSize="22">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Watership Down" FontAttributes="Bold" FontSize="22" />
-                                <Span Text=" " />
-
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Label>
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Gigi Davidson" />
-                                <Span Text=" Linh Nguyen " />
-
-
-                            </FormattedString.Spans>
-                        </FormattedString>
-
-
-                    </Label.FormattedText>
-
-                </Label>
-                     <StackLayout
-                    x:Name="DateRoot"
-                    HorizontalOptions="CenterAndExpand"
-                    Orientation="Vertical">
+                    </ContentView>
                 </StackLayout>
-                <Label>
+            </StackLayout>
+            <StackLayout Grid.Row="1">
+                <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+                    <Label FontSize="22">
                         <Label.FormattedText>
                             <FormattedString>
                                 <FormattedString.Spans>
-                                    <Span Text="About Page" />
-
-
+                                    <Span Text="Watership Down" FontAttributes="Bold" FontSize="22" />
+                                    <Span Text=" " />
                                 </FormattedString.Spans>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Gigi Davidson" />
+                                    <Span Text=" Linh Nguyen " />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <StackLayout x:Name="DateRoot" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
+                    </StackLayout>
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="About Page" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+        <!--Database Settings-->
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                <Label Text="Database Settings" Style="{DynamicResource DebugSwitchLabel}" />
+                <Switch x:Name="DatabaseSettings" HorizontalOptions="EndAndExpand" Toggled="DatabaseSettingsSwitch_OnToggled" IsToggled="False" />
+            </StackLayout>
+            <StackLayout x:Name="DatabaseSettingsFrame" IsVisible="True">
+                <StackLayout Orientation="Vertical" Margin="50,0,0,0">
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <Label Text="Use Mock DataStore" Style="{DynamicResource DebugSwitchLabel}" />
+                        <Switch x:Name="UseMockDataSource" HorizontalOptions="EndAndExpand" Toggled="UseMockDataSourceSwitch_OnToggled" IsToggled="False" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label Text="Clear Database" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+                            <Button Text="Clear" Clicked="ClearDatabase_Command" HorizontalOptions="Fill" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                            <Label Text="Number of Items " HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+                            <Entry x:Name="ServerItemValue" Text="1" MaxLength="3" CursorPosition="0" SelectionLength="3" />
+                            <Button Text="Get" Clicked="GetItems_Command" HorizontalOptions="EndAndExpand" />
+                            <Button Text="Post" Clicked="GetItemsPost_Command" HorizontalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        <!--Debug Settings-->
+        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Orientation="Vertical">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Orientation="Horizontal">
+                <Label FontSize="Small" Text="Debug Settings" Style="{DynamicResource DebugSwitchLabel}" />
+                <Switch x:Name="EnableDebugSettings" HorizontalOptions="EndAndExpand" Toggled="EnableDebugSettings_OnToggled" IsToggled="false" />
+            </StackLayout>
+            <StackLayout x:Name="DebugSettingsFrame" IsVisible="True" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                <StackLayout Margin="50,0,0,0">
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <Label Text="Critical Hit Double Damage" Style="{DynamicResource DebugSwitchLabel}" />
+                        <Switch x:Name="EnableCriticalHitDamage" HorizontalOptions="EndAndExpand" Toggled="EnableCriticalHitDamage_OnToggled" IsToggled="False" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                        <Label Text="Critical Miss Bad Things" Style="{DynamicResource DebugSwitchLabel}" />
+                        <Switch x:Name="EnableCriticalMissProblems" HorizontalOptions="EndAndExpand" Toggled="EnableCriticalMissProblems_OnToggled" IsToggled="False" />
+                    </StackLayout>
+                    <StackLayout>
+                           <!--Switch initiative-->
+                        <Switch x:Name="SlowIsTheNewFastSwitch" HorizontalOptions="EndAndExpand" Toggled="EnableSlowIsTheNewFast_OnToggled" IsToggled="False" />
+                        <Label Text="Switch Initiative order" HorizontalOptions="Start" VerticalOptions="Center" />
+                        <Label Text="1" HorizontalOptions="Center" x:Name="SlowIsTheNewFastValue" VerticalOptions="Center" />
+                        <Stepper Value="{Binding Data.PercentChanceValue, Mode=TwoWay}" Minimum="0.0" Maximum="1.0" Increment="0.1" ValueChanged="SlowIsTheNewFast_OnStepperValueChanged" HorizontalOptions="End" VerticalOptions="Center" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+        
+        <!--BOSS BATTLES-->
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Enable Boss Battles"/>
+            <Switch x:Name="EnableBossBattles" Toggled="BossBattles_OnToggles" IsToggled="false"/>
+         </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Chance for Boss Battle"/>
+            <Label x:Name="BossBattlesValue"/>
+            <Stepper Value="{Binding Data.BossBattleChance}" ValueChanged="BossBattles_OnStepperValueChanged"  Minimum="0.0" Maximum="1.0" Increment="0.1"/>
+          </StackLayout>
+     
+        <!--Forced Random Numbers-->
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+                <Label Text="Forced Random Number Value" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Style="{DynamicResource DebugSwitchLabel}" />
+                <Switch x:Name="ForcedRandomValuesSettings" HorizontalOptions="EndAndExpand" Toggled="UseForcedRandomValuesSwitch_OnToggled" IsToggled="False" />
+            </StackLayout>
+            <StackLayout x:Name="ForcedRandomValuesSettingsFrame" IsVisible="True">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="50,0,0,0">
+                    <Grid RowSpacing="1" ColumnSpacing="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--Force Ramdon Value-->
+                        <Label Grid.Row="0" Grid.Column="0" Text="Forced Random Number Value" HorizontalOptions="Start" VerticalOptions="Center" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="1" HorizontalOptions="Center" x:Name="ForcedValue" VerticalOptions="Center" />
+                        <Stepper Grid.Row="0" Grid.Column="2" Value="{Binding Data.Range, Mode=TwoWay}" Minimum="1" Maximum="20" Increment="1" ValueChanged="ForcedValue_OnStepperValueChanged" HorizontalOptions="End" VerticalOptions="Center" />
+                        <!--Forced To Hit Value-->
+                        <Label Grid.Row="1" Grid.Column="0" Text="Forced To Hit Value" HorizontalOptions="Start" VerticalOptions="Center" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="1" HorizontalOptions="Center" x:Name="ForcedHitValue" VerticalOptions="Center" />
+                        <Stepper Grid.Row="1" Grid.Column="2" Value="{Binding Data.Range, Mode=TwoWay}" Minimum="1" Maximum="20" Increment="1" ValueChanged="ForcedHitValue_OnStepperValueChanged" HorizontalOptions="End" VerticalOptions="Center" />
+                    </Grid>
+                </StackLayout>
             </StackLayout>
         </StackLayout>
-    </Grid>
-
-       <!--Database Settings-->
-                <StackLayout>
-                    <StackLayout
-                      Orientation="Horizontal"
-                      HorizontalOptions="StartAndExpand">
-
-                        <Label
-                            Text="Database Settings"
-                            Style="{DynamicResource DebugSwitchLabel}"/>
-
-                        <Switch
-                            x:Name="DatabaseSettings"
-                            HorizontalOptions="EndAndExpand"
-                            Toggled="DatabaseSettingsSwitch_OnToggled"
-                            IsToggled="False"/>
-                    </StackLayout>
-
-                    <StackLayout
-                        x:Name="DatabaseSettingsFrame"
-                        IsVisible="True">
-
-                        <StackLayout
-                          Orientation="Vertical"
-                          Margin="50,0,0,0">
-
-                        <StackLayout
-                            HorizontalOptions="FillAndExpand"
-                            Orientation="Horizontal">
-
-                        <Label
-                            Text="Use Mock DataStore"
-                            Style="{DynamicResource DebugSwitchLabel}"/>
-
-                        <Switch
-                            x:Name="UseMockDataSource"
-                            HorizontalOptions="EndAndExpand"
-                            Toggled="UseMockDataSourceSwitch_OnToggled"
-                            IsToggled="False"/>
-                            </StackLayout>
-
-                            <StackLayout
-                                HorizontalOptions="FillAndExpand"
-                                Orientation="Vertical">
-
-                                <StackLayout
-                                  HorizontalOptions="FillAndExpand"
-                                  Orientation="Horizontal">
-
-                                    <Label
-                                        Text="Clear Database"
-                                        HorizontalTextAlignment="Start"
-                                        HorizontalOptions="Start"/>
-
-                                    <Button
-                                        Text="Clear"
-                                        Clicked="ClearDatabase_Command"
-                                        HorizontalOptions="Fill"/>
-                                </StackLayout>
-                            </StackLayout>
-
-                            <StackLayout
-                              HorizontalOptions="FillAndExpand"
-                              Orientation="Vertical">
-
-                                <StackLayout
-                                    HorizontalOptions="FillAndExpand"
-                                    Orientation="Horizontal">
-
-                                    <Label
-                                        Text="Number of Items "
-                                        HorizontalTextAlignment="Start"
-                                        HorizontalOptions="Start"/>
-
-                                    <Entry
-                                        x:Name="ServerItemValue"
-                                        Text="1" 
-                                        MaxLength="3"
-                                        CursorPosition="0"
-                                        SelectionLength = "3" />
-
-                                    <Button
-                                      Text="Get"
-                                      Clicked="GetItems_Command"
-                                      HorizontalOptions="EndAndExpand"/>
-
-                                    <Button
-                                      Text="Post"
-                                      Clicked="GetItemsPost_Command"
-                                      HorizontalOptions="EndAndExpand"/>
-
-                                </StackLayout>
-                            </StackLayout>
-                        </StackLayout>
-                    </StackLayout>
-                </StackLayout>
-
-                <!--Debug Settings-->
-                <StackLayout
-                      HorizontalOptions="StartAndExpand"
-                      VerticalOptions="Start"
-                      Orientation="Vertical">
-
-                    <StackLayout
-                      HorizontalOptions="FillAndExpand"
-                      VerticalOptions="Start"
-                      Orientation="Horizontal">
-
-                        <Label
-                            FontSize="Small"
-                            Text="Debug Settings"
-                            Style="{DynamicResource DebugSwitchLabel}"/>
-
-                        <Switch
-                            x:Name="EnableDebugSettings"
-                            HorizontalOptions="EndAndExpand"
-                            Toggled="EnableDebugSettings_OnToggled"
-                            IsToggled="False"/>
-                    </StackLayout>
-
-                    <StackLayout
-                          x:Name="DebugSettingsFrame"
-                          IsVisible="True"
-                          HorizontalOptions="FillAndExpand"
-                          VerticalOptions="StartAndExpand">
-
-                        <StackLayout
-                          Margin="50,0,0,0">
-
-                            <StackLayout
-                            HorizontalOptions="FillAndExpand"
-                            Orientation="Horizontal">
-
-                                <Label
-                                  Text="Critical Hit Double Damage"
-                                  Style="{DynamicResource DebugSwitchLabel}"/>
-
-                                <Switch
-                                  x:Name="EnableCriticalHitDamage"
-                                  HorizontalOptions="EndAndExpand"
-                                  Toggled="EnableCriticalHitDamage_OnToggled"
-                                  IsToggled="False"/>
-                            </StackLayout>
-
-                            <StackLayout
-                                HorizontalOptions="FillAndExpand"
-                                Orientation="Horizontal">
-
-                                <Label
-                                    Text="Critical Miss Bad Things"
-                                    Style="{DynamicResource DebugSwitchLabel}"/>
-
-                                <Switch
-                                    x:Name="EnableCriticalMissProblems"
-                                    HorizontalOptions="EndAndExpand"
-                                    Toggled="EnableCriticalMissProblems_OnToggled"
-                                    IsToggled="False"/>
-                            </StackLayout>
-                        </StackLayout>
-                    </StackLayout>
-                </StackLayout>
-
-                <!--Forced Random Numbers-->
-                <StackLayout>
-                    <StackLayout
-                          Orientation="Horizontal"
-                          VerticalOptions="Center"
-                          HorizontalOptions="StartAndExpand">
-
-                        <Label
-                            Text="Forced Random Number Value"
-                            HorizontalOptions="StartAndExpand"
-                            VerticalOptions="Center"
-                            Style="{DynamicResource DebugSwitchLabel}"/>
-
-                        <Switch
-                            x:Name="ForcedRandomValuesSettings"
-                            HorizontalOptions="EndAndExpand"
-                            Toggled="UseForcedRandomValuesSwitch_OnToggled"
-                            IsToggled="False"/>
-                    </StackLayout>
-
-                    <StackLayout
-                          x:Name="ForcedRandomValuesSettingsFrame"
-                          IsVisible="True">
-
-                        <StackLayout
-                          Orientation="Horizontal"
-                          VerticalOptions="Center"
-                          Margin="50,0,0,0">
-
-                            <Grid
-                                RowSpacing="1"
-                                ColumnSpacing="3">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="auto" />
-                                </Grid.ColumnDefinitions>
-
-                                <!--Force Ramdon Value-->
-                                <Label
-                                    Grid.Row="0" Grid.Column="0"
-                                    Text="Forced Random Number Value"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="Center"/>
-
-                                <Label
-                                    Grid.Row="0" Grid.Column="1"
-                                    Text="1"
-                                    HorizontalOptions="Center"
-                                    x:Name="ForcedValue"
-                                    VerticalOptions="Center"/>
-
-                                <Stepper
-                                  Grid.Row="0" Grid.Column="2"
-                                  Value="{Binding Data.Range, Mode=TwoWay}"
-                                  Minimum="1"
-                                  Maximum="20"
-                                  Increment="1"
-                                  ValueChanged="ForcedValue_OnStepperValueChanged"
-                                  HorizontalOptions="End"
-                                  VerticalOptions="Center"/>
-
-                                <!--Forced To Hit Value-->
-                                <Label
-                                    Grid.Row="1" Grid.Column="0"
-                                    Text="Forced To Hit Value"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="Center"/>
-
-                                <Label
-                                    Grid.Row="1" Grid.Column="1"
-                                    Text="1"
-                                    HorizontalOptions="Center"
-                                    x:Name="ForcedHitValue"
-                                    VerticalOptions="Center"/>
-
-                                <Stepper
-                                      Grid.Row="1" Grid.Column="2"
-                                      Value="{Binding Data.Range, Mode=TwoWay}"
-                                      Minimum="1"
-                                      Maximum="20"
-                                      Increment="1"
-                                      ValueChanged="ForcedHitValue_OnStepperValueChanged"
-                                      HorizontalOptions="End"
-                                      VerticalOptions="Center"/>
-                            </Grid>
-                        </StackLayout>
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-   
+    </StackLayout>
 </ContentPage>

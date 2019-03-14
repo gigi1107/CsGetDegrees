@@ -249,6 +249,8 @@ namespace WDown.Models
             return GetDamage();
         }
 
+      
+
         #endregion GetAttributes
 
         #region Items

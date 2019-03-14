@@ -129,6 +129,33 @@ namespace WDown.Views
             ForcedHitValue.Text = String.Format("{0}", e.NewValue);
         }
 
+        //enables slow is the new fast
+        private void EnableSlowIsTheNewFast_OnToggled(object sender, ToggledEventArgs e)
+        {
+            GameGlobals.SlowIsTheNewFast = e.Value;
+        }
+
+        //sets value for slow is the new fast stepper
+        void SlowIsTheNewFast_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SlowIsTheNewFastValue.Text = String.Format("{0}", e.NewValue);
+            GameGlobals.SetRandomValueForSlowIsTheNewFast(Convert.ToDouble(SlowIsTheNewFastValue.Text));
+        }
+
+        //switch for boss battles
+        private void BossBattles_OnToggles(object sender, ToggledEventArgs e)
+        {
+            GameGlobals.BossBattles = e.Value;
+        }
+
+        //stepper for boss battles value chance
+        void BossBattles_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            BossBattlesValue.Text = String.Format("{0}", e.NewValue);
+            GameGlobals.SetPercentChanceOccurringBossBattle(Convert.ToDouble(BossBattlesValue.Text));
+        }
+
+
         // Turn on Critical Misses
         private void EnableCriticalMissProblems_OnToggled(object sender, ToggledEventArgs e)
         {
@@ -219,6 +246,8 @@ namespace WDown.Views
 
             await DisplayAlert("Returned List", myOutput, "OK");
         }
+
+
 
     }
 }
