@@ -266,6 +266,8 @@ namespace WDown.Views.Battle
         }
 
         // Handle when the character chooses to rest
+        // Rest is only allowed when at least 1 character in party has warren
+
         public async void RestClicked(object sender, EventArgs args)
         {
 
@@ -309,6 +311,8 @@ namespace WDown.Views.Battle
             }
 
         }
+
+        // Handles when user chooses to use item 
         public async void UseItemClicked(object sender, EventArgs args)
         {
             var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
@@ -320,6 +324,7 @@ namespace WDown.Views.Battle
             await Navigation.PushAsync(new BattleUseItemPage(_viewModel));
 
         }
+        // Handle modal popping
             private void HandleModalPopping(object sender, ModalPoppingEventArgs e)
         {
             if (e.Modal == _myModalBattleMonsterListPage)
@@ -339,6 +344,7 @@ namespace WDown.Views.Battle
             }
         }
 
+        // Show modal page and showing all current monsters in the list
         private async void ShowModalPageMonsterList()
         {
             // When you want to show the modal page, just call this method
@@ -348,6 +354,7 @@ namespace WDown.Views.Battle
             await Navigation.PushModalAsync(_myModalBattleMonsterListPage);
         }
 
+        // Show modal page and letting user pick 6 characters for battle
         private async void ShowModalPageCharcterSelect()
         {
             // When you want to show the modal page, just call this method
