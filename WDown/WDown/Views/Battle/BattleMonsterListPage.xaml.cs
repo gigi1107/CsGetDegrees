@@ -78,7 +78,7 @@ namespace WDown.Views.Battle
                     var myName = new Label()
                     {
                         Text = data.Name,
-                        TextColor = Color.Black,
+                        TextColor = Color.White,
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.Center
                     };
