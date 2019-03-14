@@ -100,8 +100,6 @@ namespace WDown.Views.Battle
 
             if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
             {
-                //GameNextButton.IsEnabled = false;
-                // TEST code:
                 GameNextButton.IsEnabled = false;
                 AttackButton.IsEnabled = true;
                 RestButton.IsEnabled = true;

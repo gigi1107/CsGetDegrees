@@ -25,7 +25,8 @@
                 <Label Text="You are currently fighting with these monsters: "
                 VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand" 
-                FontSize="Large"/>
+                FontSize="Large"
+                       TextColor="White"/>
 
                 <StackLayout
                 VerticalOptions="CenterAndExpand" 
