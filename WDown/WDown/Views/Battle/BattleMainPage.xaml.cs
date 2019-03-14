@@ -9,7 +9,9 @@ using Xamarin.Forms.Xaml;
 using WDown.Models;
 using WDown.ViewModels;
 using WDown.GameEngine;
-
+using Plugin.SimpleAudioPlayer;
+using System.IO;
+using System.Reflection;
 
 namespace WDown.Views.Battle
 {
@@ -77,7 +79,11 @@ namespace WDown.Views.Battle
 
         private async void AttackClicked(object sender, EventArgs args)
         {
-
+            var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            string filename1 = "attack.mp3";
+            //player1.Load(GetStreamFromFile(filename1));
+            player1.Load(filename1);
+            player1.Play();
             RestButton.IsEnabled = false;
             UseItemButton.IsEnabled = false;
             ableToSelectMonster = true;
@@ -263,7 +269,11 @@ namespace WDown.Views.Battle
         public async void RestClicked(object sender, EventArgs args)
         {
 
-            
+            var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            string filename1 = "rest.mp3";
+            //player1.Load(GetStreamFromFile(filename1));
+            player1.Load(filename1);
+            player1.Play();
             RestButton.IsEnabled = true;
             //UseItemButton.IsEnabled = false;
             //ableToSelectMonster = false;
@@ -301,6 +311,11 @@ namespace WDown.Views.Battle
         }
         public async void UseItemClicked(object sender, EventArgs args)
         {
+            var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            string filename1 = "item.mp3";
+            //player1.Load(GetStreamFromFile(filename1));
+            player1.Load(filename1);
+            player1.Play();
             Debug.WriteLine("Switching to Item Pool...");
             await Navigation.PushAsync(new BattleUseItemPage(_viewModel));
 
@@ -340,6 +355,14 @@ namespace WDown.Views.Battle
             WDown.App.Current.ModalPopping += HandleModalPopping;
             _myModalCharacterSelectPage = new BattleCharacterSelectPage();
             await Navigation.PushModalAsync(_myModalCharacterSelectPage);
+        }
+
+        public Stream GetStreamFromFile(string filename)
+        {
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            var stream = assembly.GetManifestResourceStream("WDown." + filename);
+
+            return stream;
         }
     }
 }
