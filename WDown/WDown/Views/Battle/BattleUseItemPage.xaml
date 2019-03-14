@@ -112,6 +112,13 @@
                         <Button Text="Save" Clicked="SaveButtonClicked" />
                         <Button Text="Cancel" Clicked="CancelButtonClicked" />
 
+                        <!--<Button Text="Click for Sound" Clicked=" SoundTestClicked"/>-->
+                        <!--<MediaElement x:Name="myMediaElement"
+                            Height="10"
+                            Width="10"
+                            Source="/Resources/attack.mp3"/>-->
+                        
+
                     </StackLayout>
                 </AbsoluteLayout>
             </StackLayout>

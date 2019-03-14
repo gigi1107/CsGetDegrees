@@ -74,11 +74,12 @@
                                     Clicked="AttackClicked"
                                     HorizontalOptions="CenterAndExpand" 
                                     />
-                            <Button Text="Rest"
+                                <Button Text="Rest"
                                     x:Name="RestButton"
                                     HorizontalOptions="CenterAndExpand"
                                     Clicked="RestClicked"/>
-                            <Button Text="Use Item" 
+                         
+                                <Button Text="Use Item" 
                                     x:Name="UseItemButton"
                                     Clicked="UseItemClicked"                                
                                     HorizontalOptions="CenterAndExpand" />

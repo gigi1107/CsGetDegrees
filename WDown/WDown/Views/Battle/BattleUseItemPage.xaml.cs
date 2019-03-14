@@ -51,5 +51,12 @@ namespace WDown.Views.Battle
 
             ItemImage.Source = item.ImageURI;
         }
+
+        //private async void SoundTestClicked(object sender, SelectedItemChangedEventArgs args)
+        //{
+        //    MediaElement mplayer = new MediaPlayer();
+        //    mplayer.Open(new Uri("ding.wav", UriKind.Relative));
+        //    mplayer.Play();
+        //}
     }
 }

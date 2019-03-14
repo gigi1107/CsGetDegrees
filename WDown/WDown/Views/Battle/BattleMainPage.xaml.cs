@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 using WDown.Models;
 using WDown.ViewModels;
 using WDown.GameEngine;
+
 
 namespace WDown.Views.Battle
 {
@@ -131,7 +130,7 @@ namespace WDown.Views.Battle
             //and what happened in that turn
             // Do the turn...
 
-
+            
             //send the selected monster info into target
             _viewModel.BattleEngine.Target = SelectedMonster;
             if(SelectedMonster != null)
