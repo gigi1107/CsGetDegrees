@@ -8,8 +8,8 @@ using Xamarin.Forms;
 
 using WDown.Models;
 using WDown.Views;
-using WDown.Views.Items;
 using WDown.GameEngine;
+using WDown.Views.Items;
 
 namespace WDown.ViewModels
 {
@@ -17,7 +17,6 @@ namespace WDown.ViewModels
     {
         #region Singleton
         // Make this a singleton so it only exist one time because holds all the data records in memory
-        // Instance of the object
         private static ItemsViewModel _instance;
 
         public static ItemsViewModel Instance
@@ -39,18 +38,17 @@ namespace WDown.ViewModels
 
         private bool _needsRefresh;
 
-        // Default constructor
         public ItemsViewModel()
         {
-            
+
             Title = "Item List";
             Dataset = new ObservableCollection<Item>();
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
+            // Load Data
+            ExecuteLoadDataCommand().GetAwaiter().GetResult();
 
             #region Messages
-
-            // To call CRUDi operations
             MessagingCenter.Subscribe<ItemDeletePage, Item>(this, "DeleteData", async (obj, data) =>
             {
                 await DeleteAsync(data);
@@ -89,6 +87,7 @@ namespace WDown.ViewModels
             _needsRefresh = value;
         }
 
+        // Command that Loads the Data
         private async Task ExecuteLoadDataCommand()
         {
             if (IsBusy)
@@ -128,7 +127,6 @@ namespace WDown.ViewModels
             }
         }
 
-        // Force data to refresh
         public void ForceDataRefresh()
         {
             // Reset
@@ -140,14 +138,13 @@ namespace WDown.ViewModels
 
         #region DataOperations
 
-        // Add a new Item
         public async Task<bool> AddAsync(Item data)
         {
             Dataset.Add(data);
             var myReturn = await DataStore.AddAsync_Item(data);
             return myReturn;
         }
-        // Delete a current Item
+
         public async Task<bool> DeleteAsync(Item data)
         {
             Dataset.Remove(data);
@@ -155,7 +152,6 @@ namespace WDown.ViewModels
             return myReturn;
         }
 
-        // Edit/update a current Item
         public async Task<bool> UpdateAsync(Item data)
         {
             // Find the Item, then update it
@@ -188,6 +184,21 @@ namespace WDown.ViewModels
             return myReturn;
         }
 
+        /// <summary>
+        /// This method is for the game engine to call to add an item to the item list
+        /// It is not async, so it can be called from the game engine on it's thread
+        /// It sets the needs refresh flag
+        /// Items added to the list this way, are not saved to the DB, they are temporary during the game.
+        /// Refactor for the future would be to create a separate item list for the game to add to, and work with.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public bool AddItem_Sync(Item data)
+        {
+            Dataset.Add(data);
+            SetNeedsRefresh(true);
+            return true;
+        }
         public Item CheckIfItemExists(Item data)
         {
             // This will walk the items and find if there is one that is the same.
@@ -224,7 +235,8 @@ namespace WDown.ViewModels
                 return null;
             }
 
-            Item myData = DataStore.GetAsync_Item(ItemID).GetAwaiter().GetResult();
+         // Item myData = DataStore.GetAsync_Item(ItemID).GetAwaiter().GetResult();
+            Item myData = Dataset.Where(a => a.Guid == ItemID).FirstOrDefault();
             if (myData == null)
             {
                 return null;
@@ -238,9 +250,39 @@ namespace WDown.ViewModels
         // Return a random item from the list of items...
         public string ChooseRandomItemString(ItemLocationEnum location, AttributeEnum attribute)
         {
-            // Implement 
+            if (location == ItemLocationEnum.Unknown)
+            {
+                return null;
+            }
 
-            return null;
+            if (Dataset.Count < 1)
+            {
+                return null;
+            }
+
+            // Get all the items for that location
+            var myList = Dataset.Where(a => a.Location == location).ToList();
+
+            // If an attribute is selected...
+            if (attribute != AttributeEnum.Unknown)
+            {
+                // Filter down to the items that fit the attribute
+                myList = myList.Where(a => a.Attribute == attribute).ToList();
+            }
+
+            if (myList.Count < 1)
+            {
+                return null;
+            }
+
+            // Pick a random item from the list
+            var myRnd = HelperEngine.RollDice(1, myList.Count);
+
+            // Return that item...
+            // -1 because of 0 index list...
+            var myReturn = myList[myRnd - 1];
+
+            return myReturn.Guid;
         }
     }
 }

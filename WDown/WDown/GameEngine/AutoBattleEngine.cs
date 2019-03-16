@@ -1,8 +1,5 @@
-﻿using System;
+﻿using WDown.Models;
 using System.Diagnostics;
-using Xamarin.Forms;
-using WDown.Models;
-
 
 namespace WDown.GameEngine
 {
@@ -28,30 +25,25 @@ namespace WDown.GameEngine
 
             // Initialize the Rounds
             BattleEngine.StartRound();
-            Debug.WriteLine("Round Start");
-            Round.RoundEnum RoundResult;
+
+            RoundEnum RoundResult;
 
             // Fight Loop. Continue until Game is Over...
             do
             {
                 // Do the turn...
-                Debug.WriteLine("Starting next turn...");
                 RoundResult = BattleEngine.RoundNextTurn();
 
                 // If the round is over start a new one...
-                if (RoundResult == Round.RoundEnum.NewRound)
+                if (RoundResult == RoundEnum.NewRound)
                 {
                     BattleEngine.NewRound();
                     Debug.WriteLine("New Round :" + BattleEngine.BattleScore.RoundCount);
                 }
 
-            } while (RoundResult != Round.RoundEnum.GameOver);
+            } while (RoundResult != RoundEnum.GameOver);
 
             BattleEngine.EndBattle();
-            Debug.WriteLine("Battle Ended");
-
-            var MyOutput = GetResultsOutput();
-            Debug.WriteLine("End of Auto Battle");
 
             return true;
         }
@@ -80,13 +72,7 @@ namespace WDown.GameEngine
         /// <returns>the count of rounds</returns>
         public int GetRoundsValue()
         {
-            if (BattleEngine.BattleScore.RoundCount >=1)
-            {
-                return BattleEngine.BattleScore.RoundCount;
-            } else
-            {
-                return 1;
-            }
+            return BattleEngine.BattleScore.RoundCount;
         }
 
         /// <summary>
@@ -95,14 +81,8 @@ namespace WDown.GameEngine
         /// <returns></returns>
         public string GetResultsOutput()
         {
-            string myResult = "" +
-                    " Battle Ended" + BattleEngine.BattleScore.ScoreTotal +
-                    " Total Score :" + BattleEngine.BattleScore.ExperienceGainedTotal +
-                    " Total Experience :" + BattleEngine.BattleScore.ExperienceGainedTotal +
-                    " Rounds :" + BattleEngine.BattleScore.RoundCount +
-                    " Turns :" + BattleEngine.BattleScore.TurnCount +
-                    " Monster Kills :" + BattleEngine.BattleScore.MonstersKilledList;
 
+            string myResult = BattleEngine.GetResultsOutput();
             Debug.WriteLine(myResult);
 
             return myResult;

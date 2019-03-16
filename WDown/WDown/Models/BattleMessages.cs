@@ -7,7 +7,7 @@ namespace WDown.Models
 {
     public class BattleMessages
     {
-        public Round.PlayerTypeEnum PlayerType;
+        public PlayerTypeEnum PlayerType;
 
         public string AttackerName = string.Empty;
         public string TargetName = string.Empty;
@@ -83,7 +83,7 @@ namespace WDown.Models
             var AttackerStyle = @"<span style=""color:blue"">";
             var DefenderStyle = @"<span style=""color:green"">";
 
-            if (PlayerType == Round.PlayerTypeEnum.Monster)
+            if (PlayerType == PlayerTypeEnum.Monster)
             {
                 // If monster, swap the colors
                 DefenderStyle = @"<span style=""color:blue"">";

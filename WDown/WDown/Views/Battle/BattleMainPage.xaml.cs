@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 using WDown.Models;
 using WDown.ViewModels;
 using WDown.GameEngine;
@@ -27,6 +29,7 @@ namespace WDown.Views.Battle
         Models.Monster SelectedMonster;
         bool ableToSelectMonster;
         bool attackButtonPressed;
+
         bool started;
 
         
@@ -43,7 +46,7 @@ namespace WDown.Views.Battle
 
             
             //initialize button controls
-            GameStartButton.IsVisible = true;
+            //GameStartButton.IsVisible = true;
             GameNextButton.IsVisible = false;
 
             GameOverButton.IsVisible = false;
@@ -61,7 +64,8 @@ namespace WDown.Views.Battle
 
             //HtmlBox.Source = htmlSource;
 
-
+            StartGameSetting();
+            DrawGameBoardAttackerDefender();
         }
 
         private async void OnSelectedMonsterSelected(object sender, SelectedItemChangedEventArgs args)
@@ -84,18 +88,24 @@ namespace WDown.Views.Battle
             //player1.Load(GetStreamFromFile(filename1));
             player1.Load(filename1);
             player1.Play();
+
             RestButton.IsEnabled = false;
             UseItemButton.IsEnabled = false;
             ableToSelectMonster = true;
             attackButtonPressed = true;
             GameNextButton.IsEnabled = true;
-            _viewModel.BattleEngine.turnType = Round.MoveEnum.Attack;
+            _viewModel.BattleEngine.TurnType = MoveEnum.Attack;
         }
 
 
         public async void StartGame(object sender, EventArgs args)
         {
-            GameStartButton.IsVisible = false;
+            StartGameSetting();
+        }
+
+        public void StartGameSetting()
+        { 
+            //GameStartButton.IsVisible = false;
             GameNextButton.IsVisible = true;
             GameNextButton.IsEnabled = true;
 
@@ -103,8 +113,10 @@ namespace WDown.Views.Battle
             //initialize next turn's players, but don't play all the way through
             MessagingCenter.Send(this, "SetPlayerCurrent");
 
-            if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
+            if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
+                //GameNextButton.IsEnabled = false;
+                // TEST code:
                 GameNextButton.IsEnabled = false;
                 AttackButton.IsEnabled = true;
                 RestButton.IsEnabled = true;
@@ -136,23 +148,24 @@ namespace WDown.Views.Battle
             //and what happened in that turn
             // Do the turn...
 
-            
+
             //send the selected monster info into target
             _viewModel.BattleEngine.Target = SelectedMonster;
-            if(SelectedMonster != null)
-
+            if (SelectedMonster != null)
+            {
                 Debug.WriteLine("backend monster selected: " + _viewModel.BattleEngine.Target.Name);
+            }
 
-            MessagingCenter.Send(this, "RoundNextTurn");
-            if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
+            //MessagingCenter.Send(this, "RoundNextTurn");
+            _viewModel.RoundNextTurn();
+
+            if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
                 GameNextButton.IsEnabled = false;
                 AttackButton.IsEnabled = true;
                 RestButton.IsEnabled = true;
                 UseItemButton.IsEnabled = true;
-
             }
-
             else
             {
                 GameNextButton.IsEnabled = true;
@@ -172,9 +185,10 @@ namespace WDown.Views.Battle
             SelectedMonster = null;
 
             // If the round is over start a new one...
-            if (CurrentRoundState == Round.RoundEnum.NewRound)
+            if (CurrentRoundState == RoundEnum.NewRound)
             {
-                MessagingCenter.Send(this, "NewRound");
+                //MessagingCenter.Send(this, "NewRound");
+                _viewModel.NewRound();
 
                 // Show new round and Round count
                 Debug.WriteLine("New Round :" + _viewModel.BattleEngine.BattleScore.RoundCount);
@@ -184,15 +198,14 @@ namespace WDown.Views.Battle
                 Debug.WriteLine("current player: " + _viewModel.BattleEngine.PlayerCurrent.Name);
 
 
-                if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == Round.PlayerTypeEnum.Character)
+
+                if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
                 {
                     GameNextButton.IsEnabled = false;
                     AttackButton.IsEnabled = true;
                     RestButton.IsEnabled = true;
                     UseItemButton.IsEnabled = true;
-
                 }
-
                 else
                 {
                     GameNextButton.IsEnabled = true;
@@ -201,13 +214,14 @@ namespace WDown.Views.Battle
                     UseItemButton.IsEnabled = false;
                 }
                 OnPropertyChanged();
-
             }
 
+
             // Check for Game Over
-            if (CurrentRoundState == Round.RoundEnum.GameOver)
+            if (CurrentRoundState == RoundEnum.GameOver)
             {
-                MessagingCenter.Send(this, "EndBattle");
+                //MessagingCenter.Send(this, "EndBattle");
+                _viewModel.EndBattle();
                 Debug.WriteLine("End Battle");
 
                 // Output Formatted Results 
@@ -227,6 +241,20 @@ namespace WDown.Views.Battle
 
             // Output The Message that happened.
             GameMessage(_viewModel.BattleEngine.BattleMessages.TurnMessage);
+
+            // Draw the Game Board
+            DrawGameBoardAttackerDefender();
+        }
+
+        public void DrawGameBoardAttackerDefender()
+        {
+            CPName.Text = _viewModel.BattleEngine.PlayerCurrent.Name;
+            CPImage.Source = _viewModel.BattleEngine.PlayerCurrent.ImageURI;
+            CPHPCurr.Text = _viewModel.BattleEngine.PlayerCurrent.RemainingHP.ToString();
+            CPHPTotal.Text = _viewModel.BattleEngine.PlayerCurrent.TotalHP.ToString();
+            CPAttack.Text = _viewModel.BattleEngine.PlayerCurrent.Attack.ToString();
+            CPDefense.Text = _viewModel.BattleEngine.PlayerCurrent.Defense.ToString();
+            CPSpeed.Text = _viewModel.BattleEngine.PlayerCurrent.Speed.ToString();
         }
 
         /// <summary>
@@ -266,22 +294,20 @@ namespace WDown.Views.Battle
         }
 
         // Handle when the character chooses to rest
-        // Rest is only allowed when at least 1 character in party has warren
-
         public async void RestClicked(object sender, EventArgs args)
         {
-
             var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
             string filename1 = "rest.mp3";
             //player1.Load(GetStreamFromFile(filename1));
             player1.Load(filename1);
             player1.Play();
+
             RestButton.IsEnabled = true;
             //UseItemButton.IsEnabled = false;
             //ableToSelectMonster = false;
             //attackButtonPressed = false;
             GameNextButton.IsEnabled = true;
-            _viewModel.BattleEngine.turnType = Round.MoveEnum.Rest;
+            _viewModel.BattleEngine.TurnType = MoveEnum.Rest;
 
             // Find out whether there is a Warren already from party
             // If yes, allow resting
@@ -311,8 +337,6 @@ namespace WDown.Views.Battle
             }
 
         }
-
-        // Handles when user chooses to use item 
         public async void UseItemClicked(object sender, EventArgs args)
         {
             var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
@@ -320,11 +344,11 @@ namespace WDown.Views.Battle
             //player1.Load(GetStreamFromFile(filename1));
             player1.Load(filename1);
             player1.Play();
+
             Debug.WriteLine("Switching to Item Pool...");
             await Navigation.PushAsync(new BattleUseItemPage(_viewModel));
 
         }
-        // Handle modal popping
             private void HandleModalPopping(object sender, ModalPoppingEventArgs e)
         {
             if (e.Modal == _myModalBattleMonsterListPage)
@@ -344,7 +368,6 @@ namespace WDown.Views.Battle
             }
         }
 
-        // Show modal page and showing all current monsters in the list
         private async void ShowModalPageMonsterList()
         {
             // When you want to show the modal page, just call this method
@@ -354,7 +377,6 @@ namespace WDown.Views.Battle
             await Navigation.PushModalAsync(_myModalBattleMonsterListPage);
         }
 
-        // Show modal page and letting user pick 6 characters for battle
         private async void ShowModalPageCharcterSelect()
         {
             // When you want to show the modal page, just call this method

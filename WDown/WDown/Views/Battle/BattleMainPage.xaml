@@ -47,25 +47,25 @@
                            AbsoluteLayout.LayoutBounds="0.25,0,0.25,200" 
                            AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
                            WidthRequest="250">
-                        <StackLayout Orientation="Vertical"
+                      <StackLayout Orientation="Vertical"
                                      Padding = "1">
-                            <Label Text="{Binding currentPlayerName}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-                            <Image Source="{Binding currentPlayerURI}" WidthRequest="50" HeightRequest="50" Margin="1" />
+                            <Label  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="CPName" />
+                            <Image  WidthRequest="50" HeightRequest="50" Margin="1" x:Name="CPImage" />
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="HP: " />
-                                <Label Text="{Binding currentPlayerHPCurrent}" />
+                                <Label  x:Name="CPHPCurr" />
                                 <Label Text=" / " />
-                                <Label Text="{Binding currentPlayerHPTotal}" />
+                                <Label x:Name="CPHPTotal" />
                                 <Label Text="Defense: " />
-                                <Label Text="{Binding currentPlayerDefense}" />
+                                <Label  x:Name="CPDefense" />
                             </StackLayout>
                            
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Attack: " />
-                                <Label Text="{Binding currentPlayerAttack}" />
+                                <Label Text="" x:Name="CPAttack" />
                                 <Label Text="  "/>
                                 <Label Text="Speed : " />
-                                <Label Text="{Binding currentPlayerSpeed }" />
+                                <Label Text="" x:Name="CPSpeed" />
                             </StackLayout>
 
                         <StackLayout Orientation="Horizontal">
@@ -74,12 +74,11 @@
                                     Clicked="AttackClicked"
                                     HorizontalOptions="CenterAndExpand" 
                                     />
-                                <Button Text="Rest"
+                            <Button Text="Rest"
                                     x:Name="RestButton"
                                     HorizontalOptions="CenterAndExpand"
                                     Clicked="RestClicked"/>
-                         
-                                <Button Text="Use Item" 
+                            <Button Text="Use Item" 
                                     x:Name="UseItemButton"
                                     Clicked="UseItemClicked"                                
                                     HorizontalOptions="CenterAndExpand" />
@@ -126,13 +125,13 @@
                     <Frame OutlineColor="Black" BackgroundColor="White" AbsoluteLayout.LayoutBounds="0.25,0.3,0.25,100" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
                         <StackLayout Orientation="Vertical">
                           
-                            <Button x:Name="GameStartButton"
+                            <!--<Button x:Name="GameStartButton"
                                     
                                     IsVisible="true"
                                     Clicked="StartGame" 
                                     Text="Start Battle!"
                             
-                                    BackgroundColor="White"/>
+                                    BackgroundColor="White"/>-->
                          
                             <Button x:Name="GameNextButton" IsVisible="true" Clicked="SubmitClicked" Text="Submit" />
                             <Button x:Name="GameOverButton" IsVisible="true" Clicked="OnGameOverClicked" Text="Game Over" />

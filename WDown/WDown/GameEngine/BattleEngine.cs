@@ -1,5 +1,4 @@
 ﻿using System;
-
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -15,7 +14,6 @@ namespace WDown.GameEngine
 
     public class BattleEngine : RoundEngine
     {
-
         // The status of the actual battle, running or not (over)
         private bool isBattleRunning = false;
 
@@ -23,19 +21,15 @@ namespace WDown.GameEngine
         public BattleEngine()
         {
             BattleEngineInit();
-            BattleScore = new Score();
-            CharacterList = new List<Character>();
         }
 
         // Sets the new state for the variables for Battle
         private void BattleEngineInit()
         {
             CharacterList.Clear();
-            
+
             // Clear the rest of the data
-            BattleEngineClearData();
-
-
+            BattleEngineClearData();    
         }
 
         // Sets the new state for the variables for Battle
@@ -47,22 +41,6 @@ namespace WDown.GameEngine
             ItemPool.Clear();
             MonsterList.Clear();
             CharacterList.Clear();
-
-            //reset players' HP to full
-       
-
-            for(int i = 0; i< CharactersViewModel.Instance.Dataset.Count; i++)
-            {
-                CharactersViewModel.Instance.Dataset[i].CharacterAttribute.CurrentHealth = 
-                CharactersViewModel.Instance.Dataset[i].CharacterAttribute.MaxHealth;
-            }
-
-
-            for (int i = 0; i < MonstersViewModel.Instance.Dataset.Count; i++)
-            {
-                MonstersViewModel.Instance.Dataset[i].MonsterAttribute.CurrentHealth =
-                MonstersViewModel.Instance.Dataset[i].MonsterAttribute.MaxHealth;
-            }
 
             // Reset current player
             PlayerCurrent = null;
@@ -91,7 +69,8 @@ namespace WDown.GameEngine
             isBattleRunning = false;
 
             // Save the Score to the DataStore
-            ScoresViewModel.Instance.AddAsync(BattleScore).GetAwaiter().GetResult();
+            //Score needs to be saved outside the battle engine...
+            //ScoresViewModel.Instance.AddAsync(BattleScore).GetAwaiter().GetResult();
         }
 
         // Initializes the Battle to begin
@@ -139,7 +118,7 @@ namespace WDown.GameEngine
             {
                 var Data = GetRandomCharacter(ScaleLevelMin, ScaleLevelMax);
                 CharacterList.Add(Data);
-            } while (CharacterList.Count < GameGlobals.MaxNumberPartyPlayers);
+            } while (CharacterList.Count < GameGlobals.MaxNumberPartyPlayers);  
 
             return true;
         }

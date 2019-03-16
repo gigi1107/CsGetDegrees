@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using System.Diagnostics;
 
 using WDown.Models;
 using WDown.ViewModels;
-using System.Linq;
+using WDown.Models.Enums;
 
 namespace WDown.GameEngine
-{ /// * 
+{
+
+    /// * 
     // * Need to decide who takes the next turn
     // * Target to Attack
     // * Should Move, or Stay put (can hit with weapon range?)
@@ -18,6 +21,7 @@ namespace WDown.GameEngine
 
     public class TurnEngine
     {
+
         #region Properties
         // Holds the official score
         public Score BattleScore = new Score();
@@ -31,15 +35,12 @@ namespace WDown.GameEngine
         public List<Monster> MonsterList = new List<Monster>();
         public List<Character> CharacterList = new List<Character>();
 
-        public Round.PlayerInfo CurrentAttacker = null;
-        public Round.PlayerInfo CurrentDefender = null;
+        public PlayerInfo CurrentAttacker;
+        public PlayerInfo CurrentDefender;
 
-        //the Target monster that will be set via frontend
         public Monster Target;
 
-        //this gets chaged in front end based on button press
-        //attack, rest, or useitem
-        public Round.MoveEnum turnType;
+        public MoveEnum TurnType;
 
         // Attack or Move
         // Roll To Hit
@@ -53,45 +54,23 @@ namespace WDown.GameEngine
         // Character Attacks...
         public bool TakeTurn(Character Attacker)
         {
+            // Choose Move or Attack
 
             // For Attack, Choose Who
-            //If it is an autobattle, proceed noramlly
-            if(BattleScore.AutoBattle)
+            var Target = AttackChoice(Attacker);
+
+            if (Target == null)
             {
-                var Target = AttackChoice(Attacker);
-
-
-                if (Target == null)
-                {
-                    return false;
-                }
-                // Do Attack
-                var AttackScore = Attacker.Level + Attacker.GetAttack();
-                var DefenseScore = Target.GetDefense() + Target.Level;
-                TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
-
-
+                return false;
             }
 
-            else if(turnType == Round.MoveEnum.Attack)
-            {
+            // Do Attack
+            var AttackScore = Attacker.Level + Attacker.GetAttack();
+            var DefenseScore = Target.GetDefense() + Target.Level;
+            TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
 
-                if (Target == null) 
-                {
-
-                    Debug.WriteLine("Target was null");
-                    return false;
-                }
-                // Do Attack
-                var AttackScore = Attacker.Level + Attacker.GetAttack();
-                var DefenseScore = Target.GetDefense() + Target.Level;
-       
-                TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
-
-            }
-            CurrentAttacker = new Round.PlayerInfo(Attacker);
-            CurrentDefender = new Round.PlayerInfo(Target);
-
+            CurrentAttacker = new PlayerInfo(Attacker); 
+            CurrentDefender = new PlayerInfo(Target);
 
             return true;
         }
@@ -99,25 +78,23 @@ namespace WDown.GameEngine
         // Monster Attacks...
         public bool TakeTurn(Monster Attacker)
         {
-            // Choose Attack, Rest, or Use Item
-            //here we want to use an ENUM-- Move Enum
-     
-                // For Attack, Choose Who
-                var Target = AttackChoice(Attacker);
+            // Choose Move or Attack
 
-                if (Target == null)
-                {
-                    return false;
-                }
+            // For Attack, Choose Who
+            var Target = AttackChoice(Attacker);
 
-                // Do Attack
-                var AttackScore = Attacker.Level + Attacker.GetAttack();
-                var DefenseScore = Target.GetDefense() + Target.Level;
-                TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
-           
-            
-            CurrentAttacker = new Round.PlayerInfo(Attacker);
-            CurrentDefender = new Round.PlayerInfo(Target);
+            if (Target == null)
+            {
+                return false;
+            }
+
+            // Do Attack
+            var AttackScore = Attacker.Level + Attacker.GetAttack();
+            var DefenseScore = Target.GetDefense() + Target.Level;
+            TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
+
+            CurrentAttacker = new PlayerInfo(Attacker);
+            CurrentDefender = new PlayerInfo(Target);
 
             return true;
         }
@@ -129,7 +106,7 @@ namespace WDown.GameEngine
             BattleMessages.TurnMessageSpecial = string.Empty;
             BattleMessages.AttackStatus = string.Empty;
 
-            BattleMessages.PlayerType = Round.PlayerTypeEnum.Monster;
+            BattleMessages.PlayerType = PlayerTypeEnum.Monster;
 
             if (Attacker == null)
             {
@@ -195,7 +172,7 @@ namespace WDown.GameEngine
                 BattleMessages.TurnMessageSpecial = " and causes death";
 
                 // Add the monster to the killed list
-                BattleScore.CharacterAtDeathList.Add(Target);
+                BattleScore.CharacterAtDeathList.Add(Target);// += Target.FormatOutput() + "\n";
 
                 // Drop Items to item Pool
                 var myItemList = Target.DropAllItems();
@@ -203,7 +180,7 @@ namespace WDown.GameEngine
                 // Add to Score
                 foreach (var item in myItemList)
                 {
-                    BattleScore.ItemsDroppedList.Add(item);
+                    BattleScore.ItemsDroppedList.Add(item);// += item.FormatOutput() + "\n";
                     BattleMessages.TurnMessageSpecial += " Item " + item.Name + " dropped";
                 }
 
@@ -213,13 +190,10 @@ namespace WDown.GameEngine
             BattleMessages.TurnMessage = Attacker.Name + BattleMessages.AttackStatus + Target.Name + BattleMessages.TurnMessageSpecial;
             Debug.WriteLine(BattleMessages.TurnMessage);
 
-            //TODO update character list with HP and dead chars
-
             return true;
         }
 
         // Character attacks Monster
-        //here we wanto to set monster target as something the user selects
         public bool TurnAsAttack(Character Attacker, int AttackScore, Monster Target, int DefenseScore)
         {
             BattleMessages.TurnMessage = string.Empty;
@@ -309,7 +283,7 @@ namespace WDown.GameEngine
                 BattleScore.MonsterSlainNumber++;
 
                 // Add the monster to the killed list
-                BattleScore.MonstersKilledList.Add(Target);
+                BattleScore.MonstersKilledList.Add(Target);// += Target.FormatOutput() + "\n";
 
                 // Drop Items to item Pool
                 var myItemList = Target.DropAllItems();
@@ -326,7 +300,6 @@ namespace WDown.GameEngine
 
                 ItemPool.AddRange(myItemList);
             }
-            //TODO need to update monster list 
 
             BattleMessages.TurnMessage = Attacker.Name + BattleMessages.AttackStatus + Target.Name + BattleMessages.TurnMessageSpecial;
             Debug.WriteLine(BattleMessages.TurnMessage);
@@ -384,50 +357,36 @@ namespace WDown.GameEngine
 
         // Decide which to attack
         public Monster AttackChoice(Character data)
-           
-
         {
-            //want to run automatically if in Autobattle
-            if(BattleScore.AutoBattle)
+            if (MonsterList == null)
             {
-                if (MonsterList == null)
-                {
-                    return null;
-                }
-
-                if (MonsterList.Count < 1)
-                {
-                    return null;
-                }
-
-                // Select first one to hit in the list for now...
-                // Attack the WEAKEST (lowest HP) Monster first 
-                var DefenderWeakest = MonsterList.OrderBy(m => m.MonsterAttribute.CurrentHealth).FirstOrDefault();
-                if (DefenderWeakest.Alive)
-                {
-                    return DefenderWeakest;
-                }
-
-               
+                return null;
             }
 
-            //manual selections
-            if(turnType == Round.MoveEnum.Attack)
+            if (MonsterList.Count < 1)
             {
-                if (MonsterList == null)
-                {
-                    return null;
-                }
-
-                if (MonsterList.Count < 1)
-                {
-                    return null;
-                }
-                return Target;
-                
+                return null;
             }
+
+            //// For now, just use a simple selection of the first in the list.
+            //// Later consider, strongest, closest, with most Health etc...
+            //foreach (var Defender in MonsterList)
+            //{
+            //    if (Defender.Alive)
+            //    {
+            //        return Defender;
+            //    }
+            //}
+
+            // Select first one to hit in the list for now...
+            // Attack the Weakness (lowest HP) Monster first 
+            var DefenderWeakest = MonsterList.OrderBy(m => m.MonsterAttribute.CurrentHealth).FirstOrDefault();
+            if (DefenderWeakest.Alive)
+            {
+                return DefenderWeakest;
+            }
+
             return null;
-
         }
 
         // Decide which to attack
@@ -485,7 +444,7 @@ namespace WDown.GameEngine
                     if (myItem == null)
                     {
                         // Item does not exist, so add it to the datstore
-                        ItemsViewModel.Instance.AddAsync(item);
+                        ItemsViewModel.Instance.AddItem_Sync(item);
                     }
                     else
                     {

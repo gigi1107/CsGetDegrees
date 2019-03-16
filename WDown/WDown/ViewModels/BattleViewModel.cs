@@ -92,7 +92,7 @@ namespace WDown.ViewModels
             }
             set
             {
-                if (_currentPlayerHPTotal != BattleEngine.PlayerCurrent.TotalHP)
+                if (_currentPlayerHPTotal != BattleEngine.PlayerCurrent.RemainingHP)
                 {
                     _currentPlayerHPTotal = BattleEngine.PlayerCurrent.TotalHP;
                     OnPropertyChanged();
@@ -269,7 +269,7 @@ namespace WDown.ViewModels
         /// </summary>
         public void StartBattle()
         {
-            BattleViewModel.Instance.BattleEngine.StartBattle(false);
+            BattleEngine.StartBattle(false);
         }
 
         /// <summary>
@@ -277,13 +277,12 @@ namespace WDown.ViewModels
         /// </summary>
         public void EndBattle()
         {
-            BattleViewModel.Instance.BattleEngine.EndBattle();
+           BattleEngine.EndBattle();
         }
 
         public void SetPlayerCurrent()
         {
-            BattleViewModel.Instance.BattleEngine.SetPlayerCurrent();
-
+           BattleEngine.SetPlayerCurrent();
         }
 
         /// <summary>
@@ -291,8 +290,8 @@ namespace WDown.ViewModels
         /// </summary>
         public void StartRound()
         {
-            BattleViewModel.Instance.BattleEngine.StartRound();
-            foreach (var data in BattleViewModel.Instance.BattleEngine.MonsterList)
+            BattleEngine.StartRound();
+            foreach (var data in BattleEngine.MonsterList)
             {
                 FightingMonsters.Add(new Monster(data));
             }
@@ -306,7 +305,7 @@ namespace WDown.ViewModels
         {
             foreach (var data in SelectedCharacters)
             {
-                BattleViewModel.Instance.BattleEngine.CharacterList.Add(new Character(data));
+                BattleEngine.CharacterList.Add(new Character(data));
             }
 
 
@@ -318,7 +317,7 @@ namespace WDown.ViewModels
         /// </summary>
         public void RoundNextTurn()
         {
-            BattleViewModel.Instance.BattleEngine.RoundNextTurn();
+            BattleEngine.RoundNextTurn();
         }
 
         /// <summary>
@@ -326,7 +325,7 @@ namespace WDown.ViewModels
         /// </summary>
         public void NewRound()
         {
-            BattleViewModel.Instance.BattleEngine.NewRound();
+            BattleEngine.NewRound();
 
         }
 
