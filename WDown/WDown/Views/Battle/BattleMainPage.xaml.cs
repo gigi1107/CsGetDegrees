@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 using WDown.Models;
 using WDown.ViewModels;
 using WDown.GameEngine;
+using Plugin.SimpleAudioPlayer;
+using System.IO;
+using System.Reflection;
 
 namespace WDown.Views.Battle
 {
@@ -78,7 +79,11 @@ namespace WDown.Views.Battle
 
         private async void AttackClicked(object sender, EventArgs args)
         {
-
+            var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            string filename1 = "attack.mp3";
+            //player1.Load(GetStreamFromFile(filename1));
+            player1.Load(filename1);
+            player1.Play();
             RestButton.IsEnabled = false;
             UseItemButton.IsEnabled = false;
             ableToSelectMonster = true;
@@ -131,7 +136,7 @@ namespace WDown.Views.Battle
             //and what happened in that turn
             // Do the turn...
 
-
+            
             //send the selected monster info into target
             _viewModel.BattleEngine.Target = SelectedMonster;
             if(SelectedMonster != null)
@@ -261,10 +266,16 @@ namespace WDown.Views.Battle
         }
 
         // Handle when the character chooses to rest
+        // Rest is only allowed when at least 1 character in party has warren
+
         public async void RestClicked(object sender, EventArgs args)
         {
 
-            
+            var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            string filename1 = "rest.mp3";
+            //player1.Load(GetStreamFromFile(filename1));
+            player1.Load(filename1);
+            player1.Play();
             RestButton.IsEnabled = true;
             //UseItemButton.IsEnabled = false;
             //ableToSelectMonster = false;
@@ -300,12 +311,20 @@ namespace WDown.Views.Battle
             }
 
         }
+
+        // Handles when user chooses to use item 
         public async void UseItemClicked(object sender, EventArgs args)
         {
+            var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            string filename1 = "item.mp3";
+            //player1.Load(GetStreamFromFile(filename1));
+            player1.Load(filename1);
+            player1.Play();
             Debug.WriteLine("Switching to Item Pool...");
             await Navigation.PushAsync(new BattleUseItemPage(_viewModel));
 
         }
+        // Handle modal popping
             private void HandleModalPopping(object sender, ModalPoppingEventArgs e)
         {
             if (e.Modal == _myModalBattleMonsterListPage)
@@ -325,6 +344,7 @@ namespace WDown.Views.Battle
             }
         }
 
+        // Show modal page and showing all current monsters in the list
         private async void ShowModalPageMonsterList()
         {
             // When you want to show the modal page, just call this method
@@ -334,6 +354,7 @@ namespace WDown.Views.Battle
             await Navigation.PushModalAsync(_myModalBattleMonsterListPage);
         }
 
+        // Show modal page and letting user pick 6 characters for battle
         private async void ShowModalPageCharcterSelect()
         {
             // When you want to show the modal page, just call this method
@@ -341,6 +362,14 @@ namespace WDown.Views.Battle
             WDown.App.Current.ModalPopping += HandleModalPopping;
             _myModalCharacterSelectPage = new BattleCharacterSelectPage();
             await Navigation.PushModalAsync(_myModalCharacterSelectPage);
+        }
+
+        public Stream GetStreamFromFile(string filename)
+        {
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            var stream = assembly.GetManifestResourceStream("WDown." + filename);
+
+            return stream;
         }
     }
 }

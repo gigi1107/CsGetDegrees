@@ -21,6 +21,8 @@
     <PackageReference Include="NUnit" Version="3.11.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.3.0" />
+    <PackageReference Include="Xamarians.MediaPlayer" Version="1.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.129452" />  
   </ItemGroup>
 
