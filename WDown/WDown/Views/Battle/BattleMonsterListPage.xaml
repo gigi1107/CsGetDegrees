@@ -15,6 +15,7 @@
                  AbsoluteLayout.LayoutFlags="All"
                  Source="https://imgur.com/R3lM305.png"
                  BackgroundColor="White"
+                 Opacity = "0.75"
                
                 />
     
@@ -39,7 +40,7 @@
 
                 </StackLayout>
 
-                <Button Clicked="OnNextClicked" Text="Next"/>
+                <Button Clicked="OnNextClicked" Text="Next" BackgroundColor="#aa9cde"/>
 
             </StackLayout>
             </AbsoluteLayout>

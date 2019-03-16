@@ -4,7 +4,7 @@
              x:Class="WDown.Views.Battle.BattleOpeningPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="0">
+            <StackLayout Padding="10">
                 <Label Text="Welcome to our Watership Down Game" HorizontalOptions="Center" FontSize="Large" />
                 <Label Text="STARTING REGULAR BATTLE..." HorizontalOptions="Center" FontSize="Small" />
                 <StackLayout Padding="0"
@@ -15,6 +15,10 @@
                 </StackLayout>
                 <Button Text="Let's start with Selecting your Party!"
                             Clicked="Character_Select_Clicked"/>
+                <Image Source="https://www.solec.org/wp-content/uploads/2015/02/icon-horizontal.png"
+                       WidthRequest = "100"
+                       HeightRequest = "100"/>
+                <Label Text="Rotate your device now ..." />
 
 
             </StackLayout>
