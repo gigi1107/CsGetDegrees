@@ -69,12 +69,10 @@ namespace WDown.GameEngine
             {
                 //get character id from PlayerCurrent
                 //because i cant directly access this, I'll try current attacker
-                Debug.WriteLine("Current attacker: ", CurrentAttacker);
+                Debug.WriteLine("Current attacker: ", CurrentAttacker.Name);
 
 
                 string characterId = CurrentAttacker.GetGuid();
-
-
 
                 //get character from CharacterList by Id
 

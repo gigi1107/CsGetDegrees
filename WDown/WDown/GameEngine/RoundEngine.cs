@@ -25,6 +25,10 @@ namespace WDown.GameEngine
         }
 
         // Set the currentPlayer
+        /// <summary>
+        /// //////////////////////////////////////
+        /// </summary>
+        /// <returns><c>true</c>, if player current was set, <c>false</c> otherwise.</returns>
         public bool SetPlayerCurrent()
         {
             PlayerCurrent = GetNextPlayerTurn();
@@ -245,7 +249,9 @@ namespace WDown.GameEngine
 
             // Decide Who gets next turn
             // Remember who just went...
+
             PlayerCurrent = GetNextPlayerTurn();
+            Debug.WriteLine("\n\nPlayer current new just chosen backend: " + PlayerCurrent.Name);
 
             // Decide Who to Attack
             // Do the Turn         
@@ -340,6 +346,11 @@ namespace WDown.GameEngine
                 .ThenBy(a => a.Name)
                 .ThenBy(a => a.ListOrder)
                 .ToList();
+
+                foreach(PlayerInfo player in PlayerList)
+                {
+                    Debug.WriteLine("backend order: " + player.Name);
+                }
             }
         }
 
@@ -391,6 +402,7 @@ namespace WDown.GameEngine
             // No current player, so set the last one, so it rolls over to the first...
             if (PlayerCurrent == null)
             {
+                Debug.WriteLine("CURRPLAYER IS NULL ROUND ENGINE\n\n");
                 PlayerCurrent = PlayerList.LastOrDefault();
             }
 

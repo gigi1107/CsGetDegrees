@@ -203,7 +203,7 @@ namespace WDown.Services
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/0uaVKml.jpg",
                 //Wisdom = 2,
-                CharacterAttribute = new AttributeBase(10, 10, 10, 20, 20, 15, 15),
+                CharacterAttribute = new AttributeBase(3, 4, 2, 6, 6, 5, 5),
                 LoveInterest = "Strawberry"
 
 
@@ -229,7 +229,7 @@ namespace WDown.Services
             {
                 Name = "Dog",
                 Description = "Trained to hunt, the Rottweiler is an extremely hostile enemy of the rabbits.",
-                Level = 2,
+                Level = 1,
                 MonsterAttribute = new AttributeBase(4, 2, 2, 6, 6,5,5),
                 ImageURI = "https://i.imgur.com/OnGOYw9.png",
                 UniqueItem = "Collar of Transcendence",
@@ -241,8 +241,8 @@ namespace WDown.Services
             {
                 Name = "Bird",
                 Description = "Fast and unpredictable creatures with wings that pose great harm to the warren.",
-                Level = 3,
-                MonsterAttribute = new AttributeBase(3, 1, 2, 10, 10,5,5),
+                Level = 1,
+                MonsterAttribute = new AttributeBase(1, 2, 2, 7, 7, 8, 8),
                 ImageURI = "https://i.imgur.com/PirEPrm.png",
                 UniqueItem = "Rope",
                 UniqueDropRate = 0.4
@@ -255,8 +255,8 @@ namespace WDown.Services
                 Description = "Also known as Elil by the rabbits. A fox is notable for killing" +
                 " Mallow after Bigwig leads the carnivore away from Hazel and his group," +
                 " unintentionally leading it to an Efrafa Wide Patrol. ",
-                Level = 2,
-                MonsterAttribute = new AttributeBase(3,4,3,8,8,5,5),
+                Level = 1,
+                MonsterAttribute = new AttributeBase(1, 2, 2, 7, 7, 8, 8),
                 ImageURI = "https://i.imgur.com/K8M7L7E.png",
                 UniqueItem = "Collar of Transcendence",
                 UniqueDropRate = 0.3
@@ -270,8 +270,8 @@ namespace WDown.Services
                 "dark grey fur, torn ears and numerous scars, most notably one over his blind left eye. " +
                 "He is an arrogant, cruel, bloodthirsty and viciously ruthless Chief rabbit, and will " + 
                 "execute anyone who gets in his way, or disobey him at Efrafa.",
-                Level = 20,
-                MonsterAttribute = new AttributeBase(3, 4, 3, 8, 8,5,5),
+                Level = 1,
+                MonsterAttribute = new AttributeBase(1, 2, 2, 7, 7, 8, 8),
                 ImageURI = "https://i.imgur.com/QTJzhFI.png",
                 UniqueItem = "Champion Cup",
                 UniqueDropRate = 1.0

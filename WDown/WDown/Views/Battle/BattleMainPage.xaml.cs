@@ -55,15 +55,6 @@ namespace WDown.Views.Battle
             ableToSelectMonster = false;
             started = false;
 
-
-            //            var browser = new WebView();
-
-            //var htmlSource = new HtmlWebViewSource();
-
-            //htmlSource.Html = @"<html><body><h1>Xamarin.Forms</h1><p>Welcome to WebView.</p></body></html>";
-
-            //HtmlBox.Source = htmlSource;
-
             StartGameSetting();
             DrawGameBoardAttackerDefender();
         }
@@ -111,12 +102,12 @@ namespace WDown.Views.Battle
 
 
             //initialize next turn's players, but don't play all the way through
-            MessagingCenter.Send(this, "SetPlayerCurrent");
+            _viewModel.SetPlayerCurrent();
 
             if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
                 //GameNextButton.IsEnabled = false;
-                // TEST code:
+             
                 GameNextButton.IsEnabled = false;
                 AttackButton.IsEnabled = true;
                 RestButton.IsEnabled = true;
@@ -144,27 +135,21 @@ namespace WDown.Views.Battle
         public async void SubmitClicked(object sender, EventArgs args)
         {
 
-            //TODO put message on screen that says target monster 
-            //and what happened in that turn
-            // Do the turn...
-
 
             //send the selected monster info into target
-            _viewModel.BattleEngine.Target = SelectedMonster;
-            if (SelectedMonster != null)
+            if(_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
-                Debug.WriteLine("backend monster selected: " + _viewModel.BattleEngine.Target.Name);
-            }
-
-            _viewModel.RoundNextTurn();
-
-            if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
-            {
+                _viewModel.BattleEngine.Target = SelectedMonster;
+                if (SelectedMonster != null)
+                {
+                    Debug.WriteLine("backend monster selected: " + _viewModel.BattleEngine.Target.Name);
+                }
                 GameNextButton.IsEnabled = false;
                 AttackButton.IsEnabled = true;
                 RestButton.IsEnabled = true;
                 UseItemButton.IsEnabled = true;
             }
+
             else
             {
                 GameNextButton.IsEnabled = true;
@@ -172,16 +157,20 @@ namespace WDown.Views.Battle
                 RestButton.IsEnabled = false;
                 UseItemButton.IsEnabled = false;
             }
+            //do the turn 
+            _viewModel.RoundNextTurn();
 
             // Hold the current state
             var CurrentRoundState = _viewModel.BattleEngine.RoundStateEnum;
 
+            //updates current player up in frontend
             OnPropertyChanged();
 
             //reset all these for next turn
             ableToSelectMonster = false;
             attackButtonPressed = false;
             SelectedMonster = null;
+          
 
             // If the round is over start a new one...
             if (CurrentRoundState == RoundEnum.NewRound)

@@ -2,147 +2,86 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WDown.Views.Battle.BattleMainPage">
     <ContentPage.Content>
         <AbsoluteLayout BackgroundColor="Black" Padding="0,4,0,4">
-            <Image Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1"
-                   AbsoluteLayout.LayoutFlags="All" 
-                   Source="https://i.imgur.com/NT1KMVy.png"
-                   BackgroundColor="White" />
+            <Image Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Source="https://i.imgur.com/NT1KMVy.png" BackgroundColor="White" />
             <StackLayout Orientation="Horizontal">
-                <AbsoluteLayout>
-                    <!--CHARACTERS-->
-                    <StackLayout AbsoluteLayout.LayoutBounds="0,0,0.3,1" 
-                                 AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional">
-                        <ListView x:Name="SelectedCharactersView" 
-                                  ItemsSource="{Binding SelectedCharacters}" 
-                                  VerticalOptions="Start" 
-                                  HorizontalOptions="StartAndExpand"
-                                  BackgroundColor="Transparent" 
-                                  HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" 
-                                  IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" 
-                                  SelectionMode="None"
-                                  WidthRequest="250">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout Orientation="Vertical">
-                                            <StackLayout Padding="1" Orientation="Horizontal" 
-                                                         VerticalOptions="Start"
-                                                         HorizontalOptions="StartAndExpand">
-                                                <Image Source="{Binding ImageURI}" WidthRequest="20" 
-                                                       HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
-                                                <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" />
-                                            </StackLayout>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label Text="HP  " />
-                                                <Label Text="{Binding CharacterAttribute.CurrentHealth}" />
-                                                <Label Text=" / " />
-                                                <Label Text="{Binding CharacterAttribute.MaxHealth}" />
-                                            </StackLayout>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackLayout>
-                    <Frame OutlineColor="Black" BackgroundColor="White" 
-                           AbsoluteLayout.LayoutBounds="0.25,0,0.25,200" 
-                           AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional"
-                           WidthRequest="250">
-                      <StackLayout Orientation="Vertical"
-                                     Padding = "1">
-                            <Label  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="CPName" />
-                            <Image  WidthRequest="50" HeightRequest="50" Margin="1" x:Name="CPImage" />
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="HP: " />
-                                <Label  x:Name="CPHPCurr" />
-                                <Label Text=" / " />
-                                <Label x:Name="CPHPTotal" />
-                                <Label Text="Defense: " />
-                                <Label  x:Name="CPDefense" />
-                            </StackLayout>
-                           
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="Attack: " />
-                                <Label Text="" x:Name="CPAttack" />
-                                <Label Text="  "/>
-                                <Label Text="Speed : " />
-                                <Label Text="" x:Name="CPSpeed" />
-                            </StackLayout>
-
+                <!--CHARACTERS-->
+                <ListView x:Name="SelectedCharactersView" ItemsSource="{Binding SelectedCharacters}" VerticalOptions="Start" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="None"
+                    WidthRequest="250">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Padding="1" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="StartAndExpand">
+                                        <Image Source="{Binding ImageURI}" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="HP  " />
+                                        <Label Text="{Binding CharacterAttribute.CurrentHealth}" />
+                                        <Label Text=" / " />
+                                        <Label Text="{Binding CharacterAttribute.MaxHealth}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <!-- MIDDLE FRAME -->
+                <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="250">
+                    <StackLayout Orientation="Vertical" Padding="1">
+                        <Label x:Name="CPName" />
+                        <Image WidthRequest="50" HeightRequest="50" Margin="1" x:Name="CPImage" />
                         <StackLayout Orientation="Horizontal">
-                            <Button Text="Attack" 
-                                    x:Name="AttackButton"
-                                    Clicked="AttackClicked"
-                                    HorizontalOptions="CenterAndExpand" 
-                                    />
-                            <Button Text="Rest"
-                                    x:Name="RestButton"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Clicked="RestClicked"/>
-                            <Button Text="Use Item" 
-                                    x:Name="UseItemButton"
-                                    Clicked="UseItemClicked"                                
-                                    HorizontalOptions="CenterAndExpand" />
+                            <Label Text="HP: " />
+                            <Label x:Name="CPHPCurr" />
+                            <Label Text=" / " />
+                            <Label x:Name="CPHPTotal" />
+                            <Label Text="Defense: " />
+                            <Label x:Name="CPDefense" />
                         </StackLayout>
-                             </StackLayout>
-                    </Frame>
-                    <!--                    MONSTERS SECTION-->
-                    <StackLayout AbsoluteLayout.LayoutBounds="0.8,0,0.4,1"
-                                 AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional,HeightProportional">
-                        <ListView x:Name="SelectedMonstersView" 
-                                  ItemsSource="{Binding FightingMonsters}" 
-                                  VerticalOptions="Start" HorizontalOptions="StartAndExpand"
-                                  BackgroundColor="Transparent" HasUnevenRows="true" 
-                                  RefreshCommand="{Binding LoadItemsCommand}" 
-                                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                                  CachingStrategy="RecycleElement" 
-                                  SelectionMode="Single"
-                             
-                                  ItemSelected="OnSelectedMonsterSelected">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout Orientation="Vertical">
-                                            <StackLayout Padding="1" Orientation="Horizontal"
-                                                         VerticalOptions="Start" 
-                                                         HorizontalOptions="StartAndExpand">
-                                                <Image Source="{Binding ImageURI}" 
-                                                       WidthRequest="20" 
-                                                       HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
-                                                <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" />
-                                            </StackLayout>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label Text="HP  " />
-                                                <Label Text="{Binding MonsterAttribute.CurrentHealth}" />
-                                                <Label Text=" / " />
-                                                <Label Text="{Binding MonsterAttribute.MaxHealth}" />
-                                            </StackLayout>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Attack: " />
+                            <Label Text="" x:Name="CPAttack" />
+                            <Label Text="  " />
+                            <Label Text="Speed : " />
+                            <Label Text="" x:Name="CPSpeed" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="Attack" x:Name="AttackButton" Clicked="AttackClicked" />
+                            <Button Text="Rest" x:Name="RestButton" Clicked="RestClicked" />
+                            <Button Text="Use Item" x:Name="UseItemButton" Clicked="UseItemClicked" />
+                        </StackLayout>
+                        <Button x:Name="GameNextButton" IsVisible="true" Clicked="SubmitClicked" Text="Submit" />
+                        <Button x:Name="GameOverButton" IsVisible="true" Clicked="OnGameOverClicked" Text="Game Over" />
+                        <Label Text="Messages" />
+                        <StackLayout x:Name="MessageBox">
+                            <Label x:Name="MessageText" LineBreakMode="WordWrap" MaxLines="5" HeightRequest="50">
+                            </Label>
+                        </StackLayout>
                     </StackLayout>
-                    <Frame OutlineColor="Black" BackgroundColor="White" AbsoluteLayout.LayoutBounds="0.25,0.3,0.25,100" AbsoluteLayout.LayoutFlags="XProportional,YProportional,WidthProportional">
-                        <StackLayout Orientation="Vertical">
-                          
-                            <!--<Button x:Name="GameStartButton"
-                                    
-                                    IsVisible="true"
-                                    Clicked="StartGame" 
-                                    Text="Start Battle!"
-                            
-                                    BackgroundColor="White"/>-->
-                         
-                            <Button x:Name="GameNextButton" IsVisible="true" Clicked="SubmitClicked" Text="Submit" />
-                            <Button x:Name="GameOverButton" IsVisible="true" Clicked="OnGameOverClicked" Text="Game Over" />
-                            <Label Text="Messages" />
-                            <StackLayout x:Name="MessageBox">
-                                <Label x:Name="MessageText" LineBreakMode="WordWrap" MaxLines="5" HeightRequest="50">
-                                </Label>
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                </AbsoluteLayout>
+                </Frame>
+                <!--                    MONSTERS SECTION-->
+                <ListView x:Name="SelectedMonstersView" ItemsSource="{Binding FightingMonsters}" VerticalOptions="Start" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="Single"
+                    ItemSelected="OnSelectedMonsterSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Padding="1" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="StartAndExpand">
+                                        <Image Source="{Binding ImageURI}" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
+                                        <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="HP  " />
+                                        <Label Text="{Binding MonsterAttribute.CurrentHealth}" />
+                                        <Label Text=" / " />
+                                        <Label Text="{Binding MonsterAttribute.MaxHealth}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
             <!--<WebView HeightRequest="100" WidthRequest="100" HorizontalOptions="FillAndExpand" VerticalOptions="Start" x:Name="HtmlBox">
                 </WebView>-->
