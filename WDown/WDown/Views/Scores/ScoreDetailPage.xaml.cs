@@ -52,7 +52,7 @@ namespace WDown.Views.Scores
             await Navigation.PopAsync();
         }
 
-        private async void Return_To_Main_Battle_Screen(object sender, EventArgs e)
+        async void Return_To_Main_Battle_Screen(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new BattleOpeningPage());
         }

@@ -90,5 +90,10 @@ namespace WDown.Models
             Defense = data.GetDefense();
             ImageURI = data.GetImageURI();
         }
+
+        public string GetGuid()
+        {
+            return Guid;
+        }
     }
 }

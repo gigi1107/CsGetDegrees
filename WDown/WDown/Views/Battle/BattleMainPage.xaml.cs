@@ -85,7 +85,7 @@ namespace WDown.Views.Battle
         {
             var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
             string filename1 = "attack.mp3";
-            //player1.Load(GetStreamFromFile(filename1));
+           
             player1.Load(filename1);
             player1.Play();
 
@@ -156,7 +156,6 @@ namespace WDown.Views.Battle
                 Debug.WriteLine("backend monster selected: " + _viewModel.BattleEngine.Target.Name);
             }
 
-            //MessagingCenter.Send(this, "RoundNextTurn");
             _viewModel.RoundNextTurn();
 
             if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
@@ -187,7 +186,7 @@ namespace WDown.Views.Battle
             // If the round is over start a new one...
             if (CurrentRoundState == RoundEnum.NewRound)
             {
-                //MessagingCenter.Send(this, "NewRound");
+                
                 _viewModel.NewRound();
 
                 // Show new round and Round count
@@ -296,7 +295,7 @@ namespace WDown.Views.Battle
         // Handle when the character chooses to rest
         public async void RestClicked(object sender, EventArgs args)
         {
-
+            Debug.WriteLine("current player's HP before heal: ", _viewModel.BattleEngine.PlayerCurrent.RemainingHP);
             // This part of code is to populate the sound to play
             // when user clicks button 
             var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
@@ -304,39 +303,24 @@ namespace WDown.Views.Battle
             player1.Load(filename1);
             player1.Play();
 
-            RestButton.IsEnabled = true;
+            //after the rest button is clicked, we want to disable all other actions other than submit
+            RestButton.IsEnabled = false;
             UseItemButton.IsEnabled = false;
             ableToSelectMonster = false;
             attackButtonPressed = false;
+            AttackButton.IsEnabled = false;
             GameNextButton.IsEnabled = true;
+            //TODO
             _viewModel.BattleEngine.TurnType = MoveEnum.Rest;
 
-            // Find out whether there is a Warren already from party
-            // If yes, allow resting
+            //send message to backend to rest. this means writing a function in the backend for resting
+            _viewModel.BattleEngine.Rest();
 
-            bool canRest = false;
-            for (int i = 0; i < CharactersViewModel.Instance.Dataset.Count; i++)
-            {
-                if (CharactersViewModel.Instance.Dataset[i].HasWarren == true)
-                {
-                    canRest = true;
-                    break;
-                }
-                
-            }
-            if (canRest)
-            {
-                //var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
-                //bool result = _viewModel.BattleEngine.PlayerCurrent.PlayerRest();
 
-                // Call Rest function 
-                Debug.WriteLine("Choosing Rest... Need to call Rest from Character.cs");
+            Debug.WriteLine("current player's HP: ",_viewModel.BattleEngine.PlayerCurrent.RemainingHP);
 
-            }
-            else
-            {
-                Debug.WriteLine("Rest cannot be done. Please build warren first.");
-            }
+           
+      
 
         }
         public async void UseItemClicked(object sender, EventArgs args)

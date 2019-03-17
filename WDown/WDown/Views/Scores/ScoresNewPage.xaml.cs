@@ -14,7 +14,6 @@ namespace WDown.Views.Scores
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
 
-
     public partial class ScoresNewPage : ContentPage
     {
         public Models.Score Data { get; set; }
@@ -64,7 +63,6 @@ namespace WDown.Views.Scores
         {
             TurnCountValue.Text = String.Format("{0}", e.NewValue);
         }
-
 
         // This function handles stepper value changed for Defense
         private void RoundCount_OnStepperValueChanged(object sender, ValueChangedEventArgs e)

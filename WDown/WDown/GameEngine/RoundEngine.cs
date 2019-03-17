@@ -194,14 +194,15 @@ namespace WDown.GameEngine
                     } while (MonsterList.Count() < GameGlobals.MaxNumberPartyPlayers);
                 }
 
-                // No monsters in DB, so add 6 new ones...
-                for (var i = 0; i < GameGlobals.MaxNumberPartyPlayers; i++)
-                {
-                    var item = new Monster();
-                    // Help identify which monster it is...
-                    item.Name += " " + MonsterList.Count() + 1;
-                    MonsterList.Add(item);
-                }
+
+                //// No monsters in DB, so add 6 new ones...
+                //for (var i = 0; i < GameGlobals.MaxNumberPartyPlayers; i++)
+                //{
+                //    var item = new Monster();
+                //    // Help identify which monster it is...
+                //    item.Name += " " + MonsterList.Count() + 1;
+                //    MonsterList.Add(item);
+                //}
             }
         }
 
@@ -434,6 +435,7 @@ namespace WDown.GameEngine
 
         public void GetItemFromPoolIfBetter(Character character, ItemLocationEnum setLocation)
         {
+            //TODO implememnt manual selection of items and equip items
             var myList = ItemPool.Where(a => a.Location == setLocation)
                 .OrderByDescending(a => a.Value)
                 .ToList();

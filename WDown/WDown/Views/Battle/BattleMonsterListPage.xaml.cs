@@ -23,23 +23,29 @@ namespace WDown.Views.Battle
         {
             public List<WDown.Models.Monster> Datalist = new List<WDown.Models.Monster>();
 
-        private BattleViewModel _viewModel;
+            private BattleViewModel _viewModel;
 
 
         // Initialize page and populate buttons
         public BattleMonsterListPage()
             {
                 InitializeComponent();
-              
 
-            MessagingCenter.Send(this, "StartBattle");
+            _viewModel = BattleViewModel.Instance;
+
+            //MessagingCenter.Send(this, "StartBattle");
+            _viewModel.StartBattle();
+
             Debug.WriteLine("Battle Start" + " Characters :" + BattleViewModel.Instance.BattleEngine.CharacterList.Count);
 
             // Load the Characters into the Battle Engine
-            MessagingCenter.Send(this, "LoadCharacters");
+            //MessagingCenter.Send(this, "LoadCharacters");
+            _viewModel.LoadCharacters();
+
 
             // Start the Round
-            MessagingCenter.Send(this, "StartRound");
+            //MessagingCenter.Send(this, "StartRound");
+            _viewModel.StartRound();
             Debug.WriteLine("Round Start" + " Monsters:" + BattleViewModel.Instance.BattleEngine.MonsterList.Count);
 
             foreach (Models.Monster Monster in BattleViewModel.Instance.BattleEngine.MonsterList)
@@ -52,7 +58,7 @@ namespace WDown.Views.Battle
                 Debug.WriteLine("Round Start" + " Monster List:" + Monster.Name);
             }
 
-            _viewModel = BattleViewModel.Instance;
+           
 
             Datalist = BattleViewModel.Instance.BattleEngine.MonsterList;
             BindingContext = Datalist;

@@ -41,6 +41,7 @@ namespace WDown.GameEngine
             ItemPool.Clear();
             MonsterList.Clear();
             CharacterList.Clear();
+            RestCountRemaining = 0;
 
             // Reset current player
             PlayerCurrent = null;
@@ -88,6 +89,8 @@ namespace WDown.GameEngine
             {
                 return false;
             }
+            //set Restcountremaining
+            RestCountRemaining = 2;
 
             return true;
         }

@@ -24,6 +24,8 @@ namespace WDown.Views.Battle
             BindingContext = _viewModel = BattleViewModel.Instance;
 
             BattleViewModel.Instance.ClearCharacterLists();
+        
+
 
             // Start with Next button disabled
             NextButton.IsEnabled = false;
