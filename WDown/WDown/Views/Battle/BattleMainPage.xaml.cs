@@ -321,6 +321,7 @@ namespace WDown.Views.Battle
 
            
       
+            
 
         }
         public async void UseItemClicked(object sender, EventArgs args)

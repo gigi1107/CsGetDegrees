@@ -75,11 +75,6 @@ namespace WDown.Views.Character
             DefenseValue.Text = String.Format("{0}", e.NewValue);
         }
 
-        // The stepper function for Max Wisdom change
-        void Wisdom_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            WisdomValue.Text = String.Format("{0}", e.NewValue);
-        }
 
         // The stepper for Max Health change
         void MaxHealth_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
