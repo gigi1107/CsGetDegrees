@@ -13,14 +13,6 @@ namespace WDown.Models
         // The love interest for the current character
         public string LoveInterest { get; set; }
 
-        // Indicate whether this character builds a warren yet
-        public bool HasWarren { get; set; }
-        // Added attribute of Character that Monster doesn't have: Wisdom and CurrentWisdom
-        // Used for Resting
-        //public int Wisdom { get; set; }
-
-        // Used for Resting
-        //public int CurrentWisdom { get; set; }
 
         // Default constructor 
         public BaseCharacter()

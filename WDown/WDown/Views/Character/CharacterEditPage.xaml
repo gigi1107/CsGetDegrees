@@ -148,34 +148,8 @@
                             VerticalOptions="Center"/>
                     </StackLayout>
 
+
                     <StackLayout Grid.Row="5" Grid.Column="0">
-                        <Label 
-                            Text="Wisdom"
-                            FontSize="Small" 
-                            HorizontalOptions="Start"
-                            VerticalOptions="Center"/>
-                    </StackLayout>
-
-
-                    <StackLayout Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
-                        <Label 
-                            Text="{Binding Data.CharacterAttribute.Wisdom}" 
-                            FontSize="Small" 
-                            HorizontalOptions="Start"
-                            x:Name="WisdomValue"
-                            VerticalOptions="Center"/>
-
-                        <Stepper 
-                            Value="{Binding Data.CharacterAttribute.Wisdom, Mode=TwoWay}"
-                            Minimum="0"
-                            Maximum="20"
-                            Increment="1"
-                            ValueChanged="Wisdom_OnStepperValueChanged"
-                            HorizontalOptions="Start"
-                            VerticalOptions="Center"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="6" Grid.Column="0">
                         <Label 
                             Text="Max Health:"
                             FontSize="Small" 
@@ -184,7 +158,7 @@
                     </StackLayout>
 
 
-                    <StackLayout Grid.Row="6" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                    <StackLayout Grid.Row="5" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.CharacterAttribute.MaxHealth}" 
                             FontSize="Small" 
@@ -202,7 +176,7 @@
                             VerticalOptions="Center"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="7" Grid.Column="0">
+                    <StackLayout Grid.Row="6" Grid.Column="0">
                         <Label 
                             Text="Love Interest" 
                             FontSize="Small" 
@@ -211,7 +185,7 @@
                     </StackLayout>
                    
                  
-                     <StackLayout Grid.Row="7" Grid.Column="1"
+                     <StackLayout Grid.Row="6" Grid.Column="1"
                               Orientation="Horizontal" 
                               VerticalOptions="Center">
                         <Picker x:Name="LoveInterest"
@@ -233,14 +207,14 @@
                         </Picker>
                     </StackLayout>
                    
-                    <StackLayout Grid.Row="8" Grid.Column="0">
+                    <StackLayout Grid.Row="7" Grid.Column="0">
                         <Label 
                             Text="Image" 
                             FontSize="Small" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    <StackLayout Grid.Row="8" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <Image Source="{Binding Data.ImageURI}"
                             WidthRequest="25"
                             HeightRequest="25" 

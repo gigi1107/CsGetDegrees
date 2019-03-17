@@ -315,28 +315,7 @@ namespace WDown.Views.Battle
             // If yes, allow resting
 
             bool canRest = false;
-            for (int i = 0; i < CharactersViewModel.Instance.Dataset.Count; i++)
-            {
-                if (CharactersViewModel.Instance.Dataset[i].HasWarren == true)
-                {
-                    canRest = true;
-                    break;
-                }
-                
-            }
-            if (canRest)
-            {
-                //var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
-                //bool result = _viewModel.BattleEngine.PlayerCurrent.PlayerRest();
-
-                // Call Rest function 
-                Debug.WriteLine("Choosing Rest... Need to call Rest from Character.cs");
-
-            }
-            else
-            {
-                Debug.WriteLine("Rest cannot be done. Please build warren first.");
-            }
+            
 
         }
         public async void UseItemClicked(object sender, EventArgs args)

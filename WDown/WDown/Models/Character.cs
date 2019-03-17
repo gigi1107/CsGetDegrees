@@ -47,7 +47,6 @@ namespace WDown.Models
             // Base information
             Name = newData.Name;
             Description = newData.Description;
-            //Wisdom = newData.Wisdom;
             ImageURI = newData.ImageURI;
 
             // Database information

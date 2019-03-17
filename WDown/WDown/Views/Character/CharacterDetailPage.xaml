@@ -35,17 +35,6 @@
             </StackLayout>
 
 
-            <StackLayout  Orientation = "Horizontal">
-                <Label Text="Wisdom " 
-                       FontSize="Small" 
-                       HorizontalOptions="Start" />
-
-
-                <Label Text= "{Binding Data.CharacterAttribute.Wisdom}"
-                       FontSize = "Small"
-                       HorizontalOptions = "Center"/>
-            </StackLayout>
-
 
             <StackLayout  Orientation = "Horizontal">
                 <Label Text="Speed " 
