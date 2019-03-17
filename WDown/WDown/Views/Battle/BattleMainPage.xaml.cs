@@ -296,16 +296,18 @@ namespace WDown.Views.Battle
         // Handle when the character chooses to rest
         public async void RestClicked(object sender, EventArgs args)
         {
+
+            // This part of code is to populate the sound to play
+            // when user clicks button 
             var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
             string filename1 = "rest.mp3";
-            //player1.Load(GetStreamFromFile(filename1));
             player1.Load(filename1);
             player1.Play();
 
             RestButton.IsEnabled = true;
-            //UseItemButton.IsEnabled = false;
-            //ableToSelectMonster = false;
-            //attackButtonPressed = false;
+            UseItemButton.IsEnabled = false;
+            ableToSelectMonster = false;
+            attackButtonPressed = false;
             GameNextButton.IsEnabled = true;
             _viewModel.BattleEngine.TurnType = MoveEnum.Rest;
 
