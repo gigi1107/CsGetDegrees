@@ -258,7 +258,7 @@ namespace WDown.GameEngine
             if (PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
                 // Get the player
-                var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
+                var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
 
                 // Do the turn....
                 TakeTurn(myPlayer);
@@ -267,8 +267,8 @@ namespace WDown.GameEngine
             else if (PlayerCurrent.PlayerType == PlayerTypeEnum.Monster)
             {
                 // Get the player
-
-                var myPlayer = MonsterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
+                //BUG FIX--- ALSO TAKE INTO ACCOUNT THE MONSTERS NAME BC OTHERWISE IT WILL BE THE SAME
+                var myPlayer = MonsterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
                 Debug.WriteLine("Player after selected from list: " + myPlayer.Name);
                 // Do the turn....
                 TakeTurn(myPlayer);
@@ -410,7 +410,7 @@ namespace WDown.GameEngine
             // Else go and pick the next player in the list...
             for (var i = 0; i < PlayerList.Count(); i++)
             {
-                if (PlayerList[i].Guid == PlayerCurrent.Guid)
+                if (PlayerList[i].Guid == PlayerCurrent.Guid && PlayerList[i].Name == PlayerCurrent.Name)
                 {
                     if (i < PlayerList.Count() - 1) // 0 based...
                     {
