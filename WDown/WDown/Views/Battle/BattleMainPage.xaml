@@ -27,7 +27,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <!-- MIDDLE FRAME -->
-                <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="250">
+                <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="250" Opacity="0.7">
                     <StackLayout Orientation="Vertical" Padding="1">
                         <Label x:Name="CPName" />
                         <Image WidthRequest="50" HeightRequest="50" Margin="1" x:Name="CPImage" />
