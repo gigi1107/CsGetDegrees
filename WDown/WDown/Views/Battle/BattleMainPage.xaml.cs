@@ -28,11 +28,6 @@ namespace WDown.Views.Battle
 
         Models.Monster SelectedMonster;
         bool ableToSelectMonster;
-        bool attackButtonPressed;
-
-        bool started;
-
-        
 
         /// <summary>
         /// Stand up the Page and initiate state
@@ -53,7 +48,7 @@ namespace WDown.Views.Battle
 
             SelectedMonster = null;
             ableToSelectMonster = false;
-            started = false;
+           
 
             StartGameSetting();
             DrawGameBoardAttackerDefender();
@@ -83,7 +78,7 @@ namespace WDown.Views.Battle
             RestButton.IsEnabled = false;
             UseItemButton.IsEnabled = false;
             ableToSelectMonster = true;
-            attackButtonPressed = true;
+
             GameNextButton.IsEnabled = true;
             _viewModel.BattleEngine.TurnType = MoveEnum.Attack;
         }
@@ -124,18 +119,13 @@ namespace WDown.Views.Battle
             }
 
         }
-        /// <summary>
-        /// Next Turn Button
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        /// 
+    
 
-         // Handles when user chooses an option and hit submit
+         // Handles when user chooses an option and hits submit
         public async void SubmitClicked(object sender, EventArgs args)
         {
 
-
+            Debug.WriteLine("submit button clicked\n");
             //send the selected monster info into target
             if(_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
@@ -162,13 +152,14 @@ namespace WDown.Views.Battle
 
             // Hold the current state
             var CurrentRoundState = _viewModel.BattleEngine.RoundStateEnum;
+            Debug.WriteLine("Current round state after this turn: " + CurrentRoundState.ToString());
 
             //updates current player up in frontend
             OnPropertyChanged();
 
             //reset all these for next turn
             ableToSelectMonster = false;
-            attackButtonPressed = false;
+
             SelectedMonster = null;
           
 
@@ -296,7 +287,7 @@ namespace WDown.Views.Battle
             RestButton.IsEnabled = false;
             UseItemButton.IsEnabled = false;
             ableToSelectMonster = false;
-            attackButtonPressed = false;
+
             AttackButton.IsEnabled = false;
             GameNextButton.IsEnabled = true;
             //TODO

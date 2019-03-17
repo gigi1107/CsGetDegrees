@@ -258,7 +258,7 @@ namespace WDown.GameEngine
             if (PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
                 // Get the player
-                var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
+                var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
 
                 // Do the turn....
                 TakeTurn(myPlayer);
@@ -267,8 +267,9 @@ namespace WDown.GameEngine
             else if (PlayerCurrent.PlayerType == PlayerTypeEnum.Monster)
             {
                 // Get the player
-                var myPlayer = MonsterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
 
+                var myPlayer = MonsterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
+                Debug.WriteLine("Player after selected from list: " + myPlayer.Name);
                 // Do the turn....
                 TakeTurn(myPlayer);
             }
