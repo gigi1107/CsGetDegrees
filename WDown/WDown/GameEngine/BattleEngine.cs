@@ -37,9 +37,10 @@ namespace WDown.GameEngine
         {
             BattleScore = new Score();
             BattleMessages = new BattleMessages();
-
+            
             ItemPool.Clear();
             MonsterList.Clear();
+            
             CharacterList.Clear();
             RestCountRemaining = 0;
 
@@ -108,6 +109,10 @@ namespace WDown.GameEngine
             // Check to see if the Character list is full, if so, no need to add more...
             if (CharacterList.Count >= GameGlobals.MaxNumberPartyPlayers)
             {
+
+               
+                        
+
                 return true;
             }
 

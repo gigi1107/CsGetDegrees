@@ -33,6 +33,7 @@ namespace WDown.Views.Battle
 
             _viewModel = BattleViewModel.Instance;
 
+
             //MessagingCenter.Send(this, "StartBattle");
             _viewModel.StartBattle();
 
@@ -53,12 +54,8 @@ namespace WDown.Views.Battle
                 Debug.WriteLine("Round Start" + " Monster List:" + Monster.Name);
             }
             Debug.WriteLine("round start observable collection monster list: ");
-            foreach (Models.Monster Monster in BattleViewModel.Instance.FightingMonsters)
-            {
-                Debug.WriteLine("Round Start" + " Monster List:" + Monster.Name);
-            }
-
            
+
 
             Datalist = BattleViewModel.Instance.BattleEngine.MonsterList;
             BindingContext = Datalist;
@@ -104,27 +101,6 @@ namespace WDown.Views.Battle
                         HeightRequest = 50.0
                     };
 
-                    #region Relative
-                    //RelativeLayout myInnerBox = new RelativeLayout();
-
-                    //myInnerBox.Children.Add(myImage,
-                    //    Constraint.Constant(0),
-                    //    Constraint.Constant(0),
-                    //    Constraint.RelativeToParent((parent) => { return parent.Width; }),
-                    //    Constraint.RelativeToParent((parent) => { return parent.Height; }));
-
-                    //myInnerBox.Children.Add(myLevel,
-                    //    Constraint.Constant(0),
-                    //    Constraint.Constant(0),
-                    //    Constraint.RelativeToParent((parent) => { return parent.Width; }),
-                    //    Constraint.RelativeToParent((parent) => { return parent.Height; }));
-
-                    //myInnerBox.Children.Add(myHP,
-                    //    Constraint.Constant(0),
-                    //    Constraint.Constant(0),
-                    //    Constraint.RelativeToParent((parent) => { return parent.Width; }),
-                    //    Constraint.RelativeToParent((parent) => { return parent.Height; }));
-                    #endregion Relative
 
                     StackLayout OuterFrame = new StackLayout
                     {

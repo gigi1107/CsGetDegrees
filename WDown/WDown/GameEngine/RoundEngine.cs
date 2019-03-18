@@ -258,7 +258,7 @@ namespace WDown.GameEngine
             if (PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
                 // Get the player
-                var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid).FirstOrDefault();
+                var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid && PlayerCurrent.Name == a.Name).FirstOrDefault();
 
                 // Do the turn....
                 TakeTurn(myPlayer);

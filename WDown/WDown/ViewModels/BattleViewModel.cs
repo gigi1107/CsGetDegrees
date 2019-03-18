@@ -184,6 +184,7 @@ namespace WDown.ViewModels
             SelectedCharacters = new ObservableCollection<Character>();
             AvailableCharacters = new ObservableCollection<Character>();
             FightingMonsters = new ObservableCollection<Monster>();
+          
 
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
@@ -291,6 +292,7 @@ namespace WDown.ViewModels
         public void StartRound()
         {
             BattleEngine.StartRound();
+            FightingMonsters.Clear();
             foreach (var data in BattleEngine.MonsterList)
             {
                 FightingMonsters.Add(new Monster(data));

@@ -5,6 +5,7 @@ using WDown.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -57,7 +58,9 @@ namespace WDown.Views.Battle
             // Don't add more than the party max
             if (currentCount < GameGlobals.MaxNumberPartyPlayers)
             {
-                MessagingCenter.Send(this, "AddSelectedCharacter", data);
+                Debug.WriteLine("Selected char name backedn: " + data.Name);
+                _viewModel.SelectedListAdd(data);
+                //MessagingCenter.Send(this, "AddSelectedCharacter", data);
             }
 
             // refresh the count

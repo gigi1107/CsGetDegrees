@@ -49,7 +49,7 @@ namespace WDown.Views.Battle
             SelectedMonster = null;
             ableToSelectMonster = false;
            
-
+            
             StartGameSetting();
             DrawGameBoardAttackerDefender();
         }
@@ -69,11 +69,11 @@ namespace WDown.Views.Battle
 
         private async void AttackClicked(object sender, EventArgs args)
         {
-            var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-            string filename1 = "attack.mp3";
+            //var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            //string filename1 = "attack.mp3";
            
-            player1.Load(filename1);
-            player1.Play();
+            //player1.Load(filename1);
+            //player1.Play();
 
             RestButton.IsEnabled = false;
             UseItemButton.IsEnabled = false;
@@ -278,10 +278,10 @@ namespace WDown.Views.Battle
             Debug.WriteLine("current player's HP before heal: ", _viewModel.BattleEngine.PlayerCurrent.RemainingHP);
             // This part of code is to populate the sound to play
             // when user clicks button 
-            var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-            string filename1 = "rest.mp3";
-            player1.Load(filename1);
-            player1.Play();
+            //var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            //string filename1 = "rest.mp3";
+            //player1.Load(filename1);
+            //player1.Play();
 
             //after the rest button is clicked, we want to disable all other actions other than submit
             RestButton.IsEnabled = false;

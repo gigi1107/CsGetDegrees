@@ -5,7 +5,8 @@
             <Image Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Source="https://i.imgur.com/NT1KMVy.png" BackgroundColor="White" />
             <StackLayout Orientation="Horizontal">
                 <!--CHARACTERS-->
-                <ListView x:Name="SelectedCharactersView" ItemsSource="{Binding SelectedCharacters}" VerticalOptions="Start" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="None"
+                <ListView x:Name="SelectedCharactersView" 
+                          ItemsSource="{Binding SelectedCharacters}" VerticalOptions="Start" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="None"
                     WidthRequest="250">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -60,16 +61,32 @@
                         </StackLayout>
                     </StackLayout>
                 </Frame>
-                <!--                    MONSTERS SECTION-->
-                <ListView x:Name="SelectedMonstersView" ItemsSource="{Binding FightingMonsters}" VerticalOptions="Start" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="Single"
-                    ItemSelected="OnSelectedMonsterSelected">
+                <!--MONSTERS SECTION-->
+                <ListView x:Name="SelectedMonstersView"  
+                          VerticalOptions="Start" 
+                          ItemsSource="{Binding FightingMonsters}"
+                         
+                          HorizontalOptions="StartAndExpand" 
+                          BackgroundColor="Transparent" 
+                          HasUnevenRows="true" 
+                          RefreshCommand="{Binding LoadItemsCommand}" 
+                          IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                          CachingStrategy="RecycleElement" 
+                          SelectionMode="Single"
+                          ItemSelected="OnSelectedMonsterSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Vertical">
-                                    <StackLayout Padding="1" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="StartAndExpand">
-                                        <Image Source="{Binding ImageURI}" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
-                                        <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" />
+                                    <StackLayout Padding="1" Orientation="Horizontal"
+                                                 VerticalOptions="Start"
+                                                 HorizontalOptions="StartAndExpand">
+                                        <Image Source="{Binding ImageURI}" 
+                                               WidthRequest="20" HeightRequest="20" 
+                                               HorizontalOptions="Center" 
+                                               VerticalOptions="Center" />
+                                        <Label Text="{Binding Name}" LineBreakMode="NoWrap" 
+                                               Style="{DynamicResource ListItemTextStyle}" />
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="HP  " />
