@@ -305,9 +305,29 @@ namespace WDown.ViewModels
         /// </summary>
         public void LoadCharacters()
         {
-            foreach (var data in SelectedCharacters)
+
+            //differentiate multiples of the same character by appending a number
+            //and add them to the characterList
+            for(int i = 0; i < SelectedCharacters.Count; i++)
             {
-                BattleEngine.CharacterList.Add(new Character(data));
+                if(i == 0)
+                {
+                    SelectedCharacters[i].Name = SelectedCharacters[i].Name + " " + (i+1).ToString();
+                    
+                }
+                else
+                {
+                    //take off last number and append current number
+                    string word = SelectedCharacters[i].Name;
+                    string[] words = word.Split(' ');
+                    string keep = words[0];
+                    SelectedCharacters[i].Name = keep + ' ' + (i + 1).ToString();
+
+                }
+               
+               
+                BattleEngine.CharacterList.Add(new Character(SelectedCharacters[i]));
+               
             }
 
 

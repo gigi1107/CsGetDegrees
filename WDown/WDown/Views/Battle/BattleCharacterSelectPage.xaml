@@ -75,9 +75,9 @@
                                                             <Label Text="{Binding Name}" 
                                                            LineBreakMode="NoWrap" 
                                                            Style="{DynamicResource ListItemTextStyle}" />
-                                                            <Label Text="{Binding Level}" 
-                                                           LineBreakMode="NoWrap" 
-                                                           Style="{DynamicResource ListItemTextStyle}" />
+                                                            <Label Text=" Level: "/>
+                                                            <Label Text="{Binding Level}"   />
+                                                        
                                                         </StackLayout>
                                                     </StackLayout>
 
@@ -152,11 +152,10 @@
                                                     <StackLayout>
                                                         <StackLayout Orientation="Horizontal">
                                                             <Label Text="{Binding Name}" 
-                                                           LineBreakMode="NoWrap" 
-                                                           Style="{DynamicResource ListItemTextStyle}" />
-                                                            <Label Text="{Binding Level}" 
-                                                           LineBreakMode="NoWrap" 
-                                                           Style="{DynamicResource ListItemTextStyle}" />
+                                                            />
+                                                            <Label Text=" Level: "/>
+                                                            <Label Text="{Binding Level}" />
+                                                           
                                                         </StackLayout>
                                                     </StackLayout>
 

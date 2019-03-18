@@ -52,6 +52,8 @@ namespace WDown.Views.Battle
             
             StartGameSetting();
             DrawGameBoardAttackerDefender();
+            RefreshMonsters();
+            RefreshCharacters();
         }
 
         private async void OnSelectedMonsterSelected(object sender, SelectedItemChangedEventArgs args)
@@ -153,7 +155,10 @@ namespace WDown.Views.Battle
             // Hold the current state
             var CurrentRoundState = _viewModel.BattleEngine.RoundStateEnum;
             Debug.WriteLine("Current round state after this turn: " + CurrentRoundState.ToString());
-
+            // Draw the Game Board
+            DrawGameBoardAttackerDefender();
+            RefreshMonsters();
+            RefreshCharacters();
             //updates current player up in frontend
             OnPropertyChanged();
 
@@ -221,8 +226,7 @@ namespace WDown.Views.Battle
             // Output The Message that happened.
             GameMessage(_viewModel.BattleEngine.BattleMessages.TurnMessage);
 
-            // Draw the Game Board
-            DrawGameBoardAttackerDefender();
+           
         }
 
         public void DrawGameBoardAttackerDefender()
@@ -234,6 +238,19 @@ namespace WDown.Views.Battle
             CPAttack.Text = _viewModel.BattleEngine.PlayerCurrent.Attack.ToString();
             CPDefense.Text = _viewModel.BattleEngine.PlayerCurrent.Defense.ToString();
             CPSpeed.Text = _viewModel.BattleEngine.PlayerCurrent.Speed.ToString();
+        }
+
+        public void RefreshCharacters()
+        {
+            SelectedCharactersView.ItemsSource = _viewModel.BattleEngine.CharacterList;
+            
+
+        }
+
+        public void RefreshMonsters()
+        {
+            SelectedMonstersView.ItemsSource = _viewModel.BattleEngine.MonsterList;
+
         }
 
         /// <summary>

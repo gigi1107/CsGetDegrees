@@ -35,7 +35,9 @@ namespace WDown.Views.Battle
         // Close this page
         async void OnNextClicked(object sender, EventArgs args)
         {
+           
 
+           
             // Jump to Main Battle Page
             await Navigation.PushAsync(new BattleMonsterListPage());
 
@@ -54,11 +56,14 @@ namespace WDown.Views.Battle
             // Manually deselect item.
             AvailableCharactersListView.SelectedItem = null;
 
+          
+
             var currentCount = _viewModel.SelectedCharacters.Count();
             // Don't add more than the party max
             if (currentCount < GameGlobals.MaxNumberPartyPlayers)
             {
-                Debug.WriteLine("Selected char name backedn: " + data.Name);
+
+                
                 _viewModel.SelectedListAdd(data);
                 //MessagingCenter.Send(this, "AddSelectedCharacter", data);
             }
