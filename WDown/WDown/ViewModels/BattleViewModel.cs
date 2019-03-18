@@ -299,6 +299,22 @@ namespace WDown.ViewModels
             }
         }
 
+        public void SyncMonsterAndCharacterLists()
+        {
+            FightingMonsters.Clear();
+            foreach (var monster in BattleEngine.MonsterList)
+            {
+                FightingMonsters.Add(new Monster(monster));
+            }
+
+            SelectedCharacters.Clear();
+            foreach (var character in BattleEngine.CharacterList)
+            {
+                SelectedCharacters.Add(character);
+            }
+        }
+
+
         /// <summary>
         /// Load the Characters from the Selected List into the Battle Engine
         /// Making a copy of the character.

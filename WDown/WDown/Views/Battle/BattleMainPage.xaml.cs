@@ -54,6 +54,7 @@ namespace WDown.Views.Battle
             DrawGameBoardAttackerDefender();
             RefreshMonsters();
             RefreshCharacters();
+            //_viewModel.SyncMonsterAndCharacterLists();
         }
 
         private async void OnSelectedMonsterSelected(object sender, SelectedItemChangedEventArgs args)
@@ -162,10 +163,12 @@ namespace WDown.Views.Battle
             // Hold the current state
             var CurrentRoundState = _viewModel.BattleEngine.RoundStateEnum;
             Debug.WriteLine("Current round state after this turn: " + CurrentRoundState.ToString());
+
             // Draw the Game Board
             DrawGameBoardAttackerDefender();
             RefreshMonsters();
             RefreshCharacters();
+
             //updates current player up in frontend
             OnPropertyChanged();
 
@@ -232,8 +235,28 @@ namespace WDown.Views.Battle
 
             // Output The Message that happened.
             GameMessage(_viewModel.BattleEngine.BattleMessages.TurnMessage);
+            Debug.WriteLine("List of characters and HP remaining: ");
+            foreach (Models.Character character in _viewModel.BattleEngine.CharacterList)
+            {
+
+                Debug.WriteLine("Name : " + character.Name);
+                Debug.WriteLine("HP : " + character.CharacterAttribute.getCurrentHealth() + "/" + character.CharacterAttribute.getMaxHealth());
+               
+            }
+            Debug.WriteLine("\n");
+            Debug.WriteLine("List of monsters and HP remaining: ");
+            foreach (Models.Monster monster in _viewModel.BattleEngine.MonsterList)
+            {
+
+                Debug.WriteLine("Name : " + monster.Name);
+                Debug.WriteLine("HP : " + monster.MonsterAttribute.getCurrentHealth() + "/" + monster.MonsterAttribute.getMaxHealth());
+
+            }
 
            
+
+
+
         }
 
         public void DrawGameBoardAttackerDefender()
@@ -249,16 +272,27 @@ namespace WDown.Views.Battle
 
         public void RefreshCharacters()
         {
+            SelectedCharactersView.ItemsSource = null;
             SelectedCharactersView.ItemsSource = _viewModel.BattleEngine.CharacterList;
-            
+          
+            //SelectedCharactersView.ItemsSource = _viewModel.SelectedCharacters;
+
 
         }
 
         public void RefreshMonsters()
         {
+            SelectedMonstersView.ItemsSource = null;
             SelectedMonstersView.ItemsSource = _viewModel.BattleEngine.MonsterList;
 
+            //SelectedMonstersView.ItemsSource = _viewModel.FightingMonsters;
+            
+
         }
+
+        //monster variables for front end
+    
+        
 
         /// <summary>
         /// Builds up the output message

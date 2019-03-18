@@ -8,7 +8,12 @@
                 <ListView x:Name="SelectedCharactersView" 
                           
                           VerticalOptions="Start" 
-                          HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" SelectionMode="None"
+                          HorizontalOptions="StartAndExpand"
+                          BackgroundColor="Transparent" 
+                          HasUnevenRows="true" 
+                          RefreshCommand="{Binding LoadItemsCommand}" 
+                          IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                          CachingStrategy="RecycleElement" SelectionMode="None"
                     WidthRequest="250">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -67,7 +72,7 @@
                 <ListView x:Name="SelectedMonstersView"  
                           VerticalOptions="Start" 
                          
-                         
+                           
                           HorizontalOptions="StartAndExpand" 
                           BackgroundColor="Transparent" 
                           HasUnevenRows="true" 
@@ -76,7 +81,7 @@
                           CachingStrategy="RecycleElement" 
                           SelectionMode="Single"
                           ItemSelected="OnSelectedMonsterSelected">
-                    <ListView.ItemTemplate>
+                   <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Vertical">
