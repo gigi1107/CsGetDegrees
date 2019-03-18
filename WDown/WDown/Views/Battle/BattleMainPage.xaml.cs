@@ -136,12 +136,22 @@ namespace WDown.Views.Battle
                 {
                     Debug.WriteLine("backend monster selected: " + _viewModel.BattleEngine.Target.Name);
                 }
+
+            }
+
+           
+            //do the turn 
+            _viewModel.RoundNextTurn();
+
+            //update front end options after turn taken
+
+            if(_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
+            {
                 GameNextButton.IsEnabled = false;
                 AttackButton.IsEnabled = true;
                 RestButton.IsEnabled = true;
                 UseItemButton.IsEnabled = true;
             }
-
             else
             {
                 GameNextButton.IsEnabled = true;
@@ -149,9 +159,6 @@ namespace WDown.Views.Battle
                 RestButton.IsEnabled = false;
                 UseItemButton.IsEnabled = false;
             }
-            //do the turn 
-            _viewModel.RoundNextTurn();
-
             // Hold the current state
             var CurrentRoundState = _viewModel.BattleEngine.RoundStateEnum;
             Debug.WriteLine("Current round state after this turn: " + CurrentRoundState.ToString());
@@ -308,6 +315,9 @@ namespace WDown.Views.Battle
             AttackButton.IsEnabled = false;
             GameNextButton.IsEnabled = true;
             //TODO
+            _viewModel.BattleEngine.Target = null;
+            SelectedMonster = null;
+            SelectedMonstersView.SelectedItem = null;
             _viewModel.BattleEngine.TurnType = MoveEnum.Rest;
 
             //send message to backend to rest. this means writing a function in the backend for resting
@@ -323,11 +333,11 @@ namespace WDown.Views.Battle
         }
         public async void UseItemClicked(object sender, EventArgs args)
         {
-            var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-            string filename1 = "item.mp3";
-            //player1.Load(GetStreamFromFile(filename1));
-            player1.Load(filename1);
-            player1.Play();
+            //var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            //string filename1 = "item.mp3";
+            ////player1.Load(GetStreamFromFile(filename1));
+            //player1.Load(filename1);
+            //player1.Play();
 
             Debug.WriteLine("Switching to Item Pool...");
             await Navigation.PushAsync(new BattleUseItemPage(_viewModel));

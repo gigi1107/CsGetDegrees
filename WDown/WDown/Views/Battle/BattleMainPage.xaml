@@ -50,8 +50,8 @@
                             <Label Text="" x:Name="CPSpeed" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Button Text="Attack" x:Name="AttackButton" Clicked="AttackClicked" />
-                            <Button Text="Rest" x:Name="RestButton" Clicked="RestClicked" />
+                            <Button Text="Attack " x:Name="AttackButton" Clicked="AttackClicked" />
+                            <Button Text="Rest " x:Name="RestButton" Clicked="RestClicked" />
                             <Button Text="Use Item" x:Name="UseItemButton" Clicked="UseItemClicked" />
                         </StackLayout>
                         <Button x:Name="GameNextButton" IsVisible="true" Clicked="SubmitClicked" Text="Submit" />

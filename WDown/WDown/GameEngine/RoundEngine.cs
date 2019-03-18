@@ -250,8 +250,7 @@ namespace WDown.GameEngine
             // Decide Who gets next turn
             // Remember who just went...
 
-            PlayerCurrent = GetNextPlayerTurn();
-            Debug.WriteLine("\n\nPlayer current new just chosen backend: " + PlayerCurrent.Name);
+
 
             // Decide Who to Attack
             // Do the Turn         
@@ -274,6 +273,8 @@ namespace WDown.GameEngine
                 TakeTurn(myPlayer);
             }
 
+            PlayerCurrent = GetNextPlayerTurn();
+            Debug.WriteLine("\n\nPlayer current new just chosen backend for next turn: " + PlayerCurrent.Name);
             RoundStateEnum = RoundEnum.NextTurn;
             return RoundStateEnum;
         }
