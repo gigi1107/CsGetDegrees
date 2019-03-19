@@ -30,7 +30,7 @@ namespace WDown.GameEngine
 
 
         //TODO put in number of rests allowed
-        public int RestCountRemaining;
+        public int RestCountRemaining = 3;
         public List<Item> ItemPool = new List<Item>();
 
         //public List<Item> ItemList = new List<Item>();
@@ -54,35 +54,6 @@ namespace WDown.GameEngine
         // Turn Over
         #endregion Properties
 
-
-        #region Rest
-        public void Rest()
-        {
-            //if state == rest 
-            // then if restcountremaining > 0
-            //get character id from PlayerCurrent
-            //get Character from id 
-            // currentHp = maxHp on that character
-            //decrement RestCountRemaining
-
-            if(RestCountRemaining > 0)
-            {
-                //get character id from PlayerCurrent
-                //because i cant directly access this, I'll try current attacker
-                Debug.WriteLine("Current attacker: ", CurrentAttacker.Name);
-
-
-                string characterId = CurrentAttacker.GetGuid();
-
-                //get character from CharacterList by Id
-
-                Character toHeal = CharacterList.Find(character => character.Guid == characterId);
-                toHeal.CharacterAttribute.CurrentHealth = toHeal.CharacterAttribute.MaxHealth;
-
-            }
-        }
-
-        #endregion Rest
 
         // Character Attacks...
         public bool TakeTurn(Character Attacker)
@@ -138,6 +109,7 @@ namespace WDown.GameEngine
         }
 
         // Monster Attacks Character
+        //this is working fine in terms of choosing next turn
         public bool TurnAsAttack(Monster Attacker, int AttackScore, Character Target, int DefenseScore)
         {
             BattleMessages.TurnMessage = string.Empty;
@@ -233,6 +205,7 @@ namespace WDown.GameEngine
         }
 
         // Character attacks Monster
+        //next turn seems to be weird
         public bool TurnAsAttack(Character Attacker, int AttackScore, Monster Target, int DefenseScore)
         {
             BattleMessages.TurnMessage = string.Empty;

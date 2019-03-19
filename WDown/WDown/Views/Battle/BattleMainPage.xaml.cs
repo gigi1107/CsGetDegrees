@@ -337,7 +337,7 @@ namespace WDown.Views.Battle
         // Handle when the character chooses to rest
         public async void RestClicked(object sender, EventArgs args)
         {
-            Debug.WriteLine("current player's HP before heal: ", _viewModel.BattleEngine.PlayerCurrent.RemainingHP);
+            Debug.WriteLine("current player's HP before heal: "+ _viewModel.BattleEngine.PlayerCurrent.RemainingHP);
             // This part of code is to populate the sound to play
             // when user clicks button 
             //var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
@@ -358,15 +358,22 @@ namespace WDown.Views.Battle
             SelectedMonstersView.SelectedItem = null;
             _viewModel.BattleEngine.TurnType = MoveEnum.Rest;
 
-            //send message to backend to rest. this means writing a function in the backend for resting
-            _viewModel.BattleEngine.Rest();
+
+            _viewModel.BattleEngine.PlayerCurrent.RemainingHP = _viewModel.BattleEngine.PlayerCurrent.TotalHP;
+
+            Models.Character character =  _viewModel.BattleEngine.CharacterList.Find(x => x.Name == _viewModel.BattleEngine.PlayerCurrent.Name);
+
+            foreach(Models.Character c in _viewModel.BattleEngine.CharacterList)
+            {
+                if(c == character)
+                {
+                    c.CharacterAttribute.CurrentHealth = c.CharacterAttribute.MaxHealth;
+                }
+            }
+            Debug.WriteLine("current player's HP: "+_viewModel.BattleEngine.PlayerCurrent.RemainingHP);
 
 
-            Debug.WriteLine("current player's HP: ",_viewModel.BattleEngine.PlayerCurrent.RemainingHP);
 
-           
-      
-            
 
         }
         public async void UseItemClicked(object sender, EventArgs args)
