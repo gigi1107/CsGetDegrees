@@ -42,7 +42,7 @@ namespace WDown.GameEngine
             MonsterList.Clear();
             
             CharacterList.Clear();
-            RestCountRemaining = 0;
+            HealAllCharactersAndMonsters();
 
             // Reset current player
             PlayerCurrent = null;
@@ -60,6 +60,19 @@ namespace WDown.GameEngine
             return isBattleRunning;
         }
 
+        public void HealAllCharactersAndMonsters()
+        {
+            foreach (Character character in CharactersViewModel.Instance.Dataset)
+            {
+                character.CharacterAttribute.CurrentHealth = character.CharacterAttribute.MaxHealth;
+
+            }
+
+            foreach (Monster monster in MonstersViewModel.Instance.Dataset)
+            {
+                monster.MonsterAttribute.CurrentHealth = monster.MonsterAttribute.MaxHealth;
+            }
+        }
         // Battle is over
         // Update Battle State, Log Score to Database
         public void EndBattle()
@@ -109,9 +122,6 @@ namespace WDown.GameEngine
             // Check to see if the Character list is full, if so, no need to add more...
             if (CharacterList.Count >= GameGlobals.MaxNumberPartyPlayers)
             {
-
-               
-                        
 
                 return true;
             }
