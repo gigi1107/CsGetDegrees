@@ -44,132 +44,7 @@ namespace WDown.ViewModels
         //added class for the fightingmonsters to display in UI
         public ObservableCollection<Monster> FightingMonsters { get; set; }
 
-        private string _currentPlayerName;
-        public string currentPlayerName
-        {
-            get
-            {
-                return _currentPlayerName;
-            }
-            set
-            {
-                if (_currentPlayerName != BattleEngine.PlayerCurrent.Name)
-                {
-                    _currentPlayerName = BattleEngine.PlayerCurrent.Name;
-                    OnPropertyChanged();
-                }
-            }
-        }
 
-
-        private string _currentPlayerURI;
-
-        public string currentPlayerURI
-        {
-            get
-            {
-                return _currentPlayerURI;
-            }
-
-            set
-            {
-                if (_currentPlayerURI != BattleEngine.PlayerCurrent.ImageURI)
-                {
-                    _currentPlayerURI = BattleEngine.PlayerCurrent.ImageURI;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-
-
-        private int _currentPlayerHPTotal;
-        public int currentPlayerHPTotal
-        {
-            get
-            {
-                return _currentPlayerHPTotal;
-            }
-            set
-            {
-                if (_currentPlayerHPTotal != BattleEngine.PlayerCurrent.RemainingHP)
-                {
-                    _currentPlayerHPTotal = BattleEngine.PlayerCurrent.TotalHP;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        private int _currentPlayerHPCurrent;
-        public int currentPlayerHPCurrent
-        {
-            get
-            {
-                return _currentPlayerHPCurrent;
-            }
-            set
-            {
-                if (_currentPlayerHPCurrent != BattleEngine.PlayerCurrent.RemainingHP)
-                {
-                    _currentPlayerHPCurrent = BattleEngine.PlayerCurrent.RemainingHP;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        private int _currentPlayerAttack;
-        public int currentPlayerAttack
-        {
-            get
-            {
-                return _currentPlayerAttack;
-            }
-            set
-            {
-                if (_currentPlayerAttack != BattleEngine.PlayerCurrent.Attack)
-                {
-                    _currentPlayerAttack = BattleEngine.PlayerCurrent.Attack;
-                    OnPropertyChanged();
-                }
-            }
-
-        }
-
-        private int _currentPlayerSpeed;
-        public int currentPlayerSpeed
-        {
-            get
-            {
-                return _currentPlayerSpeed;
-            }
-            set
-            {
-                if (_currentPlayerSpeed != BattleEngine.PlayerCurrent.Speed)
-                {
-                    _currentPlayerSpeed = BattleEngine.PlayerCurrent.Speed;
-                    OnPropertyChanged();
-                }
-            }
-
-        }
-
-        private int _currentPlayerDefense;
-        public int currentPlayerDefense
-        {
-            get
-            {
-                return _currentPlayerDefense;
-            }
-            set
-            {
-                if (_currentPlayerDefense != BattleEngine.PlayerCurrent.Defense)
-                {
-                    _currentPlayerDefense = BattleEngine.PlayerCurrent.Defense;
-                    OnPropertyChanged();
-                }
-            }
-
-        }
 
         // Load the Data command
         public Command LoadDataCommand { get; set; }
@@ -189,12 +64,7 @@ namespace WDown.ViewModels
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
             BattleEngine = new BattleEngine();
-            _currentPlayerName = "Current Character";
-            _currentPlayerURI = "";
-            _currentPlayerHPTotal = 0;
-            _currentPlayerHPCurrent = 0;
-            _currentPlayerAttack = 0;
-
+       
 
 
             // Load Data
@@ -232,20 +102,7 @@ namespace WDown.ViewModels
             MessagingCenter.Subscribe<BattleMainPage>(this, "SetPlayerCurrent", async (obj) =>
             {
                 SetPlayerCurrent();
-                currentPlayerName = BattleEngine.PlayerCurrent.Name;
-                OnPropertyChanged();
-                currentPlayerURI = BattleEngine.PlayerCurrent.ImageURI;
-                OnPropertyChanged();
-                currentPlayerHPCurrent = BattleEngine.PlayerCurrent.RemainingHP;
-                OnPropertyChanged();
-                currentPlayerHPTotal = BattleEngine.PlayerCurrent.TotalHP;
-                OnPropertyChanged();
-                currentPlayerAttack = BattleEngine.PlayerCurrent.Attack;
-                OnPropertyChanged();
-                currentPlayerDefense = BattleEngine.PlayerCurrent.Defense;
-                OnPropertyChanged();
-                currentPlayerSpeed = BattleEngine.PlayerCurrent.Speed;
-                OnPropertyChanged();
+
             });
 
             MessagingCenter.Subscribe<BattleMainPage>(this, "RoundNextTurn", async (obj) =>
@@ -299,12 +156,41 @@ namespace WDown.ViewModels
             }
         }
 
+        //use to sync observables to actual
+      
         public void SyncMonsterAndCharacterLists()
         {
             FightingMonsters.Clear();
             foreach (var monster in BattleEngine.MonsterList)
             {
-                FightingMonsters.Add(new Monster(monster));
+                FightingMonsters.Add(monster);
+
+                ////find curr monster in Fighting monsters list and update it
+
+                //Monster inQuestion = 
+                //if(inQuestion == null)
+                //{
+                //    FightingMonsters.Remove(monster);
+
+                //}
+                //else 
+                //{
+                //    inQuestion.MonsterAttribute.Attack = monster.MonsterAttribute.Attack;
+                //    inQuestion.MonsterAttribute.CurrentHealth = monster.MonsterAttribute.CurrentHealth;
+                //    inQuestion.MonsterAttribute.MaxHealth = monster.MonsterAttribute.MaxHealth;
+                //    inQuestion.MonsterAttribute.Defense = monster.MonsterAttribute.Defense;
+                //    inQuestion.MonsterAttribute.Speed = monster.MonsterAttribute.Speed;
+                //    inQuestion.Level = monster.Level;
+                //    inQuestion.Alive = monster.Alive;
+                //    inQuestion.Damage = monster.Damage;
+                //    inQuestion.ExperienceTotal = monster.ExperienceTotal;
+                //    inQuestion.ExperienceRemaining = monster.ExperienceRemaining;
+
+                //    //TODO sync items too
+                //}
+
+
+
             }
 
             SelectedCharacters.Clear();
@@ -312,6 +198,7 @@ namespace WDown.ViewModels
             {
                 SelectedCharacters.Add(character);
             }
+            return;
         }
 
 
@@ -344,6 +231,14 @@ namespace WDown.ViewModels
                
                 BattleEngine.CharacterList.Add(new Character(SelectedCharacters[i]));
                
+
+               
+            }
+            //some weird bug with population, so cleared selected chars and repopulated
+            SelectedCharacters.Clear();
+            foreach (Character character in BattleEngine.CharacterList)
+            {
+                SelectedCharacters.Add(new Character(character));
             }
 
 

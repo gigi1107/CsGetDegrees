@@ -26,12 +26,12 @@ namespace WDown.Views.Battle
             InitializeComponent();
             BindingContext = _viewModel = viewModel;
 
-            CharacterImage.Source = BattleViewModel.Instance.currentPlayerURI;
-            CharacterAttack.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerAttack);
-            CharacterDefense.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerDefense);
-            CharacterSpeed.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerSpeed);
-            CharacterName.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerName);
-            CharacterCurrentHealth.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerHPTotal);
+            //CharacterImage.Source = BattleViewModel.Instance.currentPlayerURI;
+            //CharacterAttack.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerAttack);
+            //CharacterDefense.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerDefense);
+            //CharacterSpeed.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerSpeed);
+            //CharacterName.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerName);
+            //CharacterCurrentHealth.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerHPTotal);
         }
         //public void SoundTestClicked(object sender, EventArgs e)
         //{

@@ -206,6 +206,7 @@ namespace WDown.GameEngine
                 // Remover target from list...
                 CharacterList.Remove(Target);
 
+
                 // Mark Status in output
                 BattleMessages.TurnMessageSpecial = " and causes death";
 
@@ -314,7 +315,6 @@ namespace WDown.GameEngine
                 // Remove target from list...
                 MonsterList.Remove(Target);
 
-                
 
                 // Mark Status in output
                 BattleMessages.TurnMessageSpecial = " and causes death";

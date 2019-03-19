@@ -144,9 +144,11 @@ namespace WDown.Views.Battle
             //do the turn 
             _viewModel.RoundNextTurn();
 
+
             //update front end options after turn taken
 
-            if(_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
+
+            if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
                 GameNextButton.IsEnabled = false;
                 AttackButton.IsEnabled = true;
@@ -166,8 +168,8 @@ namespace WDown.Views.Battle
 
             // Draw the Game Board
             DrawGameBoardAttackerDefender();
-            RefreshMonsters();
-            RefreshCharacters();
+            _viewModel.SyncMonsterAndCharacterLists();
+
 
             //updates current player up in frontend
             OnPropertyChanged();
@@ -235,6 +237,8 @@ namespace WDown.Views.Battle
 
             // Output The Message that happened.
             GameMessage(_viewModel.BattleEngine.BattleMessages.TurnMessage);
+
+
             Debug.WriteLine("List of characters and HP remaining: ");
             foreach (Models.Character character in _viewModel.BattleEngine.CharacterList)
             {
@@ -272,21 +276,21 @@ namespace WDown.Views.Battle
 
         public void RefreshCharacters()
         {
-            SelectedCharactersView.ItemsSource = null;
-            SelectedCharactersView.ItemsSource = _viewModel.BattleEngine.CharacterList;
+            //SelectedCharactersView.ItemsSource = null;
+            //SelectedCharactersView.ItemsSource = _viewModel.BattleEngine.CharacterList;
           
-            //SelectedCharactersView.ItemsSource = _viewModel.SelectedCharacters;
+            SelectedCharactersView.ItemsSource = _viewModel.SelectedCharacters;
 
 
         }
 
         public void RefreshMonsters()
         {
-            SelectedMonstersView.ItemsSource = null;
-            SelectedMonstersView.ItemsSource = _viewModel.BattleEngine.MonsterList;
+            //SelectedMonstersView.ItemsSource = null;
+            //SelectedMonstersView.ItemsSource = _viewModel.BattleEngine.MonsterList;
 
-            //SelectedMonstersView.ItemsSource = _viewModel.FightingMonsters;
-            
+            SelectedMonstersView.ItemsSource = _viewModel.FightingMonsters;
+           
 
         }
 
