@@ -109,6 +109,7 @@ namespace WDown.GameEngine
         }
 
         // Monster Attacks Character
+        //this is working fine in terms of choosing next turn
         public bool TurnAsAttack(Monster Attacker, int AttackScore, Character Target, int DefenseScore)
         {
             BattleMessages.TurnMessage = string.Empty;
@@ -203,6 +204,7 @@ namespace WDown.GameEngine
         }
 
         // Character attacks Monster
+        //next turn seems to be weird
         public bool TurnAsAttack(Character Attacker, int AttackScore, Monster Target, int DefenseScore)
         {
             BattleMessages.TurnMessage = string.Empty;

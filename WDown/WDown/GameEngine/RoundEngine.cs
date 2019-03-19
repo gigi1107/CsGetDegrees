@@ -257,7 +257,7 @@ namespace WDown.GameEngine
             if (PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
                 // Get the player
-                var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid && PlayerCurrent.Name == a.Name).FirstOrDefault();
+                var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
 
                 // Do the turn....
                 TakeTurn(myPlayer);
@@ -342,11 +342,9 @@ namespace WDown.GameEngine
             else
             {
                 PlayerList = PlayerList.OrderByDescending(a => a.Speed)
-                .ThenByDescending(a => a.Level)
-                .ThenByDescending(a => a.ExperiencePoints)
                 .ThenByDescending(a => a.PlayerType)
                 .ThenBy(a => a.Name)
-                .ThenBy(a => a.ListOrder)
+              
                 .ToList();
 
                 foreach(PlayerInfo player in PlayerList)
@@ -395,6 +393,7 @@ namespace WDown.GameEngine
             }
         }
 
+        //only buggy for CHARACTERS 
         public PlayerInfo GetNextPlayerInList()
         {
             // Walk the list from top to bottom
@@ -415,11 +414,13 @@ namespace WDown.GameEngine
                 {
                     if (i < PlayerList.Count() - 1) // 0 based...
                     {
+                        Debug.WriteLine("NEXT PLAYER UP: " + PlayerList[i + 1].Name);
                         return PlayerList[i + 1];
                     }
                     else
                     {
                         // Return the first in the list...
+                        Debug.WriteLine("NEXT PLAYER UP: " + PlayerList.FirstOrDefault().Name);
                         return PlayerList.FirstOrDefault();
                     }
                 }
