@@ -57,6 +57,46 @@ namespace WDown.Views.Battle
             //_viewModel.SyncMonsterAndCharacterLists();
         }
 
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+
+        //    BindingContext = null;
+
+        //    if (ToolbarItems.Count > 0)
+        //    {
+        //        ToolbarItems.RemoveAt(0);
+        //    }
+
+        //    InitializeComponent();
+
+        //    if (_viewModel.BattleEngine.CharacterList.Count == 0 || _viewModel.BattleEngine.MonsterList.Count == 0)
+        //    {
+
+        //        _viewModel.LoadDataCommand.Execute(null);
+        //    }
+        //    else if (_viewModel.NeedsRefresh())
+        //    {
+        //        _viewModel.LoadDataCommand.Execute(null);
+        //    }
+
+        //    BindingContext = _viewModel;
+        //    //initialize button controls
+        //    //GameStartButton.IsVisible = true;
+        //    GameNextButton.IsVisible = false;
+
+        //    GameOverButton.IsVisible = false;
+
+        //    SelectedMonster = null;
+        //    ableToSelectMonster = false;
+
+
+        //    StartGameSetting();
+        //    DrawGameBoardAttackerDefender();
+        //    RefreshMonsters();
+        //    RefreshCharacters();
+        //}
+
         private async void OnSelectedMonsterSelected(object sender, SelectedItemChangedEventArgs args)
         {
             if(ableToSelectMonster)
@@ -168,7 +208,11 @@ namespace WDown.Views.Battle
 
             // Draw the Game Board
             DrawGameBoardAttackerDefender();
-            _viewModel.SyncMonsterAndCharacterLists();
+            RefreshMonsters();
+            RefreshCharacters();
+
+            //used if im using an observable collection
+            //_viewModel.SyncMonsterAndCharacterLists();
 
 
             //updates current player up in frontend
@@ -276,20 +320,20 @@ namespace WDown.Views.Battle
 
         public void RefreshCharacters()
         {
-            //SelectedCharactersView.ItemsSource = null;
-            //SelectedCharactersView.ItemsSource = _viewModel.BattleEngine.CharacterList;
+            SelectedCharactersView.ItemsSource = null;
+            SelectedCharactersView.ItemsSource = _viewModel.BattleEngine.CharacterList;
           
-            SelectedCharactersView.ItemsSource = _viewModel.SelectedCharacters;
+            //SelectedCharactersView.ItemsSource = _viewModel.SelectedCharacters;
 
 
         }
 
         public void RefreshMonsters()
         {
-            //SelectedMonstersView.ItemsSource = null;
-            //SelectedMonstersView.ItemsSource = _viewModel.BattleEngine.MonsterList;
+            SelectedMonstersView.ItemsSource = null;
+            SelectedMonstersView.ItemsSource = _viewModel.BattleEngine.MonsterList;
 
-            SelectedMonstersView.ItemsSource = _viewModel.FightingMonsters;
+            //SelectedMonstersView.ItemsSource = _viewModel.FightingMonsters;
            
 
         }

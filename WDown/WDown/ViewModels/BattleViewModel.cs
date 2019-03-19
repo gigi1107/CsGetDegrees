@@ -332,6 +332,8 @@ namespace WDown.ViewModels
 
             try
             {
+
+
                 // SelectedCharacters, no need to change them.
 
                 // Reload the Character List from the Character View Moel
@@ -340,6 +342,21 @@ namespace WDown.ViewModels
                 foreach (var data in availableCharacters)
                 {
                     AvailableCharacters.Add(data);
+                }
+
+                //for refreshing characters and monsters on battle main page
+                SelectedCharacters.Clear();
+                var selectedChars = BattleEngine.CharacterList;
+                foreach (var data in selectedChars)
+                {
+                    SelectedCharacters.Add(data);
+                }
+
+                FightingMonsters.Clear();
+                var fightingMonsters = BattleEngine.MonsterList;
+                foreach (var data in fightingMonsters)
+                {
+                    FightingMonsters.Add(data);
                 }
             }
 

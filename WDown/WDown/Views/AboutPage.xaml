@@ -49,15 +49,7 @@
                     </Label>
                     <StackLayout x:Name="DateRoot" HorizontalOptions="CenterAndExpand" Orientation="Vertical">
                     </StackLayout>
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="About Page" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                   
                 </StackLayout>
             </StackLayout>
         </Grid>
