@@ -18,19 +18,23 @@
     
     <StackLayout HorizontalOptions = "CenterAndExpand"
                  VerticalOptions = "CenterAndExpand"
+                 Margin="20"
             >
         <Button Text="Character" Clicked="CharacterPageClicked"
-                HorizontalOptions = "End"
-                
+                WidthRequest="300"
+                Margin="20"
                  
                 BackgroundColor="#aa9cde" />
         <Button Text="Monster" Clicked="MonsterPageClicked" 
+                Margin="20"
                  
                 BackgroundColor="#aa9cde"/>
         <Button Text="Item" Clicked="ItemPageClicked"
+                Margin="20"
                  
                 BackgroundColor="#aa9cde" />
         <Button Text="Score" Clicked = "ScorePageClicked" 
+                Margin="20"
                  
                 BackgroundColor="#aa9cde" />
     </StackLayout>
