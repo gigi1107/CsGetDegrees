@@ -54,17 +54,19 @@ namespace WDown.GameEngine
         #endregion Properties
 
 
-            //force add some consumable Items to ItemPool for testing
-            /// <summary>
-            /// TESTING
-            /// </summary>
+            //force add some consumable Items to ItemPool to start off with
+          
 
         public void AddItemsToList()
         {
             var myItemsViewModel = ItemsViewModel.Instance;
             foreach (Item item in myItemsViewModel.Dataset)
             {
-                ItemPool.Add(item);
+                if(item.Wearable == false)
+                {
+                    ItemPool.Add(item);
+
+                }
 
             }
         }
