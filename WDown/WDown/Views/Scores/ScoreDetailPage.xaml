@@ -54,7 +54,7 @@
           <StackLayout Orientation="Vertical">
                 <Label Text="Characters at Death List" FontSize="Medium" HorizontalOptions="Start" />
                 <ListView x:Name="CharactersAtDeath" 
-                          ItemsSource="{Binding Data.CharacterAtDeathList}" 
+                          
                           VerticalOptions="FillAndExpand"
                           HasUnevenRows="true"
                           RefreshCommand="{Binding LoadItemsCommand}" 
@@ -63,37 +63,14 @@
                           CachingStrategy="RecycleElement" 
                           SelectionMode="None"
                           >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Margin="15">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Image Source="{Binding ImageURI}" 
-                                               HeightRequest="50" 
-                                               WidthRequest="50" />
-                                        <Label Text="Name: " 
-                                               HorizontalOptions="Center" 
-                                               FontSize="14" />
-                                        <Label Text="{Binding Name}"
-                                               FontSize="14" />
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Level: "
-                                               FontSize="14" />
-                                        <Label Text="{Binding Level}"
-                                               FontSize="14" />
-                                    </StackLayout>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
+                   
                 </ListView>
             </StackLayout>
          <StackLayout Orientation="Vertical">
                 <Label Text="Monsters Killed List"
                        FontSize="Medium" HorizontalOptions="Start" />
                 <ListView x:Name="MonstersKilled" 
-                          ItemsSource="{Binding Data.MonstersKilledList}"
+                         
                           VerticalOptions="FillAndExpand" 
                           HasUnevenRows="true"
                           RefreshCommand="{Binding LoadItemsCommand}" 
@@ -102,29 +79,7 @@
                           CachingStrategy="RecycleElement" 
                           SelectionMode="None"
                           >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Margin="15">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Image Source="{Binding ImageURI}" 
-                                               HeightRequest="50" 
-                                               WidthRequest="50" />
-                                        <Label Text="Name: " 
-                                               HorizontalOptions="Center" 
-                                               FontSize="14" />
-                                        <Label Text="{Binding Name}" 
-                                               FontSize="14" />
-                                    </StackLayout>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="Level: " FontSize="14" />
-                                        <Label Text="{Binding Level}" 
-                                               FontSize="14" />
-                                    </StackLayout>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
+                   
                 </ListView>
             </StackLayout>
             <StackLayout Orientation="Vertical">
@@ -132,7 +87,7 @@
                        FontSize="Medium" 
                        HorizontalOptions="Start" />
                 <ListView x:Name="ItemsDropped" 
-                          ItemsSource="{Binding Data.ItemsDroppedList}"
+                       
                           VerticalOptions="FillAndExpand"
                           HasUnevenRows="true"
                           RefreshCommand="{Binding LoadItemsCommand}" 
@@ -140,18 +95,16 @@
                           IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                           CachingStrategy="RecycleElement" 
                           SelectionMode="None">
-                    <ListView.ItemTemplate>
+                   <!-- <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Margin="15">
+                                <StackLayout Margin="5">
                                     <StackLayout Orientation="Horizontal">
-                                        <Image Source="{Binding ImageURI}"
-                                               HeightRequest="50"
-                                               WidthRequest="50" />
+                                        
                                         <Label Text="Name: " 
                                                HorizontalOptions="Center" 
                                                FontSize="14" />
-                                        <Label Text="{Binding Name}" 
+                                        <Label Text="" 
                                                FontSize="14" />
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
@@ -163,7 +116,7 @@
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
+                    </ListView.ItemTemplate>-->
                 </ListView>
             </StackLayout>
         </StackLayout>

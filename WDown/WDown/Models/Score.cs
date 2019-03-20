@@ -32,15 +32,15 @@ namespace WDown.Models
 
         // A list of all the characters at the time of death and their stats.  
         // Only use Get only, set will be done by the Add feature.
-        public List<Character> CharacterAtDeathList { get; set; }
+        public string CharacterAtDeathList { get; set; }
 
         // All of the monsters killed and their stats. 
         // Only use Get only, set will be done by the Add feature.
-        public List<Monster> MonstersKilledList { get; set; }
+        public string MonstersKilledList { get; set; }
 
         // All of the items dropped and their stats. 
         // Only use Get only, set will be done by the Add feature.
-        public List<Item> ItemsDroppedList { get; set; }
+        public string ItemsDroppedList { get; set; }
 
         // Instantiate new Score
         public Score()
@@ -65,9 +65,9 @@ namespace WDown.Models
             RoundCount = 0;
             MonsterSlainNumber = 0;
             ExperienceGainedTotal = 0;
-            CharacterAtDeathList = new List<Character>();
-            MonstersKilledList = new List<Monster>();
-            ItemsDroppedList = new List<Item>();
+            CharacterAtDeathList = "";
+            MonstersKilledList = "";
+            ItemsDroppedList = "";
         }
 
         public Score(Score newData)
@@ -123,14 +123,14 @@ namespace WDown.Models
         // Adding a character to the score output as a text string
         public bool AddCharacterToList( Character data)
         {
-            CharacterAtDeathList.Add(new Character(data));
+            CharacterAtDeathList += ", "+data.Name;
             return true;
         }
 
         // All a monster to the list of monsters and their stats
         public bool AddMonsterToList( Monster data)
         {
-            MonstersKilledList.Add(new Monster(data));
+            MonstersKilledList += ", " + data.Name;
             return true;
            
         }
@@ -138,7 +138,7 @@ namespace WDown.Models
         // Add an item to the list of items for score and their stats
         public bool AddItemToList( Item data)
         {
-            ItemsDroppedList.Add(new Item(data));
+            ItemsDroppedList += ", " + data.Name;
             return false;
 
         }

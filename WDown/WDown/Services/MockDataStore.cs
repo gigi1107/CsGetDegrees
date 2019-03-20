@@ -290,9 +290,9 @@ namespace WDown.Services
                 RoundCount = 3,
                 MonsterSlainNumber = 18,
                 ExperienceGainedTotal = 10000,
-                CharacterAtDeathList = new List<Character>(),
-                MonstersKilledList = new List<Monster>(),
-                ItemsDroppedList = new List<Item>(),
+                CharacterAtDeathList = "",
+                MonstersKilledList = "",
+                ItemsDroppedList = "",
                 Description = "First score"
 
             });
@@ -308,9 +308,9 @@ namespace WDown.Services
                 RoundCount = 4,
                 MonsterSlainNumber = 24,
                 ExperienceGainedTotal = 20000,
-                CharacterAtDeathList = new List<Character>(),
-                MonstersKilledList = new List<Monster>(),
-                ItemsDroppedList = new List<Item>(),
+                CharacterAtDeathList = "",
+                MonstersKilledList = "",
+                ItemsDroppedList = "",
                 Description = "Second Score"
 
             });
