@@ -106,7 +106,10 @@ namespace WDown.Views.Battle
          async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             if (args==null)
+            {
                 return;
+
+            }
 
             //set selectedItem to currently selected item on list
             var data = args.SelectedItem as WDown.Models.Item;

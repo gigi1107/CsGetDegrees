@@ -36,6 +36,11 @@
                         <Label x:Name="CPHPTotal" TextColor="White">
                         </Label>
                     </StackLayout>
+                         <StackLayout Orientation="Vertical">
+                    <Image x:Name="SelectedItemImage" WidthRequest="100" HeightRequest="100" />
+                    <Label x:Name="ItemDescription"  TextColor="White" />
+                   <Label x:Name="ItemEffectsLabel" TextColor="White" />
+                        </StackLayout>
                         </StackLayout>
                     <ScrollView>
                         <ListView x:Name="AvailableItemListView" 
@@ -60,8 +65,8 @@
                                             <StackLayout Orientation="Horizontal">
                                                 <Label Text="Value: " TextColor="White" />
                                                 <Label Text="{Binding Value}" TextColor="White" />
-                                                <Label Text="Attribute Modified: " />
-                                                <Label Text="{Binding Attribute}" />
+                                                <Label Text="Attribute Modified: " TextColor="White"/>
+                                                <Label Text="{Binding Attribute}" TextColor="White" />
                                             </StackLayout>
                                         </StackLayout>
                                     </ViewCell>
@@ -70,9 +75,7 @@
                         </ListView>
                     </ScrollView>
                     
-                    <Image x:Name="SelectedItemImage" WidthRequest="200" HeightRequest="200" />
-                    <Label x:Name="ItemDescription"  TextColor="White" />
-                   <Label x:Name="ItemEffectsLabel" TextColor="White" />
+                   
                 </StackLayout>
              
               
