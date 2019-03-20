@@ -18,61 +18,65 @@
                         <Label Text="Attack: " FontSize="Medium" TextColor="White" />
                         <Label x:Name="CPAttack" TextColor="White" />
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Defense" FontSize="Medium" TextColor="White">
-                        </Label>
-                        <Label x:Name="CPDefense" TextColor="White">
-                        </Label>
-                        <Label Text="Speed" FontSize="Medium" TextColor="White">
-                        </Label>
-                        <Label x:Name="CPSpeed" TextColor="White">
-                        </Label>
-                        <Label Text="Current Health: " FontSize="Medium" TextColor="White">
-                        </Label>
-                        <Label x:Name="CPHPCurr" TextColor="White">
-                        </Label>
-                        <Label Text="/ " FontSize="Medium" TextColor="White">
-                        </Label>
-                        <Label x:Name="CPHPTotal" TextColor="White">
-                        </Label>
+                        <!--<Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="250" Opacity="0.7">-->
+                            <StackLayout Orientation="Horizontal">
+
+                                <Label Text="Defense" FontSize="Medium" TextColor="White">
+                                </Label>
+                                <Label x:Name="CPDefense" TextColor="White">
+                                </Label>
+                                <Label Text="Speed" FontSize="Medium" TextColor="White">
+                                </Label>
+                                <Label x:Name="CPSpeed" TextColor="White">
+                                </Label>
+                                <Label Text="Current Health: " FontSize="Medium" TextColor="White">
+                                </Label>
+                                <Label x:Name="CPHPCurr" TextColor="White">
+                                </Label>
+                                <Label Text="/ " FontSize="Medium" TextColor="White">
+                                </Label>
+                                <Label x:Name="CPHPTotal" TextColor="White">
+                                </Label>
+                            </StackLayout>
                     </StackLayout>
-                        </StackLayout>
                     <ScrollView>
-                        <ListView x:Name="AvailableItemListView" 
+                        <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="500" Opacity="0.7">
+                            <ListView x:Name="AvailableItemListView" 
                                   VerticalOptions="FillAndExpand"
                                   HorizontalOptions="Fill" BackgroundColor="Transparent" 
                                   VerticalScrollBarVisibility="Default"
                                   HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" 
                                   IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
                                   CachingStrategy="RecycleElement" ItemSelected="OnItemSelected">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout Orientation="Vertical">
-                                            <StackLayout Orientation="Horizontal">
-                                                <Image Source="{Binding ImageURI}" HeightRequest="50" WidthRequest="50" />
-                                                <Label Text="{Binding Name}" TextColor="White" />
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Vertical">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image Source="{Binding ImageURI}" HeightRequest="50" WidthRequest="50" />
+                                                    <Label Text="{Binding Name}" TextColor="Black" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Description: " TextColor="Black" />
+                                                    <Label Text="{Binding Description}" TextColor="Black" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Value: " TextColor="Black" />
+                                                    <Label Text="{Binding Value}" TextColor="Black" />
+                                                    <Label Text="Attribute Modified: " />
+                                                    <Label Text="{Binding Attribute}" />
+                                                </StackLayout>
                                             </StackLayout>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label Text="Description: " TextColor="White" />
-                                                <Label Text="{Binding Description}" TextColor="White" />
-                                            </StackLayout>
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label Text="Value: " TextColor="White" />
-                                                <Label Text="{Binding Value}" TextColor="White" />
-                                                <Label Text="Attribute Modified: " />
-                                                <Label Text="{Binding Attribute}" />
-                                            </StackLayout>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Frame>
                     </ScrollView>
                     
                     <Image x:Name="SelectedItemImage" WidthRequest="200" HeightRequest="200" />
-                    <Label x:Name="ItemDescription"  TextColor="White" />
-                   <Label x:Name="ItemEffectsLabel" TextColor="White" />
+                    <Label x:Name="ItemDescription"  TextColor="Black" />
+                   <Label x:Name="ItemEffectsLabel" TextColor="Black" />
                 </StackLayout>
              
               
