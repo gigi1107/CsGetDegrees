@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
+using System.Diagnostics;
 
 using WDown.Models;
 using WDown.ViewModels;
-using System.Diagnostics;
+using WDown.Models.Enums;
+using System.Collections.ObjectModel;
+
+
 
 namespace WDown.GameEngine
 {
@@ -43,7 +46,7 @@ namespace WDown.GameEngine
         {
             ItemPool = new List<Item>();
             MonsterList.Clear();
-            MonsterList = new List<Monster>();
+            MonsterList = new ObservableCollection<Monster>();
 
         }
 

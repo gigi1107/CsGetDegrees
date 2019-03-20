@@ -7,6 +7,7 @@
                 <!--CHARACTERS-->
                 <ListView x:Name="SelectedCharactersView" 
                 ItemsSource="{Binding BattleEngine.CharacterList}"
+                 BackgroundColor="Transparent"
                 VerticalOptions="FillAndExpand"
                  HasUnevenRows="true"
                  RefreshCommand="{Binding LoadItemsCommand}"
@@ -68,8 +69,11 @@
                     </StackLayout>
                 </Frame>
                 <!--MONSTERS SECTION-->
+                
+             
                 <ListView x:Name="SelectedMonstersView"  
                           VerticalOptions="Start" 
+                          ItemsSource="{Binding BattleEngine.MonsterList}"
                          
                            
                           HorizontalOptions="StartAndExpand" 

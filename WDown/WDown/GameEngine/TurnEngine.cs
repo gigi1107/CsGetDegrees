@@ -31,7 +31,7 @@ namespace WDown.GameEngine
      
         public List<Item> ItemPool = new List<Item>();
 
-        public List<Monster> MonsterList = new List<Monster>();
+        public ObservableCollection<Monster> MonsterList = new ObservableCollection<Monster>();
         public ObservableCollection<Character> CharacterList = new ObservableCollection<Character>();
         public int DamageAmount = 0;
         public string AttackDescription;

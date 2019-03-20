@@ -7,10 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
+using System.Diagnostics;
 
+using WDown.Models;
+using WDown.ViewModels;
+using WDown.Models.Enums;
+using System.Collections.ObjectModel;
 using WDown.GameEngine;
 using WDown.ViewModels;
 using WDown.Models;
+using System.Collections.Specialized;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,7 +31,7 @@ namespace WDown.Views.Battle
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BattleMonsterListPage : ContentPage
         {
-            public List<WDown.Models.Monster> Datalist = new List<WDown.Models.Monster>();
+            public ObservableCollection<WDown.Models.Monster> Datalist = new ObservableCollection<WDown.Models.Monster>();
 
             private BattleViewModel _viewModel;
 

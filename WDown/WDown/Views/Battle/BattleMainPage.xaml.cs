@@ -57,53 +57,14 @@ namespace WDown.Views.Battle
             SelectedMonster = null;
             ableToSelectMonster = false;
            
-            
+
             StartGameSetting();
             DrawGameBoardAttackerDefender();
             RefreshMonsters();
             RefreshCharacters();
-            //_viewModel.SyncMonsterAndCharacterLists();
         }
 
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-
-        //    BindingContext = null;
-
-        //    if (ToolbarItems.Count > 0)
-        //    {
-        //        ToolbarItems.RemoveAt(0);
-        //    }
-
-        //    InitializeComponent();
-
-        //    if (_viewModel.BattleEngine.CharacterList.Count == 0 || _viewModel.BattleEngine.MonsterList.Count == 0)
-        //    {
-
-        //        _viewModel.LoadDataCommand.Execute(null);
-        //    }
-        //    else if (_viewModel.NeedsRefresh())
-        //    {
-        //        _viewModel.LoadDataCommand.Execute(null);
-        //    }
-
-        //    BindingContext = _viewModel;
-        //    //initialize button controls
-        //    //GameStartButton.IsVisible = true;
-        //    GameNextButton.IsVisible = false;
-
-        //    GameOverButton.IsVisible = false;
-
-        //    SelectedMonster = null;
-        //    ableToSelectMonster = false;
-
-
-        //    StartGameSetting();
-        //    DrawGameBoardAttackerDefender();
-        //    RefreshMonsters();
-        //    RefreshCharacters();
-        //}
+       
 
         private async void OnSelectedMonsterSelected(object sender, SelectedItemChangedEventArgs args)
         {
