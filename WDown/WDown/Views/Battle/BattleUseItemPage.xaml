@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WDown.Views.Battle.BattleUseItemPage">
@@ -14,7 +14,7 @@
                 <AbsoluteLayout>
 
                     <StackLayout>
-                        <Label Text=" Welcome to your Inventory!"
+                        <Label Text="Choose an Item to Consume"
                        FontSize="Large"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
@@ -30,9 +30,10 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <!-- Character photo & stats-->
-                            <Image x:Name="CharacterImage" Source="{Binding pickedCharacter.Data.ImageURI}"
+                            <Image x:Name="CPImage" 
                                    Grid.Row="0" Grid.Column="0"
                                    HeightRequest="150" WidthRequest="150" HorizontalOptions="Center"/>
+                            <Label x:Name="CPName" FontSize="Large" HorizontalOptions = "Center"/>
 
                             <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions="Start">
                                 <Grid.RowDefinitions>
@@ -49,49 +50,51 @@
                                 </Grid.ColumnDefinitions>
 
                                 <StackLayout Grid.Row="0" Grid.Column="0">
-                                    <Label Text="Attack" FontSize="Medium" TextColor="White"></Label>
-                                    <Label x:Name="CharacterAttack" Text="{Binding pickedCharacter.Data.Attribute.Attack}" TextColor="White"></Label>
+                                    <Label Text="Attack: " FontSize="Medium" TextColor="White"></Label>
+                                    <Label x:Name="CPAttack"  TextColor="White"></Label>
                                 </StackLayout>
 
                                 <StackLayout Grid.Row="0" Grid.Column="1" >
                                     <Label Text="Defense" FontSize="Medium" TextColor="White">
                                         
                                     </Label>
-                                    <Label x:Name="CharacterDefense" Text="{Binding pickedCharacter.Data.Attribute.Defense}" TextColor="White"></Label>
+                                    <Label x:Name="CPDefense"  TextColor="White"></Label>
                                 </StackLayout>
 
                                 <StackLayout Grid.Row="0" Grid.Column="2" >
                                     <Label Text="Speed" FontSize="Medium" TextColor="White"></Label>
-                                    <Label x:Name="CharacterSpeed" Text="{Binding pickedCharacter.Data.Attribute.Speed}" TextColor="White"></Label>
+                                    <Label x:Name="CPSpeed"  TextColor="White"></Label>
                                 </StackLayout>
 
                                 <StackLayout Grid.Row="0" Grid.Column="3" >
-                                    <Label Text="HP" FontSize="Medium" TextColor="White"></Label>
-                                    <Label x:Name="CharacterCurrentHealth" Text="{Binding pickedCharacter.Data.Attribute.CurrentHealth}" TextColor="White"></Label>
+                                    <Label Text="Current Health: " FontSize="Medium" TextColor="White"></Label>
+                                    <Label x:Name="CPHPCurr"  TextColor="White"></Label>
+                                    <Label Text="/ " FontSize="Medium" TextColor="White"></Label>
+                                    <Label x:Name="CPHPTotal"  TextColor="White"></Label>
+                                    
                                 </StackLayout>
+                                
+                                
 
-                                <StackLayout Grid.Row="0" Grid.Column="4" >
-                                    <Label Text="Name" FontSize="Medium" TextColor="White"></Label>
-                                    <Label x:Name="CharacterName" Text="{Binding pickedCharacter.Data.ExperienceTotal}" TextColor="White"></Label>
-                                </StackLayout>
+                                
                             </Grid>
                         </Grid>
 
                         <!-- item photo -->
-                        <Image x:Name="ItemImage" 
+                        <Image x:Name="SelectedItemImage" 
                        WidthRequest="200" HeightRequest="200"/>
 
                         <!-- item info -->
                         <StackLayout>
                             <Label x:Name="ItemDescription" Text="{Binding }" TextColor="White"/>
-                            <Label x:Name="ItemAffectsLabel" Text="{Binding }" TextColor="White"/>
+                            <Label x:Name="ItemEffectsLabel" Text="{Binding }" TextColor="White"/>
                         </StackLayout>
 
                         <!-- item picker 
                 <Picker x:Name="ItemSelectPicker" Title="Item Select" ItemsSource="{Binding AvailableItems}"/>-->
 
                         <ListView x:Name="AvailableItemListView"
-                          ItemsSource="{Binding AvailableItems}"
+                         
                           VerticalOptions="FillAndExpand"
                           HasUnevenRows="true"
                           RefreshCommand="{Binding LoadItemsCommand}"
@@ -112,11 +115,7 @@
                         <Button Text="Save" Clicked="SaveButtonClicked" />
                         <Button Text="Cancel" Clicked="CancelButtonClicked" />
 
-                        <!--<Button Text="Click for Sound" Clicked=" SoundTestClicked"/>-->
-                        <!--<MediaElement x:Name="myMediaElement"
-                            Height="10"
-                            Width="10"
-                            Source="/Resources/attack.mp3"/>-->
+                     
                         
 
                     </StackLayout>

@@ -165,31 +165,6 @@ namespace WDown.ViewModels
             {
                 FightingMonsters.Add(monster);
 
-                ////find curr monster in Fighting monsters list and update it
-
-                //Monster inQuestion = 
-                //if(inQuestion == null)
-                //{
-                //    FightingMonsters.Remove(monster);
-
-                //}
-                //else 
-                //{
-                //    inQuestion.MonsterAttribute.Attack = monster.MonsterAttribute.Attack;
-                //    inQuestion.MonsterAttribute.CurrentHealth = monster.MonsterAttribute.CurrentHealth;
-                //    inQuestion.MonsterAttribute.MaxHealth = monster.MonsterAttribute.MaxHealth;
-                //    inQuestion.MonsterAttribute.Defense = monster.MonsterAttribute.Defense;
-                //    inQuestion.MonsterAttribute.Speed = monster.MonsterAttribute.Speed;
-                //    inQuestion.Level = monster.Level;
-                //    inQuestion.Alive = monster.Alive;
-                //    inQuestion.Damage = monster.Damage;
-                //    inQuestion.ExperienceTotal = monster.ExperienceTotal;
-                //    inQuestion.ExperienceRemaining = monster.ExperienceRemaining;
-
-                //    //TODO sync items too
-                //}
-
-
 
             }
 

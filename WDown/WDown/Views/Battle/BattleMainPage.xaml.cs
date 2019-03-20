@@ -23,6 +23,7 @@ namespace WDown.Views.Battle
 
         BattleCharacterSelectPage _myModalCharacterSelectPage;
         BattleMonsterListPage _myModalBattleMonsterListPage;
+        BattleUseItemPage _myModalUseItemPage;
 
         private BattleViewModel _viewModel;
 
@@ -420,7 +421,7 @@ namespace WDown.Views.Battle
 
 
         }
-        public async void UseItemClicked(object sender, EventArgs args)
+        public async void ShowUseItemModal(object sender, EventArgs args)
         {
             //var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
             //string filename1 = "item.mp3";
@@ -429,10 +430,13 @@ namespace WDown.Views.Battle
             //player1.Play();
 
             Debug.WriteLine("Switching to Item Pool...");
-            await Navigation.PushAsync(new BattleUseItemPage(_viewModel));
+            WDown.App.Current.ModalPopping += HandleModalPopping;
+            _myModalUseItemPage = new BattleUseItemPage(_viewModel);
+            await Navigation.PushModalAsync(_myModalUseItemPage);
 
         }
-            private void HandleModalPopping(object sender, ModalPoppingEventArgs e)
+
+        private void HandleModalPopping(object sender, ModalPoppingEventArgs e)
         {
             if (e.Modal == _myModalBattleMonsterListPage)
             {
@@ -449,6 +453,12 @@ namespace WDown.Views.Battle
                 // remember to remove the event handler
                 WDown.App.Current.ModalPopping -= HandleModalPopping;
             }
+
+            if(e.Modal == _myModalUseItemPage)
+            {
+                _myModalUseItemPage = null;
+                WDown.App.Current.ModalPopping -= HandleModalPopping;
+            }
         }
 
         private async void ShowModalPageMonsterList()
@@ -460,7 +470,7 @@ namespace WDown.Views.Battle
             await Navigation.PushModalAsync(_myModalBattleMonsterListPage);
         }
 
-        private async void ShowModalPageCharcterSelect()
+        private async void ShowModalPageCharacterSelect()
         {
             // When you want to show the modal page, just call this method
             // add the event handler for to listen for the modal popping event:

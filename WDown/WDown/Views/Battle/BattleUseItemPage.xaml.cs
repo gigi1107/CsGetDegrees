@@ -17,55 +17,72 @@ namespace WDown.Views.Battle
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BattleUseItemPage : ContentPage
     {
-        public List<WDown.Models.Item> Datalist = new List<WDown.Models.Item>();
-        //ISimpleAudioPlayer player = CrossSimpleAudioPlayer.Current;
+
+        List<Item> items = new List<Item>();
+
+        Item selectedItem = null;
+
         private BattleViewModel _viewModel;
+
         // Initialize page and populate buttons
         public BattleUseItemPage(BattleViewModel viewModel)
         {
             InitializeComponent();
             BindingContext = _viewModel = viewModel;
-
-            //CharacterImage.Source = BattleViewModel.Instance.currentPlayerURI;
-            //CharacterAttack.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerAttack);
-            //CharacterDefense.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerDefense);
-            //CharacterSpeed.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerSpeed);
-            //CharacterName.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerName);
-            //CharacterCurrentHealth.Text = String.Format("{0}", BattleViewModel.Instance.currentPlayerHPTotal);
+            ShowPlayerStats();
+            //grab the itemslist from battle engine where the item is not wearable
+            items = _viewModel.BattleEngine.ItemPool.Where(x => !x.Wearable).ToList();
         }
-        //public void SoundTestClicked(object sender, EventArgs e)
-        //{
-        //    var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-        //    player1.Load(GetStreamFromFile("attack.mp3"));
-        //    player1.Play();
-        //}
 
-        //public Stream GetStreamFromFile(string filename)
-        //{
-        //    var assembly = typeof(App).GetTypeInfo().Assembly;
-        //    var stream = assembly.GetManifestResourceStream("DrumPad." + filename);
 
-        //    return stream;
-        //}
-        public async void SaveButtonClicked(object sender, EventArgs e)
+        public void ShowPlayerStats()
         {
-            //await Navigation.PushModalAsync(new ItemLocationSelectPage());
+            CPName.Text = _viewModel.BattleEngine.PlayerCurrent.Name;
+            CPImage.Source = _viewModel.BattleEngine.PlayerCurrent.ImageURI;
+            CPHPCurr.Text = _viewModel.BattleEngine.PlayerCurrent.RemainingHP.ToString();
+            CPHPTotal.Text = _viewModel.BattleEngine.PlayerCurrent.TotalHP.ToString();
+            CPAttack.Text = _viewModel.BattleEngine.PlayerCurrent.Attack.ToString();
+            CPDefense.Text = _viewModel.BattleEngine.PlayerCurrent.Defense.ToString();
+            CPSpeed.Text = _viewModel.BattleEngine.PlayerCurrent.Speed.ToString();
+
+            AvailableItemListView.ItemsSource = items;
         }
 
-        public async void CancelButtonClicked(object sender, EventArgs e)
+
+        async void SaveButtonClicked(object sender, EventArgs e)
+        {
+
+            //consume item
+            //pop item off list
+            //heal character or whatever
+            //pop modal page
+
+            if(selectedItem == null)
+            {
+               await Navigation.PopModalAsync();
+            }
+
+
+        }
+
+        async void CancelButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
 
-        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             if (!(args.SelectedItem is Item item))
                 return;
 
-            ItemDescription.Text = String.Format("{0}", item.Description);
-            ItemAffectsLabel.Text = String.Format("This item affects {0} with value {1}", item.Attribute.ToString(), item.Value.ToString());
+            var data = args.SelectedItem as WDown.Models.Item;
+            selectedItem = data;
 
-            ItemImage.Source = item.ImageURI;
+            ItemDescription.Text = String.Format("{0}", item.Description);
+            ItemEffectsLabel.Text = String.Format("This item affects {0} with value {1}", item.Attribute.ToString(), item.Value.ToString());
+
+            SelectedItemImage.Source = selectedItem.ImageURI;
+
         }
 
         
