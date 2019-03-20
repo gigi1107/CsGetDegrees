@@ -73,12 +73,12 @@ namespace WDown.Services
             {
                 Name = "Magical Dew",
                 Location = ItemLocationEnum.Unknown,
-                Description = "Regenerates Wisdom points. ",
+                Description = "Regenerates Health points when consumed. ",
                 Value = 1,
                 Range = 0,
                 Damage = 0,
                 Wearable = false,
-                Attribute = AttributeEnum.Unknown,
+                Attribute = AttributeEnum.CurrentHealth,
                 ImageURI = "https://i.imgur.com/YTAxFyn.png"
             });
 
