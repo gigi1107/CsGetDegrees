@@ -39,6 +39,13 @@
                                 </Label>
                             </StackLayout>
                     </StackLayout>
+                    <StackLayout Orientation="Vertical">
+   
+                            <Image x:Name="SelectedItemImage" WidthRequest="100" HeightRequest="100" />
+                            <Label x:Name="ItemDescription"  TextColor="White" />
+                            <Label x:Name="ItemEffectsLabel" TextColor="White" />
+                        
+                    </StackLayout>
                     <ScrollView>
                         <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="500" Opacity="0.7">
                             <ListView x:Name="AvailableItemListView" 
@@ -74,9 +81,6 @@
                         </Frame>
                     </ScrollView>
                     
-                    <Image x:Name="SelectedItemImage" WidthRequest="200" HeightRequest="200" />
-                    <Label x:Name="ItemDescription"  TextColor="Black" />
-                   <Label x:Name="ItemEffectsLabel" TextColor="Black" />
                 </StackLayout>
              
               
