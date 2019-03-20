@@ -147,7 +147,7 @@ namespace WDown.Services
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/pNTXqMH.png",
                 //Wisdom = 2,
-                CharacterAttribute = new AttributeBase(3, 4, 2, 6, 6,5,5),
+                CharacterAttribute = new AttributeBase(3, 4, 2, 12, 12),
                 LoveInterest = "Clover"
             });
 
@@ -161,7 +161,7 @@ namespace WDown.Services
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/lcTjFJ1.png",
                 //Wisdom = 2,
-                CharacterAttribute = new AttributeBase(1, 2, 2, 7, 7, 8, 8),
+                CharacterAttribute = new AttributeBase(4, 2, 4, 8, 8),
                 LoveInterest = "Vilthuril"
             });
 
@@ -175,7 +175,7 @@ namespace WDown.Services
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/rB0yLge.png",
                 //Wisdom = 2,
-                CharacterAttribute = new AttributeBase(3, 2, 3, 6, 6, 5, 5),
+                CharacterAttribute = new AttributeBase(5, 7, 3, 9, 9),
                 LoveInterest = "Hazel"
 
             });
@@ -190,7 +190,7 @@ namespace WDown.Services
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/kIH4UtV.jpg",
                 //Wisdom = 2,
-                CharacterAttribute = new AttributeBase(4, 4, 3, 6, 6, 5, 5),
+                CharacterAttribute = new AttributeBase(5, 4, 3,  14, 14),
                 LoveInterest = "None"
             });
 
@@ -203,7 +203,7 @@ namespace WDown.Services
                 ExperienceTotal = 0,
                 ImageURI = "https://i.imgur.com/0uaVKml.jpg",
                 //Wisdom = 2,
-                CharacterAttribute = new AttributeBase(3, 4, 2, 6, 6, 5, 5),
+                CharacterAttribute = new AttributeBase(10, 4, 2,15, 15),
                 LoveInterest = "Strawberry"
 
 
@@ -218,7 +218,7 @@ namespace WDown.Services
                 Description = "The house cat is one of the most ferocious hunters of rabbits. Its deadly" +
                 "claws and extreme agility makes it second most dangerous enemy, after the house dog.",
                 Level = 1,
-                MonsterAttribute = new AttributeBase(3,1,2,5,5,3,3),
+                MonsterAttribute = new AttributeBase(3,1,2,3,3),
                 ImageURI = "https://i.imgur.com/EamWXas.png",
                 UniqueItem = "Tree Bark",
                 UniqueDropRate = 0.5
@@ -230,7 +230,7 @@ namespace WDown.Services
                 Name = "Dog",
                 Description = "Trained to hunt, the Rottweiler is an extremely hostile enemy of the rabbits.",
                 Level = 1,
-                MonsterAttribute = new AttributeBase(4, 2, 2, 6, 6,5,5),
+                MonsterAttribute = new AttributeBase(4, 2, 2,5,5),
                 ImageURI = "https://i.imgur.com/OnGOYw9.png",
                 UniqueItem = "Collar of Transcendence",
                 UniqueDropRate = 0.3
@@ -242,7 +242,7 @@ namespace WDown.Services
                 Name = "Bird",
                 Description = "Fast and unpredictable creatures with wings that pose great harm to the warren.",
                 Level = 1,
-                MonsterAttribute = new AttributeBase(1, 2, 2, 7, 7, 8, 8),
+                MonsterAttribute = new AttributeBase(1, 2, 2, 7, 7),
                 ImageURI = "https://i.imgur.com/PirEPrm.png",
                 UniqueItem = "Rope",
                 UniqueDropRate = 0.4
@@ -256,7 +256,7 @@ namespace WDown.Services
                 " Mallow after Bigwig leads the carnivore away from Hazel and his group," +
                 " unintentionally leading it to an Efrafa Wide Patrol. ",
                 Level = 1,
-                MonsterAttribute = new AttributeBase(1, 2, 2, 7, 7, 8, 8),
+                MonsterAttribute = new AttributeBase(1, 2, 2, 7, 7),
                 ImageURI = "https://i.imgur.com/K8M7L7E.png",
                 UniqueItem = "Collar of Transcendence",
                 UniqueDropRate = 0.3
@@ -271,7 +271,7 @@ namespace WDown.Services
                 "He is an arrogant, cruel, bloodthirsty and viciously ruthless Chief rabbit, and will " + 
                 "execute anyone who gets in his way, or disobey him at Efrafa.",
                 Level = 1,
-                MonsterAttribute = new AttributeBase(1, 2, 2, 7, 7, 8, 8),
+                MonsterAttribute = new AttributeBase(1, 2, 2, 7, 7),
                 ImageURI = "https://i.imgur.com/QTJzhFI.png",
                 UniqueItem = "Champion Cup",
                 UniqueDropRate = 1.0

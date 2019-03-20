@@ -17,10 +17,12 @@ namespace WDown.Models
         // Maximum level a character can get up to
         private const int MAX_LEVEL = 20;
         // Amount of Wisdom points cost for each time Character decides to Rest
-        private const int REST_COST = 3; 
+        private const int TOTAL_REST_ALLOWED = 2;
         // Attribute class 
         public AttributeBase CharacterAttribute { get; set; }
 
+        public int RestCount { get; set; }
+       
         // Default constructor
         public Character()
         {
@@ -632,21 +634,15 @@ namespace WDown.Models
         // by accumulating and using a lot of Wisdom-based items, or by levelling up 
         public bool Rest()
         {
-            CharacterAttribute.CurrentHealth = CharacterAttribute.MaxHealth;
-
-            var currWisdom = CharacterAttribute.CurrentWisdom;
-            if (currWisdom < REST_COST)
+            if (RestCount - TOTAL_REST_ALLOWED <= 0)
             {
                 return false;
             }
-                
-             else
-            {
-                CharacterAttribute.CurrentWisdom = CharacterAttribute.CurrentWisdom - REST_COST;
-                return true;
-            }
-            
-    
+            CharacterAttribute.CurrentHealth = CharacterAttribute.MaxHealth;
+            RestCount++;
+
+            return true;
+
         }
     }
 }

@@ -42,7 +42,9 @@ namespace WDown.GameEngine
         private void ClearLists()
         {
             ItemPool = new List<Item>();
+            MonsterList.Clear();
             MonsterList = new List<Monster>();
+
         }
 
         // Start the round, need to get the ItemPool, and Characters
@@ -428,7 +430,16 @@ namespace WDown.GameEngine
 
             return null;
         }
-
+        public void PrintItemsFromPool(List<Item> pool)
+        {
+            var output = "";
+            foreach (var item in pool)
+            {
+                var itemName = item.Name;
+                output += itemName + "\n";
+            }
+            Debug.WriteLine(output);
+        }
         public void PickupItemsFromPool(Character character)
         {
             // Have the character, walk the items in the pool, and decide if any are better than current one.
@@ -439,6 +450,7 @@ namespace WDown.GameEngine
                 return;
             }
 
+            // If there is at least one item...
             GetItemFromPoolIfBetter(character, ItemLocationEnum.Head);
             GetItemFromPoolIfBetter(character, ItemLocationEnum.Necklass);
             GetItemFromPoolIfBetter(character, ItemLocationEnum.PrimaryHand);
