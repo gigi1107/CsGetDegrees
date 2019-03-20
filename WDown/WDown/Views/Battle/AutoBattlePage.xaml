@@ -19,11 +19,16 @@
             <Button Text="Begin AutoBattle"
                     BackgroundColor="#aa9cde"
                     Clicked="AutoBattleButton_Command"
+                    WidthRequest="300"
+                    Padding="20"
+                    Margin="20"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"/>
             <Button Text="Cancel"
                     Clicked="Cancel_Clicked"
-                    HorizontalOptions="Center"/>
+                    HorizontalOptions="Center"
+                    BackgroundColor="#aa9cde"
+                    WidthRequest="300"/>
             </StackLayout>
             </AbsoluteLayout>
     </ContentPage.Content>

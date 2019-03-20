@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="WDown.Views.GameOpeningPage" Title="Game">
     <ContentPage.Content>
+         <AbsoluteLayout 
+             BackgroundColor="Black"
+             Padding="0,4,0,4"
+            >
+            <Image 
+                 Aspect="AspectFill" 
+                 AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All"
+                 Source="https://imgur.com/5GwqdrU.png"
+                 BackgroundColor="White"
+                
+                />
         <ScrollView>
             <StackLayout Padding="0">
                 <Label Text="Watership Down" HorizontalOptions="Center" FontSize="Large" />
-                <Label Text="the game" HorizontalOptions="Center" FontSize="Small" />
+               
                 <StackLayout Padding="0"
                              Margin = "0">
                 
                     <Image Source="http://www.claretwalker.com/wp-content/uploads/IMG_3000-1.jpg"
-                           HeightRequest = "250"/>
+                           HeightRequest = "200"/>
                     </StackLayout>
-                    <Button Text="Auto Battle"
-                            Clicked="AutoBattle_Clicked"/>
-                    <Button Text="Regular Battle"
+                   <Button Text="Regular Battle"
+                           BackgroundColor="#aa9cde"
                             Clicked="RegularBattle_Clicked"/>
+                    <Button Text="Auto Battle"
+                            BackgroundColor="#aa9cde"
+                            Clicked="AutoBattle_Clicked"/>
+                 
                  
                   
               
             </StackLayout>
         </ScrollView>
+            </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

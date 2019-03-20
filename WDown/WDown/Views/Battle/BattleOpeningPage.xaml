@@ -3,18 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WDown.Views.Battle.BattleOpeningPage">
     <ContentPage.Content>
+         
         <ScrollView>
             <StackLayout Padding="10">
-                <Label Text="Welcome to our Watership Down Game" HorizontalOptions="Center" FontSize="Large" />
-                <Label Text="STARTING REGULAR BATTLE..." HorizontalOptions="Center" FontSize="Small" />
+                <Label Text="Welcome to our Watership Down Game" HorizontalOptions="Center" 
+                       FontSize="Large"
+                      />
+                
+                <Label Text="STARTING REGULAR BATTLE..." HorizontalOptions="Center" FontSize="Small" 
+                        Margin="20"/>
                 <StackLayout Padding="0"
-                             Margin = "0">
+                              Margin="0">
 
                     <Image Source="http://www.claretwalker.com/wp-content/uploads/IMG_3000-1.jpg"
-                           HeightRequest = "250"/>
+                           HeightRequest = "200"/>
                 </StackLayout>
                 <Button Text="Let's start with Selecting your Party!"
-                            Clicked="Character_Select_Clicked"/>
+                            Clicked="Character_Select_Clicked"
+                        BackgroundColor="#aa9cde"
+                        />
                 <Image Source="https://www.solec.org/wp-content/uploads/2015/02/icon-horizontal.png"
                        WidthRequest = "100"
                        HeightRequest = "100"/>
@@ -23,5 +30,6 @@
 
             </StackLayout>
         </ScrollView>
+           
     </ContentPage.Content>
 </ContentPage>
