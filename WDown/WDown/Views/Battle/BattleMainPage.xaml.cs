@@ -40,7 +40,15 @@ namespace WDown.Views.Battle
 
             BindingContext = _viewModel = viewModel;
 
-            
+            //FOR DEBUGGING PURPOSES
+            _viewModel.BattleEngine.AddItemsToList();
+
+            Debug.WriteLine("Items added to list in mainpage: ");
+            foreach(Item item in _viewModel.BattleEngine.ItemPool)
+            {
+                Debug.WriteLine(item.Name);
+            }
+
             //initialize button controls
             //GameStartButton.IsVisible = true;
             GameNextButton.IsVisible = false;

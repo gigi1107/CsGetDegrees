@@ -29,11 +29,10 @@ namespace WDown.GameEngine
         public BattleMessages BattleMessages = new BattleMessages();
 
 
-        //TODO put in number of rests allowed
-        public int RestCountRemaining = 3;
+     
         public List<Item> ItemPool = new List<Item>();
 
-        //public List<Item> ItemList = new List<Item>();
+
 
         public List<Monster> MonsterList = new List<Monster>();
         public List<Character> CharacterList = new List<Character>();
@@ -54,6 +53,21 @@ namespace WDown.GameEngine
         // Turn Over
         #endregion Properties
 
+
+            //force add some consumable Items to ItemPool for testing
+            /// <summary>
+            /// TESTING
+            /// </summary>
+
+        public void AddItemsToList()
+        {
+            var myItemsViewModel = ItemsViewModel.Instance;
+            foreach (Item item in myItemsViewModel.Dataset)
+            {
+                ItemPool.Add(item);
+
+            }
+        }
 
         // Character Attacks...
         public bool TakeTurn(Character Attacker)

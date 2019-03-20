@@ -103,8 +103,7 @@ namespace WDown.GameEngine
             {
                 return false;
             }
-            //set Restcountremaining
-            RestCountRemaining = 2;
+           
 
             return true;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using WDown.ViewModels;
@@ -18,7 +19,7 @@ namespace WDown.Views.Battle
     public partial class BattleUseItemPage : ContentPage
     {
 
-        List<Item> items = new List<Item>();
+        //List<Item> items = new List<Item>();
 
         Item selectedItem = null;
 
@@ -29,9 +30,10 @@ namespace WDown.Views.Battle
         {
             InitializeComponent();
             BindingContext = _viewModel = viewModel;
+
             ShowPlayerStats();
             //grab the itemslist from battle engine where the item is not wearable
-            items = _viewModel.BattleEngine.ItemPool.Where(x => !x.Wearable).ToList();
+           
         }
 
 
@@ -45,7 +47,15 @@ namespace WDown.Views.Battle
             CPDefense.Text = _viewModel.BattleEngine.PlayerCurrent.Defense.ToString();
             CPSpeed.Text = _viewModel.BattleEngine.PlayerCurrent.Speed.ToString();
 
-            AvailableItemListView.ItemsSource = items;
+            AvailableItemListView.ItemsSource = _viewModel.BattleEngine.ItemPool;
+
+
+            Debug.WriteLine("Now the Items list in the backend to compare: ");
+            foreach (Item item in _viewModel.BattleEngine.ItemPool)
+            {
+                Debug.WriteLine(item.Name);
+            }
+
         }
 
 
@@ -78,10 +88,10 @@ namespace WDown.Views.Battle
             var data = args.SelectedItem as WDown.Models.Item;
             selectedItem = data;
 
-            ItemDescription.Text = String.Format("{0}", item.Description);
-            ItemEffectsLabel.Text = String.Format("This item affects {0} with value {1}", item.Attribute.ToString(), item.Value.ToString());
+            //ItemDescription.Text = String.Format("{0}", item.Description);
+            //ItemEffectsLabel.Text = String.Format("This item affects {0} with value {1}", item.Attribute.ToString(), item.Value.ToString());
 
-            SelectedItemImage.Source = selectedItem.ImageURI;
+            //SelectedItemImage.Source = selectedItem.ImageURI;
 
         }
 
