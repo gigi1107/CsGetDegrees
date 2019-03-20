@@ -1,8 +1,10 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Collections.Generic;
 using WDown.Views;
 using WDown.Models;
 using WDown.ViewModels;
@@ -21,7 +23,7 @@ namespace WDown.Views.Scores
         List<string> itemsDropped = new List<string>();
 
     
-
+        // Initialize with data from viewModel
         public ScoreDetailPage(ScoreDetailViewModel viewModel)
         {
             InitializeComponent();
@@ -43,11 +45,12 @@ namespace WDown.Views.Scores
             }
 
         }
-
+        // Initializing page
         public ScoreDetailPage()
         {
             InitializeComponent();
 
+            // Default
             var data = new Score
             {
                 Name = "Score name",
@@ -59,6 +62,7 @@ namespace WDown.Views.Scores
             setBindingsForLists();
         }
 
+        // Bind with data from battle
         public void setBindingsForLists()
         {
             CharactersAtDeath.ItemsSource = characterAtDeath;
@@ -66,24 +70,29 @@ namespace WDown.Views.Scores
             ItemsDropped.ItemsSource = itemsDropped;
         }
 
+        // Allow users to edit score 
         private async void Edit_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ScoreEditPage(_viewModel));
         }
 
+        // Allow users to delete this Score 
         private async void Delete_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ScoreDeletePage(_viewModel));
         }
 
+        // Cancel and go back to last page
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
-        async void Return_To_Main_Battle_Screen(object sender, EventArgs e)
+        // Allow users to exit Score Detail Page and go back to Battle
+        private async void Return_To_Main_Battle_Screen(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BattleOpeningPage());
+            await Navigation.PushModalAsync(new NavigationPage(new GameOpeningPage()));
+            
         }
     }
 }

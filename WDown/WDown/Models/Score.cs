@@ -55,7 +55,8 @@ namespace WDown.Models
 
             Description = "This is a Score.";
 
-            ImageURI = "https://i.imgur.com/DeFwZPA.png";
+            // Default image always
+            ImageURI = "https://i.imgur.com/Zf3db6g.png";
 
             BattleNumber = 0;
             ScoreTotal = 0;

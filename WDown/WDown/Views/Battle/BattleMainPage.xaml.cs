@@ -244,9 +244,11 @@ namespace WDown.Views.Battle
 
                 // Show name of current player
                 ShowModalPageMonsterList();
+
+                // BUG HERE IF THERE IS NO MONSTER LEFT AFTER KILLED ALL 
                 Debug.WriteLine("current player: " + _viewModel.BattleEngine.PlayerCurrent.Name);
 
-
+                
 
                 if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
                 {
@@ -359,7 +361,7 @@ namespace WDown.Views.Battle
         {
             Debug.WriteLine("Message: " + message);
 
-            MessageText.Text = message + "\n" + MessageText.Text;
+            MessageText.Text = message + " \n" + MessageText.Text;
         }
 
         /// <summary>

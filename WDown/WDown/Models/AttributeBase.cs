@@ -28,11 +28,8 @@ namespace WDown.Models
         // Maximum HP
         public int MaxHealth { get; set; }
 
-        // Wisdom to use Rest
-        public int CurrentWisdom { get; set; }
         
-        // Maximum Wisdom
-        public int Wisdom { get; set; }
+
 
 
         public string FormatOutput()
@@ -58,15 +55,14 @@ namespace WDown.Models
         }
 
         public AttributeBase(int speed, int defense, int attack,
-        int currentHealth, int maxHealth, int currentWisdom, int maxWisdom)
+        int currentHealth, int maxHealth)
         {
             Speed = speed;
             Defense = defense;
             Attack = attack;
             CurrentHealth = currentHealth;
             MaxHealth = maxHealth;
-            CurrentWisdom = currentWisdom;
-            Wisdom = maxWisdom;
+
         }
 
         public int getSpeed() { return Speed; }
@@ -74,8 +70,6 @@ namespace WDown.Models
         public int getAttack() { return Attack; }
         public int getCurrentHealth() { return CurrentHealth; }
         public int getMaxHealth() { return MaxHealth; }
-        public int getCurrentWisdom() { return CurrentWisdom; }
-        //public int getMaxWisdom { return Wisdom; }
 
         // Return attributebase based on a string as the constructor.
         public AttributeBase(string data)
