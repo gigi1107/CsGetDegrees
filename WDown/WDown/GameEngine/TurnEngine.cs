@@ -7,6 +7,7 @@ using System.Diagnostics;
 using WDown.Models;
 using WDown.ViewModels;
 using WDown.Models.Enums;
+using System.Collections.ObjectModel;
 
 namespace WDown.GameEngine
 {
@@ -31,7 +32,7 @@ namespace WDown.GameEngine
         public List<Item> ItemPool = new List<Item>();
 
         public List<Monster> MonsterList = new List<Monster>();
-        public List<Character> CharacterList = new List<Character>();
+        public ObservableCollection<Character> CharacterList = new ObservableCollection<Character>();
         public int DamageAmount = 0;
         public string AttackDescription;
         public PlayerInfo CurrentAttacker;

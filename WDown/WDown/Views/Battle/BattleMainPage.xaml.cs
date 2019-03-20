@@ -37,7 +37,6 @@ namespace WDown.Views.Battle
         {
             InitializeComponent();
 
-
             BindingContext = _viewModel = viewModel;
 
             //Adds consumable items for chars to use
@@ -335,8 +334,6 @@ namespace WDown.Views.Battle
             SelectedCharactersView.ItemsSource = _viewModel.BattleEngine.CharacterList;
           
             //SelectedCharactersView.ItemsSource = _viewModel.SelectedCharacters;
-
-
         }
 
         public void RefreshMonsters()
@@ -416,7 +413,7 @@ namespace WDown.Views.Battle
 
             _viewModel.BattleEngine.PlayerCurrent.RemainingHP = _viewModel.BattleEngine.PlayerCurrent.TotalHP;
 
-            Models.Character character =  _viewModel.BattleEngine.CharacterList.Find(x => x.Name == _viewModel.BattleEngine.PlayerCurrent.Name);
+            Models.Character character =  _viewModel.BattleEngine.CharacterList.FirstOrDefault(x => x.Name == _viewModel.BattleEngine.PlayerCurrent.Name);
 
             foreach(Models.Character c in _viewModel.BattleEngine.CharacterList)
             {
@@ -426,9 +423,6 @@ namespace WDown.Views.Battle
                 }
             }
             Debug.WriteLine("current player's HP: "+_viewModel.BattleEngine.PlayerCurrent.RemainingHP);
-
-
-
 
         }
         public async void ShowUseItemModal(object sender, EventArgs args)
