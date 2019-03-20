@@ -38,7 +38,13 @@
                     </StackLayout>
                         </StackLayout>
                     <ScrollView>
-                        <ListView x:Name="AvailableItemListView" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" BackgroundColor="Transparent" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="OnItemSelected">
+                        <ListView x:Name="AvailableItemListView" 
+                                  VerticalOptions="FillAndExpand"
+                                  HorizontalOptions="Fill" BackgroundColor="Transparent" 
+                                  VerticalScrollBarVisibility="Default"
+                                  HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" 
+                                  IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                                  CachingStrategy="RecycleElement" ItemSelected="OnItemSelected">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>

@@ -40,7 +40,7 @@ namespace WDown.Views.Battle
 
             BindingContext = _viewModel = viewModel;
 
-            //FOR DEBUGGING PURPOSES
+            //Adds consumable items for chars to use
             _viewModel.BattleEngine.AddItemsToList();
 
             Debug.WriteLine("Items added to list in mainpage: ");
