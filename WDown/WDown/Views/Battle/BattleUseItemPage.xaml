@@ -69,16 +69,15 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </ScrollView>
+                    
+                    <Image x:Name="SelectedItemImage" WidthRequest="200" HeightRequest="200" />
+                    <Label x:Name="ItemDescription"  TextColor="White" />
+                   <Label x:Name="ItemEffectsLabel" TextColor="White" />
                 </StackLayout>
-                <!-- item photo -->
-                <!--                    <Image x:Name="SelectedItemImage" WidthRequest="200" HeightRequest="200" />
--->
-                <!-- item info -->
-                <!--StackLayout>
-                        <Label x:Name="ItemDescription" Text="{Binding }" TextColor="White" />
-                        <Label x:Name="ItemEffectsLabel" Text="{Binding }" TextColor="White" />
-                    </StackLayout>
-                </StackLayout>-->
+             
+              
+
+            
             </StackLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

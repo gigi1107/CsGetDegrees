@@ -72,6 +72,29 @@ namespace WDown.Views.Battle
                await Navigation.PopModalAsync();
             }
 
+            //else
+            //vonsume item
+            //for now, all the consumables will jus trestore you to full health
+            int value = selectedItem.Value;
+            AttributeEnum modifiedAttr = selectedItem.Attribute;
+
+            if (modifiedAttr == AttributeEnum.CurrentHealth)
+            {
+                _viewModel.BattleEngine.PlayerCurrent.RemainingHP = _viewModel.BattleEngine.PlayerCurrent.TotalHP;
+                //also find current character in the character list and update it
+                foreach(Models.Character character in _viewModel.BattleEngine.CharacterList)
+                {
+                    if (character.Name == _viewModel.BattleEngine.PlayerCurrent.Name)
+                    {
+                        character.CharacterAttribute.CurrentHealth = character.CharacterAttribute.MaxHealth;
+                        Debug.WriteLine("Character has been healed to full health");
+                    }
+                }
+            }
+
+            await Navigation.PopModalAsync();
+
+            
 
         }
 
@@ -82,16 +105,19 @@ namespace WDown.Views.Battle
 
          async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            if (!(args.SelectedItem is Item item))
+            if (args==null)
                 return;
 
+            //set selectedItem to currently selected item on list
             var data = args.SelectedItem as WDown.Models.Item;
             selectedItem = data;
 
-            //ItemDescription.Text = String.Format("{0}", item.Description);
-            //ItemEffectsLabel.Text = String.Format("This item affects {0} with value {1}", item.Attribute.ToString(), item.Value.ToString());
 
-            //SelectedItemImage.Source = selectedItem.ImageURI;
+
+            ItemDescription.Text = String.Format("{0}", selectedItem.Description);
+            ItemEffectsLabel.Text = String.Format("This item affects {0} with value {1}", selectedItem.Attribute.ToString(), selectedItem.Value.ToString());
+
+            SelectedItemImage.Source = selectedItem.ImageURI;
 
         }
 
