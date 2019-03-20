@@ -25,18 +25,15 @@ namespace WDown.GameEngine
         #region Properties
         // Holds the official score
         public Score BattleScore = new Score();
-
         public BattleMessages BattleMessages = new BattleMessages();
-
 
      
         public List<Item> ItemPool = new List<Item>();
 
-
-
         public List<Monster> MonsterList = new List<Monster>();
         public List<Character> CharacterList = new List<Character>();
-
+        public int DamageAmount = 0;
+        public string AttackDescription;
         public PlayerInfo CurrentAttacker;
         public PlayerInfo CurrentDefender;
 
@@ -91,7 +88,11 @@ namespace WDown.GameEngine
 
             // Do Attack
             var AttackScore = Attacker.Level + Attacker.GetAttack();
+
+            // Get defense score of opponent
             var DefenseScore = Target.GetDefense() + Target.Level;
+            
+            // Attack opponent or miss
             TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
 
             CurrentAttacker = new PlayerInfo(Attacker); 
@@ -115,7 +116,10 @@ namespace WDown.GameEngine
 
             // Do Attack
             var AttackScore = Attacker.Level + Attacker.GetAttack();
+            // Get defense score of opponent
             var DefenseScore = Target.GetDefense() + Target.Level;
+
+            // Attack
             TurnAsAttack(Attacker, AttackScore, Target, DefenseScore);
 
             CurrentAttacker = new PlayerInfo(Attacker);
@@ -125,12 +129,14 @@ namespace WDown.GameEngine
         }
 
         // Monster Attacks Character
-        //this is working fine in terms of choosing next turn
+        // this is working fine in terms of choosing next turn
         public bool TurnAsAttack(Monster Attacker, int AttackScore, Character Target, int DefenseScore)
         {
             BattleMessages.TurnMessage = string.Empty;
             BattleMessages.TurnMessageSpecial = string.Empty;
             BattleMessages.AttackStatus = string.Empty;
+            //BattleMessages.AttackDescription = string.Empty;
+
 
             BattleMessages.PlayerType = PlayerTypeEnum.Monster;
 
@@ -148,6 +154,7 @@ namespace WDown.GameEngine
 
             // Choose who to attack
 
+            // Name of attacker and target
             BattleMessages.TargetName = Target.Name;
             BattleMessages.AttackerName = Attacker.Name;
 
@@ -157,11 +164,18 @@ namespace WDown.GameEngine
 
             if (BattleMessages.HitStatus == HitStatusEnum.Miss)
             {
+                BattleMessages.TurnMessage = " " + Attacker.Name + 
+                    " misses " + Target.Name;
+                Debug.WriteLine(BattleMessages.TurnMessage);
                 return true;
             }
 
             if (BattleMessages.HitStatus == HitStatusEnum.CriticalMiss)
             {
+                Debug.WriteLine("-----------------------");
+                Debug.WriteLine("Monster critically missed!");
+                BattleMessages.TurnMessage = Attacker.Name + " critically misses " + Target.Name;
+                Debug.WriteLine(BattleMessages.TurnMessage);
                 return true;
             }
 
@@ -173,21 +187,28 @@ namespace WDown.GameEngine
 
                 BattleMessages.DamageAmount += GameGlobals.ForceCharacterDamangeBonusValue;   // Add the Forced Damage Bonus (used for testing...)
 
+                BattleMessages.AttackStatus = string.Format(" hits for {0} damage on ", BattleMessages.DamageAmount);
+
                 if (GameGlobals.EnableCriticalHitDamage)
                 {
                     if (BattleMessages.HitStatus == HitStatusEnum.CriticalHit)
                     {
                         //2x damage
                         BattleMessages.DamageAmount += BattleMessages.DamageAmount;
+                        Debug.WriteLine("-----------------------");
+                        Debug.WriteLine("Monster critically hit!");
+                        BattleMessages.AttackStatus = string.Format(" hits critically hard for {0} damage on ", BattleMessages.DamageAmount);
+                        
                     }
                 }
-
+                // Target take the damage
                 Target.TakeDamage(BattleMessages.DamageAmount);
             }
 
             BattleMessages.CurrentHealth = Target.CharacterAttribute.CurrentHealth;
             BattleMessages.TurnMessageSpecial = BattleMessages.GetCurrentHealthMessage();
-
+            // Calculate experience earned
+            
             // Check for alive
             if (Target.Alive == false)
             {
@@ -208,7 +229,7 @@ namespace WDown.GameEngine
                 foreach (var item in myItemList)
                 {
                     BattleScore.ItemsDroppedList += item.FormatOutput() + "\n";
-                    BattleMessages.TurnMessageSpecial += " Item " + item.Name + " dropped";
+                    BattleMessages.TurnMessageSpecial += "; \n Item " + item.Name + " dropped";
                 }
 
                 ItemPool.AddRange(myItemList);
@@ -252,6 +273,8 @@ namespace WDown.GameEngine
 
             if (BattleMessages.HitStatus == HitStatusEnum.Miss)
             {
+                BattleMessages.TurnMessage = Attacker.Name + " misses " + Target.Name;
+                Debug.WriteLine(BattleMessages.TurnMessage);
                 return true;
             }
 
@@ -261,6 +284,10 @@ namespace WDown.GameEngine
                 if (GameGlobals.EnableCriticalMissProblems)
                 {
                     BattleMessages.TurnMessage += DetermineCriticalMissProblem(Attacker);
+                    Debug.WriteLine("-----------------------");
+                    Debug.WriteLine("Character critically missed!");
+                    BattleMessages.TurnMessage = Attacker.Name + " critically misses " + Target.Name;
+                    Debug.WriteLine(BattleMessages.TurnMessage);
                 }
                 return true;
             }
@@ -273,19 +300,26 @@ namespace WDown.GameEngine
 
                 BattleMessages.DamageAmount += GameGlobals.ForceCharacterDamangeBonusValue;   // Add the Forced Damage Bonus (used for testing...)
 
+                BattleMessages.AttackStatus = string.Format(" hits for {0} damage on ", BattleMessages.DamageAmount);
                 if (GameGlobals.EnableCriticalHitDamage)
                 {
                     if (BattleMessages.HitStatus == HitStatusEnum.CriticalHit)
                     {
                         //2x damage
                         BattleMessages.DamageAmount += BattleMessages.DamageAmount;
+                        Debug.WriteLine("-----------------------");
+                        Debug.WriteLine("Character critically hit!");
+                        BattleMessages.AttackStatus = string.Format(" hits critically hard for {0} damage on ", BattleMessages.DamageAmount);
+                        
                     }
                 }
 
                 Target.TakeDamage(BattleMessages.DamageAmount);
 
+                // Calculate experience after hitting target
                 var experienceEarned = Target.CalculateExperienceEarned(BattleMessages.DamageAmount);
 
+                // Level up
                 var LevelUp = Attacker.AddExperience(experienceEarned);
                 if (LevelUp)
                 {
@@ -296,7 +330,7 @@ namespace WDown.GameEngine
                 BattleScore.ExperienceGainedTotal += experienceEarned;
             }
 
-            BattleMessages.TurnMessageSpecial = " remaining health is " + Target.MonsterAttribute.CurrentHealth;
+            BattleMessages.TurnMessageSpecial = "\n" + Target.Name + " remaining health is " + Target.MonsterAttribute.CurrentHealth;
 
             // Check for alive
             if (Target.Alive == false)
@@ -324,7 +358,7 @@ namespace WDown.GameEngine
                 foreach (var item in myItemList)
                 {
                     BattleScore.ItemsDroppedList += item.FormatOutput();
-                    BattleMessages.TurnMessageSpecial += " Item " + item.Name + " dropped";
+                    BattleMessages.TurnMessageSpecial += "; \n Item " + item.Name + " dropped";
                 }
 
                 ItemPool.AddRange(myItemList);
@@ -366,7 +400,25 @@ namespace WDown.GameEngine
                 BattleMessages.HitStatus = HitStatusEnum.CriticalHit;
                 return BattleMessages.HitStatus;
             }
+            //if (d20 > 4 && d20 < 7)
+            //{
+            //    // Force an item drop
+            //    // Drop Items to item Pool
+            //    var myItemList = Target.DropAllItems();
 
+            //    // If Random drops are enabled, then add some....
+            //    myItemList.AddRange(GetRandomMonsterItemDrops(BattleScore.RoundCount));
+
+            //    // Add to Score
+            //    foreach (var item in myItemList)
+            //    {
+            //        BattleScore.ItemsDroppedList += item.FormatOutput() + "\n";
+            //        BattleMessages.TurnMessageSpecial += " Item " + item.Name + "Random Item dropped in pool";
+            //    }
+            //    Debug.WriteLine("----------------------");
+            //    Debug.WriteLine("Random item was dropped in pool!!!");
+
+            //}
             var ToHitScore = d20 + AttackScore;
             if (ToHitScore < DefenseScore)
             {

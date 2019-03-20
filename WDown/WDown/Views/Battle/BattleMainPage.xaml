@@ -63,7 +63,7 @@
                         <Button x:Name="GameOverButton" IsVisible="true" Clicked="OnGameOverClicked" Text="Game Over" />
                         <Label Text="Messages" />
                         <StackLayout x:Name="MessageBox">
-                            <Label x:Name="MessageText" LineBreakMode="WordWrap" MaxLines="5" HeightRequest="50">
+                            <Label x:Name="MessageText" LineBreakMode="WordWrap" MaxLines="5" HeightRequest="150">
                             </Label>
                         </StackLayout>
                     </StackLayout>
