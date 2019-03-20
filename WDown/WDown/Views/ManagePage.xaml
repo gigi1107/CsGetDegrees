@@ -3,11 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="WDown.Views.ManagePage"
              Title="Manage">
+ <AbsoluteLayout 
+             BackgroundColor="Black"
+             Padding="0,4,0,4"
+            >
+            <Image 
+                 Aspect="AspectFill" 
+                 AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All"
+                 Source="https://imgur.com/5GwqdrU.png"
+                 BackgroundColor="White"
+                
+                />
     
-    <StackLayout Orientation="Vertical">
-        <Button Text="Character" Clicked="CharacterPageClicked" />
-        <Button Text="Monster" Clicked="MonsterPageClicked" />
-        <Button Text="Item" Clicked="ItemPageClicked" />
-        <Button Text="Score" Clicked = "ScorePageClicked" />
+    <StackLayout HorizontalOptions = "CenterAndExpand"
+                 VerticalOptions = "CenterAndExpand"
+            >
+        <Button Text="Character" Clicked="CharacterPageClicked"
+                HorizontalOptions = "End"
+                
+                 
+                BackgroundColor="#aa9cde" />
+        <Button Text="Monster" Clicked="MonsterPageClicked" 
+                 
+                BackgroundColor="#aa9cde"/>
+        <Button Text="Item" Clicked="ItemPageClicked"
+                 
+                BackgroundColor="#aa9cde" />
+        <Button Text="Score" Clicked = "ScorePageClicked" 
+                 
+                BackgroundColor="#aa9cde" />
     </StackLayout>
+        
+        </AbsoluteLayout>
+      
 </ContentPage>

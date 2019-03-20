@@ -3,8 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="WDown.Views.Battle.AutoBattlePage">
     <ContentPage.Content>
+        <AbsoluteLayout 
+             BackgroundColor="Black"
+             Padding="0,4,0,4"
+            >
+            <Image 
+                 Aspect="AspectFill" 
+                 AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All"
+                 Source="https://imgur.com/5GwqdrU.png"
+                 BackgroundColor="White"
+                
+                />
         <StackLayout>
             <Button Text="Begin AutoBattle"
+                    BackgroundColor="#aa9cde"
                     Clicked="AutoBattleButton_Command"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"/>
@@ -12,5 +25,7 @@
                     Clicked="Cancel_Clicked"
                     HorizontalOptions="Center"/>
             </StackLayout>
+            </AbsoluteLayout>
     </ContentPage.Content>
+    
 </ContentPage>

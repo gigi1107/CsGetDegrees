@@ -11,6 +11,19 @@
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
+    
+    <AbsoluteLayout 
+             BackgroundColor="Black"
+             Padding="0,4,0,4"
+            >
+            <Image 
+                 Aspect="AspectFill" 
+                 AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 AbsoluteLayout.LayoutFlags="All"
+                 Source="https://imgur.com/5GwqdrU.png"
+                 BackgroundColor="White"
+                
+                />
     <StackLayout>
         <Grid>
             <Grid.RowDefinitions>
@@ -151,4 +164,5 @@
             </StackLayout>
         </StackLayout>
     </StackLayout>
+        </AbsoluteLayout>
 </ContentPage>
