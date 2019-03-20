@@ -1,8 +1,10 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Collections.Generic;
 using WDown.Views;
 using WDown.Models;
 using WDown.ViewModels;
@@ -81,9 +83,11 @@ namespace WDown.Views.Scores
             await Navigation.PopAsync();
         }
 
-        async void Return_To_Main_Battle_Screen(object sender, EventArgs e)
+        private async void Return_To_Main_Battle_Screen(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BattleOpeningPage());
+            await Navigation.PushModalAsync(new NavigationPage(new GameOpeningPage()));
+            //await Navigation.PopAsync();
+            //return new NavigationPage(new GameOpeningPage());
         }
     }
 }
