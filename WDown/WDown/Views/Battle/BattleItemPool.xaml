@@ -4,7 +4,7 @@
         <AbsoluteLayout BackgroundColor="Black" Padding="0,4,0,4">
             <Image Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Source=" https://i.imgur.com/6w2MiQ0.jpg" BackgroundColor="White" />
             <StackLayout Orientation="Vertical">
-                <Label Text="Please choose the item you want" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" />
+                <Label Text="Select and Item, Click Equip, Hit Save!" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Button Text="Get Item Slots" Clicked="GetItemSlotsClicked" BackgroundColor="#fdffba" />
                     <Button Text="Save" Clicked="SaveButtonClicked" BackgroundColor="#fdffba" />
@@ -85,14 +85,19 @@
                                     <Image x:Name="ItemNecklassImage" HeightRequest="50" WidthRequest="50" />
                                     <Label Text="Primary Hand" FontSize="Medium" TextColor="Black" />
                                     <Label x:Name="ItemPrimaryHand" TextColor="Black" />
+                                    <Image x:Name="ItemPrimaryHandImage" HeightRequest="50" WidthRequest="50" />
                                     <Label Text="Off Hand" FontSize="Medium" TextColor="Black" />
                                     <Label x:Name="ItemOffHand" TextColor="Black" />
+                                    <Image x:Name="ItemOffHandImage" HeightRequest="50" WidthRequest="50" />
                                     <Label Text="Right Finger" FontSize="Medium" TextColor="Black" />
                                     <Label x:Name="ItemRightFinger" TextColor="Black" />
+                                    <Image x:Name="ItemRightFingerImage" HeightRequest="50" WidthRequest="50" />
                                     <Label Text="Left Finger" FontSize="Medium" TextColor="Black" />
                                     <Label x:Name="ItemLeftFinger" TextColor="Black" />
+                                    <Image x:Name="ItemLeftFingerImage" HeightRequest="50" WidthRequest="50" />
                                     <Label Text="Feet" FontSize="Medium" TextColor="Black" />
                                     <Label x:Name="ItemFeet" TextColor="Black" />
+                                    <Image x:Name="ItemFeetImage" HeightRequest="50" WidthRequest="50" />
                                 </StackLayout>
                                
                             </StackLayout>

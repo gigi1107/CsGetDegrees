@@ -30,7 +30,7 @@ namespace WDown.Views.Battle
         {
             InitializeComponent();
             BindingContext = _viewModel = viewModel;
-
+            ShowItemLocation();
             ShowPlayerStats();
             //grab the itemslist from battle engine where the item is not wearable
 
@@ -67,26 +67,88 @@ namespace WDown.Views.Battle
 
             List<Item> itemByLocation = new List<Item>();
             // Getting Item from each Location in Character
-            var currItem = currChar.GetItemByLocation(ItemLocationEnum.Head);
             
-            itemByLocation.Add(currItem);
-            ItemHead.Text = currItem.Name;
-
-            currItem = currChar.GetItemByLocation(ItemLocationEnum.Necklass);
-            itemByLocation.Add(currItem);
-            ItemNecklass.Text = currItem.Name;
-
-            
-       
-            AvailableItemLocationListView.ItemsSource = itemByLocation;
-            foreach (var items in itemByLocation)
+            // Head slot
+            Item currItem = currChar.GetItemByLocation(ItemLocationEnum.Head);
+            if (currItem != null)
             {
-                Debug.WriteLine("Item: " + items.Name + "\n");
+                itemByLocation.Add(currItem);
+                ItemHead.Text = currItem.Name;
+                ItemHeadImage.Source = currItem.ImageURI;
             }
-            var itemSlot = currChar.ItemSlotsFormatOutput();
-            Debug.WriteLine(itemSlot);
+            else ItemHead.Text = "Empty";
+
+
+            // Necklass slot
+            currItem = currChar.GetItemByLocation(ItemLocationEnum.Necklass);
+            if (currItem != null)
+            {
+                itemByLocation.Add(currItem);
+                ItemNecklass.Text = currItem.Name;
+                ItemNecklassImage.Source = currItem.ImageURI;
+            }
+            else ItemNecklass.Text = "Empty";
+                
+
+            // PrimaryHand slot
+            currItem = currChar.GetItemByLocation(ItemLocationEnum.PrimaryHand);
+            if (currItem != null)
+            {
+                itemByLocation.Add(currItem);
+                ItemPrimaryHand.Text = currItem.Name;
+                ItemPrimaryHandImage.Source = currItem.ImageURI;
+            }
+            else ItemPrimaryHand.Text = "Empty";
+
+            // OffHand slot
+
+            currItem = currChar.GetItemByLocation(ItemLocationEnum.OffHand);
+            if (currItem != null)
+            {
+                itemByLocation.Add(currItem);
+                ItemOffHand.Text = currItem.Name;
+                ItemOffHandImage.Source = currItem.ImageURI;
+            }
+            else ItemOffHand.Text = "Empty";
+
+            // LeftFinger slot
+            currItem = currChar.GetItemByLocation(ItemLocationEnum.LeftFinger);
+            if (currItem != null)
+            {
+                itemByLocation.Add(currItem);
+                ItemLeftFinger.Text = currItem.Name;
+                ItemLeftFingerImage.Source = currItem.ImageURI;
+            }
+            else ItemLeftFinger.Text = "Empty";
+
+            // Right Finger slot
+            currItem = currChar.GetItemByLocation(ItemLocationEnum.RightFinger);
+            if (currItem != null)
+            {
+                itemByLocation.Add(currItem);
+                ItemRightFinger.Text = currItem.Name;
+                ItemRightFingerImage.Source = currItem.ImageURI;
+            }
+            else ItemRightFinger.Text = "Empty";
+
+            // Feet slot
+            currItem = currChar.GetItemByLocation(ItemLocationEnum.Feet);
+            if (currItem != null)
+            {
+                itemByLocation.Add(currItem);
+                ItemFeet.Text = currItem.Name;
+                ItemFeetImage.Source = currItem.ImageURI;
+            }
+            else ItemFeet.Text = "Empty";
+
+            // Another way to populate the XAML front-end dynamically
+            AvailableItemLocationListView.ItemsSource = itemByLocation;
+
 
         }
+
+        // Using ItemSlotsFormatOutput() from Character.cs
+        // to see the list of currently equipped item
         async void GetItemSlotsClicked(object sender, EventArgs e)
         {
             // Getting the Character by ID
@@ -100,6 +162,11 @@ namespace WDown.Views.Battle
             Debug.WriteLine(itemSlot);
         }
 
+        // This method handles when user click equip
+        // Equip ALWAYS equip the selected item.
+        // If there is already an item at the same slot, the currently 
+        // selected item will be added to the location, and the old item 
+        // will be dropped back to the Item Pool
         async void EquipClicked(object sender, EventArgs e)
         {
             if (e == null)
