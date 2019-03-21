@@ -42,6 +42,7 @@ namespace WDown.GameEngine
             return false;
         }
 
+        //do not clear char list
         private void ClearLists()
         {
             ItemPool = new List<Item>();
@@ -195,7 +196,7 @@ namespace WDown.GameEngine
                             monster.Name += " " + (1 + MonsterList.Count()).ToString();
 
                             // Scale the monster to be between the average level of the characters+1
-                            var rndScale = HelperEngine.RollDice(1, ScaleLevelAverage + 1);
+                            var rndScale = HelperEngine.RollDice(1, ScaleLevelAverage);
                             monster.ScaleLevel(rndScale);
                             MonsterList.Add(monster);
                         }
@@ -280,6 +281,23 @@ namespace WDown.GameEngine
                     TakeTurn(myPlayer);
                 }
 
+                //check to see again if game is over
+
+                // No characters, game is over...
+                if (CharacterList.Count < 1)
+                {
+                    // Game Over
+                    RoundStateEnum = RoundEnum.GameOver;
+                    return RoundStateEnum;
+                }
+
+                // Check if round is over
+                if (MonsterList.Count < 1)
+                {
+                    // If over, New Round
+                    RoundStateEnum = RoundEnum.NewRound;
+                    return RoundEnum.NewRound;
+                }
                 PlayerCurrent = GetNextPlayerTurn();
                 Debug.WriteLine("\n\nPlayer current new just chosen backend for next turn: " + PlayerCurrent.Name);
                 RoundStateEnum = RoundEnum.NextTurn;
@@ -308,6 +326,22 @@ namespace WDown.GameEngine
 
                 }
 
+                //check again to see if round over
+                // No characters, game is over...
+                if (CharacterList.Count < 1)
+                {
+                    // Game Over
+                    RoundStateEnum = RoundEnum.GameOver;
+                    return RoundStateEnum;
+                }
+
+                // Check if round is over
+                if (MonsterList.Count < 1)
+                {
+                    // If over, New Round
+                    RoundStateEnum = RoundEnum.NewRound;
+                    return RoundEnum.NewRound;
+                }
                 PlayerCurrent = GetNextPlayerTurn();
                 Debug.WriteLine("\n\nPlayer current new just chosen backend for next turn: " + PlayerCurrent.Name);
                 RoundStateEnum = RoundEnum.NextTurn;
@@ -428,9 +462,14 @@ namespace WDown.GameEngine
                     ListOrder++;
                 }
             }
+
+            Debug.WriteLine("New Player List Created");
+            foreach (PlayerInfo player in PlayerList)
+            {
+                Debug.WriteLine(player.Name);
+            }
         }
 
-        //only buggy for CHARACTERS 
         public PlayerInfo GetNextPlayerInList()
         {
             // Walk the list from top to bottom

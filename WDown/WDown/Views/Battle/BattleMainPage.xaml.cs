@@ -227,16 +227,18 @@ namespace WDown.Views.Battle
             // If the round is over start a new one...
             if (CurrentRoundState == RoundEnum.NewRound)
             {
-                
+                Debug.WriteLine("NEW ROUND TRIGGERED");
                 _viewModel.NewRound();
 
                 // Show new round and Round count
                 Debug.WriteLine("New Round :" + _viewModel.BattleEngine.BattleScore.RoundCount);
 
-                // Show name of current player
+                //push up modal monster list page to show new monsters youre fighting
                 ShowModalPageMonsterList();
+                //StartGameSetting();
 
-                // BUG HERE IF THERE IS NO MONSTER LEFT AFTER KILLED ALL 
+                // Show name of current player
+
                 Debug.WriteLine("current player: " + _viewModel.BattleEngine.PlayerCurrent.Name);
 
                 
@@ -455,6 +457,12 @@ namespace WDown.Views.Battle
 
                 // remember to remove the event handler
                 WDown.App.Current.ModalPopping -= HandleModalPopping;
+                //refresh game
+                DrawGameBoardAttackerDefender();
+                StartGameSetting();
+                RefreshMonsters();
+                RefreshCharacters();
+
             }
 
             if (e.Modal == _myModalCharacterSelectPage)

@@ -7,19 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using System.Diagnostics;
 
 using WDown.Models;
 using WDown.ViewModels;
 using WDown.Models.Enums;
 using System.Collections.ObjectModel;
 using WDown.GameEngine;
-using WDown.ViewModels;
-using WDown.Models;
+
 using System.Collections.Specialized;
 
 using Xamarin.Forms;
@@ -45,26 +39,41 @@ namespace WDown.Views.Battle
 
 
             //MessagingCenter.Send(this, "StartBattle");
-            _viewModel.StartBattle();
 
-            Debug.WriteLine("Battle Start" + " Characters :" + BattleViewModel.Instance.BattleEngine.CharacterList.Count);
-
-            // Load the Characters into the Battle Engine
-            //MessagingCenter.Send(this, "LoadCharacters");
-            _viewModel.LoadCharacters();
-
-
-            // Start the Round
-            //MessagingCenter.Send(this, "StartRound");
-            _viewModel.StartRound();
-            Debug.WriteLine("Round Start" + " Monsters:" + BattleViewModel.Instance.BattleEngine.MonsterList.Count);
-
-            foreach (Models.Monster Monster in BattleViewModel.Instance.BattleEngine.MonsterList)
+            //handle round number 2+
+            Debug.WriteLine("Current round count in the monsterListPage: "+_viewModel.BattleEngine.BattleScore.RoundCount);
+            if(_viewModel.BattleEngine.BattleScore.RoundCount > 1)
             {
-                Debug.WriteLine("Round Start" + " Monster List:" + Monster.Name);
+                _viewModel.NewRound();
+
             }
-            Debug.WriteLine("round start observable collection monster list: ");
-           
+
+            //handles rounds 1
+            else
+            {
+                _viewModel.StartBattle();
+
+                Debug.WriteLine("Battle Start" + " Characters :" + BattleViewModel.Instance.BattleEngine.CharacterList.Count);
+
+                // Load the Characters into the Battle Engine
+                //MessagingCenter.Send(this, "LoadCharacters");
+                _viewModel.LoadCharacters();
+
+
+                // Start the Round
+                //MessagingCenter.Send(this, "StartRound");
+                _viewModel.StartRound();
+                Debug.WriteLine("Round Start" + " Monsters:" + BattleViewModel.Instance.BattleEngine.MonsterList.Count);
+
+                foreach (Models.Monster Monster in BattleViewModel.Instance.BattleEngine.MonsterList)
+                {
+                    Debug.WriteLine("Round Start" + " Monster List:" + Monster.Name);
+                }
+                Debug.WriteLine("round start observable collection monster list: ");
+
+            }
+
+
 
 
             Datalist = BattleViewModel.Instance.BattleEngine.MonsterList;
@@ -130,7 +139,20 @@ namespace WDown.Views.Battle
         // This starts the Character Select Page    
         private async void OnNextClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new WDown.Views.Battle.BattleMainPage(_viewModel));
+
+            Debug.WriteLine("current round: "+ _viewModel.BattleEngine.BattleScore.RoundCount);
+           
+            
+            if(_viewModel.BattleEngine.BattleScore.RoundCount > 1)
+            {
+                await Navigation.PopModalAsync();
+                return;
+            }
+            else
+            {
+                await Navigation.PushAsync(new WDown.Views.Battle.BattleMainPage(_viewModel));
+
+            }
         }
 
     }

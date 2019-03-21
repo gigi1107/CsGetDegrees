@@ -36,6 +36,11 @@ namespace WDown.Views.Battle
         async void OnNextClicked(object sender, EventArgs args)
         {
            
+            if(_viewModel.BattleEngine.BattleScore.RoundCount > 1)
+            {
+                await Navigation.PopModalAsync();
+                return;
+            }
 
            
             // Jump to Main Battle Page
