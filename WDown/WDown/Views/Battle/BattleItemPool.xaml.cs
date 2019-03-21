@@ -63,9 +63,13 @@ namespace WDown.Views.Battle
             var currChar = _viewModel.BattleEngine.PlayerCurrent;
             ItemHead.Text = currChar.Head;
             Debug.WriteLine("Head string: " + ItemHead.Text);
-            ItemHeadImage.Source = _viewModel.BattleEngine.PlayerCurrent.ImageURI;
-            //ItemNecklass.Text = _viewModel.BattleEngine.PlayerCurrent.RemainingHP.ToString();
-            //ItemPrimaryHand.Text = _viewModel.BattleEngine.PlayerCurrent.TotalHP.ToString();
+            //ItemHeadImage.Source = currChar.Head.ImageURI;
+            ItemNecklass.Text = currChar.Necklass;
+            ItemPrimaryHand.Text = currChar.PrimaryHand;
+            ItemOffHand.Text = currChar.OffHand;
+            ItemLeftFinger.Text = currChar.LeftFinger;
+            ItemRightFinger.Text = currChar.RightFinger;
+            ItemFeet.Text = currChar.Feet;
             /*CPAttack.Text = _viewModel.BattleEngine.PlayerCurrent.Attack.ToString();
             CPDefense.Text = _viewModel.BattleEngine.PlayerCurrent.Defense.ToString();
             CPSpeed.Text = _viewModel.BattleEngine.PlayerCurrent.Speed.ToString();

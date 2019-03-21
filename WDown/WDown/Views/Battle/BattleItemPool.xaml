@@ -40,19 +40,30 @@
                         </StackLayout>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <StackLayout Orientation="Vertical">
-                            <!-- Character's item on location-->
+                        <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="200" Opacity="0.7">
                             <StackLayout Orientation="Vertical">
-                                <Label x:Name="ItemHead" FontSize="Large" HorizontalOptions="Center" TextColor="White" />
-                                <Image x:Name="ItemHeadImage" HeightRequest="100" WidthRequest="100" />
-                                <Label Text="Necklace" FontSize="Medium" TextColor="White" />
-                                <Label x:Name="ItemNecklass" TextColor="White" />
-                                <Label Text="Primary Hand" FontSize="Medium" TextColor="White" />
-                                <Label x:Name="ItemPrimaryHand" TextColor="White" />
+                                <!-- Character's item on location-->
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="Head" FontSize="Medium" TextColor="Black" />
+                                    <Label x:Name="ItemHead" FontSize="Large" HorizontalOptions="Center" TextColor="Black" />
+                                    <Image x:Name="ItemHeadImage" HeightRequest="50" WidthRequest="50" />
+                                    <Label Text="Necklace" FontSize="Medium" TextColor="Black" />
+                                    <Label x:Name="ItemNecklass" TextColor="Black" />
+                                    <Image x:Name="ItemNecklassImage" HeightRequest="50" WidthRequest="50" />
+                                    <Label Text="Primary Hand" FontSize="Medium" TextColor="Black" />
+                                    <Label x:Name="ItemPrimaryHand" TextColor="Black" />
+                                    <Label Text="Off Hand" FontSize="Medium" TextColor="Black" />
+                                    <Label x:Name="ItemOffHand" TextColor="Black" />
+                                    <Label Text="Right Finger" FontSize="Medium" TextColor="Black" />
+                                    <Label x:Name="ItemRightFinger" TextColor="Black" />
+                                    <Label Text="Left Finger" FontSize="Medium" TextColor="Black" />
+                                    <Label x:Name="ItemLeftFinger" TextColor="Black" />
+                                    <Label Text="Feet" FontSize="Medium" TextColor="Black" />
+                                    <Label x:Name="ItemFeet" TextColor="Black" />
+                                </StackLayout>
+                               
                             </StackLayout>
-                            <!--<Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="250" Opacity="0.7">-->
-                            
-                        </StackLayout>
+                        </Frame>
                     </StackLayout>
                     <StackLayout Orientation="Vertical">
 

@@ -312,6 +312,14 @@ namespace WDown.Models
             return myReturn;
         }
 
+        // Get Defense
+        public string GetHead()
+        {
+            // Base value
+            var myReturn = Head;
+            return myReturn;
+        }
+
         // Get Max Health
         public int GetHealthMax()
         {

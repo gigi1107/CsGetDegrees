@@ -81,5 +81,31 @@ namespace WDown.Models
 
             return myReturn.Trim();
         }
+
+        public string GetHead()
+        {
+            var myReturn = FormatOutputSlot("Head");
+            return myReturn;
+        }
+
+        public string GetNecklass()
+        {
+            var myReturn = FormatOutputSlot("Necklass");
+            return myReturn;
+        }
+
+        public string GetPrimaryHand()
+        {
+            var myReturn = FormatOutputSlot("PrimaryHand");
+            return myReturn;
+        }
+
+        public string GetOffHand()
+        {
+            var myReturn = FormatOutputSlot("OffHand");
+            return myReturn;
+        }
+
+
     }
 }
