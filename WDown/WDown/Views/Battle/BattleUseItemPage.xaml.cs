@@ -37,6 +37,7 @@ namespace WDown.Views.Battle
                     items.Add(item);
                 }
             }
+            selectedItem = null;
             ShowPlayerStats();
             //grab the itemslist from battle engine where the item is not wearable
            
@@ -70,9 +71,12 @@ namespace WDown.Views.Battle
 
             if(selectedItem == null)
             {
+                Debug.WriteLine("Selected item was null and it should just pop the page");
                await Navigation.PopModalAsync();
+                return;
             }
 
+            Debug.WriteLine(selectedItem.Name + " was the item you ate.");
             //else
             //consume item
             //for now, all the consumables will jus trestore you to full health

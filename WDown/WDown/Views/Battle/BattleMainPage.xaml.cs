@@ -103,6 +103,7 @@ namespace WDown.Views.Battle
             RestButton.IsEnabled = false;
             UseItemButton.IsEnabled = false;
             ableToSelectMonster = true;
+            ItemPool.IsEnabled = false;
 
             GameNextButton.IsEnabled = true;
             _viewModel.BattleEngine.TurnType = MoveEnum.Attack;
@@ -180,7 +181,7 @@ namespace WDown.Views.Battle
             }
             //do the turn 
             _viewModel.RoundNextTurn();
-
+            
 
             //update front end options after turn taken
 
@@ -246,6 +247,7 @@ namespace WDown.Views.Battle
                     AttackButton.IsEnabled = true;
                     RestButton.IsEnabled = true;
                     UseItemButton.IsEnabled = true;
+                    ItemPool.IsEnabled = true;
                 }
                 else
                 {
@@ -253,6 +255,7 @@ namespace WDown.Views.Battle
                     AttackButton.IsEnabled = false;
                     RestButton.IsEnabled = false;
                     UseItemButton.IsEnabled = false;
+                    ItemPool.IsEnabled = false;
                 }
                 OnPropertyChanged();
             }
@@ -396,7 +399,9 @@ namespace WDown.Views.Battle
 
             AttackButton.IsEnabled = false;
             GameNextButton.IsEnabled = true;
-          
+            ItemPool.IsEnabled = false;
+
+
             _viewModel.BattleEngine.Target = null;
             SelectedMonster = null;
             SelectedMonstersView.SelectedItem = null;
@@ -438,6 +443,8 @@ namespace WDown.Views.Battle
             //swithcing turn type
             _viewModel.BattleEngine.TurnType = MoveEnum.UseItem;
 
+            //button handling is handled in handle modal popping method
+
         }
 
         private void HandleModalPopping(object sender, ModalPoppingEventArgs e)
@@ -472,7 +479,7 @@ namespace WDown.Views.Battle
                 RestButton.IsEnabled = false;
                 GameNextButton.IsEnabled = true;
                 DrawGameBoardAttackerDefender();
-
+                ItemPool.IsEnabled = false;
             }
 
             if(e.Modal == _myModalItemPoolPage)
