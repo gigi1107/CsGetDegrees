@@ -30,7 +30,13 @@ namespace WDown.Views.Battle
         {
             InitializeComponent();
             BindingContext = _viewModel = viewModel;
-
+            foreach(Item item in _viewModel.BattleEngine.ItemPool)
+            {
+                if(item.Wearable == false)
+                {
+                    items.Add(item);
+                }
+            }
             ShowPlayerStats();
             //grab the itemslist from battle engine where the item is not wearable
            
@@ -47,14 +53,9 @@ namespace WDown.Views.Battle
             CPDefense.Text = _viewModel.BattleEngine.PlayerCurrent.Defense.ToString();
             CPSpeed.Text = _viewModel.BattleEngine.PlayerCurrent.Speed.ToString();
 
-            AvailableItemListView.ItemsSource = _viewModel.BattleEngine.ItemPool;
+            AvailableItemListView.ItemsSource = items;
 
 
-            Debug.WriteLine("Now the Items list in the backend to compare: ");
-            foreach (Item item in _viewModel.BattleEngine.ItemPool)
-            {
-                Debug.WriteLine(item.Name);
-            }
 
         }
 
