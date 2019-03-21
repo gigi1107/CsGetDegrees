@@ -57,10 +57,6 @@
                                                     <Image Source="{Binding ImageURI}" HeightRequest="50" WidthRequest="50" />
                                                     <Label Text="{Binding Name}" TextColor="Black" />
                                                 </StackLayout>
-                                                <!--<StackLayout Orientation="Horizontal">
-                                                    <Label Text="Description: " TextColor="Black" />
-                                                    <Label Text="{Binding Description}" TextColor="Black" />
-                                                </StackLayout>-->
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label Text="Value: " TextColor="Black" />
                                                     <Label Text="{Binding Value}" TextColor="Black" />

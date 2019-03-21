@@ -115,34 +115,25 @@ namespace WDown.Views.Battle
             int value = selectedItem.Value;
             AttributeEnum modifiedAttr = selectedItem.Attribute;
             ItemLocationEnum modifiedLocation = selectedItem.Location;
-            string itemName = selectedItem.Name;
+            string itemID = selectedItem.Id;
             
             // Add item into that location
-            var returnedItem = currChar.AddItem(modifiedLocation, itemName);
-            
+            var returnedItem = currChar.AddItem(modifiedLocation, itemID);
+
             // Printing debug output
-            Debug.WriteLine("Trying to equip item " + itemName + " at " + modifiedLocation);
+            Debug.WriteLine("Trying to equip item " + selectedItem.Name + " at " + modifiedLocation);
             if (returnedItem != null)
             {
                 Debug.WriteLine("Removed item: " + returnedItem.Name + " at " + returnedItem.Location);
+                _viewModel.BattleEngine.ItemPool.Add(returnedItem);
             } else
             {
                 Debug.WriteLine("There was no item there before equipping.");
             }
 
-            //InitializeComponent();
-
-
-            Debug.WriteLine("Printing item list from format output..");
-            var test1 = currChar.GetItemByLocation(modifiedLocation);
-            var result = currChar.ItemSlotsFormatOutput();
-            Debug.WriteLine(result);
-            var name1 = "";
-            if (test1 != null)
-            {
-                name1 += test1.Name;
-            }
-            Debug.WriteLine("Test name for said location " + name1);
+            // Remove equipped item from the pool
+            var recentlyEquippedItem = currChar.GetItemByLocation(modifiedLocation);
+            _viewModel.BattleEngine.ItemPool.Remove(recentlyEquippedItem);
         }
         async void SaveButtonClicked(object sender, EventArgs e)
         {
