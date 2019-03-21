@@ -50,17 +50,14 @@ namespace WDown.GameEngine
         // Drop Items
         // Turn Over
         #endregion Properties
-
-
-            //force add some consumable Items to ItemPool to start off with
-          
-
+        
+            //force add some CONSUMABLE Items to ItemPool to start off with
         public void AddItemsToList()
         {
             var myItemsViewModel = ItemsViewModel.Instance;
             foreach (Item item in myItemsViewModel.Dataset)
             {
-                if (item.Wearable == true)
+                if (item.Wearable == false)
                 {
                     ItemPool.Add(item);
 

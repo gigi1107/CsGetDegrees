@@ -88,6 +88,8 @@ namespace WDown.Views.Battle
                     {
                         character.CharacterAttribute.CurrentHealth = character.CharacterAttribute.MaxHealth;
                         Debug.WriteLine("Character has been healed to full health");
+                        Debug.WriteLine("Character's new health is ");
+                        Debug.WriteLine(character.CharacterAttribute.CurrentHealth + " /" + character.CharacterAttribute.MaxHealth);
                     }
                 }
             }
