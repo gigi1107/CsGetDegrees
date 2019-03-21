@@ -100,7 +100,7 @@ namespace WDown.Views.Battle
         async void GetItemSlotsClicked(object sender, EventArgs e)
         {
             // Getting the Character by ID
-            Debug.WriteLine("Hello you got in!");
+            Debug.WriteLine("Printing currently worn items...");
             var charID = _viewModel.BattleEngine.PlayerCurrent.Guid;
             var currChar = _viewModel.Get(charID);
             string charName = currChar.Name;
@@ -108,6 +108,37 @@ namespace WDown.Views.Battle
 
             var itemSlot = currChar.ItemSlotsFormatOutput();
             Debug.WriteLine(itemSlot);
+        }
+
+        async void EquipClicked(object sender, EventArgs e)
+        {
+            if (e == null)
+            {
+                return;
+
+            }
+            Debug.WriteLine("You are equipping item....");
+            // Get Character
+            var charID = _viewModel.BattleEngine.PlayerCurrent.Guid;
+            var currChar = _viewModel.Get(charID);
+            // Get Item clicked
+            int value = selectedItem.Value;
+            AttributeEnum modifiedAttr = selectedItem.Attribute;
+            ItemLocationEnum modifiedLocation = selectedItem.Location;
+            string itemName = selectedItem.Name;
+            var returnedItem = currChar.AddItem(modifiedLocation, itemName);
+            Debug.WriteLine("Item " + itemName + " equipped at " + modifiedLocation);
+
+            Debug.WriteLine("Printing item list from format output...");
+
+            InitializeComponent();
+            var test1 = currChar.GetItemByLocation(modifiedLocation);
+            var name1 = "";
+            if (test1 != null)
+            {
+                name1 += test1.Name;
+            }
+            Debug.WriteLine("Test name: " + name1);
         }
         async void SaveButtonClicked(object sender, EventArgs e)
         {

@@ -136,6 +136,7 @@
                                                     <Label Text="Attribute Modified: " />
                                                     <Label Text="{Binding Attribute}" />
                                                 </StackLayout>
+                                                <Button Text="Equip" Clicked="EquipClicked"></Button>
                                             </StackLayout>
                                         </ViewCell>
                                     </DataTemplate>
