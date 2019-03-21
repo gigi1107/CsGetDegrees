@@ -11,50 +11,43 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <StackLayout Orientation="Vertical">
-                    <!-- Character photo & stats-->
-                    <StackLayout Orientation="Horizontal">
-                        <Label x:Name="CPName" FontSize="Large" HorizontalOptions="Center" TextColor="White" />
-                        <Image x:Name="CPImage" HeightRequest="100" WidthRequest="100" />
-                        <Label Text="Attack: " FontSize="Medium" TextColor="White" />
-                        <Label x:Name="CPAttack" TextColor="White" />
-                    </StackLayout>
+                        <!-- Character photo & stats-->
+                        <StackLayout Orientation="Horizontal">
+                            <Label x:Name="CPName" FontSize="Large" HorizontalOptions="Center" TextColor="White" />
+                            <Image x:Name="CPImage" HeightRequest="100" WidthRequest="100" />
+                            <Label Text="Attack: " FontSize="Medium" TextColor="White" />
+                            <Label x:Name="CPAttack" TextColor="White" />
+                        </StackLayout>
                         <!--<Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="250" Opacity="0.7">-->
-                            <StackLayout Orientation="Horizontal">
-
-                                <Label Text="Defense" FontSize="Medium" TextColor="White">
-                                </Label>
-                                <Label x:Name="CPDefense" TextColor="White">
-                                </Label>
-                                <Label Text="Speed" FontSize="Medium" TextColor="White">
-                                </Label>
-                                <Label x:Name="CPSpeed" TextColor="White">
-                                </Label>
-                                <Label Text="Current Health: " FontSize="Medium" TextColor="White">
-                                </Label>
-                                <Label x:Name="CPHPCurr" TextColor="White">
-                                </Label>
-                                <Label Text="/ " FontSize="Medium" TextColor="White">
-                                </Label>
-                                <Label x:Name="CPHPTotal" TextColor="White">
-                                </Label>
-                            </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Defense" FontSize="Medium" TextColor="White">
+                            </Label>
+                            <Label x:Name="CPDefense" TextColor="White">
+                            </Label>
+                            <Label Text="Speed" FontSize="Medium" TextColor="White">
+                            </Label>
+                            <Label x:Name="CPSpeed" TextColor="White">
+                            </Label>
+                            <Label Text="Current Health: " FontSize="Medium" TextColor="White">
+                            </Label>
+                            <Label x:Name="CPHPCurr" TextColor="White">
+                            </Label>
+                            <Label Text="/ " FontSize="Medium" TextColor="White">
+                            </Label>
+                            <Label x:Name="CPHPTotal" TextColor="White">
+                            </Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical">
+                        <Image x:Name="SelectedItemImage" WidthRequest="100" HeightRequest="100" />
+                        <Label x:Name="ItemDescription" TextColor="White" />
+                        <Label x:Name="ItemEffectsLabel" TextColor="White" />
                     </StackLayout>
-                    <StackLayout Orientation="Vertical">
-   
-                            <Image x:Name="SelectedItemImage" WidthRequest="100" HeightRequest="100" />
-                            <Label x:Name="ItemDescription"  TextColor="White" />
-                            <Label x:Name="ItemEffectsLabel" TextColor="White" />
-                        
                     </StackLayout>
+                    
                     <ScrollView>
                         <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="500" Opacity="0.7">
-                            <ListView x:Name="AvailableItemListView" 
-                                  VerticalOptions="FillAndExpand"
-                                  HorizontalOptions="Fill" BackgroundColor="Transparent" 
-                                  VerticalScrollBarVisibility="Default"
-                                  HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" 
-                                  IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
-                                  CachingStrategy="RecycleElement" ItemSelected="OnItemSelected">
+                            <ListView x:Name="AvailableItemListView" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" BackgroundColor="Transparent" VerticalScrollBarVisibility="Default" HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement"
+                                ItemSelected="OnItemSelected">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -80,12 +73,7 @@
                             </ListView>
                         </Frame>
                     </ScrollView>
-                    
                 </StackLayout>
-             
-              
-
-            
             </StackLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

@@ -63,8 +63,11 @@
                         <Button x:Name="GameNextButton" IsVisible="true" Clicked="SubmitClicked" Text="Submit" Margin="0" Padding="0" />
                         <Button x:Name="GameOverButton" IsVisible="true" Clicked="OnGameOverClicked" Text="Game Over"  Margin="0" Padding="0"/>
                         <Button x:Name="ItemPool" IsVisible="true" Clicked="OnItemPoolClicked" Text="Go to Item Pool"  Margin="0" Padding="0"/>
-                        <Label Text="Messages" />
+                       
+                       
                         <StackLayout x:Name="MessageBox">
+                            <!--displays messages from rest and use item-->
+                               <Label x:Name="LocalMessageText" />
                             <Label x:Name="MessageText" LineBreakMode="WordWrap" MaxLines="5" HeightRequest="150">
                             </Label>
                         </StackLayout>

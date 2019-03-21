@@ -73,10 +73,8 @@ namespace WDown.GameEngine
 
             // For Attack, Choose Who
             //this part allows for autobattle
-            if(TurnType != MoveEnum.Attack)
-            {
-                var Target = AttackChoice(Attacker);
-            }
+           var Target = AttackChoice(Attacker);
+
            
 
             if (Target == null)

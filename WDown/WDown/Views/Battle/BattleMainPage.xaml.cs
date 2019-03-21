@@ -32,6 +32,9 @@ namespace WDown.Views.Battle
         Models.Monster SelectedMonster;
         bool ableToSelectMonster;
 
+        //this is for telling the player when theyve rested, used an item, etc
+        string localMessages;
+
         /// <summary>
         /// Stand up the Page and initiate state
         /// </summary>
@@ -148,7 +151,7 @@ namespace WDown.Views.Battle
         public async void SubmitClicked(object sender, EventArgs args)
         {
 
-            Debug.WriteLine("submit button clicked\n");
+           
             //send the selected monster info into target
             if(_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
@@ -160,7 +163,21 @@ namespace WDown.Views.Battle
 
             }
 
-           
+            //update xaml front end local message section
+            if(_viewModel.BattleEngine.TurnType == MoveEnum.Rest)
+            {
+                LocalMessageText.Text = localMessages;
+            }
+
+            else if( _viewModel.BattleEngine.TurnType == MoveEnum.UseItem)
+            {
+                LocalMessageText.Text = localMessages;
+            }
+
+            else
+            {
+                LocalMessageText.Text = null;
+            }
             //do the turn 
             _viewModel.RoundNextTurn();
 
@@ -332,7 +349,8 @@ namespace WDown.Views.Battle
         {
             Debug.WriteLine("Message: " + message);
 
-            MessageText.Text = message + " \n" + MessageText.Text;
+            //MessageText.Text = message + " \n" + MessageText.Text;
+            MessageText.Text = message + " \n" ;
         }
 
         /// <summary>
@@ -382,6 +400,8 @@ namespace WDown.Views.Battle
             _viewModel.BattleEngine.Target = null;
             SelectedMonster = null;
             SelectedMonstersView.SelectedItem = null;
+
+            //change turn type to be rest
             _viewModel.BattleEngine.TurnType = MoveEnum.Rest;
 
 
@@ -397,6 +417,8 @@ namespace WDown.Views.Battle
                 }
             }
             Debug.WriteLine("current player's HP: "+_viewModel.BattleEngine.PlayerCurrent.RemainingHP);
+            DrawGameBoardAttackerDefender();
+            localMessages = "Character Rested and regained full HP!";
 
         }
         public async void ShowUseItemModal(object sender, EventArgs args)
@@ -406,11 +428,15 @@ namespace WDown.Views.Battle
             ////player1.Load(GetStreamFromFile(filename1));
             //player1.Load(filename1);
             //player1.Play();
-
+           
             Debug.WriteLine("Switching to Item Inventory...");
             WDown.App.Current.ModalPopping += HandleModalPopping;
             _myModalUseItemPage = new BattleUseItemPage(_viewModel);
             await Navigation.PushModalAsync(_myModalUseItemPage);
+            localMessages = "Items equipped! ";
+
+            //swithcing turn type
+            _viewModel.BattleEngine.TurnType = MoveEnum.UseItem;
 
         }
 
@@ -434,9 +460,37 @@ namespace WDown.Views.Battle
 
             if(e.Modal == _myModalUseItemPage)
             {
-                Debug.WriteLine("ITEM MODAL POP METHOD REACHED!!!");
+               
+
                 _myModalUseItemPage = null;
                 WDown.App.Current.ModalPopping -= HandleModalPopping;
+                localMessages = "Character Healed!!";
+
+                //refresh curr player stats
+                //cannot attack or rest
+                AttackButton.IsEnabled = false;
+                RestButton.IsEnabled = false;
+                GameNextButton.IsEnabled = true;
+                DrawGameBoardAttackerDefender();
+
+            }
+
+            if(e.Modal == _myModalItemPoolPage)
+            {
+                _myModalUseItemPage = null;
+                WDown.App.Current.ModalPopping -= HandleModalPopping;
+                localMessages = "Items Equipped! ";
+
+                //refresh currPlayer stats
+                DrawGameBoardAttackerDefender();
+
+               
+                //cannot attack or rest
+                AttackButton.IsEnabled = false;
+                RestButton.IsEnabled = false;
+                GameNextButton.IsEnabled = true;
+                //refresh
+                DrawGameBoardAttackerDefender();
             }
         }
 

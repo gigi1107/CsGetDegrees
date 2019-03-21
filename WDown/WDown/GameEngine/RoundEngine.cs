@@ -256,32 +256,64 @@ namespace WDown.GameEngine
             // Remember who just went...
 
 
+            //if move is rest or use item, DO NOT DO ATTACK
 
-            // Decide Who to Attack
-            // Do the Turn         
-            if (PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
+            if (TurnType == MoveEnum.Attack)
             {
-                // Get the player
-                var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
+                // Decide Who to Attack
+                // Do the Turn         
+                if (PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
+                {
+                    // Get the player
+                    var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
 
-                // Do the turn....
-                TakeTurn(myPlayer);
+                    // Do the turn....
+                    TakeTurn(myPlayer);
+                }
+                // Add Monster turn here...
+                else if (PlayerCurrent.PlayerType == PlayerTypeEnum.Monster)
+                {
+                    // Get the player
+                    var myPlayer = MonsterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
+                    Debug.WriteLine("Player after selected from list: " + myPlayer.Name);
+                    // Do the turn....
+                    TakeTurn(myPlayer);
+                }
+
+                PlayerCurrent = GetNextPlayerTurn();
+                Debug.WriteLine("\n\nPlayer current new just chosen backend for next turn: " + PlayerCurrent.Name);
+                RoundStateEnum = RoundEnum.NextTurn;
+                return RoundStateEnum;
             }
-            // Add Monster turn here...
-            else if (PlayerCurrent.PlayerType == PlayerTypeEnum.Monster)
+            else
             {
-                // Get the player
-                //BUG FIX--- ALSO TAKE INTO ACCOUNT THE MONSTERS NAME BC OTHERWISE IT WILL BE THE SAME
-                var myPlayer = MonsterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
-                Debug.WriteLine("Player after selected from list: " + myPlayer.Name);
-                // Do the turn....
-                TakeTurn(myPlayer);
-            }
+                //move to next turn, but do not attack, if character
+                //if monster, always attack
+                 if (PlayerCurrent.PlayerType == PlayerTypeEnum.Monster)
+                {
+                    // Get the player
+                   
+                    var myPlayer = MonsterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
+                    Debug.WriteLine("Player after selected from list: " + myPlayer.Name);
+                    // Do the turn....
+                    TakeTurn(myPlayer);
+                }
+                 else if(PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
+                {
+                    //get character
+                    var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
 
-            PlayerCurrent = GetNextPlayerTurn();
-            Debug.WriteLine("\n\nPlayer current new just chosen backend for next turn: " + PlayerCurrent.Name);
-            RoundStateEnum = RoundEnum.NextTurn;
-            return RoundStateEnum;
+                    //increment turn count manually since you're not calling TakeTurn anymore
+                    BattleScore.TurnCount++;
+
+                }
+
+                PlayerCurrent = GetNextPlayerTurn();
+                Debug.WriteLine("\n\nPlayer current new just chosen backend for next turn: " + PlayerCurrent.Name);
+                RoundStateEnum = RoundEnum.NextTurn;
+                return RoundStateEnum;
+
+            }
         }
 
         public PlayerInfo GetNextPlayerTurn()
