@@ -127,7 +127,7 @@ namespace WDown.Views.Battle
                 Debug.WriteLine("Removed item: " + returnedItem.Name + " at " + returnedItem.Location);
             } else
             {
-                Debug.WriteLine("There was no item there before equipping.")
+                Debug.WriteLine("There was no item there before equipping.");
             }
 
             //InitializeComponent();
