@@ -19,7 +19,7 @@ namespace WDown.Views.Battle
     public partial class BattleUseItemPage : ContentPage
     {
 
-        //List<Item> items = new List<Item>();
+        List<Item> items = new List<Item>();
 
         Item selectedItem = null;
 
@@ -73,7 +73,7 @@ namespace WDown.Views.Battle
             }
 
             //else
-            //vonsume item
+            //consume item
             //for now, all the consumables will jus trestore you to full health
             int value = selectedItem.Value;
             AttributeEnum modifiedAttr = selectedItem.Attribute;

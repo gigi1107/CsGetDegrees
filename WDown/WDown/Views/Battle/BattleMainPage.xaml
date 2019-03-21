@@ -60,9 +60,9 @@
                             <Button Text="Rest " x:Name="RestButton" Clicked="RestClicked" />
                             <Button Text="Use Item" x:Name="UseItemButton" Clicked="ShowUseItemModal" />
                         </StackLayout>
-                        <Button x:Name="GameNextButton" IsVisible="true" Clicked="SubmitClicked" Text="Submit" />
-                        <Button x:Name="GameOverButton" IsVisible="true" Clicked="OnGameOverClicked" Text="Game Over" />
-                        <Button x:Name="ItemPool" IsVisible="true" Clicked="OnItemPoolClicked" Text="Go to Item Pool" />
+                        <Button x:Name="GameNextButton" IsVisible="true" Clicked="SubmitClicked" Text="Submit" Margin="0" Padding="0" />
+                        <Button x:Name="GameOverButton" IsVisible="true" Clicked="OnGameOverClicked" Text="Game Over"  Margin="0" Padding="0"/>
+                        <Button x:Name="ItemPool" IsVisible="true" Clicked="OnItemPoolClicked" Text="Go to Item Pool"  Margin="0" Padding="0"/>
                         <Label Text="Messages" />
                         <StackLayout x:Name="MessageBox">
                             <Label x:Name="MessageText" LineBreakMode="WordWrap" MaxLines="5" HeightRequest="150">

@@ -124,7 +124,7 @@ namespace WDown.Views.Battle
             if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
                 //GameNextButton.IsEnabled = false;
-             
+                ItemPool.IsEnabled = true;
                 GameNextButton.IsEnabled = false;
                 AttackButton.IsEnabled = true;
                 RestButton.IsEnabled = true;
@@ -134,6 +134,7 @@ namespace WDown.Views.Battle
 
             else
             {
+                ItemPool.IsEnabled = false;
                 GameNextButton.IsEnabled = true;
                 AttackButton.IsEnabled = false;
                 RestButton.IsEnabled = false;
@@ -169,6 +170,7 @@ namespace WDown.Views.Battle
 
             if (_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
+                ItemPool.IsEnabled = true;
                 GameNextButton.IsEnabled = false;
                 AttackButton.IsEnabled = true;
                 RestButton.IsEnabled = true;
@@ -176,6 +178,7 @@ namespace WDown.Views.Battle
             }
             else
             {
+                ItemPool.IsEnabled = false;
                 GameNextButton.IsEnabled = true;
                 AttackButton.IsEnabled = false;
                 RestButton.IsEnabled = false;
@@ -375,7 +378,7 @@ namespace WDown.Views.Battle
 
             AttackButton.IsEnabled = false;
             GameNextButton.IsEnabled = true;
-            //TODO
+          
             _viewModel.BattleEngine.Target = null;
             SelectedMonster = null;
             SelectedMonstersView.SelectedItem = null;
@@ -431,6 +434,7 @@ namespace WDown.Views.Battle
 
             if(e.Modal == _myModalUseItemPage)
             {
+                Debug.WriteLine("ITEM MODAL POP METHOD REACHED!!!");
                 _myModalUseItemPage = null;
                 WDown.App.Current.ModalPopping -= HandleModalPopping;
             }
