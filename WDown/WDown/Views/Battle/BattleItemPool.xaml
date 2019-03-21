@@ -127,8 +127,8 @@
                                                     <Label Text="{Binding Name}" TextColor="Black" />
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Description: " TextColor="Black" />
-                                                    <Label Text="{Binding Description}" TextColor="Black" />
+                                                    <Label Text="Location: " TextColor="Black" />
+                                                    <Label Text="{Binding Location}" TextColor="Black" />
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal">
                                                     <Label Text="Value: " TextColor="Black" />

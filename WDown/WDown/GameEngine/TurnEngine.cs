@@ -58,15 +58,15 @@ namespace WDown.GameEngine
         public void AddItemsToList()
         {
             var myItemsViewModel = ItemsViewModel.Instance;
-            //foreach (Item item in myItemsViewModel.Dataset)
-            //{
-            //    if(item.Wearable == false)
-            //    {
-            //        ItemPool.Add(item);
+            foreach (Item item in myItemsViewModel.Dataset)
+            {
+                if (item.Wearable == true)
+                {
+                    ItemPool.Add(item);
 
-            //    }
+                }
 
-            //}
+            }
         }
 
         // Character Attacks...

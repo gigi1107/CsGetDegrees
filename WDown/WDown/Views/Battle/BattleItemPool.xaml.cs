@@ -60,16 +60,6 @@ namespace WDown.Views.Battle
 
         public void ShowItemLocation()
         {
-            //var currChar = _viewModel.BattleEngine.PlayerCurrent;
-            //ItemHead.Text = currChar.Head;
-            //Debug.WriteLine("Head string: " + ItemHead.Text);
-            ////ItemHeadImage.Source = currChar.Head.ImageURI;
-            //ItemNecklass.Text = currChar.Necklass;
-            //ItemPrimaryHand.Text = currChar.PrimaryHand;
-            //ItemOffHand.Text = currChar.OffHand;
-            //ItemLeftFinger.Text = currChar.LeftFinger;
-            //ItemRightFinger.Text = currChar.RightFinger;
-            //ItemFeet.Text = currChar.Feet;
 
             // Getting the Character by ID
             var charID = _viewModel.BattleEngine.PlayerCurrent.Guid;
@@ -126,19 +116,33 @@ namespace WDown.Views.Battle
             AttributeEnum modifiedAttr = selectedItem.Attribute;
             ItemLocationEnum modifiedLocation = selectedItem.Location;
             string itemName = selectedItem.Name;
+            
+            // Add item into that location
             var returnedItem = currChar.AddItem(modifiedLocation, itemName);
-            Debug.WriteLine("Item " + itemName + " equipped at " + modifiedLocation);
+            
+            // Printing debug output
+            Debug.WriteLine("Trying to equip item " + itemName + " at " + modifiedLocation);
+            if (returnedItem != null)
+            {
+                Debug.WriteLine("Removed item: " + returnedItem.Name + " at " + returnedItem.Location);
+            } else
+            {
+                Debug.WriteLine("There was no item there before equipping.")
+            }
 
-            Debug.WriteLine("Printing item list from format output...");
+            //InitializeComponent();
 
-            InitializeComponent();
+
+            Debug.WriteLine("Printing item list from format output..");
             var test1 = currChar.GetItemByLocation(modifiedLocation);
+            var result = currChar.ItemSlotsFormatOutput();
+            Debug.WriteLine(result);
             var name1 = "";
             if (test1 != null)
             {
                 name1 += test1.Name;
             }
-            Debug.WriteLine("Test name: " + name1);
+            Debug.WriteLine("Test name for said location " + name1);
         }
         async void SaveButtonClicked(object sender, EventArgs e)
         {
