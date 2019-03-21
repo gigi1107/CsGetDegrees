@@ -17,13 +17,26 @@ namespace WDown.GameEngine
                 // Error, so exit...
                 return false;
             }
+            Debug.WriteLine("Should have added characters to battle successfully. here they are: ");
+            foreach (Character character in BattleEngine.CharacterList)
+            {
+                Debug.WriteLine(character.Name);
+            }
 
             // Start
             BattleEngine.StartBattle(true);
+            //initialize character list with random characters
 
+            Debug.WriteLine("Char list afterStartBattle is called: ");
+            foreach (Character character in BattleEngine.CharacterList)
+            {
+                Debug.WriteLine(character.Name);
+            }
             Debug.WriteLine("Battle Start" + " Characters :" + BattleEngine.CharacterList.Count);
 
             // Initialize the Rounds
+
+            BattleEngine.SetPlayerCurrent();
             BattleEngine.StartRound();
 
             RoundEnum RoundResult;

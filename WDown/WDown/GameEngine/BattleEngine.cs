@@ -35,13 +35,18 @@ namespace WDown.GameEngine
         // Sets the new state for the variables for Battle
         private void BattleEngineClearData()
         {
-            BattleScore = new Score();
+           
+                BattleScore = new Score();
+         
             BattleMessages = new BattleMessages();
 
             ItemPool.Clear();
             MonsterList.Clear();
 
-            CharacterList.Clear();
+          
+                CharacterList.Clear();
+
+           
             HealAllCharactersAndMonsters();
 
             // Reset current player
@@ -91,11 +96,26 @@ namespace WDown.GameEngine
         // Initializes the Battle to begin
         public bool StartBattle(bool isAutoBattle)
         {
-            BattleEngineClearData();
+            if(!isAutoBattle)
+            {
+                BattleEngineClearData();
+                BattleScore.AutoBattle = false;
 
-            // New Battle
-            // Load Characters
-            BattleScore.AutoBattle = isAutoBattle;
+
+            }
+            else
+            {
+                BattleScore = new Score();
+                BattleScore.AutoBattle = true;
+                BattleMessages = new BattleMessages();
+
+                ItemPool.Clear();
+                MonsterList.Clear();
+                //do not clear char list bc this has already been populated
+            }
+
+         
+
             isBattleRunning = true;
 
             // Characters not Initialized, so false start...

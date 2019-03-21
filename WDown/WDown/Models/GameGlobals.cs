@@ -6,7 +6,7 @@ namespace WDown.Models
     public static class GameGlobals
     {
         // Max number of Players in a Party
-        public static int MaxNumberPartyPlayers = 6;
+        public static int MaxNumberPartyPlayers = 2;
 
         // Turn on to force Rolls to be non random
         public static bool ForceRollsToNotRandom = false;

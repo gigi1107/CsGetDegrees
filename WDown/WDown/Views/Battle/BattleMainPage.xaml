@@ -6,7 +6,7 @@
             <StackLayout Orientation="Horizontal">
                 <!--CHARACTERS-->
                 <ListView x:Name="SelectedCharactersView" 
-                ItemsSource="{Binding BattleEngine.CharacterList}"
+              
                  BackgroundColor="Transparent"
                 VerticalOptions="FillAndExpand"
                  HasUnevenRows="true"
@@ -20,9 +20,15 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Vertical">
-                                    <StackLayout Padding="1" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="StartAndExpand">
-                                        <Image Source="{Binding ImageURI}" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center" />
-                                        <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" />
+                                    <StackLayout Padding="1" Orientation="Horizontal" VerticalOptions="Start" 
+                                                 HorizontalOptions="StartAndExpand">
+                                        <Image Source="{Binding ImageURI}" WidthRequest="20" 
+                                               HeightRequest="20" HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
+                                        <Label Text="{Binding Name}" LineBreakMode="NoWrap"
+                                               Style="{DynamicResource ListItemTextStyle}" />
+                                        <Label Text="Level: "/>
+                                        <Label Text="{Binding Level}"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="HP  " />
@@ -39,6 +45,8 @@
                 <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="250" Opacity="0.7">
                     <StackLayout Orientation="Vertical" Padding="1">
                         <Label x:Name="CPName" />
+                        <Label Text = "Level: "/>
+                        <Label x:Name="CPLevel"/>
                         <Image WidthRequest="50" HeightRequest="50" Margin="1" x:Name="CPImage" />
                         <StackLayout Orientation="Horizontal">
                             <Label Text="HP: " />
@@ -100,8 +108,10 @@
                                                WidthRequest="20" HeightRequest="20" 
                                                HorizontalOptions="Center" 
                                                VerticalOptions="Center" />
-                                        <Label Text="{Binding Name}" LineBreakMode="NoWrap" 
-                                               Style="{DynamicResource ListItemTextStyle}" />
+                                        <Label Text="{Binding Name}"  />
+                                      
+                                         <Label Text="Level: "/>
+                                        <Label Text="{Binding Level}"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="HP  " />

@@ -255,7 +255,29 @@ namespace WDown.GameEngine
 
             // Decide Who gets next turn
             // Remember who just went...
+            //if autobattle, do everything automatically
+            if (BattleScore.AutoBattle)
+            {
+                // Decide Who to Attack
+                // Do the Turn         
+                if (PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
+                {
+                    // Get the player
+                    var myPlayer = CharacterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
 
+                    // Do the turn....
+                    TakeTurn(myPlayer);
+                }
+                // Add Monster turn here...
+                else if (PlayerCurrent.PlayerType == PlayerTypeEnum.Monster)
+                {
+                    // Get the player
+                    var myPlayer = MonsterList.Where(a => a.Guid == PlayerCurrent.Guid && a.Name == PlayerCurrent.Name).FirstOrDefault();
+                    Debug.WriteLine("Player after selected from list: " + myPlayer.Name);
+                    // Do the turn....
+                    TakeTurn(myPlayer);
+                }
+            }
 
             //if move is rest or use item, DO NOT DO ATTACK
 

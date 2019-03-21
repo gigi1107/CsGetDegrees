@@ -322,13 +322,21 @@ namespace WDown.Views.Battle
             CPAttack.Text = _viewModel.BattleEngine.PlayerCurrent.Attack.ToString();
             CPDefense.Text = _viewModel.BattleEngine.PlayerCurrent.Defense.ToString();
             CPSpeed.Text = _viewModel.BattleEngine.PlayerCurrent.Speed.ToString();
+            CPLevel.Text = _viewModel.BattleEngine.PlayerCurrent.Level.ToString();
         }
 
         public void RefreshCharacters()
         {
             SelectedCharactersView.ItemsSource = null;
             SelectedCharactersView.ItemsSource = _viewModel.BattleEngine.CharacterList;
-          
+
+            Debug.WriteLine("This is what the characterLIst looks like in the backend at refreshCharacters Called: ");
+            foreach(Models.Character character in _viewModel.BattleEngine.CharacterList)
+            {
+                Debug.WriteLine(character.Name + " Level: " + character.Level);
+            }
+            
+
             //SelectedCharactersView.ItemsSource = _viewModel.SelectedCharacters;
         }
 
@@ -337,6 +345,7 @@ namespace WDown.Views.Battle
             SelectedMonstersView.ItemsSource = null;
             SelectedMonstersView.ItemsSource = _viewModel.BattleEngine.MonsterList;
 
+            
             //SelectedMonstersView.ItemsSource = _viewModel.FightingMonsters;
            
 
@@ -453,15 +462,16 @@ namespace WDown.Views.Battle
         {
             if (e.Modal == _myModalBattleMonsterListPage)
             {
-                _myModalBattleMonsterListPage = null;
-
-                // remember to remove the event handler
-                WDown.App.Current.ModalPopping -= HandleModalPopping;
-                //refresh game
                 DrawGameBoardAttackerDefender();
                 StartGameSetting();
                 RefreshMonsters();
                 RefreshCharacters();
+                _myModalBattleMonsterListPage = null;
+
+                // remember to remove the event handler
+                WDown.App.Current.ModalPopping -= HandleModalPopping;
+               
+              
 
             }
 
