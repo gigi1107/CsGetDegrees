@@ -108,6 +108,16 @@
     <Compile Include="TestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameEngine\TurnEngineUnitTests.cs" />
+    <Compile Include="Models\DefaultBaseCharacter.cs" />
+    <Compile Include="Models\DefaultBaseMonster.cs" />
+    <Compile Include="Models\DefaultCharacter.cs" />
+    <Compile Include="Models\DefaultItem.cs" />
+    <Compile Include="Models\DefaultMonster.cs" />
+    <Compile Include="Models\DefaultScore.cs" />
+    <Compile Include="Models\ItemHelper.cs" />
+    <Compile Include="GameEngine\RoundEngineTests.cs" />
+    <Compile Include="GameEngine\BattleEngineTests.cs" />
+    <Compile Include="GameEngine\HelperEngineTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -130,6 +140,9 @@
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.6.3\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.6.3\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
