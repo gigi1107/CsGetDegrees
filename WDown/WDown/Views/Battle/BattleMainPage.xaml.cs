@@ -24,6 +24,8 @@ namespace WDown.Views.Battle
         BattleCharacterSelectPage _myModalCharacterSelectPage;
         BattleMonsterListPage _myModalBattleMonsterListPage;
         BattleUseItemPage _myModalUseItemPage;
+        BattleItemPool _myModalItemPoolPage;
+
 
         private BattleViewModel _viewModel;
 
@@ -77,6 +79,14 @@ namespace WDown.Views.Battle
             }
 
 
+        }
+
+        private async void OnItemPoolClicked(object sender, EventArgs args)
+        {
+            Debug.WriteLine("Switching to Item Pool...");
+            WDown.App.Current.ModalPopping += HandleModalPopping;
+            _myModalItemPoolPage = new BattleItemPool(_viewModel);
+            await Navigation.PushModalAsync(_myModalItemPoolPage);
         }
 
         private async void AttackClicked(object sender, EventArgs args)
@@ -394,7 +404,7 @@ namespace WDown.Views.Battle
             //player1.Load(filename1);
             //player1.Play();
 
-            Debug.WriteLine("Switching to Item Pool...");
+            Debug.WriteLine("Switching to Item Inventory...");
             WDown.App.Current.ModalPopping += HandleModalPopping;
             _myModalUseItemPage = new BattleUseItemPage(_viewModel);
             await Navigation.PushModalAsync(_myModalUseItemPage);

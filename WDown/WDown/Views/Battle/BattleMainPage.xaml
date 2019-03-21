@@ -61,6 +61,7 @@
                         </StackLayout>
                         <Button x:Name="GameNextButton" IsVisible="true" Clicked="SubmitClicked" Text="Submit" />
                         <Button x:Name="GameOverButton" IsVisible="true" Clicked="OnGameOverClicked" Text="Game Over" />
+                        <Button x:Name="ItemPool" IsVisible="true" Clicked="OnItemPoolClicked" Text="Go to Item Pool" />
                         <Label Text="Messages" />
                         <StackLayout x:Name="MessageBox">
                             <Label x:Name="MessageText" LineBreakMode="WordWrap" MaxLines="5" HeightRequest="150">
@@ -69,8 +70,8 @@
                     </StackLayout>
                 </Frame>
                 <!--MONSTERS SECTION-->
+
                 
-             
                 <ListView x:Name="SelectedMonstersView"  
                           VerticalOptions="Start" 
                           ItemsSource="{Binding BattleEngine.MonsterList}"

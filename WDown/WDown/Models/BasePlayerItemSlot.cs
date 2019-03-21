@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SQLite;
+using WDown.ViewModels;
 using Xamarin.Forms;
 
 namespace WDown.Models
@@ -40,14 +41,43 @@ namespace WDown.Models
         // then it returns the formated string for the Item, and Value.
         private string FormatOutputSlot(string slot)
         {
-            var myReturn = "Implement";
+            var myReturn = slot + " : ";
 
+            var myType = this.GetType();
+            var myProperty = myType.GetProperty(slot);
+            var myPropertyValue = myProperty.GetValue(this, null);
+
+            if (myPropertyValue == null)
+            {
+                myReturn += "None";
+                return myReturn;
+            }
+
+            var myValue = myPropertyValue.ToString();
+            var myData = ItemsViewModel.Instance.GetItem(myValue);
+            if (myData == null)
+            {
+                myReturn += "None";
+            }
+            else
+            {
+                myReturn += myData.Value.ToString();
+            }
             return myReturn;
         }
 
         public string ItemSlotsFormatOutput()
         {
-            var myReturn = "Implement";
+            var myReturn = "";
+
+            // Need to lookup the Items at the locations, and return them.
+            myReturn = FormatOutputSlot("Head") + " , ";
+            myReturn += FormatOutputSlot("Necklass") + " , ";
+            myReturn += FormatOutputSlot("PrimaryHand") + " , ";
+            myReturn += FormatOutputSlot("OffHand") + " , ";
+            myReturn += FormatOutputSlot("RightFinger") + " , ";
+            myReturn += FormatOutputSlot("LeftFinger") + " , ";
+            myReturn += FormatOutputSlot("Feet") + " , ";
 
             return myReturn.Trim();
         }

@@ -48,7 +48,13 @@ namespace WDown.Models
         public int Attack;
 
         public int Defense;
-
+        public string Head;
+        public string Necklass;
+        public string PrimaryHand;
+        public string OffHand;
+        public string RightFinger;
+        public string LeftFinger;
+        public string Feet;
 
         // Need because of the instantiation below
         public PlayerInfo()
@@ -71,6 +77,14 @@ namespace WDown.Models
             Attack = data.GetAttack();
             Defense = data.GetDefense();
             ImageURI = data.GetImageURI();
+            Head = data.ItemSlotsFormatOutput();
+            //Necklass = data.Necklass.ToString();
+            //PrimaryHand = data.PrimaryHand.ToString();
+            //OffHand = data.OffHand.ToString();
+            //LeftFinger = data.LeftFinger.ToString();
+            //RightFinger = data.RightFinger.ToString();
+            //Feet = data.Feet.ToString();
+
 
         }
 
