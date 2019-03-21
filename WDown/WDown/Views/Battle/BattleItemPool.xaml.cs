@@ -60,29 +60,54 @@ namespace WDown.Views.Battle
 
         public void ShowItemLocation()
         {
-            var currChar = _viewModel.BattleEngine.PlayerCurrent;
-            ItemHead.Text = currChar.Head;
-            Debug.WriteLine("Head string: " + ItemHead.Text);
-            //ItemHeadImage.Source = currChar.Head.ImageURI;
-            ItemNecklass.Text = currChar.Necklass;
-            ItemPrimaryHand.Text = currChar.PrimaryHand;
-            ItemOffHand.Text = currChar.OffHand;
-            ItemLeftFinger.Text = currChar.LeftFinger;
-            ItemRightFinger.Text = currChar.RightFinger;
-            ItemFeet.Text = currChar.Feet;
-            /*CPAttack.Text = _viewModel.BattleEngine.PlayerCurrent.Attack.ToString();
-            CPDefense.Text = _viewModel.BattleEngine.PlayerCurrent.Defense.ToString();
-            CPSpeed.Text = _viewModel.BattleEngine.PlayerCurrent.Speed.ToString();
-            */
-            AvailableItemListView.ItemsSource = _viewModel.BattleEngine.ItemPool;
+            //var currChar = _viewModel.BattleEngine.PlayerCurrent;
+            //ItemHead.Text = currChar.Head;
+            //Debug.WriteLine("Head string: " + ItemHead.Text);
+            ////ItemHeadImage.Source = currChar.Head.ImageURI;
+            //ItemNecklass.Text = currChar.Necklass;
+            //ItemPrimaryHand.Text = currChar.PrimaryHand;
+            //ItemOffHand.Text = currChar.OffHand;
+            //ItemLeftFinger.Text = currChar.LeftFinger;
+            //ItemRightFinger.Text = currChar.RightFinger;
+            //ItemFeet.Text = currChar.Feet;
 
+            // Getting the Character by ID
+            var charID = _viewModel.BattleEngine.PlayerCurrent.Guid;
+            var currChar = _viewModel.Get(charID);
 
-            Debug.WriteLine("Now the Items list in the backend to compare: ");
-            foreach (Item item in _viewModel.BattleEngine.ItemPool)
+            List<Item> itemByLocation = new List<Item>();
+            // Getting Item from each Location in Character
+            var currItem = currChar.GetItemByLocation(ItemLocationEnum.Head);
+            
+            itemByLocation.Add(currItem);
+            ItemHead.Text = currItem.Name;
+
+            currItem = currChar.GetItemByLocation(ItemLocationEnum.Necklass);
+            itemByLocation.Add(currItem);
+            ItemNecklass.Text = currItem.Name;
+
+            
+       
+            AvailableItemLocationListView.ItemsSource = itemByLocation;
+            foreach (var items in itemByLocation)
             {
-                Debug.WriteLine(item.Name);
+                Debug.WriteLine("Item: " + items.Name + "\n");
             }
+            var itemSlot = currChar.ItemSlotsFormatOutput();
+            Debug.WriteLine(itemSlot);
 
+        }
+        async void GetItemSlotsClicked(object sender, EventArgs e)
+        {
+            // Getting the Character by ID
+            Debug.WriteLine("Hello you got in!");
+            var charID = _viewModel.BattleEngine.PlayerCurrent.Guid;
+            var currChar = _viewModel.Get(charID);
+            string charName = currChar.Name;
+            Debug.WriteLine("Character's name: " + charName);
+
+            var itemSlot = currChar.ItemSlotsFormatOutput();
+            Debug.WriteLine(itemSlot);
         }
         async void SaveButtonClicked(object sender, EventArgs e)
         {

@@ -60,7 +60,7 @@ namespace WDown.ViewModels
             AvailableCharacters = new ObservableCollection<Character>();
             FightingMonsters = new ObservableCollection<Monster>();
           
-
+            
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
             BattleEngine = new BattleEngine();

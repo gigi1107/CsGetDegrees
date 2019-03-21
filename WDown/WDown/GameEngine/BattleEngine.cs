@@ -29,7 +29,7 @@ namespace WDown.GameEngine
             CharacterList.Clear();
 
             // Clear the rest of the data
-            BattleEngineClearData();    
+            BattleEngineClearData();
         }
 
         // Sets the new state for the variables for Battle
@@ -37,10 +37,10 @@ namespace WDown.GameEngine
         {
             BattleScore = new Score();
             BattleMessages = new BattleMessages();
-            
+
             ItemPool.Clear();
             MonsterList.Clear();
-            
+
             CharacterList.Clear();
             HealAllCharactersAndMonsters();
 
@@ -103,7 +103,7 @@ namespace WDown.GameEngine
             {
                 return false;
             }
-           
+
 
             return true;
         }
@@ -135,7 +135,7 @@ namespace WDown.GameEngine
             {
                 var Data = GetRandomCharacter(ScaleLevelMin, ScaleLevelMax);
                 CharacterList.Add(Data);
-            } while (CharacterList.Count < GameGlobals.MaxNumberPartyPlayers);  
+            } while (CharacterList.Count < GameGlobals.MaxNumberPartyPlayers);
 
             return true;
         }
@@ -205,6 +205,5 @@ namespace WDown.GameEngine
 
             return myResult;
         }
-
     }
 }

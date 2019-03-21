@@ -6,6 +6,7 @@
             <StackLayout Orientation="Vertical">
                 <Label Text="Please choose the item you want" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Button Text="Get Item Slots" Clicked="GetItemSlotsClicked" BackgroundColor="#fdffba" />
                     <Button Text="Save" Clicked="SaveButtonClicked" BackgroundColor="#fdffba" />
                     <Button Text="Cancel" Clicked="CancelButtonClicked" BackgroundColor="#fdffba" />
                 </StackLayout>
@@ -39,10 +40,46 @@
                             </Label>
                         </StackLayout>
                     </StackLayout>
+                    <ScrollView>
+                        <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="250" Opacity="0.7">
+                            <ListView x:Name="AvailableItemLocationListView" 
+                                  VerticalOptions="FillAndExpand"
+                                  HorizontalOptions="Fill" BackgroundColor="Transparent" 
+                                  VerticalScrollBarVisibility="Default"
+                                  HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" 
+                                  IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                                  CachingStrategy="RecycleElement" ItemSelected="OnItemSelected">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Vertical">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Image Source="{Binding ImageURI}" HeightRequest="50" WidthRequest="50" />
+                                                    <Label Text="{Binding Name}" TextColor="Black" />
+                                                </StackLayout>
+                                                <!--<StackLayout Orientation="Horizontal">
+                                                    <Label Text="Description: " TextColor="Black" />
+                                                    <Label Text="{Binding Description}" TextColor="Black" />
+                                                </StackLayout>-->
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Value: " TextColor="Black" />
+                                                    <Label Text="{Binding Value}" TextColor="Black" />
+                                                
+                                                    <Label Text="Attribute Modified: " />
+                                                    <Label Text="{Binding Attribute}" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Frame>
+                    </ScrollView>
+
                     <StackLayout Orientation="Horizontal">
                         <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="200" Opacity="0.7">
                             <StackLayout Orientation="Vertical">
-                                <!-- Character's item on location-->
+                                 <!--Character's item on location-->
                                 <StackLayout Orientation="Vertical">
                                     <Label Text="Head" FontSize="Medium" TextColor="Black" />
                                     <Label x:Name="ItemHead" FontSize="Large" HorizontalOptions="Center" TextColor="Black" />

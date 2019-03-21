@@ -312,13 +312,7 @@ namespace WDown.Models
             return myReturn;
         }
 
-        // Get Defense
-        public string GetHead()
-        {
-            // Base value
-            var myReturn = Head;
-            return myReturn;
-        }
+        
 
         // Get Max Health
         public int GetHealthMax()
@@ -448,7 +442,7 @@ namespace WDown.Models
             return myReturn;
         }
 
-        // Get the Item at a known string location (head, foot etc.)
+        // Get the Item by the ID
         public Item GetItem(string itemString)
         {
             return ItemsViewModel.Instance.GetItem(itemString);
