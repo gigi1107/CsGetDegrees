@@ -142,25 +142,12 @@ namespace WDown.Views.Battle
             else ItemFeet.Text = "Empty";
 
             // Another way to populate the XAML front-end dynamically
-            AvailableItemLocationListView.ItemsSource = itemByLocation;
+           // AvailableItemLocationListView.ItemsSource = itemByLocation;
 
 
         }
 
-        // Using ItemSlotsFormatOutput() from Character.cs
-        // to see the list of currently equipped item
-        async void GetItemSlotsClicked(object sender, EventArgs e)
-        {
-            // Getting the Character by ID
-            Debug.WriteLine("Printing currently worn items...");
-            var charID = _viewModel.BattleEngine.PlayerCurrent.Guid;
-            var currChar = _viewModel.Get(charID);
-            string charName = currChar.Name;
-            Debug.WriteLine("Character's name: " + charName);
-
-            var itemSlot = currChar.ItemSlotsFormatOutput();
-            Debug.WriteLine(itemSlot);
-        }
+        
 
         // This method handles when user click equip
         // Equip ALWAYS equip the selected item.
@@ -176,6 +163,7 @@ namespace WDown.Views.Battle
             }
             Debug.WriteLine("You are equipping item....");
             // Get Character
+            // TODO HOW TO GRAB SOMETHING THAT'S UNIQUE TO EACH CHARACTER? because BigWig 1 and BigWig 3 shares GUID
             var charID = _viewModel.BattleEngine.PlayerCurrent.Guid;
             var currChar = _viewModel.Get(charID);
             // Get Item clicked
@@ -205,10 +193,7 @@ namespace WDown.Views.Battle
         async void SaveButtonClicked(object sender, EventArgs e)
         {
 
-            //consume item
-            //pop item off list
-            //heal character or whatever
-            //pop modal page
+           // Pop Modal Page
 
             if (selectedItem == null)
             {
@@ -218,22 +203,22 @@ namespace WDown.Views.Battle
             //else
             //vonsume item
             //for now, all the consumables will jus trestore you to full health
-            int value = selectedItem.Value;
-            AttributeEnum modifiedAttr = selectedItem.Attribute;
+            //int value = selectedItem.Value;
+            //AttributeEnum modifiedAttr = selectedItem.Attribute;
 
-            if (modifiedAttr == AttributeEnum.CurrentHealth)
-            {
-                _viewModel.BattleEngine.PlayerCurrent.RemainingHP = _viewModel.BattleEngine.PlayerCurrent.TotalHP;
-                //also find current character in the character list and update it
-                foreach (Models.Character character in _viewModel.BattleEngine.CharacterList)
-                {
-                    if (character.Name == _viewModel.BattleEngine.PlayerCurrent.Name)
-                    {
-                        character.CharacterAttribute.CurrentHealth = character.CharacterAttribute.MaxHealth;
-                        Debug.WriteLine("Character has been healed to full health");
-                    }
-                }
-            }
+            //if (modifiedAttr == AttributeEnum.CurrentHealth)
+            //{
+            //    _viewModel.BattleEngine.PlayerCurrent.RemainingHP = _viewModel.BattleEngine.PlayerCurrent.TotalHP;
+            //    //also find current character in the character list and update it
+            //    foreach (Models.Character character in _viewModel.BattleEngine.CharacterList)
+            //    {
+            //        if (character.Name == _viewModel.BattleEngine.PlayerCurrent.Name)
+            //        {
+            //            character.CharacterAttribute.CurrentHealth = character.CharacterAttribute.MaxHealth;
+            //            Debug.WriteLine("Character has been healed to full health");
+            //        }
+            //    }
+            //}
 
             await Navigation.PopModalAsync();
 

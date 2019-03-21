@@ -6,7 +6,6 @@
             <StackLayout Orientation="Vertical">
                 <Label Text="Select and Item, Click Equip, Hit Save!" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Button Text="Get Item Slots" Clicked="GetItemSlotsClicked" BackgroundColor="#fdffba" />
                     <Button Text="Save" Clicked="SaveButtonClicked" BackgroundColor="#fdffba" />
                     <Button Text="Cancel" Clicked="CancelButtonClicked" BackgroundColor="#fdffba" />
                 </StackLayout>
@@ -40,7 +39,7 @@
                             </Label>
                         </StackLayout>
                     </StackLayout>
-                    <ScrollView>
+                    <!--<ScrollView>
                         <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="250" Opacity="0.7">
                             <ListView x:Name="AvailableItemLocationListView" 
                                   VerticalOptions="FillAndExpand"
@@ -70,39 +69,52 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                         </Frame>
-                    </ScrollView>
+                    </ScrollView>-->
 
                     <StackLayout Orientation="Horizontal">
                         <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="200" Opacity="0.7">
                             <StackLayout Orientation="Vertical">
-                                 <!--Character's item on location-->
+                                <!--Character's item on location-->
                                 <StackLayout Orientation="Vertical">
-                                    <Label Text="Head" FontSize="Medium" TextColor="Black" />
-                                    <Label x:Name="ItemHead" FontSize="Large" HorizontalOptions="Center" TextColor="Black" />
+                                    <Label Text="Head" FontSize="Small" TextColor="Black" />
+                                    <Label x:Name="ItemHead" HorizontalOptions="Center" TextColor="Black" />
                                     <Image x:Name="ItemHeadImage" HeightRequest="50" WidthRequest="50" />
-                                    <Label Text="Necklace" FontSize="Medium" TextColor="Black" />
-                                    <Label x:Name="ItemNecklass" TextColor="Black" />
+                                    <Label Text="Necklace" FontSize="Small" TextColor="Black" />
+                                    <Label x:Name="ItemNecklass" HorizontalOptions="Center" TextColor="Black" />
                                     <Image x:Name="ItemNecklassImage" HeightRequest="50" WidthRequest="50" />
-                                    <Label Text="Primary Hand" FontSize="Medium" TextColor="Black" />
-                                    <Label x:Name="ItemPrimaryHand" TextColor="Black" />
+                                    <Label Text="Primary Hand" FontSize="Small" TextColor="Black" />
+                                    <Label x:Name="ItemPrimaryHand" HorizontalOptions="Center" TextColor="Black" />
                                     <Image x:Name="ItemPrimaryHandImage" HeightRequest="50" WidthRequest="50" />
-                                    <Label Text="Off Hand" FontSize="Medium" TextColor="Black" />
-                                    <Label x:Name="ItemOffHand" TextColor="Black" />
+                                    <Label Text="Off Hand" FontSize="Small" TextColor="Black" />
+                                    <Label x:Name="ItemOffHand" HorizontalOptions="Center" TextColor="Black" />
                                     <Image x:Name="ItemOffHandImage" HeightRequest="50" WidthRequest="50" />
-                                    <Label Text="Right Finger" FontSize="Medium" TextColor="Black" />
-                                    <Label x:Name="ItemRightFinger" TextColor="Black" />
-                                    <Image x:Name="ItemRightFingerImage" HeightRequest="50" WidthRequest="50" />
-                                    <Label Text="Left Finger" FontSize="Medium" TextColor="Black" />
-                                    <Label x:Name="ItemLeftFinger" TextColor="Black" />
-                                    <Image x:Name="ItemLeftFingerImage" HeightRequest="50" WidthRequest="50" />
-                                    <Label Text="Feet" FontSize="Medium" TextColor="Black" />
-                                    <Label x:Name="ItemFeet" TextColor="Black" />
-                                    <Image x:Name="ItemFeetImage" HeightRequest="50" WidthRequest="50" />
+
                                 </StackLayout>
-                               
+
                             </StackLayout>
                         </Frame>
                     </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="200" Opacity="0.7">
+                            <StackLayout Orientation="Vertical">
+                                <StackLayout Orientation="Vertical">
+
+                                    <Label Text="Right Finger" FontSize="Small" TextColor="Black" />
+                                    <Label x:Name="ItemRightFinger" HorizontalOptions="Center" TextColor="Black" />
+                                    <Image x:Name="ItemRightFingerImage" HeightRequest="50" WidthRequest="50" />
+                                    <Label Text="Left Finger" FontSize="Small" TextColor="Black" />
+                                    <Label x:Name="ItemLeftFinger"  HorizontalOptions="Center" TextColor="Black" />
+                                    <Image x:Name="ItemLeftFingerImage" HeightRequest="50" WidthRequest="50" />
+                                    <Label Text="Feet" FontSize="Small" TextColor="Black" />
+                                    <Label x:Name="ItemFeet" HorizontalOptions="Center" TextColor="Black" />
+                                    <Image x:Name="ItemFeetImage" HeightRequest="50" WidthRequest="50" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+
+
+
                     <StackLayout Orientation="Vertical">
 
                         <Image x:Name="SelectedItemImage" WidthRequest="100" HeightRequest="100" />
