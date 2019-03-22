@@ -8,10 +8,9 @@ using WDown.ViewModels;
 
 namespace WDown.GameEngine
 {
-    // Battle is the top structure
-
-    // A battle has
-
+    // Battle Engine used by Auto Battle and Regular Battle 
+    // Child class of Round Engine
+    // Grandchild class of Turn Engine
     public class BattleEngine : RoundEngine
     {
         // The status of the actual battle, running or not (over)
@@ -65,6 +64,8 @@ namespace WDown.GameEngine
             return isBattleRunning;
         }
 
+        // Function to rebuff the Current Health to Max Health
+        // for all characters and monsters 
         public void HealAllCharactersAndMonsters()
         {
             foreach (Character character in CharactersViewModel.Instance.Dataset)
@@ -145,8 +146,6 @@ namespace WDown.GameEngine
                 return true;
             }
 
-            // TODO, determine the character strength
-            // add Characters up to that strength...
             var ScaleLevelMax = 3;
             var ScaleLevelMin = 1;
 
@@ -187,23 +186,7 @@ namespace WDown.GameEngine
         }
 
 
-        // Check Character List, if empty battle over
-        // Check Monster List, if empty Round Over, then New Round
 
-        // Round Over
-        // Clear Monsters
-        // Drop Items to Pool
-        // Allow Pickup of Items from Pool
-
-        // New Round
-        // Item pool is empty
-        // Monster List is new
-        // Start Round
-
-        // Start Round
-        // Choose Attack Order
-        // Walk Attack Order
-        // Take Turn A attacks B
 
 
         /// <summary>

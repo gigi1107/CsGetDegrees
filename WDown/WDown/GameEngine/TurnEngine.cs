@@ -19,22 +19,31 @@ namespace WDown.GameEngine
     // * Death
     // * Manage Round...
     // * /
-
+    
+        // Base class for all engines
     public class TurnEngine
     {
 
         #region Properties
-        // Holds the official score
+        // Holds score record for this current battle
         public Score BattleScore = new Score();
+
+        // New Battle Messages object
         public BattleMessages BattleMessages = new BattleMessages();
 
-     
+       // The Item Pools for Monsters and Characters to drop items in
         public List<Item> ItemPool = new List<Item>();
 
+        // List of current monsters and characters
         public ObservableCollection<Monster> MonsterList = new ObservableCollection<Monster>();
         public ObservableCollection<Character> CharacterList = new ObservableCollection<Character>();
+
+        // Damage gotten from Attack()
         public int DamageAmount = 0;
+        // Message about the attack to print
         public string AttackDescription;
+
+        // Who's the current fighter
         public PlayerInfo CurrentAttacker;
         public PlayerInfo CurrentDefender;
 
@@ -51,7 +60,7 @@ namespace WDown.GameEngine
         // Turn Over
         #endregion Properties
         
-            //force add some CONSUMABLE Items to ItemPool to start off with
+            //Force add some CONSUMABLE Items to ItemPool to start off with
         public void AddItemsToList()
         {
             var myItemsViewModel = ItemsViewModel.Instance;
@@ -296,6 +305,8 @@ namespace WDown.GameEngine
 
                 BattleMessages.DamageAmount += GameGlobals.ForceCharacterDamangeBonusValue;   // Add the Forced Damage Bonus (used for testing...)
 
+                // Print out debug messages and update BattleMessages
+                // Depending on the roll dice result
                 BattleMessages.AttackStatus = string.Format(" hits for {0} damage on ", BattleMessages.DamageAmount);
                 if (GameGlobals.EnableCriticalHitDamage)
                 {
@@ -396,25 +407,7 @@ namespace WDown.GameEngine
                 BattleMessages.HitStatus = HitStatusEnum.CriticalHit;
                 return BattleMessages.HitStatus;
             }
-            //if (d20 > 4 && d20 < 7)
-            //{
-            //    // Force an item drop
-            //    // Drop Items to item Pool
-            //    var myItemList = Target.DropAllItems();
-
-            //    // If Random drops are enabled, then add some....
-            //    myItemList.AddRange(GetRandomMonsterItemDrops(BattleScore.RoundCount));
-
-            //    // Add to Score
-            //    foreach (var item in myItemList)
-            //    {
-            //        BattleScore.ItemsDroppedList += item.FormatOutput() + "\n";
-            //        BattleMessages.TurnMessageSpecial += " Item " + item.Name + "Random Item dropped in pool";
-            //    }
-            //    Debug.WriteLine("----------------------");
-            //    Debug.WriteLine("Random item was dropped in pool!!!");
-
-            //}
+           
             var ToHitScore = d20 + AttackScore;
             if (ToHitScore < DefenseScore)
             {
@@ -445,16 +438,7 @@ namespace WDown.GameEngine
                 return null;
             }
 
-            //// For now, just use a simple selection of the first in the list.
-            //// Later consider, strongest, closest, with most Health etc...
-            //foreach (var Defender in MonsterList)
-            //{
-            //    if (Defender.Alive)
-            //    {
-            //        return Defender;
-            //    }
-            //}
-
+            
             // Select first one to hit in the list for now...
             // Attack the Weakness (lowest HP) Monster first 
             var DefenderWeakest = MonsterList.OrderBy(m => m.MonsterAttribute.CurrentHealth).FirstOrDefault();
@@ -537,6 +521,8 @@ namespace WDown.GameEngine
             return myList;
         }
 
+        // This function takes a Character and returns a string 
+        // about whether the character drops item 
         public string DetermineCriticalMissProblem(Character attacker)
         {
             if (attacker == null)
