@@ -8,7 +8,7 @@ using WDown.Models;
 using WDown.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-// This populates the Monster Index view
+
 namespace WDown.Views.Monster
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -16,7 +16,7 @@ namespace WDown.Views.Monster
     {
         private MonsterDetailViewModel _viewModel;
 
-
+        // This page allows user to view the detailed information of a given monster
         public MonsterDetailPage(MonsterDetailViewModel viewModel)
         {
             InitializeComponent();

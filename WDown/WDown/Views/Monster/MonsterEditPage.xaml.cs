@@ -14,7 +14,7 @@ namespace WDown.Views.Monster
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonsterEditPage : ContentPage
     {
-        // ReSharper disable once NotAccessedField.Local
+        // This page allows users to edit the values of a monter
         private MonsterDetailViewModel _viewModel;
 
         public WDown.Models.Monster Data { get; set; }

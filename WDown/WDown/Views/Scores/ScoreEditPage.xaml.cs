@@ -66,16 +66,19 @@ namespace WDown.Views.Scores
             RoundValue.Text = String.Format("{0}", e.NewValue);
         }
 
+        // Handles when value is changed for amount of monsters killed
         private void MonstersSlainNumber_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             MonstersKilledNumber.Text = String.Format("{0}", e.NewValue);
         }
 
+        // Handles when value is changed for Experience 
         private void XP_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             XPGained.Text = String.Format("{0}", e.NewValue);
         }
 
+        // Handles when value is changed for the battle number
         private void BattleNumber_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
             BattleNum.Text = String.Format("{0}", e.NewValue);
