@@ -7,12 +7,14 @@ using WDown.ViewModels;
 using WDown.Models;
 using Xamarin.Forms;
 
+// Character controller
+// Specify the default URL for the image for Character class
 namespace WDown.Controllers
 {
     public class CharacterController
     {
         private static CharacterController _instance;
-
+        // Instantiate
         public static CharacterController Instance
         {
             get
@@ -24,7 +26,7 @@ namespace WDown.Controllers
                 return _instance;
             }
         }
-
+        // Image URI 
         public static string DefaultImageURI = "https://i.imgur.com/lcTjFJ1.png";
     }
 }

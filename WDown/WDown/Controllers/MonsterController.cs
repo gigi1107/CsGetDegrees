@@ -7,6 +7,8 @@ using Xamarin.Forms;
 
 namespace WDown.Controllers
 {
+    // Monster Controller
+    // Set the default URI for image for Monster class
     public class MonsterController
     {
         // Make this a singleton so it only exist one time because holds all the data records in memory
