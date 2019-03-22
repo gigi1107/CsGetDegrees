@@ -34,7 +34,7 @@ namespace WDown.Models
 
         #endregion Singleton
 
-
+        // A list for messages about battle
         private List<MessageDetailHitEnum> MessageList { get; set; }
 
         // Data for the Levels
@@ -43,12 +43,14 @@ namespace WDown.Models
             ClearAndLoadDatTable();
         }
 
+        // Clear
         public void ClearAndLoadDatTable()
         {
             MessageList = new List<MessageDetailHitEnum>();
             LoadData();
         }
 
+        // Load data
         public void LoadData()
         {
             MessageList.Add(new MessageDetailHitEnum { HitStatus = HitStatusEnum.Unknown, Message = "Unknown" });
@@ -65,6 +67,7 @@ namespace WDown.Models
             public string Message;
         }
 
+        // Retusn a string of the mesage based on the hit status
         public string GetMessage(HitStatusEnum hitStatus)
         {
             var myReturn = MessageList.Where(a => a.HitStatus == hitStatus).FirstOrDefault().Message;

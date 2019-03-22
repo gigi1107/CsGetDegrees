@@ -4,7 +4,8 @@
         <AbsoluteLayout BackgroundColor="Black" Padding="0,4,0,4">
             <Image Aspect="AspectFill" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Source=" https://i.imgur.com/6w2MiQ0.jpg" BackgroundColor="White" />
             <StackLayout Orientation="Vertical">
-                <Label Text="Select and Item, Click Equip, Hit Save!" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" />
+                <Label Text="REMEMBER: Select an Item, Click Equip, then Hit Save!" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" />
+                <Label Text="If you don't want to choose an item, click Cancel!" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Button Text="Save" Clicked="SaveButtonClicked" BackgroundColor="#fdffba" />
                     <Button Text="Cancel" Clicked="CancelButtonClicked" BackgroundColor="#fdffba" />
@@ -30,6 +31,7 @@
                             <Label x:Name="CPSpeed" TextColor="White">
                             </Label>
                             <Label Text="Current Health: " FontSize="Medium" TextColor="White">
+
                             </Label>
                             <Label x:Name="CPHPCurr" TextColor="White">
                             </Label>
@@ -39,37 +41,6 @@
                             </Label>
                         </StackLayout>
                     </StackLayout>
-                    <!--<ScrollView>
-                        <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="250" Opacity="0.7">
-                            <ListView x:Name="AvailableItemLocationListView" 
-                                  VerticalOptions="FillAndExpand"
-                                  HorizontalOptions="Fill" BackgroundColor="Transparent" 
-                                  VerticalScrollBarVisibility="Default"
-                                  HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" 
-                                  IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
-                                  CachingStrategy="RecycleElement" ItemSelected="OnItemSelected">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <StackLayout Orientation="Vertical">
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Image Source="{Binding ImageURI}" HeightRequest="50" WidthRequest="50" />
-                                                    <Label Text="{Binding Name}" TextColor="Black" />
-                                                </StackLayout>
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Text="Value: " TextColor="Black" />
-                                                    <Label Text="{Binding Value}" TextColor="Black" />
-                                                
-                                                    <Label Text="Attribute Modified: " />
-                                                    <Label Text="{Binding Attribute}" />
-                                                </StackLayout>
-                                            </StackLayout>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </Frame>
-                    </ScrollView>-->
 
                     <StackLayout Orientation="Horizontal">
                         <Frame OutlineColor="Black" BackgroundColor="White" WidthRequest="200" Opacity="0.7">

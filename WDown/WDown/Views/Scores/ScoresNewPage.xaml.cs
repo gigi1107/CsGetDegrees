@@ -32,6 +32,7 @@ namespace WDown.Views.Scores
             BindingContext = this;
 
         }
+        // Save the new Score into the Score Index List
         private async void Save_Clicked(object sender, EventArgs e)
         {
             // If the image in teh data box is empty, use the default one..

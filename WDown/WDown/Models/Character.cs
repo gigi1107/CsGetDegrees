@@ -628,12 +628,7 @@ namespace WDown.Models
         }
 
         // Resting functionality for Character
-        // Driver should check whether there is at least one warren in the party before 
-        // calling Rest() 
-
-        // Resting costs an enormous amount of CurrentWisdom. 
-        // Character can only get back Wisdom points
-        // by accumulating and using a lot of Wisdom-based items, or by levelling up 
+        // by allowing Current Health to be restored
         public bool Rest()
         {
             if (RestCount - TOTAL_REST_ALLOWED <= 0)

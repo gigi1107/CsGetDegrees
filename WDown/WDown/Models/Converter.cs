@@ -6,6 +6,7 @@ namespace WDown.Models
 {
     public class IntEnumConverter : IValueConverter
     {
+        // Convert from data to obejct
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is Enum)

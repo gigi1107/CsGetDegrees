@@ -14,11 +14,14 @@ using Xamarin.Forms.Xaml;
 
 namespace WDown.Views.Battle
 {
+    // This page let user selects 6 characters to start the battle 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BattleCharacterSelectPage : ContentPage
     {
+        // Holds a BattleViewModel object
         private BattleViewModel _viewModel;
 
+        // Start page
         public BattleCharacterSelectPage()
         {
             InitializeComponent();
@@ -50,6 +53,7 @@ namespace WDown.Views.Battle
             Navigation.RemovePage(this);
         }
 
+        // Shows currently available Characters
         private async void OnAvailableCharacterItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             var data = args.SelectedItem as WDown.Models.Character;
@@ -86,6 +90,7 @@ namespace WDown.Views.Battle
             PartyCountLabel.Text = currentCount.ToString();
         }
 
+        // When user clicks on a Character, it shows in the selected tab
         private async void OnSelectedCharacterItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             var data = args.SelectedItem as WDown.Models.Character;

@@ -11,6 +11,7 @@ using WDown.Views;
 
 namespace WDown.Views.Battle
 {
+    // Auto Battle Page
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AutoBattlePage : ContentPage
     {
@@ -21,6 +22,8 @@ namespace WDown.Views.Battle
             InitializeComponent();
         }
 
+        // Upon Auto Battle clicked, run a new Auto Battle
+        // Return a score after the battle end.
         private async void AutoBattleButton_Command(object sender, EventArgs e)
         {
             // Can create a new battle engine...
@@ -30,7 +33,7 @@ namespace WDown.Views.Battle
 
             if (result == false)
             {
-                await DisplayAlert("Error", "No Characters Avaialbe", "OK");
+                await DisplayAlert("Error", "No Characters Available", "OK");
                 return;
             }
 
@@ -53,7 +56,7 @@ namespace WDown.Views.Battle
             }
         }
 
-
+        // Handles when user click Cancel
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

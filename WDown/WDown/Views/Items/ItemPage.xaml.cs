@@ -25,6 +25,7 @@ namespace WDown.Views.Items
             BindingContext = _viewModel = ItemsViewModel.Instance;
         }
 
+        // Upon selected, brings user to the detail page of that item
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             var data = args.SelectedItem as Item;

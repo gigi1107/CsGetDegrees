@@ -13,6 +13,7 @@ using WDown.Views.Items;
 
 namespace WDown.ViewModels
 {
+    // Controller for Item class
     public class ItemsViewModel : BaseViewModel
     {
         #region Singleton

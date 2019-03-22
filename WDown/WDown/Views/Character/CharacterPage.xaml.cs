@@ -24,6 +24,7 @@ namespace WDown.Views.Character
 
         }
 
+        // Upon selected, brings user to the detail page for selected character
         private async void OnCharacterSelected(object sender, SelectedItemChangedEventArgs args)
         {
             var data = args.SelectedItem as WDown.Models.Character;

@@ -3,10 +3,14 @@ using System.Diagnostics;
 
 namespace WDown.GameEngine
 {
+    // Engine for the Auto Battle mode
     public class AutoBattleEngine
     {
+        // Instantiate a new battle engine object
         public BattleEngine BattleEngine = new BattleEngine();
 
+        // Run the battle
+        // Returns false if there is an error 
         public bool RunAutoBattle()
         {
             // Auto Battle, does all the steps that a human would do.
@@ -53,7 +57,7 @@ namespace WDown.GameEngine
         }
 
         /// <summary>
-        /// Returns the Score from the current Battle Instance
+        // Returns the Score from the current Battle Instance
         /// </summary>
         /// <returns>the score value</returns>
         public int GetScoreValue()

@@ -34,17 +34,11 @@ namespace WDown.Controllers
         {
             // parameter is the item group to request.  1, 2, 3, 100
 
-            // Needs to get items from the server
-            // Parse them
-            // Then update the database
-            // Only update fields on existing items
-            // Insert new items
-            // Then notify the viewmodel of the change
-
-            // Needs to get items from the server
+            // URL to get items from the server
 
             var URLComponent = "GetItemList/";
 
+            // Get result from Server
             var DataResult = await HttpClientService.Instance.GetJsonGetAsync(WebGlobals.WebSiteAPIURL + URLComponent + parameter);
 
             // Parse them
@@ -78,14 +72,7 @@ namespace WDown.Controllers
         // Location is a filter to return only items for that location, else unknown is used for any
         public async Task<List<Item>> GetItemsFromGame(int number, int level, AttributeEnum attribute, ItemLocationEnum location, bool random, bool updateDataBase)
         {
-            // Needs to get items from the server
-            // Parse them
-            // Then update the database
-            // Only update fields on existing items
-            // Insert new items
-            // Then notify the viewmodel of the change
-
-            // Needs to get items from the server
+            // Get items from server
 
             var URLComponent = "GetItemListPost";
 
@@ -131,7 +118,7 @@ namespace WDown.Controllers
             return myList;
         }
 
-        // The returned data will be a list of items.  Need to pull that list out
+        // Parsing Json string into a list of item
         private List<Item> ParseJson(string myJsonData)
         {
             var myData = new List<Item>();
@@ -163,7 +150,8 @@ namespace WDown.Controllers
             }
 
         }
-
+        // Convert Json object to an Item class 
+        // to avoid Json object's missing or additional fields
         private Item ConvertFromJson(JObject json)
         {
             var myData = new Item();

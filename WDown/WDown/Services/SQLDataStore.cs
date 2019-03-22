@@ -28,7 +28,7 @@ namespace WDown.Services
             }
         }
 
-        
+        // Initialize
         private SQLDataStore()
         {
             // Create new db tables

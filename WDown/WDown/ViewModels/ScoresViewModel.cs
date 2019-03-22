@@ -11,6 +11,7 @@ using WDown.Controllers;
 
 namespace WDown.ViewModels
 {
+    // Controller for Score class
     public class ScoresViewModel : BaseViewModel
     {
         // Make this a singleton so it only exist one time because holds all the data records in memory

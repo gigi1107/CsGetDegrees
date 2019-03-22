@@ -17,10 +17,13 @@ using System.Reflection;
 
 namespace WDown.Views.Battle
 {
+    // This is the main battle page 
+    // for manual battle mode
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BattleMainPage : ContentPage
     {
 
+        // List of Monster, Character, UseItem and ItemPool
         BattleCharacterSelectPage _myModalCharacterSelectPage;
         BattleMonsterListPage _myModalBattleMonsterListPage;
         BattleUseItemPage _myModalUseItemPage;
@@ -36,8 +39,9 @@ namespace WDown.Views.Battle
         string localMessages;
 
         /// <summary>
-        /// Stand up the Page and initiate state
+        // Stand up the Page and initiate state
         /// </summary>
+        /// 
         public BattleMainPage(BattleViewModel viewModel)
         {
             InitializeComponent();
@@ -70,7 +74,7 @@ namespace WDown.Views.Battle
         }
 
        
-
+        // Upon selected, the monster is chose for target
         private async void OnSelectedMonsterSelected(object sender, SelectedItemChangedEventArgs args)
         {
             if(ableToSelectMonster)
@@ -84,6 +88,7 @@ namespace WDown.Views.Battle
 
         }
 
+        // If item Pool is clicked, takes user to item pool page to equip new items
         private async void OnItemPoolClicked(object sender, EventArgs args)
         {
             Debug.WriteLine("Switching to Item Pool...");
@@ -92,8 +97,12 @@ namespace WDown.Views.Battle
             await Navigation.PushModalAsync(_myModalItemPoolPage);
         }
 
+
+        // When user clicks a monster and then click attacks, 
+        // backend will roll dice and calculate the damage and the XP earned.
         private async void AttackClicked(object sender, EventArgs args)
         {
+            // This is the sound implementation
             //var player1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
             //string filename1 = "attack.mp3";
            
@@ -110,6 +119,7 @@ namespace WDown.Views.Battle
         }
 
 
+        // Start the game
         public async void StartGame(object sender, EventArgs args)
         {
             StartGameSetting();
@@ -310,6 +320,7 @@ namespace WDown.Views.Battle
 
         }
 
+        // Populate the CP Info for the XAML front end
         public void DrawGameBoardAttackerDefender()
         {
             CPName.Text = _viewModel.BattleEngine.PlayerCurrent.Name;
@@ -322,6 +333,7 @@ namespace WDown.Views.Battle
             CPLevel.Text = _viewModel.BattleEngine.PlayerCurrent.Level.ToString();
         }
 
+        // Refresh characters to show updated stats
         public void RefreshCharacters()
         {
             SelectedCharactersView.ItemsSource = null;
@@ -337,6 +349,7 @@ namespace WDown.Views.Battle
             //SelectedCharactersView.ItemsSource = _viewModel.SelectedCharacters;
         }
 
+        // REgresh monsters to show updated stats
         public void RefreshMonsters()
         {
             SelectedMonstersView.ItemsSource = null;
@@ -516,6 +529,7 @@ namespace WDown.Views.Battle
             }
         }
 
+        // Show the modal for monsters
         private async void ShowModalPageMonsterList()
         {
             // When you want to show the modal page, just call this method
@@ -525,6 +539,7 @@ namespace WDown.Views.Battle
             await Navigation.PushModalAsync(_myModalBattleMonsterListPage);
         }
 
+        // Show the modal for characters
         private async void ShowModalPageCharacterSelect()
         {
             // When you want to show the modal page, just call this method
@@ -534,6 +549,8 @@ namespace WDown.Views.Battle
             await Navigation.PushModalAsync(_myModalCharacterSelectPage);
         }
 
+        // This function is for the sound functionality 
+        // Implemented in Hackathon
         public Stream GetStreamFromFile(string filename)
         {
             var assembly = typeof(App).GetTypeInfo().Assembly;

@@ -43,6 +43,7 @@ namespace WDown.Views.Battle
            
         }
 
+        // Show the player stats, binds data for the XAML view
 
         public void ShowPlayerStats()
         {
@@ -60,7 +61,7 @@ namespace WDown.Views.Battle
 
         }
 
-
+        // User HAS TO choose and item before hitting save
         async void SaveButtonClicked(object sender, EventArgs e)
         {
 
@@ -104,12 +105,13 @@ namespace WDown.Views.Battle
             
 
         }
-
+        // Cancel, go back to previous page (battlemain)
         async void CancelButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
 
+        // Upon selected item,shows description and name on the side. 
          async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             if (args==null)

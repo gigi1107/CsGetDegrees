@@ -10,6 +10,7 @@ using System.Linq;
 
 namespace WDown.ViewModels
 {
+    // Controller for Monster class
     public class MonstersViewModel : BaseViewModel
     {
         // Make this a singleton so it only exist one time because holds all the data records in memory
@@ -117,6 +118,7 @@ namespace WDown.ViewModels
 
         }
 
+        // Force refresh to reset
         public void ForceDataRefresh()
         {
             // Reset
@@ -126,6 +128,7 @@ namespace WDown.ViewModels
 
         #region DataOperations
 
+        // Add a new monster
         public async Task<bool> AddAsync(Monster data)
         {
             Dataset.Add(data);
@@ -133,6 +136,7 @@ namespace WDown.ViewModels
             return myReturn;
         }
 
+        // Delete a monster
         public async Task<bool> DeleteAsync(Monster data)
         {
             Dataset.Remove(data);
@@ -140,6 +144,7 @@ namespace WDown.ViewModels
             return myReturn;
         }
 
+        // Update monster values
         public async Task<bool> UpdateAsync(Monster data)
         {
             // Find the Monster, then update it

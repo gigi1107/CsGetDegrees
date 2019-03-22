@@ -20,6 +20,7 @@ namespace WDown.Views.Character
             BindingContext = _viewModel = viewModel;
         }
 
+        // Start Page
         public CharacterDetailPage()
         {
             InitializeComponent();

@@ -9,6 +9,8 @@ using Xamarin.Forms.Xaml;
 
 namespace WDown.Views.Battle
 {
+    // This page populates the Battle Opening Page
+    // This allows users to move on and select characters
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BattleOpeningPage : ContentPage
 	{

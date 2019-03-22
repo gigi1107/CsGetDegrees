@@ -9,6 +9,7 @@ using WDown.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+// This page allows user to delete a character
 namespace WDown.Views.Character
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -30,6 +31,7 @@ namespace WDown.Views.Character
             BindingContext = _viewModel = viewModel;
         }
 
+        // When user hits delete, remove the character from database
         private async void Delete_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "DeleteData", Data);
@@ -40,6 +42,7 @@ namespace WDown.Views.Character
             await Navigation.PopAsync();
         }
 
+        // When user hits cancel, it brings back to previous page
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
