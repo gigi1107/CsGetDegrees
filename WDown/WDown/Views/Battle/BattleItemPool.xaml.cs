@@ -38,7 +38,8 @@ namespace WDown.Views.Battle
 
         }
 
-
+        // Populate the player's stat at the top left corner 
+        // for XAML view 
         public void ShowPlayerStats()
         {
             CPName.Text = _viewModel.BattleEngine.PlayerCurrent.Name;
