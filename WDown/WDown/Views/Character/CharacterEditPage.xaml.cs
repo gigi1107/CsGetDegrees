@@ -8,6 +8,7 @@ using WDown.Controllers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+// This page allows user to edit a character
 namespace WDown.Views.Character
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -17,6 +18,7 @@ namespace WDown.Views.Character
 
         public WDown.Models.Character Data { get; set; }
 
+        // Start page
         public CharacterEditPage(CharacterDetailViewModel viewModel)
 
         {
@@ -30,7 +32,7 @@ namespace WDown.Views.Character
 
 
         }
-
+        // When save is clicked, the new values is updated in the backend
         private async void Save_Clicked(object sender, EventArgs e)
         {
             // If the image in the data box is empty, use the default one..
