@@ -38,7 +38,7 @@ namespace WDown.GameEngine
         public PlayerInfo CurrentAttacker;
         public PlayerInfo CurrentDefender;
 
-        public Monster Target;
+        public Monster ManualTarget;
 
         public MoveEnum TurnType;
 
@@ -69,12 +69,20 @@ namespace WDown.GameEngine
         // Character Attacks...
         public bool TakeTurn(Character Attacker)
         {
-            // Choose Move or Attack
-
+            Monster Target = null;
+         
             // For Attack, Choose Who
             //this part allows for autobattle
-           var Target = AttackChoice(Attacker);
+            if (BattleScore.AutoBattle)
+            {
+                Target  = AttackChoice(Attacker);
+            }
 
+            else
+            {
+                //set to manually selected char target if not autobattle
+                Target = ManualTarget;
+            }
            
 
             if (Target == null)

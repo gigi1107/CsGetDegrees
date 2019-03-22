@@ -156,11 +156,8 @@ namespace WDown.Views.Battle
             //send the selected monster info into target
             if(_viewModel.BattleEngine.PlayerCurrent.PlayerType == PlayerTypeEnum.Character)
             {
-                _viewModel.BattleEngine.Target = SelectedMonster;
-                if (SelectedMonster != null)
-                {
-                    Debug.WriteLine("backend monster selected: " + _viewModel.BattleEngine.Target.Name);
-                }
+                _viewModel.BattleEngine.ManualTarget = SelectedMonster;
+              
 
             }
 
@@ -413,7 +410,7 @@ namespace WDown.Views.Battle
             ItemPool.IsEnabled = false;
 
 
-            _viewModel.BattleEngine.Target = null;
+            _viewModel.BattleEngine.ManualTarget = null;
             SelectedMonster = null;
             SelectedMonstersView.SelectedItem = null;
 
