@@ -384,6 +384,8 @@ namespace WDown.GameEngine
             return PlayerCurrent;
         }
 
+        // Get Order of Player List 
+        // Returns a list of PlayerInfo type
         public void OrderPlayerListByTurnOrder()
         {
             var myReturn = new List<PlayerInfo>();
@@ -447,6 +449,7 @@ namespace WDown.GameEngine
             }
         }
 
+        // Create a list for PlayerInfo
         private void MakePlayerList()
         {
             PlayerList = new List<PlayerInfo>();
@@ -454,6 +457,7 @@ namespace WDown.GameEngine
 
             var ListOrder = 0;
 
+            // For each PlayerInfo in Character List, add 
             foreach (var data in CharacterList)
             {
                 if (data.Alive)
@@ -492,6 +496,7 @@ namespace WDown.GameEngine
             }
         }
 
+        // Returns the info of the next player in list
         public PlayerInfo GetNextPlayerInList()
         {
             // Walk the list from top to bottom
@@ -526,6 +531,9 @@ namespace WDown.GameEngine
 
             return null;
         }
+
+        // Print current items from the pool 
+        // For debugging purposes 
         public void PrintItemsFromPool(List<Item> pool)
         {
             var output = "";
@@ -536,6 +544,8 @@ namespace WDown.GameEngine
             }
             Debug.WriteLine(output);
         }
+
+        // Allow users to pickup items from pool
         public void PickupItemsFromPool(Character character)
         {
             // Have the character, walk the items in the pool, and decide if any are better than current one.
@@ -556,6 +566,8 @@ namespace WDown.GameEngine
             GetItemFromPoolIfBetter(character, ItemLocationEnum.Feet);
         }
 
+        // Let user chooses to get item from pool if its stats is better 
+        // for each location
         public void GetItemFromPoolIfBetter(Character character, ItemLocationEnum setLocation)
         {
             //TODO implememnt manual selection of items and equip items

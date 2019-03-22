@@ -263,7 +263,7 @@ namespace WDown.ViewModels
             return true;
         }
 
-        // Call to database to ensure most recent
+        // Returned a Character by its id
         public Character Get(string id)
         {
             var myData = SelectedCharacters.FirstOrDefault(arg => arg.Id == id);
@@ -275,7 +275,10 @@ namespace WDown.ViewModels
             return myData;
 
         }
-        // Call to database to ensure most recent
+        // Returned a Character by its name 
+        // Name is now unique for each character 
+        // For example, BigWig 1 and BigWig 4 has the same Guid
+        // but different name
         public Character GetByName(string name)
         {
             var myData = SelectedCharacters.FirstOrDefault(arg => arg.Name == name);
