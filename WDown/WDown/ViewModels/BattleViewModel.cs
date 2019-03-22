@@ -14,11 +14,13 @@ using WDown.Views.Battle;
 
 namespace WDown.ViewModels
 {
+    // Battle View Model
     public class BattleViewModel : BaseViewModel
     {
         // Make this a singleton so it only exist one time because holds all the data records in memory
         private static BattleViewModel _instance;
 
+        // Initialize
         public static BattleViewModel Instance
         {
             get
@@ -52,6 +54,7 @@ namespace WDown.ViewModels
         // Flag to check if the data needs refreshing
         private bool _needsRefresh;
 
+        // Constructor
         public BattleViewModel()
         {
             Title = "Battle";
@@ -70,6 +73,8 @@ namespace WDown.ViewModels
             // Load Data
             ExecuteLoadDataCommand().GetAwaiter().GetResult();
 
+
+            // Data operations
             MessagingCenter.Subscribe<BattleCharacterSelectPage, Character>(this, "AddSelectedCharacter", async (obj, data) =>
             {
                 SelectedListAdd(data);
@@ -125,6 +130,7 @@ namespace WDown.ViewModels
         /// <summary>
         /// Call to the Engine to Start the Battle
         /// </summary>
+        // Start a new battle
         public void StartBattle()
         {
             BattleEngine.StartBattle(false);
@@ -133,11 +139,13 @@ namespace WDown.ViewModels
         /// <summary>
         /// Call to the Engine to End the Battle
         /// </summary>
+        // End Battle
         public void EndBattle()
         {
            BattleEngine.EndBattle();
         }
 
+        // Set PlayerCurrent
         public void SetPlayerCurrent()
         {
            BattleEngine.SetPlayerCurrent();
@@ -146,6 +154,7 @@ namespace WDown.ViewModels
         /// <summary>
         /// Call to the Engine to Start the First Round
         /// </summary>
+        // Start a round, clear lists
         public void StartRound()
         {
             BattleEngine.StartRound();
@@ -156,11 +165,11 @@ namespace WDown.ViewModels
             }
         }
 
-        //use to sync observables to actual
-      
+        // Used to sync observables to actual
         public void SyncMonsterAndCharacterLists()
         {
             FightingMonsters.Clear();
+            // Add monsters to battle
             foreach (var monster in BattleEngine.MonsterList)
             {
                 FightingMonsters.Add(monster);
@@ -169,6 +178,7 @@ namespace WDown.ViewModels
             }
 
             SelectedCharacters.Clear();
+            // Add characters to battle
             foreach (var character in BattleEngine.CharacterList)
             {
                 SelectedCharacters.Add(character);
@@ -181,6 +191,7 @@ namespace WDown.ViewModels
         /// Load the Characters from the Selected List into the Battle Engine
         /// Making a copy of the character.
         /// </summary>
+        // Load all characters
         public void LoadCharacters()
         {
 
@@ -256,6 +267,18 @@ namespace WDown.ViewModels
         public Character Get(string id)
         {
             var myData = SelectedCharacters.FirstOrDefault(arg => arg.Id == id);
+            if (myData == null)
+            {
+                return null;
+            }
+
+            return myData;
+
+        }
+        // Call to database to ensure most recent
+        public Character GetByName(string name)
+        {
+            var myData = SelectedCharacters.FirstOrDefault(arg => arg.Name == name);
             if (myData == null)
             {
                 return null;
@@ -346,6 +369,7 @@ namespace WDown.ViewModels
             }
         }
 
+        // Refresh
         public void ForceDataRefresh()
         {
             // Reset

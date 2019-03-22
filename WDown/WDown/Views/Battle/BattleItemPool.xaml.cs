@@ -12,6 +12,9 @@ using Plugin.SimpleAudioPlayer;
 using System.IO;
 using System.Reflection;
 
+// This page populates the item pool page
+// which allows characters to drop their item to 
+// get a new one if desire
 namespace WDown.Views.Battle
 {
     // This page populates the Use Item view for the Battle Main Page
@@ -19,8 +22,7 @@ namespace WDown.Views.Battle
     public partial class BattleItemPool : ContentPage
     {
 
-        //List<Item> items = new List<Item>();
-
+        // Currently selected items
         Item selectedItem = null;
 
         private BattleViewModel _viewModel;
@@ -58,6 +60,8 @@ namespace WDown.Views.Battle
 
         }
 
+        // This binds the item at the current location
+        // or indicates if the item is empty
         public void ShowItemLocation()
         {
 
@@ -141,8 +145,6 @@ namespace WDown.Views.Battle
             }
             else ItemFeet.Text = "Empty";
 
-            // Another way to populate the XAML front-end dynamically
-           // AvailableItemLocationListView.ItemsSource = itemByLocation;
 
 
         }
