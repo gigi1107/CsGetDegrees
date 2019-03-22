@@ -92,27 +92,7 @@ namespace WDown.Services
                 if (tempJsonObject.Contains("Ticks"))
                 {
 
-                    // Can't directly parse json to TimeSpan, it is a flaw in .net
-                    // Need to do it manualy
-                    // So get total seconds, and then convert that to the time span.
-
-                    // Time span looks like:
-
-                    /*
-                     *
-                            "Ticks": 0,
-                            "Days": 0,
-                            "Hours": 0,
-                            "Milliseconds": 0,
-                            "Minutes": 0,
-                            "Seconds": 0,
-                            "TotalDays": 0,
-                            "TotalHours": 0,
-                            "TotalMilliseconds": 0,
-                            "TotalMinutes": 0,
-                            "TotalSeconds": 0
-
-                     */
+                    
 
                     // Split on the comma seperator
                     // Then find the sub string with Ticks

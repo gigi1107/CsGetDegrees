@@ -10,6 +10,9 @@ using WDown.Models;
 
 namespace WDown.Services
 {
+
+    // This class is to implement Server calls 
+    // for GetItem and GetItemPost in About page
     public class HttpClientService
     {
 
@@ -18,6 +21,7 @@ namespace WDown.Services
 
         private HttpClient _httpClientInstance;
 
+        // Initialize
         private HttpClient _httpClient
         {
             get
@@ -45,13 +49,14 @@ namespace WDown.Services
                 return _instance;
             }
         }
-
+        // Set the server client
         public HttpClient SetHttpClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
             return _httpClient;
         }
 
+        // Parse Json
         public async Task<string> JsonParseResult(HttpResponseMessage response)
         {
             if (response == null)
@@ -132,6 +137,7 @@ namespace WDown.Services
             return data;
         }
 
+        // Get Json Server Call Post
         public async Task<string> GetJsonPostAsync(string RestUrl, JObject jsonString)
         {
             // Take the post paramaters, and add the Version and Device to it
@@ -186,6 +192,7 @@ namespace WDown.Services
             return data;
         }
 
+        // Get Json Server Call Get 
         public async Task<string> GetJsonGetAsync(string RestUrl)
         {
             // Take the post paramaters, and add the Version and Device to it
