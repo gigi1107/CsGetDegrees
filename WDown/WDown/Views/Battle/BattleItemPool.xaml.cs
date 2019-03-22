@@ -62,12 +62,13 @@ namespace WDown.Views.Battle
 
         // This binds the item at the current location
         // or indicates if the item is empty
+       
         public void ShowItemLocation()
         {
 
             // Getting the Character by ID
-            var charID = _viewModel.BattleEngine.PlayerCurrent.Guid;
-            var currChar = _viewModel.Get(charID);
+            var charName = _viewModel.BattleEngine.PlayerCurrent.Name;
+            var currChar = _viewModel.GetByName(charName);
 
             List<Item> itemByLocation = new List<Item>();
             // Getting Item from each Location in Character
@@ -149,8 +150,7 @@ namespace WDown.Views.Battle
 
         }
 
-        
-
+       
         // This method handles when user click equip
         // Equip ALWAYS equip the selected item.
         // If there is already an item at the same slot, the currently 
@@ -165,16 +165,17 @@ namespace WDown.Views.Battle
             }
             Debug.WriteLine("You are equipping item....");
             // Get Character
-            // TODO HOW TO GRAB SOMETHING THAT'S UNIQUE TO EACH CHARACTER? because BigWig 1 and BigWig 3 shares GUID
-            var charID = _viewModel.BattleEngine.PlayerCurrent.Guid;
-            var currChar = _viewModel.Get(charID);
+           
+            var charName = _viewModel.BattleEngine.PlayerCurrent.Name;
+            var currChar = _viewModel.GetByName(charName);
             // Get Item clicked
             int value = selectedItem.Value;
             AttributeEnum modifiedAttr = selectedItem.Attribute;
             ItemLocationEnum modifiedLocation = selectedItem.Location;
             string itemID = selectedItem.Id;
             
-            // Add item into that location
+            // Equip item into that location, get back an item previously there
+            // check if returned item is null
             var returnedItem = currChar.AddItem(modifiedLocation, itemID);
 
             // Printing debug output
@@ -192,6 +193,11 @@ namespace WDown.Views.Battle
             var recentlyEquippedItem = currChar.GetItemByLocation(modifiedLocation);
             _viewModel.BattleEngine.ItemPool.Remove(recentlyEquippedItem);
         }
+
+        // This function handles when button Save is clicked
+        // An item must be chosen before clicking Save. If not, user 
+        // has to click Cancel.
+
         async void SaveButtonClicked(object sender, EventArgs e)
         {
 
@@ -202,39 +208,24 @@ namespace WDown.Views.Battle
                 await Navigation.PopModalAsync();
             }
 
-            //else
-            //vonsume item
-            //for now, all the consumables will jus trestore you to full health
-            //int value = selectedItem.Value;
-            //AttributeEnum modifiedAttr = selectedItem.Attribute;
-
-            //if (modifiedAttr == AttributeEnum.CurrentHealth)
-            //{
-            //    _viewModel.BattleEngine.PlayerCurrent.RemainingHP = _viewModel.BattleEngine.PlayerCurrent.TotalHP;
-            //    //also find current character in the character list and update it
-            //    foreach (Models.Character character in _viewModel.BattleEngine.CharacterList)
-            //    {
-            //        if (character.Name == _viewModel.BattleEngine.PlayerCurrent.Name)
-            //        {
-            //            character.CharacterAttribute.CurrentHealth = character.CharacterAttribute.MaxHealth;
-            //            Debug.WriteLine("Character has been healed to full health");
-            //        }
-            //    }
-            //}
+           
 
             await Navigation.PopModalAsync();
 
 
 
         }
-
+        // Handle when user clicks Cancel button
         async void CancelButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }
-
+        
+        // When item is selected, populates the additional bar to show additional details 
+        // and also help with EquipClicked() 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
+            // Check if null
             if (args == null)
             {
                 return;
@@ -246,7 +237,7 @@ namespace WDown.Views.Battle
             selectedItem = data;
 
 
-
+            // Populates the front end with data
             ItemDescription.Text = String.Format("{0}", selectedItem.Description);
             ItemEffectsLabel.Text = String.Format("This item affects {0} with value {1}", selectedItem.Attribute.ToString(), selectedItem.Value.ToString());
 
