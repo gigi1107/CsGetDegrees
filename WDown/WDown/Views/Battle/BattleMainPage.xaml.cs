@@ -339,7 +339,7 @@ namespace WDown.Views.Battle
             SelectedCharactersView.ItemsSource = null;
             SelectedCharactersView.ItemsSource = _viewModel.BattleEngine.CharacterList;
 
-            Debug.WriteLine("This is what the characterLIst looks like in the backend at refreshCharacters Called: ");
+            Debug.WriteLine("This is what the characterList looks like in the backend at refreshCharacters Called: ");
             foreach(Models.Character character in _viewModel.BattleEngine.CharacterList)
             {
                 Debug.WriteLine(character.Name + " Level: " + character.Level);
@@ -356,7 +356,7 @@ namespace WDown.Views.Battle
             SelectedMonstersView.ItemsSource = _viewModel.BattleEngine.MonsterList;
 
             
-            //SelectedMonstersView.ItemsSource = _viewModel.FightingMonsters;
+
            
 
         }

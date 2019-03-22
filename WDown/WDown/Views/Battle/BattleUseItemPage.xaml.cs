@@ -30,9 +30,10 @@ namespace WDown.Views.Battle
         {
             InitializeComponent();
             BindingContext = _viewModel = viewModel;
-            foreach(Item item in _viewModel.BattleEngine.ItemPool)
+            // This is to populate the Item with 3 consumables at first
+            foreach (Item item in _viewModel.BattleEngine.ItemPool)
             {
-                if(item.Wearable == false)
+                if (item.Wearable == false)
                 {
                     items.Add(item);
                 }
@@ -99,7 +100,8 @@ namespace WDown.Views.Battle
                     }
                 }
             }
-
+            items.Remove(selectedItem);
+            _viewModel.BattleEngine.ItemPool.Remove(selectedItem);
             await Navigation.PopModalAsync();
 
             
