@@ -33,6 +33,7 @@ namespace WDown.ViewModels
 
         public ObservableCollection<Monster> FightingMonsters { get; set; }
 
+        // New Battle Monster List View
         public BattleMonsterListViewModel()
         {
             FightingMonsters = new ObservableCollection<Monster>();

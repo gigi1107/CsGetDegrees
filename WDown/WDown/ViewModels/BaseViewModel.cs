@@ -10,20 +10,23 @@ using WDown.Models;
 
 namespace WDown.ViewModels
 {
+    // Base View Model
     public class BaseViewModel : INotifyPropertyChanged
     {
         #region RefactorLater
-
+        // Two database: Mock is for Testing
         private IDataStore DataStoreMock => DependencyService.Get<IDataStore>() ?? MockDataStore.Instance;
         private IDataStore DataStoreSql => DependencyService.Get<IDataStore>() ?? SQLDataStore.Instance;
 
         public IDataStore DataStore;
 
+        // Default using Mock
         public BaseViewModel()
         {
             SetDataStore(DataStoreEnum.Mock);
         }
 
+        // Populate based on datastore type chosen
         public void SetDataStore(DataStoreEnum data)
         {
             switch (data)
@@ -70,6 +73,7 @@ namespace WDown.ViewModels
             return true;
         }
 
+        // Notify upon event changed
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")

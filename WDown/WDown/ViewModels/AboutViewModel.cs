@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 namespace WDown.ViewModels
 {
+    // View Model for About page
     public class AboutViewModel : BaseViewModel
     {
         public AboutViewModel()

@@ -11,6 +11,7 @@ using System.Linq;
 
 namespace WDown.ViewModels
 {
+    // Controller for Character class
     public class CharactersViewModel : BaseViewModel
     {
         // Make this a singleton so it only exist one time because holds all the data records in memory
@@ -28,11 +29,15 @@ namespace WDown.ViewModels
             }
         }
 
+        // Character dataset
         public ObservableCollection<Character> Dataset { get; set; }
+
+        // Load Command
         public Command LoadDataCommand { get; set; }
 
         private bool _needsRefresh;
 
+        // Start page
         public CharactersViewModel()
         {
 
@@ -40,7 +45,7 @@ namespace WDown.ViewModels
             Dataset = new ObservableCollection<Character>();
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
-            // Implement 
+            // Messaging Center
             #region Messages
             MessagingCenter.Subscribe<CharacterDeletePage, Character>(this, "DeleteData", async (obj, data) =>
             {

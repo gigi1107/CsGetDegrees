@@ -1,6 +1,7 @@
 ﻿
 using WDown.Models;
 
+// VM for Score Detail Page
 namespace WDown.ViewModels
 {
     public class ScoreDetailViewModel : BaseViewModel

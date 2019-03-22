@@ -2,6 +2,7 @@
 
 namespace WDown.ViewModels
 {
+    // Item Detail Page's VM
     public class ItemDetailViewModel : BaseViewModel
     {
         public Item Data { get; set; }
