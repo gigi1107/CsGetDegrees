@@ -5,6 +5,7 @@ using SQLite;
 namespace WDown.Models
 {
 
+    // Enum menu for About, Manage, and Game
     public enum MenuItemType
     {
         About,

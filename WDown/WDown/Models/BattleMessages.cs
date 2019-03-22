@@ -5,19 +5,29 @@ using System.Text;
 
 namespace WDown.Models
 {
+    // Battle Message class
+    // To print out current status to the XAML BattleMainPage
     public class BattleMessages
     {
         public PlayerTypeEnum PlayerType;
 
+        // Attacker name
         public string AttackerName = string.Empty;
+        // Target name
         public string TargetName = string.Empty;
+        // Status of attack
         public string AttackStatus = string.Empty;
 
+        // Turn message
         public string TurnMessage = string.Empty;
         public string TurnMessageSpecial = string.Empty;
+        // Level up message
         public string LevelUpMessage = string.Empty;
 
+        // Damage amount from the fight
         public int DamageAmount = 0;
+
+        // Current Health
         public int CurrentHealth = 0;
 
         private string htmlHead = @"<html><body bgcolor=""#E8D0B6""><p>";

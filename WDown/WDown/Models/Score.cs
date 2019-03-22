@@ -48,7 +48,7 @@ namespace WDown.Models
             CreateDefaultScore();
 
         }
-
+        // Default constructor
         private void CreateDefaultScore()
         {
             Name = "Score";
@@ -70,7 +70,7 @@ namespace WDown.Models
             MonstersKilledList = "";
             ItemsDroppedList = "";
         }
-
+        // Initialize from Score data type
         public Score(Score newData)
         {
             CreateDefaultScore();

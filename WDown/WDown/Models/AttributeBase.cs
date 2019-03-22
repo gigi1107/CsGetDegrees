@@ -34,16 +34,18 @@ namespace WDown.Models
 
         public string FormatOutput()
         {
-            var myReturn = "Implement";
+            var myReturn = "";
             return myReturn.Trim();
         }
+
+        // Default constructor
         public AttributeBase()
         {
             SetDefaultValues();
 
         }
 
-      
+      // Default values
         private void SetDefaultValues()
         {
             Speed = 1;
@@ -54,6 +56,7 @@ namespace WDown.Models
 
         }
 
+        // Constructor based on user given inputs
         public AttributeBase(int speed, int defense, int attack,
         int currentHealth, int maxHealth)
         {
@@ -65,6 +68,7 @@ namespace WDown.Models
 
         }
 
+        // Getters
         public int getSpeed() { return Speed; }
         public int getDefense() { return Defense; }
         public int getAttack() { return Attack; }

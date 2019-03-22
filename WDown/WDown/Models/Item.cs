@@ -146,6 +146,7 @@ namespace WDown.Models
             Value = newValue;
         }
 
+        // Set wearable to passed in boolean
         public void SetWearable(bool value)
         {
             Wearable = value;

@@ -78,13 +78,6 @@ namespace WDown.Models
             Defense = data.GetDefense();
             ImageURI = data.GetImageURI();
             Head = data.ItemSlotsFormatOutput();
-            //Necklass = data.Necklass.ToString();
-            //PrimaryHand = data.PrimaryHand.ToString();
-            //OffHand = data.OffHand.ToString();
-            //LeftFinger = data.LeftFinger.ToString();
-            //RightFinger = data.RightFinger.ToString();
-            //Feet = data.Feet.ToString();
-
 
         }
 
