@@ -9,12 +9,14 @@ using Xamarin.Forms.Xaml;
 
 namespace WDown.Views.Items
 {
+    // This allows user to view detailed information about a certain item
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemDetailPage : ContentPage
     {
         // ReSharper disable once PrivateFieldCanBeConvertedToLocalVariable
         private ItemDetailViewModel _viewModel;
 
+        // Start page
         public ItemDetailPage(ItemDetailViewModel viewModel)
         {
             InitializeComponent();

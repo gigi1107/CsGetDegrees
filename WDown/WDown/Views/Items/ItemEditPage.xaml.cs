@@ -6,7 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WDown.Services;
 namespace WDown.Views.Items
-{
+{// This page allows user to edit values of an item
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ItemEditPage : ContentPage
 	{
